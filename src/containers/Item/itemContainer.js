@@ -15,12 +15,14 @@ class ItemContainer extends Component {
     super(props);
   }
 
-  
+  componentDidMount() {
+    console.log('ItemContainer has mounted.');
+  }
 
   render() {
     return(
       <div className="ItemContainer">
-        <p>ItemContainer</p>
+        
       </div>
     );
   }

@@ -32,6 +32,7 @@ class App extends Component {
             <li>View By Category</li>
           </ul>
         </div>
+        
       </div>
     );
   }
