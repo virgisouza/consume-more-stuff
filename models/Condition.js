@@ -1,9 +1,7 @@
 module.exports = function (sequelize, DataTypes){
 
   const Condition = sequelize.define('Condition', {
-    new: {type: DataTypes.STRING, allowNull: false},
-    like_new: {type: DataTypes.STRING, allowNull: false},
-    used: {type: DataTypes.STRING, allowNull: false}
+    type: {type: DataTypes.STRING, allowNull: false}
   },
     {tableName: 'conditions', timestamps: false}
   );
