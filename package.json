@@ -26,6 +26,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
+  "proxy": "localhost:8080",
   "devDependencies": {
     "sequelize-cli": "^3.0.0"
   },
