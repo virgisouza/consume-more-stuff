@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const items = require('./items');
 const db = require('../../models');
-const Items = db.item;
-const Category = db.category;
-
+const Items = db.Item;
+const Category = db.Category;
+const Condition = db.Condition;
+const Status = db.Status;
+const User = db.User;
 
 router.post('/new', (req, res) => {
   let data = req.body;
