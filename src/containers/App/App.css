@@ -1,21 +1,40 @@
 .App {
   text-align: center;
+  border: 2px solid magenta;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  /* animation: App-logo-spin infinite 20s linear; */
   height: 80px;
+  border: 1px solid white;
 }
 
 .App-header {
   background-color: #222;
-  height: 150px;
-  padding: 20px;
+  height: 200px;
+  padding: 10px;
   color: white;
+  position: relative;
+}
+
+.Login-reg {
+  border: 1px solid white;
+  width: 33%;
+  position: absolute;
+  right: 0;
+}
+
+.Login-reg li {
+  list-style-type: none;
+  display: inline;
+  padding: 5px;
+  margin: 2px;
+  border: 1px solid white;
 }
 
 .App-title {
   font-size: 1.5em;
+  border: 1px solid white;
 }
 
 .App-intro {
@@ -25,4 +44,34 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.navbar {
+  border: 1px solid black;
+  width: 20%;
+
+}
+
+.navbar ul {
+  border: 1px solid red;
+}
+
+.navbar li {
+  list-style-type: none;
+  border: 1px solid blue;
+  padding: 10px;
+  margin: 5px;
+  text-align: left;
+}
+
+.ItemContainer {
+  
+}
+
+.NewItemForm {
+  
+}
+
+.Item {
+
 }
