@@ -2,11 +2,13 @@ const express = require('express');
 const router = express.Router();
 const items = require('./items');
 const db = require('../../models');
-const Items = db.item;
-const Category = db.category;
+const Items = db.Item;
+const Category = db.Category;
+const Condition = db.Condition;
+const Status = db.Status;
+const User = db.User;
 
-
-router.post('/new', (req, res) => {
+router.post('/new', isAuthenticated, (req, res) => {
   let data = req.body;
   return Items.create({
     name: data.name,
@@ -15,32 +17,28 @@ router.post('/new', (req, res) => {
     price: data.price,
     category_id: data.category_id,
     condition_id: data.condition_id,
-    user_id: req.user.id,
-    status_id: data.status_id
+    //remember you changed this
+    user_id: data.user_id,
+    status_id: 1
+  })
+  .then((item) => {
+    return res.json(item);
+  })
+  .catch((error) => {
+    console.log(error);
   });
 });
 
-router.get('/all', (req, res) => {
+router.get('/', (req, res) => {
   return Items.findAll({include:[
     {model:Category, as: 'Category'},
     {model: Condition, as: 'Condition'},
     {model: User, as: 'User'},
     {model: Status, as: 'Status'}
-    ]})
-  .then((items) => {
-    return res.json(items)
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-});
-
-router.get('/:category_id', (req, res) => {
-  return Items.findAll({include:[],
+    ],
     where: {
-      category_id: req.params.category_id
-    }
-  })
+      status_id: 1
+    }})
   .then((items) => {
     return res.json(items)
   })
@@ -49,8 +47,33 @@ router.get('/:category_id', (req, res) => {
   });
 });
 
-router.get('/:category_id/item/:id', (req, res) => {
-  return Items.findOne({include:[],
+//should probably be in category route
+// router.get('/:category_id', (req, res) => {
+//   return Items.findAll({include:[
+//     {model:Category, as: 'Category'},
+//     {model: Condition, as: 'Condition'},
+//     {model: User, as: 'User'},
+//     {model: Status, as: 'Status'}
+//     ],
+//     where: {
+//       category_id: req.params.category_id
+//     }
+//   })
+//   .then((items) => {
+//     return res.json(items)
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+// });
+
+router.get('/:id', (req, res) => {
+  return Items.findOne({include:[
+    {model:Category, as: 'Category'},
+    {model: Condition, as: 'Condition'},
+    {model: User, as: 'User'},
+    {model: Status, as: 'Status'}
+    ],
     where: {
       id: req.params.id
     }
@@ -62,5 +85,83 @@ router.get('/:category_id/item/:id', (req, res) => {
     console.log(error);
   });
 });
+
+router.put('/:id', isAuthenticated, (req, res) => {
+  return Items.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then((item) => {
+    let data = req.body;
+    if(req.user.id === item.user.id){
+      return Items.update({
+        name: data.name || item.name,
+        image: data.image || item.image,
+        body: data.body || item.body,
+        price: data.price || item.price,
+        category_id: data.category_id || item.category_id,
+        condition_id: data.condition_id || item.condition_id
+      },
+      {where:{
+        id: req.params.id
+      }
+      })
+      .then((response) => {
+        return Items.findOne({include:[
+          {model: Category, as: 'Category'},
+          {model: Condition, as: 'Condition'},
+          {model: User, as: 'User'},
+          {model: Status, as: 'Status'}
+          ],
+          where: {
+            id: req.params.id
+          }
+        })
+        .then((updatedItem) => {
+          return res.json(updatedItem);
+        });
+      });
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+});
+
+router.delete('/:id', isAuthenticated, (req, res) => {
+  return Items.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then((item) => {
+    //check req.user is right
+    if(req.user.id === item.user.id){
+      return Items.update({
+        status_id: 2
+      },
+      {where:{
+        id: req.params.id
+      }
+      })
+      .then((soldItem) => {
+        res.json(soldItem);
+      });
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+});
+
+function isAuthenticated(req, res, next){
+  if(req.isAuthenticated()){
+    next();
+  }else{
+    //not sure exactly what I should do here
+    res.redirect('/')
+  }
+}
 
 module.exports = router;
