@@ -1,8 +1,8 @@
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-//const db = require('./models');
-const routes = require('../routes');
+const db = require('../models');
+const routes = require('./routes');
 const redis = require('connect-redis')(session);
 const passport = require('passport');
 const bcrypt = require('bcrypt');
@@ -107,6 +107,6 @@ function isAuthenticated(req, res, next){
 }
 
 app.listen(PORT, () => {
-  //db.sequelize.sync({ force:true });
+  db.sequelize.sync({ force:true });
   console.log(`Listening on port: ${PORT}`);
 });
