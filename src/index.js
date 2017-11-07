@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import {
-  Browser as Router,
+  BrowserRouter as Router,
   Route,
   Link
 } from 'react-router-dom';
@@ -12,6 +12,9 @@ import './index.css';
 import App from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
 import thunk from 'redux-thunk';
+import Register from './containers/Register';
+import Login from './containers/Login';
+import Logout from './containers/Logout';
 
 const store = createStore(
   reducers,
@@ -23,10 +26,12 @@ ReactDOM.render(
   <Provider>
     <Router>
       <div>
+        <Link to='/logout'>Logout</Link>
+
         <Route exact path='/' component={App}/>
         <Route path='/login' component={Login}/>
         <Route path='/logout' component={Logout}/>
-        <Route path='/register' componen={Register}/>
+        <Route path='/register' component={Register}/>
 
       </div>
     </Router>
@@ -35,3 +40,5 @@ ReactDOM.render(
 );
 
 registerServiceWorker();
+
+
