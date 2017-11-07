@@ -7,7 +7,7 @@ module.exports = function (sequelize, DataTypes){
     furniture: {type: DataTypes.STRING, allowNull: false},
     misc: {type: DataTypes.STRING, allowNull: false}
   },
-    {tableName: 'categories'},
+    {tableName: 'categories', timestamps: false},
   );
 
   Category.associate = function (models) {

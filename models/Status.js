@@ -1,10 +1,9 @@
 module.exports = function (sequelize, DataTypes){
 
   const Status = sequelize.define('Status', {
-    published: {type: DataTypes.STRING, allowNull: false},
-    sold: {type: DataTypes.STRING, allowNull: false}
+    type: {type: DataTypes.STRING, allowNull: false}
   },
-    {tableName: 'statuses'}
+    {tableName: 'statuses', timestamps: false}
   );
 
   Status.associate = function (models) {

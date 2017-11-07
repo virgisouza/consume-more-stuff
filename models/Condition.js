@@ -5,7 +5,7 @@ module.exports = function (sequelize, DataTypes){
     like_new: {type: DataTypes.STRING, allowNull: false},
     used: {type: DataTypes.STRING, allowNull: false}
   },
-    {tableName: 'conditions'}
+    {tableName: 'conditions', timestamps: false}
   );
 
   Condition.associate = function (models){
