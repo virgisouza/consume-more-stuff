@@ -13,8 +13,9 @@ class ItemContainer extends Component {
   constructor(props) {
     console.log('ItemContainer Constructor');
     super(props);
-
   }
+
+  
 
   render() {
     return(
