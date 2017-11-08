@@ -21,7 +21,7 @@ export const addNewUser = (user) => {
   console.log('action', user);
   return function(dispatch) {
     return addUser(user).then(newUser => {
-      console.log(user);
+      console.log(newUser);
       dispatch({
         type : REGISTER_USER,
         user : newUser
@@ -33,6 +33,7 @@ export const addNewUser = (user) => {
 export const loginUser = (user) => {
   return function(dispatch) {
     return login(user).then(theUser => {
+      console.log(theUser)
       dispatch({
         type: LOGIN_USER,
         user: theUser

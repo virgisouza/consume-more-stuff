@@ -10,6 +10,7 @@ const User = db.User;
 
 router.post('/new', isAuthenticated, (req, res) => {
   let data = req.body;
+  console.log(data);
   return Items.create({
     name: data.name,
     image: data.image,
@@ -29,7 +30,8 @@ router.post('/new', isAuthenticated, (req, res) => {
   });
 });
 
-router.get('/', (req, res) => {
+router.get('/', isAuthenticated, (req, res) => {
+  console.log(req.user);
   return Items.findAll({include:[
     {model:Category, as: 'Category'},
     {model: Condition, as: 'Condition'},
@@ -38,7 +40,8 @@ router.get('/', (req, res) => {
     ],
     where: {
       status_id: 1
-    }})
+    },
+    order: [['updatedAt', 'DESC']]})
   .then((items) => {
     return res.json(items)
   })
@@ -157,8 +160,10 @@ router.delete('/:id', isAuthenticated, (req, res) => {
 
 function isAuthenticated(req, res, next){
   if(req.isAuthenticated()){
+    console.log('isAuthenticated')
     next();
   }else{
+    console.log('not isAuthenticated')
     //not sure exactly what I should do here
     res.redirect('/')
   }

@@ -10,6 +10,8 @@ const user = (state = initialState, action) => {
     case LOGIN_USER:
       localStorage.setItem('user_id', action.user.id);
       localStorage.setItem('logged_in', true);
+      let test = localStorage.getItem('logged_in');
+      console.log(test);
       return action.user;
 
     case LOGOUT_USER:
