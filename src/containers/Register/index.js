@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-//import { loadUsers } from
-//import { addNewUser } from
+import { loadUsers } from
+import { addNewUser } from
 import { connect } from 'react-redux';
 
 
