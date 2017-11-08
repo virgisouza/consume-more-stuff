@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { loadUsers } from
-import { addNewUser } from
+import { loadUsers, addNewUser } from '../../actions/users';
 import { connect } from 'react-redux';
 
 
 class NewUser extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -28,7 +27,7 @@ class NewUser extends Component {
       username: this.state.username,
       password: this.state.password,
       email: this.state.password
-    }
+    };
 
     this.props.addNewUser(newUser);
 

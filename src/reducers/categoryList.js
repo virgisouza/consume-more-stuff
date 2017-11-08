@@ -1,5 +1,5 @@
 import { LOAD_CATEGORIES,
-         LOAD_CATEGORY_ITEMS } from '../actions/category_actions';
+         LOAD_CATEGORY_ITEMS } from '../actions/categories';
 
 const initialState = [];
 

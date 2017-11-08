@@ -29,7 +29,7 @@ const itemList = (state = intitialState, action) => {
       });
       return [...items, action.updatedItem];
 
-    default
+    default:
       return state;
   }
 }

@@ -1,3 +1,6 @@
+import { GET_USERS, ADD_USER } from '../constants.js';
+import { getUsers, addUser } from '../../lib/GETrequests';
+
 export const loadUsers = () => {
   return function(dispatch) {
     return getUsers().then(users => {
