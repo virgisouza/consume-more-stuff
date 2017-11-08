@@ -64,14 +64,22 @@
   text-align: left;
 }
 
-.ItemContainer {
+.NewItemForm {
   
 }
 
-.NewItemForm {
+.EditItemForm {
+  
+}
+
+.ItemContainer {
   
 }
 
 .Item {
 
+}
+
+.Select {
+  
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import '../containers/App/App.css';
 
 const Item = ({ description, price, make, model, condition, category, dimensions, datePublished, lastUpdated, details }) => {
@@ -13,4 +13,4 @@ const Item = ({ description, price, make, model, condition, category, dimensions
 }
 
 
-export default Item;
+export default Item;*/
