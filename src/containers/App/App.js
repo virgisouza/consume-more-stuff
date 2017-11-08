@@ -32,8 +32,6 @@ class App extends Component {
             <li>All Items</li>
             <li>View By Category</li>
           </ul>
-        </div>
-        <NewItemForm />        
       </div>
     );
   }

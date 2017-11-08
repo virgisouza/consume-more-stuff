@@ -1,5 +1,5 @@
-import { GET_STATUSES } from '../constants.js';
-import { getStatuses } from '../../lib/GETrequests';
+import getStatuses from '../lib/GETrequests';
+export const GET_STATUSES = 'GET_STATUSES';
 
 export const loadStatuses = () => {
   return function(dispatch) {

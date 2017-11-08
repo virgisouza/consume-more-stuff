@@ -15,10 +15,10 @@ const user = (state = initialState, action) => {
     case LOGOUT_USER:
       localStorage.setItem('user_id', 0);
       localStorage.setItem('logged_in', false);
-      return
+      return action.data;
 
     case REGISTER_USER:
-      return
+      return [...state, action.user];
 
     default:
       return state;

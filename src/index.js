@@ -6,8 +6,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import registerServiceWorker from './registerServiceWorker';
-import thunk from 'redux-thunk';
 
 import {
   BrowserRouter as Router,
@@ -15,11 +13,13 @@ import {
   Link
 } from 'react-router-dom';
 
-import reducers from './reducers/reducer_index';
 import './index.css';
+import thunk from 'redux-thunk';
+import reducers from './reducers/reducer_index';
 
 import NewItemForm from './containers/NewItem/newItemForm';
 import App from './containers/App/App';
+import registerServiceWorker from './registerServiceWorker';
 import Register from './containers/Register';
 import Login from './containers/Login';
 /*import Logout from './containers/Logout';*/

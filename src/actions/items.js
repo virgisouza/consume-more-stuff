@@ -1,13 +1,31 @@
-import { GET_ITEMS, ADD_ITEM } from '../constants.js';
-import { getItems } from '../../lib/GETrequests';
-import { addItem } from '../../lib/POSTrequests';
+import getItems, getItemById from '../lib/GETrequests';
+import addNewItem from '../lib/POSTrequests';
+import itemDelete from '../lib/DELETErequests';
+import itemEdit from '../lib/PUTrequests';
+
+export const LOAD_ITEMS = 'LOAD_ITEMS';
+export const LOAD_ITEM = 'LOAD_ITEM';
+export const ADD_ITEM = 'ADD_ITEM';
+export const DELETE_ITEM = 'DELETE_ITEM';
+export const EDIT_ITEM = 'EDIT_ITEM';
 
 export const loadItems = () => {
   return function(dispatch) {
     return getItems().then(items => {
       dispatch({
-        type : GET_ITEMS,
-        items : items
+        type : LOAD_ITEMS,
+        items : items.data
+      });
+    });
+  }
+}
+
+export const loadItem = (item) => {
+  return function(dispatch) {
+    return getItemById(item.id).then(item => {
+      dispatch({
+        type : LOAd_ITEM,
+        item : item.data
       });
     });
   }
@@ -15,10 +33,32 @@ export const loadItems = () => {
 
 export const addNewItem = (item) => {
   return function(dispatch) {
-    return addItem(item).then(newItem => {
+    return addNewItem(item).then(newItem => {
       dispatch({
-        type : ADD_ITEM,
-        item : newItem
+        type: ADD_ITEM,
+        item: newItem.data
+      });
+    });
+  }
+}
+
+export const deleteItem = (item) => {
+  return function(dispatch) {
+    return itemDelete(item).then(response => {
+      dispatch({
+        type: DELETE_ITEM,
+        item: response.data
+      });
+    });
+  }
+}
+
+export const editItem = (item) => {
+  return function(dispatch) {
+    return itemEdit(item).then(editedItem => {
+      dispatch({
+        type: EDIT_ITEM,
+        item: editedItem
       });
     });
   }
