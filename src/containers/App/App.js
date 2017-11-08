@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { loadItems } from '../../actions/items';
 import logo from './logo.svg';
 import './App.css';
 
@@ -58,7 +60,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-
-export default App;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
 
 
