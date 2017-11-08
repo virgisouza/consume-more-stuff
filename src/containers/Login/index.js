@@ -35,7 +35,21 @@ class LoginUser extends Component {
 
   render(){
     return (
-
+      <form onSubmit={this.handleSubmit.bind(this)}>
+        <input
+          type='text'
+          placeholder='username'
+          value={this.state.username}
+          onChange={this.handleChangeUsername.bind(this)}
+        />
+         <input
+          type='text'
+          placeholder='password'
+          value={this.state.password}
+          onChange={this.handleChangePassword.bind(this)}
+        />
+        <button type='submit'>Login</button>
+      </form>
     );
   }
 };
