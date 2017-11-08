@@ -31,7 +31,7 @@ export const loadItem = (item) => {
   }
 }
 
-export const addItem = (item) => {
+export const addNewItem = (item) => {
   return function(dispatch) {
     return addNewItem(item).then(newItem => {
       dispatch({

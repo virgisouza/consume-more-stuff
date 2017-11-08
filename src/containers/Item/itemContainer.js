@@ -9,12 +9,7 @@ import '../App/App.css';
 class ItemContainer extends Component {
 
   constructor(props) {
-    console.log('ItemContainer Constructor');
     super(props);
-  }
-
-  componentDidMount() {
-    console.log('ItemContainer has mounted.');
   }
 
   render() {
