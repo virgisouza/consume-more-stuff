@@ -15,6 +15,7 @@ export const addUser = (user) => new Promise((resolve, reject) => {
 });
 
 export const login = (user) => new Promise((resolve, reject) => {
+  let data = JSON.stringify(user);
   var oReq = new XMLHttpRequest();
   oReq.onreadystatechange = function (){
     if(oReq.readyState === XMLHttpRequest.DONE && oReq.status === 200){
@@ -24,10 +25,11 @@ export const login = (user) => new Promise((resolve, reject) => {
   }
   oReq.open("POST", "http://localhost:8080/login");
   oReq.setRequestHeader('content-type', 'application/json');
-  oReq.send();
+  oReq.send(data);
 });
 
 export const addNewItem = (item) => new Promise((resolve, reject) => {
+  let data = JSON.stringify(item);
   var oReq = new XMLHttpRequest();
   oReq.onreadystatechange = function (){
     if(oReq.readyState === XMLHttpRequest.DONE && oReq.status === 200){
@@ -37,5 +39,5 @@ export const addNewItem = (item) => new Promise((resolve, reject) => {
   }
   oReq.open("POST", "http://localhost:8080/api/items/new");
   oReq.setRequestHeader('content-type', 'application/json');
-  oReq.send();
+  oReq.send(data);
 });
