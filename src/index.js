@@ -4,6 +4,14 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import {
+  Browser as Router,
+  Route,
+  Link
+} from 'react-router-dom';
+import reducers from './reducers';
 import './index.css';
 
 import { createStore, applyMiddleware } from 'redux';
@@ -20,6 +28,13 @@ import {
 import NewItemForm from './containers/NewItem/newItemForm';
 import App from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
+import thunk from 'redux-thunk';
+
+const store = createStore(
+  reducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(thunk)
+);
 
 const store = createStore(
   allReducers,
@@ -27,16 +42,14 @@ const store = createStore(
 );
 
 ReactDOM.render(
+
   <Provider store={store}>
     <Router>
       <div>
-        {/*<Link to='/logout'>Logout</Link>*/}
-
-        <Route exact path="/" component={App} />
-
-        {/*<Route path="/login" component={Login} />
-        <Route path="/logout" component={Logout} />
-        <Route path="/register" component={Register} />*/}
+        <Route exact path='/' component={App}/>
+        <Route path='/login' component={Login}/>
+        <Route path='/logout' component={Logout}/>
+        <Route path='/register' componen={Register}/>
 
       </div>
     </Router>
