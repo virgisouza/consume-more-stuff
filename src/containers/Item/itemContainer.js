@@ -19,7 +19,7 @@ class ItemContainer extends Component {
   render() {
     return(
       <div className="ItemContainer">
-        <Item />
+        <h1>Item Container</h1>
       </div>
     );
   }

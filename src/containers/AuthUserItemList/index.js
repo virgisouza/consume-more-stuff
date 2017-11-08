@@ -10,7 +10,7 @@ class AuthUserItemList extends Components {
     super(props);
 
     this.state = {
-
+      
     }
   }
 
@@ -34,7 +34,7 @@ class AuthUserItemList extends Components {
                 category={props.category}
                 createdAt={props.createdAt}
               />
-            )
+            );
           })
         }
       </div>

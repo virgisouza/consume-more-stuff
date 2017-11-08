@@ -41,7 +41,7 @@ ReactDOM.render(
         <Route path='/login' component={Login}/>
         {/*<Route path='/logout' component={Logout}/>*/}
         <Route path='/register' component={Register}/>
-
+        
       </div>
     </Router>
   </Provider>,

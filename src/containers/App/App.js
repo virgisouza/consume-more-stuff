@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    /*For now, make an API call and fetch the most recent 5 items.*/
+    this.props.loadItems();
   }
 
   render() {
@@ -45,7 +45,15 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    items : state.items;
+    items : state.items
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadItems : () => {
+      dispatch(loadItems())
+    }
   };
 }
 
