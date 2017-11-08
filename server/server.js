@@ -2,7 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const db = require('../models');
-const routes = require('./routes');
+// const routes = require('./routes');
 const redis = require('connect-redis')(session);
 const passport = require('passport');
 const bcrypt = require('bcrypt');
@@ -12,13 +12,13 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
-app.use(function (req, res, next) {
- res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
- res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
- res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
- res.setHeader('Access-Control-Allow-Credentials', true);
- next();
-});
+// app.use(function (req, res, next) {
+//  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+//  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//  res.setHeader('Access-Control-Allow-Credentials', true);
+//  next();
+// });
 
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
@@ -31,7 +31,6 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use('/api', routes);
 
 passport.serializeUser((user, done) => {
   console.log('USER', user);
@@ -77,9 +76,11 @@ passport.use(new LocalStrategy(function (username, password, done) {
       console.log('ERROR:', error);
     });
 }));
+app.use('/api', require('./routes'));
 
 app.post('/login', passport.authenticate('local'), function(req, res){
-  const user = req.user.data;
+  const user = req.user;
+  console.log('user', user);
   res.json(req.user);
 });
 

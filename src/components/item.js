@@ -1,7 +1,7 @@
 // Unauthorized users item view
 import React from 'react';
 
-const Item = ({image, body, price, condition, category, createdAt}) => {
+const Item = ({image, body, price, condition, category, updatedAt}) => {
 
   return  (
     <ul className='item'>
@@ -10,7 +10,7 @@ const Item = ({image, body, price, condition, category, createdAt}) => {
       <div>Price : {price}</div>
       <div>Condition : {condition}</div>
       <div>Category : {category}</div>
-      <div>When Item was posted: {createdAt}</div>
+      <div>When Item was posted: {updatedAt}</div>
     </ul>
   );
 

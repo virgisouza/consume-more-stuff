@@ -6,7 +6,7 @@ export const getCategories = () => new Promise((resolve, reject) => {
       resolve(response);
     }
   };
-  oReq.open("GET", "http://localhost:8080/api/categories");
+  oReq.open("GET", "/api/categories");
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send();
 })
@@ -19,7 +19,7 @@ export const getConditions = () => new Promise((resolve, reject) => {
       resolve(response);
     }
   };
-  oReq.open("GET", "http://localhost:8080/api/conditions");
+  oReq.open("GET", "/api/conditions");
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send();
 })
@@ -32,7 +32,7 @@ export const getItems = () => new Promise((resolve, reject) => {
       resolve(response);
     }
   };
-  oReq.open("GET", "http://localhost:8080/api/items");
+  oReq.open("GET", "/api/items");
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send();
 })
@@ -45,7 +45,7 @@ export const getStatuses = () => new Promise((resolve, reject) => {
       resolve(response);
     }
   };
-  oReq.open("GET", "http://localhost:8080/api/statuses");
+  oReq.open("GET", "/api/statuses");
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send();
 })
@@ -58,7 +58,7 @@ export const getUsers = () => new Promise((resolve, reject) => {
       resolve(response);
     }
   };
-  oReq.open("GET", "http://localhost:8080/api/users");
+  oReq.open("GET", "/api/users");
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send();
 })
@@ -71,7 +71,7 @@ export const getCategoryItems = (category_id) => new Promise((resolve, reject) =
       resolve(response);
     }
   };
-  oReq.open("GET", `http://localhost:8080/api/categories/${category_id}`);
+  oReq.open("GET", `/api/categories/${category_id}`);
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send();
 })
@@ -84,7 +84,7 @@ export const logout = () => new Promise((resolve, reject) => {
       resolve(response);
     }
   }
-  oReq.open("GET", `http://localhost:8080/logout`);
+  oReq.open("GET", `/logout`);
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send();
 });
@@ -97,7 +97,7 @@ export const getItemById = (item_id) => new Promise((resolve, reject) => {
       resolve(response);
     }
   }
-  oReq.open("GET", `http://localhost:8080/items/${item_id}`);
+  oReq.open("GET", `/items/${item_id}`);
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send();
 })

@@ -23,7 +23,7 @@ export const login = (user) => new Promise((resolve, reject) => {
       resolve(response);
     }
   }
-  oReq.open("POST", "http://localhost:8080/login");
+  oReq.open("POST", "/login");
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send(data);
 });
