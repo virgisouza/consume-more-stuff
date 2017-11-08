@@ -1,11 +1,12 @@
-/*AGGREGATE REDUCER*/
-/*AGGREGATE REDUCER*/
-/*AGGREGATE REDUCER*/
-
 import { combineReducers } from 'redux';
+import categoryList from './categoryList';
+import conditionList from './conditionList';
+import user from './user';
+import itemList from './itemList';
 
-const allReducers = combineReducers({
-  
+export default combineReducers({
+  categoryList,
+  conditionList,
+  user,
+  itemList
 });
-
-export default allReducers;
