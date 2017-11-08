@@ -6,8 +6,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../App/App.css';
 
-import Item from '../../components/item';
-
 class ItemContainer extends Component {
 
   constructor(props) {
