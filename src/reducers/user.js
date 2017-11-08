@@ -18,6 +18,7 @@ const user = (state = initialState, action) => {
       return action.data;
 
     case REGISTER_USER:
+      console.log('reducer', action.user);
       return [...state, action.user];
 
     default:

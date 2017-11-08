@@ -30,7 +30,7 @@ class NewUser extends Component {
     };
 
     this.props.addNewUser(newUser);
-
+    console.log(newUser);
     this.setState({
       username: '',
       password: '',
@@ -54,6 +54,7 @@ class NewUser extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className='NewUserForm'>
         <form onSubmit={this.handleSubmit.bind(this)}>
@@ -87,7 +88,7 @@ class NewUser extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    users: state.userList
+    users: state.user
   }
 }
 
@@ -95,6 +96,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     loadUsers: () => {
       dispatch(loadUsers())
+    },
+    addNewUser: (user) => {
+      dispatch(addNewUser(user))
     }
   }
 }

@@ -12,6 +12,14 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
+app.use(function (req, res, next) {
+ res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+ res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+ res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+ res.setHeader('Access-Control-Allow-Credentials', true);
+ next();
+});
+
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
@@ -46,7 +54,7 @@ passport.deserializeUser((user, done) => {
 });
 
 passport.use(new LocalStrategy(function (username, password, done) {
-  db.user.findOne({where: {username: username}})
+  db.User.findOne({where: {username: username}})
     .then((user) => {
       if(user === null){
         return done(null, false, {message: 'bad username or password'});
@@ -81,11 +89,13 @@ app.get('/logout', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
+  console.log(req.body);
   bcrypt.genSalt(saltRounds, function(err, salt){
     bcrypt.hash(req.body.password, salt, function(err, hash){
-      db.user.create({
+      db.User.create({
         username: req.body.username,
-        password: hash
+        password: hash,
+        email: req.body.email
       })
       .then((user) => {
         res.json(user);
