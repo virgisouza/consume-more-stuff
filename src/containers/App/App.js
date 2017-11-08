@@ -9,8 +9,11 @@ import Select from '../../components/select';
 class App extends Component {
 
   constructor(props) {
-    console.log('App Constructor');
     super(props);
+  }
+
+  componentDidMount() {
+    /*For now, make an API call and fetch the most recent 5 items.*/
   }
 
   render() {
@@ -40,4 +43,14 @@ class App extends Component {
 
 }//end class
 
+const mapStateToProps = (state) => {
+  return {
+    items : state.items;
+  };
+}
+
+
+
 export default App;
+
+
