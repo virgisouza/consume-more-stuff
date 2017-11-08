@@ -1,4 +1,4 @@
-import { LOAD_CONDITIONS } from '../actions/condition_actions';
+import { LOAD_CONDITIONS } from '../actions/conditions';
 
 const inititalState = [];
 

@@ -3,7 +3,7 @@ import { LOAD_ITEMS,
   ADD_ITEM,
   DELETE_ITEM,
   EDIT_ITEM
-} from '../actions/item_actions';
+} from '../actions/items';
 
 const intitialState = [];
 
