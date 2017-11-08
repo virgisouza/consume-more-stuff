@@ -4,6 +4,7 @@ import './App.css';
 
 import ItemContainer from '../Item/itemContainer';
 import NewItemForm from '../NewItem/newItemForm';
+import Select from '../../components/select';
 
 class App extends Component {
 
@@ -31,7 +32,9 @@ class App extends Component {
             <li>All Items</li>
             <li>View By Category</li>
           </ul>
+          
         </div>
+        
       </div>
     );
   }

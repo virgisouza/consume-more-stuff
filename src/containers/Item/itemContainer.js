@@ -6,20 +6,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../App/App.css';
 
-import Item from '../../components/item';
-
 class ItemContainer extends Component {
 
   constructor(props) {
     console.log('ItemContainer Constructor');
     super(props);
+  }
 
+  componentDidMount() {
+    console.log('ItemContainer has mounted.');
   }
 
   render() {
     return(
       <div className="ItemContainer">
-        <p>ItemContainer</p>
+        
       </div>
     );
   }
