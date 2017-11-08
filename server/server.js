@@ -34,6 +34,7 @@ app.use(passport.session());
 app.use('/api', routes);
 
 passport.serializeUser((user, done) => {
+  console.log('USER', user);
   console.log('serializing');
   return done(null, {
     id: user.id,
