@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../App/App.css';
-
+import { addItem } from '../../actions/items';
 import Select from '../../components/select';
 
 class NewItemForm extends Component {
@@ -82,27 +82,27 @@ class NewItemForm extends Component {
       <div className="NewItemForm">
 
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <span>Description : </span><br></br>
-          <input type="text" value={this.state.description} 
+          <span>Description : </span><br/>
+          <input type="text" value={this.state.description}
           onChange={this.handleChangeDescription.bind(this)} />
-          <span>Price : </span><br></br>
-          <input type="text" value={this.state.price} 
+          <span>Price : </span><br/>
+          <input type="text" value={this.state.price}
           onChange={this.handleChangePrice.bind(this)} />
-          <span>Manufacturer/Make : </span><br></br>
+          <span>Manufacturer/Make : </span><br/>
           <input type="text" value={this.state.make}
           onChange={this.handleChangeMake.bind(this)} />
-          <span>Model : </span><br></br>
-          <input type="text" value={this.state.model} 
+          <span>Model : </span><br/>
+          <input type="text" value={this.state.model}
           onChange={this.handleChangeModel.bind(this)} />
-          <span>Dimensions : </span><br></br>
-          <input type="text" value={this.state.dimensions} 
+          <span>Dimensions : </span><br/>
+          <input type="text" value={this.state.dimensions}
           onChange={this.handleChangeDimensions.bind(this)} />
           <span>Notes : </span>
           <textarea rows="4" cols="50"
-          onChange={this.handleChangeNotes.bind(this)} />
+          onChange={this.handleChangeNotes.bind(this)}></textarea>
           <button type="submit">Submit</button>
         </form>
-  
+
       </div>
     );
   }
@@ -113,7 +113,7 @@ class NewItemForm extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     addItem : (newItem) => {
-      dispatch(addNewItem(newItem));
+      dispatch(addItem(newItem));
     }
   };
 }

@@ -1,6 +1,6 @@
 import { LOGIN_USER,
          LOGOUT_USER,
-         REGISTER_USER } from '../actions/user_actions';
+         REGISTER_USER } from '../actions/users';
 
 const initialState = [];
 

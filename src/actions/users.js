@@ -1,9 +1,10 @@
-import getUsers, logout from '../lib/GETrequests';
-import addUser, login from '../lib/POSTrequests';
+import { getUsers, logout } from '../lib/GETrequests';
+import { addUser, login } from '../lib/POSTrequests';
 
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
-export const LOGIN_USER = 'LOGIN_USER';
+export const GET_USERS = 'GET_USERS';
+export const LOGOUT_USER = 'LOGOUT_USER';
 
 export const loadUsers = () => {
   return function(dispatch) {

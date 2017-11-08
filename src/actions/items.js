@@ -1,7 +1,7 @@
-import getItems, getItemById from '../lib/GETrequests';
-import addNewItem from '../lib/POSTrequests';
-import itemDelete from '../lib/DELETErequests';
-import itemEdit from '../lib/PUTrequests';
+import { getItems, getItemById } from '../lib/GETrequests';
+import { addNewItem } from '../lib/POSTrequests';
+import { itemDelete } from '../lib/DELETErequests';
+import { itemEdit } from '../lib/PUTrequests';
 
 export const LOAD_ITEMS = 'LOAD_ITEMS';
 export const LOAD_ITEM = 'LOAD_ITEM';
@@ -24,14 +24,14 @@ export const loadItem = (item) => {
   return function(dispatch) {
     return getItemById(item.id).then(item => {
       dispatch({
-        type : LOAd_ITEM,
+        type : LOAD_ITEM,
         item : item.data
       });
     });
   }
 }
 
-export const addNewItem = (item) => {
+export const addItem = (item) => {
   return function(dispatch) {
     return addNewItem(item).then(newItem => {
       dispatch({

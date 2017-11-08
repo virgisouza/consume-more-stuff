@@ -1,4 +1,4 @@
-import getConditions from '../lib/GETrequests';
+import { getConditions } from '../lib/GETrequests';
 
 export const LOAD_CONDITIONS = 'LOAD_CONDITIONS';
 

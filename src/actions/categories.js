@@ -1,4 +1,4 @@
-import getCategories, getCategoryItems from '../lib/GETrequests';
+import { getCategories, getCategoryItems } from '../lib/GETrequests';
 
 export const LOAD_CATEGORIES = 'LOAD_CATEGORIES';
 export const LOAD_CATEGORY_ITEMS = 'LOAD_CATEGORY_ITEMS';
