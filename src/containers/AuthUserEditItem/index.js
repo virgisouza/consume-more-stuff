@@ -89,7 +89,8 @@ class AuthUserEditItem extends Component {
   }
 
   render(){
-    console.log('editform', this.props)
+    console.log('editform', this.props);
+    console.log('reqUSER');
     return (
       <div className='EditItem'>
       <Item image={this.props.item.image}
@@ -98,7 +99,8 @@ class AuthUserEditItem extends Component {
             condition={this.props.item.Condition.type}
             category={this.props.item.Category.name}
             updatedAt={this.props.item.updatedAt} />
-        {
+
+        {this.props.item.user_id === Number(localStorage.getItem('user_id')) ?
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input
             type='text'
@@ -143,7 +145,7 @@ class AuthUserEditItem extends Component {
           />
           <button type='submit'>Submit</button>
         </form>
-        }
+        : null}
       </div>
     )
   }
