@@ -2,16 +2,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Item = ({image, body, price, condition, category, updatedAt, id}) => {
+const Item = ({name, image, body, price, condition, category, updatedAt, id, show}) => {
   return  (
     <ul className='item'>
+      <div>Name: {name}</div>
       <div>Image : {image}</div>
       <div>Description : {body}</div>
       <div>Price : {price}</div>
       <div>Condition : {condition}</div>
       <div>Category : {category}</div>
       <div>When Item was posted: {updatedAt}</div>
+
+      {show === 'yes' ?
       <Link to={`/items/${id}`}>Detail</Link>
+      :null}
     </ul>
   );
 

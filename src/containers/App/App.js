@@ -7,12 +7,7 @@ import './App.css';
 import { loadItems } from '../../actions/items';
 import { loadCategories } from '../../actions/categories';
 import { loadConditions } from '../../actions/conditions';
-
 import { logoutUser } from '../../actions/users';
-
-import ItemContainer from '../Item/itemContainer';
-import NewItemForm from '../NewItem/newItemForm';
-import Select from '../../components/select';
 import FilterMap from '../../components/FilterMap';
 import LoginUser from '../Login';
 import NewUser from '../Register';
@@ -59,10 +54,10 @@ class App extends Component {
         </header>
 
         <div className="home_list">
-        <FilterMap title={'Vehicles'} list={this.props.items} cat_id={1} />
-        <FilterMap title={'Appliances'} list={this.props.items} cat_id={2} />
-        <FilterMap title={'Computers'} list={this.props.items} cat_id={3} />
-        <FilterMap title={'Furniture'} list={this.props.items} cat_id={4} />
+          <FilterMap title={'Vehicles'} list={this.props.items} cat_id={1} />
+          <FilterMap title={'Appliances'} list={this.props.items} cat_id={2} />
+          <FilterMap title={'Computers'} list={this.props.items} cat_id={3} />
+          <FilterMap title={'Furniture'} list={this.props.items} cat_id={4} />
         </div>
 
       </div>

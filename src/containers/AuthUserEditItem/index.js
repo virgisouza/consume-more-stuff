@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { loadItem } from '../../actions/items';
 import { loadConditions } from '../../actions/conditions';
 import { loadCategories } from '../../actions/categories';
-import { editItem } from '../../actions/items';
+import { editItem, deleteItem } from '../../actions/items';
 import Select from '../../components/select';
 
 class AuthUserEditItem extends Component {
@@ -51,6 +51,11 @@ class AuthUserEditItem extends Component {
     })
   }
 
+  handleChangeDelete(event){
+    event.preventDefault();
+    this.props.deleteItem(this.props.match.params.id);
+  }
+
   handleChangeName(event){
     event.preventDefault();
     this.setState({name: event.target.value});
@@ -81,6 +86,7 @@ class AuthUserEditItem extends Component {
     this.setState({condition_id: event.target.value});
   }
 
+
   componentDidMount(){
     let itemID = parseInt(this.props.match.params.id);
     console.log(this.props.loadItem(itemID));
@@ -89,8 +95,6 @@ class AuthUserEditItem extends Component {
   }
 
   render(){
-    console.log('editform', this.props);
-    console.log('reqUSER');
     return (
       <div className='EditItem'>
       <Item image={this.props.item.image}
@@ -144,6 +148,7 @@ class AuthUserEditItem extends Component {
             handler={this.handleChangeCondition.bind(this)}
           />
           <button type='submit'>Submit</button>
+          <button onClick={this.handleChangeDelete.bind(this)}>Mark as SOLD</button>
         </form>
         : null}
       </div>
@@ -172,6 +177,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     editItem: (item) => {
       dispatch(editItem(item));
+    },
+    deleteItem: (item) => {
+      dispatch(deleteItem(item));
     }
   }
 }
@@ -181,3 +189,4 @@ const ConnectedEditItem = connect(
 )(AuthUserEditItem);
 
 export default ConnectedEditItem;
+

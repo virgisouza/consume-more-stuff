@@ -5,20 +5,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../App/App.css';
-import { addItem } from '../../actions/items';
+import Item from '../../components/item';
 import Select from '../../components/select';
+import { addItem } from '../../actions/items';
+import { loadCategories } from '../../actions/categories';
+import { loadConditions } from '../../actions/conditions';
+
 
 class NewItemForm extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      description : '',
+      name: '',
+      image: '',
+      body : '',
       price : '',
-      make : '',
-      model : '',
-      dimensions : '',
-      notes : ''
+      condition_id: '',
+      category_id: ''
+
     };
   }
 
@@ -26,55 +31,60 @@ class NewItemForm extends Component {
     event.preventDefault();
 
     let newItem = {
-      description : this.state.description,
+      name: this.state.name,
+      image: this.state.image,
+      body : this.state.body,
       price : this.state.price,
-      make : this.state.make,
-      model : this.state.model,
-      dimensions : this.state.dimensions,
-      notes : this.state.notes
+      condition_id: this.state.condition_id || 1,
+      category_id: this.state.category_id || 1
     };
 
     this.props.addItem(newItem);
 
     this.setState = {
-      description : '',
+      name: '',
+      image: '',
+      body : '',
       price : '',
-      make : '',
-      model : '',
-      dimensions : '',
-      notes : ''
+      condition_id: '',
+      category_id: ''
     };
 
   }
 
-  handleChangeDescription(event){
+  handleChangeBody(event){
     event.preventDefault();
-    this.setState({description : event.target.value});
+    this.setState({body : event.target.value});
   }
 
   handleChangePrice(event){
     event.preventDefault();
-    this.setState({price : event.target.value});
+    this.setState({price : parseInt(event.target.value)});
   }
 
-  handleChangeMake(event){
+  handleChangeName(event){
     event.preventDefault();
-    this.setState({make : event.target.value});
+    this.setState({name : event.target.value});
   }
 
-  handleChangeModel(event){
+  handleChangeImage(event){
     event.preventDefault();
-    this.setState({model : event.target.value});
+    this.setState({image : event.target.value});
   }
 
-  handleChangeDimensions(event){
+  handleChangeCondition(event){
     event.preventDefault();
-    this.setState({dimensions : event.target.value});
+    this.setState({condition : parseInt(event.target.value)});
   }
 
-  handleChangeNotes(event){
+  handleChangeCategory(event){
     event.preventDefault();
-    this.setState({notes : event.target.value});
+    this.setState({category : parseInt(event.target.value)});
+  }
+
+  componentDidMount(){
+    this.props.loadCategories();
+    this.props.loadConditions();
   }
 
   render() {
@@ -82,44 +92,79 @@ class NewItemForm extends Component {
       <div className="NewItemForm">
 
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <span>Description : </span><br/>
-          <input type="text" value={this.state.description}
-          onChange={this.handleChangeDescription.bind(this)} />
-          <span>Price : </span><br/>
-          <input type="text" value={this.state.price}
-          onChange={this.handleChangePrice.bind(this)} />
-          <span>Manufacturer/Make : </span><br/>
-          <input type="text" value={this.state.make}
-          onChange={this.handleChangeMake.bind(this)} />
-          <span>Model : </span><br/>
-          <input type="text" value={this.state.model}
-          onChange={this.handleChangeModel.bind(this)} />
-          <span>Dimensions : </span><br/>
-          <input type="text" value={this.state.dimensions}
-          onChange={this.handleChangeDimensions.bind(this)} />
-          <span>Notes : </span>
-          <textarea rows="4" cols="50"
-          onChange={this.handleChangeNotes.bind(this)}></textarea>
-          <button type="submit">Submit</button>
-        </form>
+          <input
+            type='text'
+            placeholder='Name'
+            value={this.state.name}
+            onChange={this.handleChangeName.bind(this)}
+          />
+
+          <input
+            type='text'
+            placeholder='Image Url'
+            value={this.state.image}
+            onChange={this.handleChangeImage.bind(this)}
+          />
+
+          <input
+            type='text'
+            placeholder='Body'
+            value={this.state.body}
+            onChange={this.handleChangeBody.bind(this)}
+          />
+
+          <input
+            type='text'
+            placeholder='Price'
+            value={this.state.price}
+            onChange={this.handleChangePrice.bind(this)}
+          />
+
+          <Select
+            list={this.props.categories}
+            label='Category: '
+            type='name'
+            handler={this.handleChangeCategory.bind(this)}
+          />
+
+          <Select
+            list={this.props.conditions}
+            label='Condition : '
+            type='type'
+            handler={this.handleChangeCondition.bind(this)}
+          />
+          <button type='submit'>Submit</button>
+          </form>
 
       </div>
     );
   }
+}
 
-
-}//end class
+const mapStateToProps = (state) => {
+  return {
+    item: state.itemList,
+    conditions: state.conditionList,
+    categories: state.categoryList
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addItem : (newItem) => {
       dispatch(addItem(newItem));
+    },
+    loadConditions : () => {
+      dispatch(loadConditions());
+    },
+    loadCategories : () => {
+      dispatch(loadCategories());
     }
   };
 }
 
 const ConnectedNewItemForm = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(NewItemForm);
 

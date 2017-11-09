@@ -96,6 +96,7 @@ export const getItemById = (item_id) => new Promise((resolve, reject) => {
       resolve(response);
     }
   }
+
   oReq.open("GET", '/api/items/' + item_id);
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send();
