@@ -2,6 +2,7 @@ import { getItems, getItemById } from '../lib/GETrequests';
 import { addNewItem } from '../lib/POSTrequests';
 import { itemDelete } from '../lib/DELETErequests';
 import { itemEdit } from '../lib/PUTrequests';
+//const axios = require('axios');
 
 export const LOAD_ITEMS = 'LOAD_ITEMS';
 export const LOAD_ITEM = 'LOAD_ITEM';
@@ -20,13 +21,27 @@ export const loadItems = () => {
   }
 }
 
+// export const loadItem = (item) => {
+//   console.log('first item', item)
+//   return function(dispatch) {
+//     return axios.get(`/api/items/${item}`).then(item => {
+//       console.log('second item', item);
+//       dispatch({
+//         type : LOAD_ITEM,
+//         item : item.data
+//       });
+//     });
+//   }
+// }
 
 export const loadItem = (item) => {
+  console.log('first item', item)
   return function(dispatch) {
-    return getItemById(item.id).then(item => {
+    return getItemById(item).then(item => {
+      console.log('second item', item);
       dispatch({
         type : LOAD_ITEM,
-        item : item.data
+        item : item
       });
     });
   }

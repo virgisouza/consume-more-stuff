@@ -50,16 +50,16 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/:num', (req, res) => {
-  const limit = req.query.num;
-  return Items.findAndCountAll({
-    where : { status_id : 1 },
-    limit : limit,
-    offset : 0
-  }).then(items => {
-    return res.json(items);
-  });
-});
+// router.get('/:num', (req, res) => {
+//   const limit = req.query.num;
+//   return Items.findAndCountAll({
+//     where : { status_id : 1 },
+//     limit : limit,
+//     offset : 0
+//   }).then(items => {
+//     return res.json(items);
+//   });
+// });
 
 //should probably be in category route
 // router.get('/:category_id', (req, res) => {
@@ -82,6 +82,7 @@ router.get('/:num', (req, res) => {
 // });
 
 router.get('/:id', (req, res) => {
+  console.log(req);
   return Items.findOne({include:[
     {model:Category, as: 'Category'},
     {model: Condition, as: 'Condition'},

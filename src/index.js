@@ -23,6 +23,7 @@ import registerServiceWorker from './registerServiceWorker';
 import Register from './containers/Register';
 import Login from './containers/Login';
 import Logout from './components/Logout';
+import AuthUserEditItem from './containers/AuthUserEditItem';
 
 const store = createStore(
   reducers,
@@ -36,9 +37,7 @@ ReactDOM.render(
     <Router>
       <div>
         <Route exact path='/' component={App}/>
-        <Route path='/login' component={Login}/>
-        <Route path='/logout' component={Logout}/>
-        <Route path='/register' component={Register}/>
+        <Route path='/items/:id' component={AuthUserEditItem}/>
       </div>
     </Router>
   </Provider>,

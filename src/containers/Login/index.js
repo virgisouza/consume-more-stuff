@@ -47,7 +47,7 @@ class LoginUser extends Component {
     console.log(this.props, 'state')
     return (
       <div>
-      {!(this.props.user.logged_in === true) ?
+      {!(this.props.user.logged_in === true || localStorage.getItem('logged_in') === 'true') ?
       <form onSubmit={this.handleSubmit.bind(this)}>
         <input
           type='text'

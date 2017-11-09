@@ -1,8 +1,8 @@
 // Unauthorized users item view
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Item = ({image, body, price, condition, category, updatedAt}) => {
-
+const Item = ({image, body, price, condition, category, updatedAt, id}) => {
   return  (
     <ul className='item'>
       <div>Image : {image}</div>
@@ -11,6 +11,7 @@ const Item = ({image, body, price, condition, category, updatedAt}) => {
       <div>Condition : {condition}</div>
       <div>Category : {category}</div>
       <div>When Item was posted: {updatedAt}</div>
+      <Link to={`/items/${id}`}>Detail</Link>
     </ul>
   );
 

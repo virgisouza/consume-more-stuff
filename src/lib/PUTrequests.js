@@ -6,7 +6,7 @@ export const itemEdit = (item_id) => new Promise((resolve, reject) => {
       resolve(response);
     }
   };
-  oReq.open("PUT", `/api/items/${item_id}`);
+  oReq.open("PUT", '/api/items/' + item_id);
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send();
 })
