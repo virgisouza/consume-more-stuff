@@ -45,35 +45,16 @@ class LoginUser extends Component {
     })
   }
 
-  render(){
+  render() {
     console.log('Login Form rendered');
     return (
       <div className="Login-form">
-      
-      {!(this.props.user.logged_in === true) ?
-      <form onSubmit={this.handleSubmit.bind(this)}>
-        <input
-          type='text'
-          placeholder='Username'
-          onFocus={(e) => e.target.placeholder=""}
-          onBlur={(e) => e.target.placeholder="Username"}
-          value={this.state.username}
-          onChange={this.handleChangeUsername.bind(this)}
-          required 
-        /><br></br>
-         <input
-          type='text'
-          placeholder='Password'
-          onFocus={(e) => e.target.placeholder=""}
-          onBlur={(e) => e.target.placeholder="Password"}
-          value={this.state.password}
-          onChange={this.handleChangePassword.bind(this)}
-          required 
-        /><br></br>
-        <button type='submit'>Login</button>
-      </form>
-      : null}
-
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <input type='text' placeholder='Username' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Username"} value={this.state.username} onChange={this.handleChangeUsername.bind(this)} required /><br></br>
+           <input
+            type='text' placeholder='Password' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Password"} value={this.state.password} onChange={this.handleChangePassword.bind(this)} required /><br></br>
+          <button type='submit'>Login</button>
+        </form>
       </div>
     );
   }
