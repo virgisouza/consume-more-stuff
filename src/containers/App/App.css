@@ -63,22 +63,54 @@
     color: cyan;
   }
 
-
 /* LOGIN AND REGISTER FORMS */
-.Login-route {
-  border: 1px solid white;
+.Login-form {
   position: absolute;
   right: 0;
-  top: 25px;
+  top: 50px;
 }
 
-.Login-form {
-
-}
+  .Login-form form {
+    
+  }
+  .Login-form input {
+    margin: 3px;
+    border-radius: 5px;
+  }
+  .Login-form button {
+    margin: 3px;
+    background-color: yellow;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .Login-form button:hover {
+    background-color: #997500;
+  }
 
 .NewUserForm {
-  
+  position: absolute;
+  left: 0;
+  top: 20px;
 }
+
+  .NewUserForm form {
+    
+  }
+  .NewUserForm input {
+    margin: 3px;
+    border-radius: 5px;
+  }
+  .NewUserForm button {
+    margin: 3px;
+    background-color: yellow;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .NewUserForm button:hover {
+    background-color: #997500;
+  }
 
 /* APPLICATION VIEWS */
 .NewItemForm {
@@ -88,7 +120,6 @@
 .EditItemForm {
 
 }
-
 
 /* DUMMY COMPONENTS */
 .Item {

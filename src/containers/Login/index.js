@@ -46,7 +46,7 @@ class LoginUser extends Component {
   }
 
   render(){
-    console.log(this.props, 'state')
+    console.log('Login Form rendered');
     return (
       <div className="Login-form">
       
@@ -54,16 +54,22 @@ class LoginUser extends Component {
       <form onSubmit={this.handleSubmit.bind(this)}>
         <input
           type='text'
-          placeholder='username'
+          placeholder='Username'
+          onFocus={(e) => e.target.placeholder=""}
+          onBlur={(e) => e.target.placeholder="Username"}
           value={this.state.username}
           onChange={this.handleChangeUsername.bind(this)}
-        />
+          required 
+        /><br></br>
          <input
           type='text'
-          placeholder='password'
+          placeholder='Password'
+          onFocus={(e) => e.target.placeholder=""}
+          onBlur={(e) => e.target.placeholder="Password"}
           value={this.state.password}
           onChange={this.handleChangePassword.bind(this)}
-        />
+          required 
+        /><br></br>
         <button type='submit'>Login</button>
       </form>
       : null}
