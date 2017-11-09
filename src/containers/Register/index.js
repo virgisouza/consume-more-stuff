@@ -11,8 +11,7 @@ class NewUser extends Component {
     this.state = {
       username: '',
       password: '',
-      email: '',
-      login: localStorage.getItem('logged_in')
+      email: ''
     }
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -55,10 +54,10 @@ class NewUser extends Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props, 'REGISTER')
     return (
       <div className='NewUserForm'>
-      {!(this.state.login === 'true') ?
+      {!(this.props.user.logged_in === true) ?
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input
           type='text'
@@ -91,7 +90,7 @@ class NewUser extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    users: state.user
+    user: state.user
   }
 }
 

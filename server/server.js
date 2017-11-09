@@ -2,23 +2,16 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const db = require('../models');
-// const routes = require('./routes');
+const routes = require('./routes');
 const redis = require('connect-redis')(session);
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
 const saltRounds = 12;
-const app = express();
 
 const PORT = process.env.PORT || 8080;
+const app = express();
 
-// app.use(function (req, res, next) {
-//  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-//  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-//  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-//  res.setHeader('Access-Control-Allow-Credentials', true);
-//  next();
-// });
 
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
@@ -32,6 +25,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 passport.serializeUser((user, done) => {
   console.log('USER', user);
   console.log('serializing');
@@ -42,7 +36,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((user, done) => {
-  console.log(user);
+  console.log(user, 'DESERIAL USER');
   console.log('deserializing');
   db.User.findOne({where: { id: user.id }})
   .then((user) => {
@@ -61,7 +55,7 @@ passport.use(new LocalStrategy(function (username, password, done) {
       }else{
         bcrypt.compare(password, user.password)
         .then((res) => {
-          console.log(res);
+          console.log(res, 'TRUTHY');
           if(res){
             var foundUser = user.get();
             delete foundUser.password;
@@ -76,13 +70,17 @@ passport.use(new LocalStrategy(function (username, password, done) {
       console.log('ERROR:', error);
     });
 }));
-app.use('/api', require('./routes'));
+
 
 app.post('/login', passport.authenticate('local'), function(req, res){
   const user = req.user;
-  console.log('user', user);
   res.json(req.user);
 });
+
+
+app.use('/api', routes);
+
+
 
 app.get('/logout', (req, res) => {
   req.logout();
