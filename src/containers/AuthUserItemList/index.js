@@ -51,7 +51,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     loadItems: () => {
-      dispatch(loadCards())
+      dispatch(loadItems())
     }
   }
 }

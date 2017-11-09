@@ -42,9 +42,10 @@ export const loginUser = (user) => {
   }
 }
 
-export const logoutUser = (user) => {
+export const logoutUser = () => {
   return function(dispatch) {
-    return logout(user).then(response => {
+    return logout().then(response => {
+      console.log(response, ' ACTION')
       dispatch({
         type: LOGOUT_USER,
         data: response
