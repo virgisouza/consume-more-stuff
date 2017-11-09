@@ -71,7 +71,7 @@ export const getCategoryItems = (category_id) => new Promise((resolve, reject) =
       resolve(response);
     }
   };
-  oReq.open("GET", `/api/categories/${category_id}`);
+  oReq.open("GET", '/api/categories/'+ category_id);
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send();
 })
@@ -93,10 +93,12 @@ export const getItemById = (item_id) => new Promise((resolve, reject) => {
   oReq.onreadystatechange = function(){
     if(oReq.readyState === XMLHttpRequest.DONE && oReq.status === 200){
       var response = JSON.parse(this.response);
+      console.log('this.response', response)
       resolve(response);
     }
   }
-  oReq.open("GET", `/api/items/${item_id}`);
+
+  oReq.open("GET", '/api/items/' + item_id);
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send();
 })
