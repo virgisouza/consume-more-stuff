@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Item from '../../components/Item';
 import { connect } from 'react-redux';
-//import load one item function
+import { loadItem } from '../../actions/items';
+import Select from '../../components/select';
 
-class AuthUserEditItem extends Components {
-  constructor(props){
+class AuthUserEditItem extends Component {
+
+  constructor(props) {
+    console.log('AUTH USER EDIT ITEM');
     super(props);
+    console.log(this.props.items);
 
     this.state = {
       name: '',
@@ -78,12 +82,7 @@ class AuthUserEditItem extends Components {
     return (
       <div className='EditItem'>
         {
-          this.props.items.filter(item => {
-            //kevin help here
-            return
-          })
-          .then(props => {
-
+          this.props.items.filter(item => {     
             return (
               <form onSubmit={this.handleSubmit.bind(this)}>
                 <input
@@ -129,33 +128,21 @@ class AuthUserEditItem extends Components {
                 />
                 <button type='submit'>Submit</button>
               </form>
-            )
+            );
           })
-
-
         }
       </div>
-
-
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-
-  }
+    items : state.itemList
+  };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-
-  }
-}
-
-const ConnectedAuthUserEditItem = connect(
+export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)(AuthUserEditItem)
-
-export default ConnectedAuthUserEditItem;
+  null
+)(AuthUserEditItem);

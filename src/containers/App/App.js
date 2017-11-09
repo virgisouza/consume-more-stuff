@@ -4,9 +4,7 @@ import { loadItems } from '../../actions/items';
 import logo from './logo.svg';
 import './App.css';
 
-import ItemContainer from '../Item/itemContainer';
-import NewItemForm from '../NewItem/newItemForm';
-import Select from '../../components/select';
+import AuthUserEditItem from '../../containers/AuthUserEditItem';
 
 class App extends Component {
 
@@ -15,6 +13,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.loadItems);
     this.props.loadItems();
   }
 
@@ -38,6 +37,7 @@ class App extends Component {
             <li>View By Category</li>
           </ul>
         </div>
+        <AuthUserEditItem />
       </div>
     );
   }
