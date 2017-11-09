@@ -36,14 +36,20 @@ class Header extends Component {
 
   showLogin() {
     this.setState({
+      showRegister : false,
       showLogin : true
     });
   }
 
   showRegister() {
     this.setState({
+      showLogin : false,
       showRegister : true
     });
+  }
+
+  handleXClick(event) {
+
   }
 
   render() {
@@ -61,8 +67,10 @@ class Header extends Component {
             <li><a href="#" onClick={this.showLogin.bind(this)}>Login</a></li>
           </ul>
         </div>
+        
         {this.state.showLogin ? loginForm : null}
         {this.state.showRegister ? registerForm : null}
+
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="App-title">Consume More Stuff</h1>
       </div>
