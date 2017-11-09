@@ -1,4 +1,5 @@
-export const itemEdit = (item_id) => new Promise((resolve, reject) => {
+export const itemEdit = (item) => new Promise((resolve, reject) => {
+  let data = JSON.stringify(item);
   var oReq = new XMLHttpRequest();
   oReq.onreadystatechange = function (){
     if(oReq.readyState === XMLHttpRequest.DONE && oReq.status === 200) {
@@ -6,7 +7,7 @@ export const itemEdit = (item_id) => new Promise((resolve, reject) => {
       resolve(response);
     }
   };
-  oReq.open("PUT", `/api/items/${item_id}`);
+  oReq.open("PUT", '/api/items/' + item.id);
   oReq.setRequestHeader('content-type', 'application/json');
-  oReq.send();
+  oReq.send(data);
 })

@@ -16,6 +16,8 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id/items', isAuthenticated, (req, res) => {
+  console.log('REQPARAMS', req.params.id);
+  console.log('REQUSER', req.user);
   return Items.findAll({include:[
     {model: Category, as: 'Category'},
     {model: Condition, as: 'Condition'},
@@ -23,11 +25,11 @@ router.get('/:id/items', isAuthenticated, (req, res) => {
     {model: Status, as: 'Status'}
     ],
     where: {
-      user_id: req.params.id
+      user_id: 1
     }
   })
   .then((items) => {
-    if(req.user.id === req.params.id){
+    if(Number(req.user.id) === Number(req.params.id)){
       return res.json(items);
     }
   })

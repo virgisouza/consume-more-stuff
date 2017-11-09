@@ -8,7 +8,7 @@ const Condition = db.Condition;
 const Status = db.Status;
 const User = db.User;
 
-router.post('/new', (req, res) => {
+router.post('/new', isAuthenticated, (req, res) => {
   let data = req.body;
   console.log(data);
   return Items.create({
@@ -19,7 +19,7 @@ router.post('/new', (req, res) => {
     category_id: data.category_id,
     condition_id: data.condition_id,
     //remember you changed this
-    user_id: data.user_id,
+    user_id: req.user.id,
     status_id: 1
   })
   .then((item) => {
@@ -50,16 +50,16 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/:num', (req, res) => {
-  const limit = req.query.num;
-  return Items.findAndCountAll({
-    where : { status_id : 1 },
-    limit : limit,
-    offset : 0
-  }).then(items => {
-    return res.json(items);
-  });
-});
+// router.get('/:num', (req, res) => {
+//   const limit = req.query.num;
+//   return Items.findAndCountAll({
+//     where : { status_id : 1 },
+//     limit : limit,
+//     offset : 0
+//   }).then(items => {
+//     return res.json(items);
+//   });
+// });
 
 //should probably be in category route
 // router.get('/:category_id', (req, res) => {
@@ -101,14 +101,17 @@ router.get('/:id', (req, res) => {
 });
 
 router.put('/:id', isAuthenticated, (req, res) => {
+  console.log('reqbody', req.body);
+  console.log('reqUser', req.user);
   return Items.findOne({
     where: {
       id: req.params.id
     }
   })
   .then((item) => {
+    console.log(item);
     let data = req.body;
-    if(req.user.id === item.user.id){
+    if(req.user.id === item.user_id){
       return Items.update({
         name: data.name || item.name,
         image: data.image || item.image,
@@ -151,7 +154,7 @@ router.delete('/:id', isAuthenticated, (req, res) => {
   })
   .then((item) => {
     //check req.user is right
-    if(req.user.id === item.user.id){
+    if(req.user.id === item.user_id){
       return Items.update({
         status_id: 2
       },

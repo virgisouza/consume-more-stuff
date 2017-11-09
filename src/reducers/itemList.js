@@ -1,8 +1,8 @@
 import { LOAD_ITEMS,
-  LOAD_ITEM,
   ADD_ITEM,
   DELETE_ITEM,
-  EDIT_ITEM
+  EDIT_ITEM,
+  LOAD_USER_ITEMS
 } from '../actions/items';
 
 const intitialState = [];
@@ -11,9 +11,6 @@ const itemList = (state = intitialState, action) => {
   switch (action.type) {
     case LOAD_ITEMS:
       return [...action.items];
-
-    case LOAD_ITEM:
-      return action.item;
 
     case ADD_ITEM:
       return [...state, action.item];
@@ -25,9 +22,13 @@ const itemList = (state = intitialState, action) => {
 
     case EDIT_ITEM:
       let items = state.filter((item) => {
-        return item.id !== Number(action.updatedItem.id)
+
+        return item.id !== Number(action.item.id)
       });
-      return [...items, action.updatedItem];
+      return [...items, action.item];
+
+    case LOAD_USER_ITEMS:
+      return [...action.items];
 
     default:
       return state;

@@ -1,6 +1,20 @@
 .App {
   text-align: center;
-  border: 1px solid magenta;
+  border: 2px solid magenta;
+  display: flex;
+  flex-flow: column;
+}
+
+.home_list {
+  display: flex;
+  flex: row;
+  justify-content: space-around;
+}
+
+.filter {
+  display: flex;
+  flex-flow: column;
+  width: 25%
 }
 
 .App-logo {

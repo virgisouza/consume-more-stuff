@@ -2,16 +2,19 @@
 /*ACTIONS FOR ITEMS*/
 /*ACTIONS FOR ITEMS*/
 
-import { getItems, getItemById } from '../lib/GETrequests';
+import { getItems, getItemById, getItemsByUser } from '../lib/GETrequests';
+
 import { addNewItem } from '../lib/POSTrequests';
 import { itemDelete } from '../lib/DELETErequests';
 import { itemEdit } from '../lib/PUTrequests';
+//const axios = require('axios');
 
 export const LOAD_ITEMS = 'LOAD_ITEMS';
 export const LOAD_ITEM = 'LOAD_ITEM';
 export const ADD_ITEM = 'ADD_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const EDIT_ITEM = 'EDIT_ITEM';
+export const LOAD_USER_ITEMS = 'LOAD_USER_ITEMS'
 
 export const loadItems = () => {
   return function(dispatch) {
@@ -25,12 +28,25 @@ export const loadItems = () => {
 }
 
 
-export const loadItem = (item) => {
+export const loadUserItems = (user_id) => {
   return function(dispatch) {
-    return getItemById(item.id).then(item => {
+    return getItemsByUser(user_id).then((items) => {
+      dispatch({
+        type: LOAD_USER_ITEMS,
+        items: items
+      });
+    });
+  }
+}
+
+export const loadItem = (item) => {
+  console.log('first item', item)
+  return function(dispatch) {
+    return getItemById(item).then(item => {
+      console.log('second item', item);
       dispatch({
         type : LOAD_ITEM,
-        item : item.data
+        item : item
       });
     });
   }
