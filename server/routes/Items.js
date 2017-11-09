@@ -82,7 +82,6 @@ router.get('/', (req, res) => {
 // });
 
 router.get('/:id', (req, res) => {
-  console.log(req);
   return Items.findOne({include:[
     {model:Category, as: 'Category'},
     {model: Condition, as: 'Condition'},
@@ -102,14 +101,17 @@ router.get('/:id', (req, res) => {
 });
 
 router.put('/:id', isAuthenticated, (req, res) => {
+  console.log('reqbody', req.body);
+  console.log('reqUser', req.user);
   return Items.findOne({
     where: {
       id: req.params.id
     }
   })
   .then((item) => {
+    console.log(item);
     let data = req.body;
-    if(req.user.id === item.user.id){
+    if(req.user.id === item.user_id){
       return Items.update({
         name: data.name || item.name,
         image: data.image || item.image,

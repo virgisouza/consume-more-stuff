@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { loadItem } from '../../actions/items';
 import { loadConditions } from '../../actions/conditions';
 import { loadCategories } from '../../actions/categories';
+import { editItem } from '../../actions/items';
 import Select from '../../components/select';
 
 class AuthUserEditItem extends Component {
@@ -19,8 +20,7 @@ class AuthUserEditItem extends Component {
       body: '',
       price: '',
       category_id: '',
-      condition_id: '',
-      item: {}
+      condition_id: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,7 +35,8 @@ class AuthUserEditItem extends Component {
       body: this.state.body,
       price: this.state.price,
       category_id: this.state.category_id || 1,
-      condition_id: this.state.condition_id || 1
+      condition_id: this.state.condition_id || 1,
+      id: parseInt(this.props.match.params.id)
     }
 
     this.props.editItem(editItem);
@@ -88,13 +89,14 @@ class AuthUserEditItem extends Component {
   }
 
   render(){
-    console.log('editform', this.props.item.Condition)
+    console.log('editform', this.props)
     return (
       <div className='EditItem'>
       <Item image={this.props.item.image}
             body={this.props.item.body}
             price={this.props.item.price}
-
+            condition={this.props.item.Condition.type}
+            category={this.props.item.Category.name}
             updatedAt={this.props.item.updatedAt} />
         {
         <form onSubmit={this.handleSubmit.bind(this)}>
@@ -149,7 +151,7 @@ class AuthUserEditItem extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    item : state.itemList,
+    item : state.singleItem,
     categories: state.categoryList,
     conditions: state.conditionList
   };
@@ -165,6 +167,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     loadItem: (id) => {
       dispatch(loadItem(id));
+    },
+    editItem: (item) => {
+      dispatch(editItem(item));
     }
   }
 }
