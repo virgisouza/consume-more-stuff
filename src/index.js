@@ -24,6 +24,7 @@ import Register from './containers/Register';
 import Login from './containers/Login';
 import Logout from './components/Logout';
 import AuthUserEditItem from './containers/AuthUserEditItem';
+import MyItems from './components/MyItems';
 
 const store = createStore(
   reducers,
@@ -38,6 +39,7 @@ ReactDOM.render(
       <div>
         <Route exact path='/' component={App}/>
         <Route path='/items/:id' component={AuthUserEditItem}/>
+        <Route path='/users/:id/items' component={MyItems}/>
       </div>
     </Router>
   </Provider>,
