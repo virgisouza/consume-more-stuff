@@ -35,13 +35,10 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <div>
-
         <Route exact path='/' component={App}/>
         <Route path='/login' component={Login}/>
         <Route path='/logout' component={Logout}/>
         <Route path='/register' component={Register}/>
-
-
       </div>
     </Router>
   </Provider>,

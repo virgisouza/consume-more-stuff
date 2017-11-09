@@ -12,10 +12,14 @@ class ItemContainer extends Component {
     super(props);
   }
 
+  componentWillMount() {
+    
+  }
+
   render() {
     return(
       <div className="ItemContainer">
-
+        <h1>Item Container</h1>
       </div>
     );
   }

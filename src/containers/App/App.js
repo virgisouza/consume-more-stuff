@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import logo from './logo.svg';
 import './App.css';
+
 import { loadItems } from '../../actions/items';
 import { loadCategories } from '../../actions/categories';
 import { loadConditions } from '../../actions/conditions';
+
 import { logoutUser } from '../../actions/users';
+
 import ItemContainer from '../Item/itemContainer';
 import NewItemForm from '../NewItem/newItemForm';
 import Select from '../../components/select';
@@ -17,7 +21,6 @@ import Logout from '../../components/Logout';
 class App extends Component {
 
   constructor(props) {
-    console.log('App Constructor');
     super(props);
 
 
@@ -36,7 +39,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('WHERE ARE YOU',this.props);
     return (
       <div className="App">
         <header className="App-header">
@@ -66,6 +68,7 @@ class App extends Component {
             <li>View By Category</li>
           </ul>
         </div>
+        
       </div>
     );
   }

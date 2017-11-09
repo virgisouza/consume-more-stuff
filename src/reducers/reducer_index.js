@@ -5,10 +5,12 @@ import user from './user';
 import itemList from './itemList';
 import statusList from './statusList';
 
-export default combineReducers({
+const reducers = combineReducers({
   categoryList,
   conditionList,
   user,
   itemList,
   statusList
 });
+
+export default reducers;

@@ -10,7 +10,7 @@ const intitialState = [];
 const itemList = (state = intitialState, action) => {
   switch (action.type){
     case LOAD_ITEMS:
-      return [...action.items];
+      return null; //[...action.items]
 
     case LOAD_ITEM:
       return action.item;
