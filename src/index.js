@@ -18,7 +18,7 @@ import thunk from 'redux-thunk';
 import reducers from './reducers/reducer_index';
 
 import NewItemForm from './containers/NewItem/newItemForm';
-import ConnectedApp from './containers/App/App';
+import App from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
 import NewUser from './containers/Register';
 import LoginUser from './containers/Login';
@@ -34,7 +34,10 @@ ReactDOM.render(
 
   <Provider store={store}>
       <Router>
-        <Route path='/' component={ConnectedApp} /> 
+        <div>
+          <Route exact path='/' component={App} />
+          
+        </div>
       </Router>
   </Provider>,
   document.getElementById('root')

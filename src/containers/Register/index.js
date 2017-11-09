@@ -12,7 +12,7 @@ class NewUser extends Component {
       username: '',
       password: '',
       email: ''
-    }
+    };
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
@@ -20,7 +20,7 @@ class NewUser extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(event){
+  handleSubmit(event) {
     event.preventDefault();
 
     let newUser = {
@@ -35,7 +35,7 @@ class NewUser extends Component {
       username: '',
       password: '',
       email: ''
-    })
+    });
   }
 
   handleChangeUsername(event){
@@ -80,12 +80,13 @@ class NewUser extends Component {
         </form>
       : null}
       </div>
-
-
-      )
+    );
   }
 
+
+
 }
+//end class
 
 const mapStateToProps = (state) => {
   return {
@@ -107,6 +108,6 @@ const mapDispatchToProps = (dispatch) => {
 const ConnectedUserList = connect(
   mapStateToProps,
   mapDispatchToProps
-  )(NewUser)
+)(NewUser)
 
-  export default ConnectedUserList;
+export default ConnectedUserList;

@@ -12,16 +12,13 @@ import { loadItems } from '../../actions/items';
 import { loadCategories } from '../../actions/categories';
 import { loadConditions } from '../../actions/conditions';
 
-import { logoutUser } from '../../actions/users';
-
+/*CHILD COMPONENTS*/
 import Header from '../Header/Header';
-import ItemContainer from '../Item/itemContainer';
-import NewItemForm from '../NewItem/newItemForm';
+
 import Select from '../../components/select';
+import SelectTest from '../../components/select_test';
+
 import FilterMap from '../../components/FilterMap';
-import LoginUser from '../Login';
-import NewUser from '../Register';
-import Logout from '../../components/Logout';
 
 class App extends Component {
 
@@ -32,12 +29,11 @@ class App extends Component {
 
   componentDidMount() {
     this.props.loadConditions();
-    this.props.loadCategories();
     this.props.loadItems();
   }
 
   render() {
-    console.log(this.props.items);
+    console.log('App Component Rendered');
 
     return (
       <div className="App">
@@ -47,6 +43,7 @@ class App extends Component {
         <FilterMap list={this.props.items} cat_id={1} />
         <FilterMap list={this.props.items} cat_id={2} />
         <FilterMap list={this.props.items} cat_id={3} />
+        <FilterMap list={this.props.items} cat_id={4} />
 
       </div>
     );
@@ -59,7 +56,7 @@ const mapStateToProps = (state) => {
   return {
     items: state.itemList,
     user: state.user
-  }
+  };
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -67,21 +64,13 @@ const mapDispatchToProps = (dispatch) => {
     loadItems: () => {
       dispatch(loadItems());
     },
-    loadCategories: () => {
-      dispatch(loadCategories());
-    },
     loadConditions: () => {
       dispatch(loadConditions());
-    },
-    logoutUser: () => {
-      dispatch(logoutUser());
-    }
-  }
+    } 
+  };
 }
 
-const ConnectedApp = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(App);
-
-export default ConnectedApp;

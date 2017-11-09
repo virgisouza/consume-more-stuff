@@ -19,7 +19,6 @@
 
 .App-title {
   font-size: 1.5em;
-  
   display: inline-block;
 }
 
@@ -39,32 +38,40 @@
   right: 0;
 }
 
-.Login-reg ul {
-  margin: 0 auto;
-}
+  .Login-reg ul {
+    margin: 0 auto;
+  }
 
-.Login-reg-first {
-  border-left: 1px solid white;
-}
+  .Login-reg-first {
+    border-left: 1px solid white;
+  }
 
-.Login-reg li {
-  list-style-type: none;
-  display: inline-block;
-  padding: 5px;
-  border-right: 1px solid white;
-}
+  .Login-reg li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 5px;
+    border-right: 1px solid white;
+  }
 
-.Login-reg li a {
-  text-decoration: none;
-  color: white;
-}
+  .Login-reg li a {
+    text-decoration: none;
+    color: white;
+  }
 
-.Login-reg li a:hover {
-  text-decoration: underline;
-  color: cyan;
-}
+  .Login-reg li a:hover {
+    text-decoration: underline;
+    color: cyan;
+  }
+
 
 /* LOGIN AND REGISTER FORMS */
+.Login-route {
+  border: 1px solid white;
+  position: absolute;
+  right: 0;
+  top: 25px;
+}
+
 .Login-form {
 
 }
@@ -93,7 +100,7 @@
 }
 
 .Item span {
-  
+  margin: 10px;
 
 }
 
