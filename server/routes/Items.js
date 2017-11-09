@@ -8,7 +8,7 @@ const Condition = db.Condition;
 const Status = db.Status;
 const User = db.User;
 
-router.post('/new', isAuthenticated, (req, res) => {
+router.post('/new', (req, res) => {
   let data = req.body;
   console.log(data);
   return Items.create({
@@ -31,7 +31,7 @@ router.post('/new', isAuthenticated, (req, res) => {
 });
 
 router.get('/', isAuthenticated, (req, res) => {
-  console.log(req.user);
+  console.log('something');
   return Items.findAll({include:[
     {model:Category, as: 'Category'},
     {model: Condition, as: 'Condition'},

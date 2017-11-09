@@ -1,17 +1,30 @@
+
 import { getItems, getItemById } from '../lib/GETrequests';
 import { addNewItem } from '../lib/POSTrequests';
 import { itemDelete } from '../lib/DELETErequests';
 import { itemEdit } from '../lib/PUTrequests';
 
+const axios = require('axios');
 export const LOAD_ITEMS = 'LOAD_ITEMS';
 export const LOAD_ITEM = 'LOAD_ITEM';
 export const ADD_ITEM = 'ADD_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const EDIT_ITEM = 'EDIT_ITEM';
 
+// export const loadItems = () => {
+//   return function(dispatch) {
+//     return getItems().then(items => {
+//       dispatch({
+//         type : LOAD_ITEMS,
+//         items : items.data
+//       });
+//     });
+//   }
+// }
+
 export const loadItems = () => {
   return function(dispatch) {
-    return getItems().then(items => {
+    return axios.get('/api/items').then(items => {
       dispatch({
         type : LOAD_ITEMS,
         items : items.data

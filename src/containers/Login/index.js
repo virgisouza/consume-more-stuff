@@ -8,7 +8,8 @@ class LoginUser extends Component {
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      login: localStorage.getItem('logged_in')
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,7 +26,8 @@ class LoginUser extends Component {
 
     this.setState({
       username: '',
-      password: ''
+      password: '',
+      login: localStorage.getItem('logged_in')
     })
   }
 
@@ -44,7 +46,10 @@ class LoginUser extends Component {
   }
 
   render(){
+    console.log('localStorage', localStorage.getItem('logged_in'));
     return (
+      <div>
+      {!(this.state.login === 'true') ?
       <form onSubmit={this.handleSubmit.bind(this)}>
         <input
           type='text'
@@ -60,6 +65,8 @@ class LoginUser extends Component {
         />
         <button type='submit'>Login</button>
       </form>
+      : null}
+      </div>
     );
   }
 };

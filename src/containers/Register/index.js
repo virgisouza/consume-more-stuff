@@ -11,7 +11,8 @@ class NewUser extends Component {
     this.state = {
       username: '',
       password: '',
-      email: ''
+      email: '',
+      login: localStorage.getItem('logged_in')
     }
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -57,6 +58,7 @@ class NewUser extends Component {
     console.log(this.props)
     return (
       <div className='NewUserForm'>
+      {!(this.state.login === 'true') ?
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input
           type='text'
@@ -78,6 +80,7 @@ class NewUser extends Component {
           />
           <button type='submit'>Submit</button>
         </form>
+      : null}
       </div>
 
 
