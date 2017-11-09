@@ -11,6 +11,12 @@
   justify-content: space-around;
 }
 
+.filter{
+  display: flex;
+  flex-flow: column;
+  width: 25%
+}
+
 .App-logo {
   /* animation: App-logo-spin infinite 20s linear; */
   height: 80px;
