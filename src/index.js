@@ -1,6 +1,6 @@
-/*ENTRY POINT*/
-/*ENTRY POINT*/
-/*ENTRY POINT*/
+/*REACT ENTRY POINT*/
+/*REACT ENTRY POINT*/
+/*REACT ENTRY POINT*/
 
 import React from 'react';
 import ReactDOM from 'react-dom';

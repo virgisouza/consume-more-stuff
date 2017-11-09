@@ -8,9 +8,9 @@ import { LOAD_ITEMS,
 const intitialState = [];
 
 const itemList = (state = intitialState, action) => {
-  switch (action.type){
+  switch (action.type) {
     case LOAD_ITEMS:
-      return null; //[...action.items]
+      return [...action.items];
 
     case LOAD_ITEM:
       return action.item;

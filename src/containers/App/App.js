@@ -1,3 +1,7 @@
+/*MAIN COMPONENT*/
+/*MAIN COMPONENT*/
+/*MAIN COMPONENT*/
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -22,8 +26,6 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-
-
 
   }
 
@@ -74,7 +76,7 @@ class App extends Component {
   }
 
 
-}
+}//end class
 
 const mapStateToProps = (state) => {
   return {

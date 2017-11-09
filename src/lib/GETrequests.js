@@ -1,3 +1,7 @@
+/*XHR GET REQUESTS*/
+/*XHR GET REQUESTS*/
+/*XHR GET REQUESTS*/
+
 export const getCategories = () => new Promise((resolve, reject) => {
   var oReq = new XMLHttpRequest();
   oReq.onreadystatechange = function (){
