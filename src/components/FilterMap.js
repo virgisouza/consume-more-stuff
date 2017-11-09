@@ -3,7 +3,7 @@ import Item from './item';
 
 const FilterMap = ({ list, cat_id, number, title }) => {
   return (
-    <div>
+    <div className="filter">
       <h2>{title}</h2>
       {
         list.filter((listItem) => {
