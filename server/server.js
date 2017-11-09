@@ -2,7 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const db = require('../models');
-// const routes = require('./routes');
+const routes = require('./routes');
 const redis = require('connect-redis')(session);
 const passport = require('passport');
 const bcrypt = require('bcrypt');
@@ -70,7 +70,7 @@ passport.use(new LocalStrategy(function (username, password, done) {
       console.log('ERROR:', error);
     });
 }));
-app.use('/api', require('./routes'));
+
 
 app.post('/login', passport.authenticate('local'), function(req, res){
   const user = req.user;

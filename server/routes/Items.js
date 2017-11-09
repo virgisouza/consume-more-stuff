@@ -30,7 +30,7 @@ router.post('/new', (req, res) => {
   });
 });
 
-router.get('/', isAuthenticated, (req, res) => {
+router.get('/', (req, res) => {
   console.log('something');
   return Items.findAll({include:[
     {model:Category, as: 'Category'},

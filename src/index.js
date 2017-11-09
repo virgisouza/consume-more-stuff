@@ -35,7 +35,6 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <div>
-        <Link to='/logout'>Logout</Link>
 
         <Route exact path='/' component={App}/>
         <Route path='/login' component={Login}/>
