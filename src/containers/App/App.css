@@ -8,6 +8,7 @@
 .home_list{
   display: flex;
   flex: row;
+  justify-content: space-around;
 }
 
 .App-logo {

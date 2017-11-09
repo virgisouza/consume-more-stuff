@@ -11,7 +11,8 @@ const FilterMap = ({ list, cat_id, number, title }) => {
         }).map((item) => {
           return (
             <Item
-              Image={item.image}
+              name={item.name}
+              image={item.image}
               body={item.body}
               price={item.price}
               condition={item.Condition.type}
@@ -19,6 +20,7 @@ const FilterMap = ({ list, cat_id, number, title }) => {
               updatedAt={item.updatedAt}
               key={item.id}
               id={item.id}
+              show='yes'
             />
           )
         })

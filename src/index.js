@@ -20,9 +20,6 @@ import reducers from './reducers/reducer_index';
 import NewItemForm from './containers/NewItem/newItemForm';
 import App from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
-import Register from './containers/Register';
-import Login from './containers/Login';
-import Logout from './components/Logout';
 import AuthUserEditItem from './containers/AuthUserEditItem';
 
 const store = createStore(
@@ -38,6 +35,7 @@ ReactDOM.render(
       <div>
         <Route exact path='/' component={App}/>
         <Route path='/items/:id' component={AuthUserEditItem}/>
+        <Route path='/new' component={NewItemForm}/>
       </div>
     </Router>
   </Provider>,
