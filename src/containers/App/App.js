@@ -28,7 +28,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props);
+    
     return (
       <div className="App">
         <header className="App-header">
@@ -55,7 +55,7 @@ class App extends Component {
             <li>View By Category</li>
           </ul>
         </div>
-        <AuthUserEditItem />
+        
       </div>
     );
   }
@@ -88,28 +88,4 @@ const ConnectedApp = connect(
   mapDispatchToProps
 )(App);
 
-<<<<<<< HEAD
-const mapStateToProps = (state) => {
-  return {
-    items : state.items
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loadItems : () => {
-      dispatch(loadItems())
-    }
-  };
-}
-
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
-
-
-=======
 export default ConnectedApp;
->>>>>>> dev
