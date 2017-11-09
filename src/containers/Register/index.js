@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { loadUsers, addNewUser } from '../../actions/users';
 import { connect } from 'react-redux';
-
+import '../App/App.css';
 
 class NewUser extends Component {
 
@@ -54,7 +54,6 @@ class NewUser extends Component {
   }
 
   render() {
-    console.log(this.props, 'REGISTER')
     return (
       <div className='NewUserForm'>
       {!(this.props.user.logged_in === true) ?

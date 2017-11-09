@@ -3,9 +3,9 @@
 /*MAIN COMPONENT*/
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import logo from './logo.svg';
 import './App.css';
 
 import { loadItems } from '../../actions/items';
@@ -14,6 +14,7 @@ import { loadConditions } from '../../actions/conditions';
 
 import { logoutUser } from '../../actions/users';
 
+import Header from '../Header/Header';
 import ItemContainer from '../Item/itemContainer';
 import NewItemForm from '../NewItem/newItemForm';
 import Select from '../../components/select';
@@ -26,7 +27,6 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-
   }
 
   componentDidMount(){
@@ -41,42 +41,22 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="App">
-        <header className="App-header">
-
-          <div className="Login-reg">
-            <ul>
-              <li><LoginUser/></li>
-              <li><NewUser/></li>
-              {(this.props.user.logged_in === true) ?
-              <li><Logout handler={this.handleLogout.bind(this)}/></li>
-              :null}
-            </ul>
-          </div>
-
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Consume More Stuff</h1>
-        </header>
-
+        
+        <Header />
+        
         <FilterMap list={this.props.items} cat_id={1} />
         <FilterMap list={this.props.items} cat_id={2} />
         <FilterMap list={this.props.items} cat_id={3} />
 
-        <div className="navbar">
-          <ul>
-            <li>Home</li>
-            <li>All Items</li>
-            <li>View By Category</li>
-          </ul>
-        </div>
-        
       </div>
     );
   }
 
-
-}//end class
+}
+//end class
 
 const mapStateToProps = (state) => {
   return {

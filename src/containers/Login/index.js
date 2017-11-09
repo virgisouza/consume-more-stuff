@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/users';
+import '../App/App.css';
 
 class LoginUser extends Component {
+
   constructor(props){
     super(props);
 
@@ -46,7 +48,8 @@ class LoginUser extends Component {
   render(){
     console.log(this.props, 'state')
     return (
-      <div>
+      <div className="Login-form">
+      
       {!(this.props.user.logged_in === true) ?
       <form onSubmit={this.handleSubmit.bind(this)}>
         <input
@@ -64,6 +67,7 @@ class LoginUser extends Component {
         <button type='submit'>Login</button>
       </form>
       : null}
+
       </div>
     );
   }

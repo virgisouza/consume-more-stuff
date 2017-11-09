@@ -18,10 +18,10 @@ import thunk from 'redux-thunk';
 import reducers from './reducers/reducer_index';
 
 import NewItemForm from './containers/NewItem/newItemForm';
-import App from './containers/App/App';
+import ConnectedApp from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
-import Register from './containers/Register';
-import Login from './containers/Login';
+import NewUser from './containers/Register';
+import LoginUser from './containers/Login';
 import Logout from './components/Logout';
 
 const store = createStore(
@@ -33,14 +33,9 @@ const store = createStore(
 ReactDOM.render(
 
   <Provider store={store}>
-    <Router>
-      <div>
-        <Route exact path='/' component={App}/>
-        <Route path='/login' component={Login}/>
-        <Route path='/logout' component={Logout}/>
-        <Route path='/register' component={Register}/>
-      </div>
-    </Router>
+      <Router>
+        <Route path='/' component={ConnectedApp} /> 
+      </Router>
   </Provider>,
   document.getElementById('root')
 );
