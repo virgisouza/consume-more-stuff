@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const items = require('./items');
+const items = require('./Items');
 const db = require('../../models');
 const Items = db.Item;
 const Category = db.Category;

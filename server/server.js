@@ -8,17 +8,17 @@ const passport = require('passport');
 const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
 const saltRounds = 12;
-const app = express();
 
 const PORT = process.env.PORT || 8080;
+const app = express();
 
-app.use(function (req, res, next) {
- res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
- res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
- res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
- res.setHeader('Access-Control-Allow-Credentials', true);
- next();
-});
+// app.use(function (req, res, next) {
+//  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+//  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//  res.setHeader('Access-Control-Allow-Credentials', true);
+//  next();
+// });
 
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
@@ -31,9 +31,10 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use('/api', routes);
+
 
 passport.serializeUser((user, done) => {
+  console.log(user, 'SERIAL USER');
   console.log('serializing');
   return done(null, {
     id: user.id,
@@ -42,7 +43,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((user, done) => {
-  console.log(user);
+  console.log(user, 'DESERIAL USER');
   console.log('deserializing');
   db.User.findOne({where: { id: user.id }})
   .then((user) => {
@@ -61,7 +62,7 @@ passport.use(new LocalStrategy(function (username, password, done) {
       }else{
         bcrypt.compare(password, user.password)
         .then((res) => {
-          console.log(res);
+          console.log(res, 'TRUTHY');
           if(res){
             var foundUser = user.get();
             delete foundUser.password;
@@ -78,9 +79,15 @@ passport.use(new LocalStrategy(function (username, password, done) {
 }));
 
 app.post('/login', passport.authenticate('local'), function(req, res){
-  const user = req.user.data;
+  const user = req.user;
+  console.log(user, 'LOGIN PATH USER')
   res.json(req.user);
 });
+
+
+app.use('/api', routes);
+
+
 
 app.get('/logout', (req, res) => {
   req.logout();

@@ -9,7 +9,7 @@ export const addUser = (user) => new Promise((resolve, reject) => {
       resolve(response);
     }
   }
-  oReq.open("POST", "http://localhost:8080/register");
+  oReq.open("POST", "/register");
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send(data);
 });
@@ -23,7 +23,7 @@ export const login = (user) => new Promise((resolve, reject) => {
       resolve(response);
     }
   }
-  oReq.open("POST", "http://localhost:8080/login");
+  oReq.open("POST", "/login");
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send(data);
 });
@@ -37,7 +37,7 @@ export const addNewItem = (item) => new Promise((resolve, reject) => {
       resolve(response);
     }
   }
-  oReq.open("POST", "http://localhost:8080/api/items/new");
+  oReq.open("POST", "/api/items/new");
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send(data);
 });
