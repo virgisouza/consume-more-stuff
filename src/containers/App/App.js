@@ -21,14 +21,9 @@ class App extends Component {
     super(props);
   }
 
-<<<<<<< HEAD
-  componentDidMount() {
-    console.log(this.props.loadItems);
-=======
   componentDidMount(){
     this.props.loadConditions();
     this.props.loadCategories();
->>>>>>> dev
     this.props.loadItems();
   }
 
