@@ -7,11 +7,9 @@ import './App.css';
 import { loadItems } from '../../actions/items';
 import { loadCategories } from '../../actions/categories';
 import { loadConditions } from '../../actions/conditions';
-<<<<<<< HEAD
 
-=======
 import { logoutUser } from '../../actions/users';
->>>>>>> dev
+
 import ItemContainer from '../Item/itemContainer';
 import NewItemForm from '../NewItem/newItemForm';
 import Select from '../../components/select';
