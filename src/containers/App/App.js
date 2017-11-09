@@ -9,12 +9,14 @@ import ItemContainer from '../Item/itemContainer';
 import NewItemForm from '../NewItem/newItemForm';
 import Select from '../../components/select';
 import FilterMap from '../../components/FilterMap';
+import LoginUser from '../Login';
+import NewUser from '../Register';
 
 class App extends Component {
 
-  constructor() {
+  constructor(props) {
     console.log('App Constructor');
-    super();
+    super(props);
   }
 
   componentDidMount(){
@@ -31,8 +33,8 @@ class App extends Component {
 
           <div className="Login-reg">
             <ul>
-              <li>Login</li>
-              <li>Register</li>
+              <li><LoginUser/></li>
+              <li><NewUser/></li>
             </ul>
           </div>
 

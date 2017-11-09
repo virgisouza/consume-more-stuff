@@ -18,7 +18,7 @@
 }
 
 .Login-reg {
-  border: 1px solid white;
+ /* border: 1px solid white;*/
   width: 33%;
   position: absolute;
   right: 0;
@@ -29,7 +29,7 @@
   display: inline;
   padding: 5px;
   margin: 2px;
-  border: 1px solid white;
+  /*border: 1px solid white;*/
 }
 
 .App-title {
@@ -65,15 +65,15 @@
 }
 
 .NewItemForm {
-  
+
 }
 
 .EditItemForm {
-  
+
 }
 
 .ItemContainer {
-  
+
 }
 
 .Item {
@@ -81,5 +81,5 @@
 }
 
 .Select {
-  
+
 }
