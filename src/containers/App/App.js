@@ -39,6 +39,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('THIS', this.props);
     return (
       <div className="App">
         <header className="App-header">
@@ -47,7 +48,7 @@ class App extends Component {
             <ul>
               <li><LoginUser/></li>
               <li><NewUser/></li>
-              {(this.props.user.logged_in === true) ?
+              {(this.props.user.logged_in === true || localStorage.getItem('logged_in') === 'true') ?
               <li><Logout handler={this.handleLogout.bind(this)}/></li>
               :null}
             </ul>
@@ -57,18 +58,13 @@ class App extends Component {
           <h1 className="App-title">Consume More Stuff</h1>
         </header>
 
-        <FilterMap list={this.props.items} cat_id={1} />
-        <FilterMap list={this.props.items} cat_id={2} />
-        <FilterMap list={this.props.items} cat_id={3} />
-
-        <div className="navbar">
-          <ul>
-            <li>Home</li>
-            <li>All Items</li>
-            <li>View By Category</li>
-          </ul>
+        <div className="home_list">
+        <FilterMap title={'Vehicles'} list={this.props.items} cat_id={1} />
+        <FilterMap title={'Appliances'} list={this.props.items} cat_id={2} />
+        <FilterMap title={'Computers'} list={this.props.items} cat_id={3} />
+        <FilterMap title={'Furniture'} list={this.props.items} cat_id={4} />
         </div>
-        
+
       </div>
     );
   }
