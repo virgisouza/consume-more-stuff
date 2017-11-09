@@ -3,11 +3,6 @@
 /*HEADER COMPONENT WITH LOGIN AND REGISTER*/
 
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import logo from '../App/logo.svg';
