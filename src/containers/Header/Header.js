@@ -14,6 +14,15 @@ import NewUser from '../Register';
 import Logout from '../../components/Logout';*/
 
 class Header extends Component {
+  
+  constructor() {
+    super();
+  }
+
+  handleLogout(event){
+    event.preventDefault();
+    this.props.logoutUser();
+  }
 
   render() {
     return (

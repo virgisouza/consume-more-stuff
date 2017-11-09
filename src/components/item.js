@@ -1,17 +1,18 @@
 // Unauthorized users item view
 import React from 'react';
+import '../containers/App/App.css';
 
 const Item = ({image, body, price, condition, category, updatedAt}) => {
 
   return  (
-    <ul className='item'>
-      <div>Image : {image}</div>
-      <div>Description : {body}</div>
-      <div>Price : {price}</div>
-      <div>Condition : {condition}</div>
-      <div>Category : {category}</div>
-      <div>When Item was posted: {updatedAt}</div>
-    </ul>
+    <div className='Item'>
+      <span>Image</span><br></br>
+      <span>{body}</span><br></br>
+      <span>{price}</span><br></br>
+      <span>Condition : {condition}</span><br></br>
+      <span>Category : {category}</span><br></br>
+      <span>Posted : {updatedAt}</span><br></br>
+    </div>
   );
 
 }

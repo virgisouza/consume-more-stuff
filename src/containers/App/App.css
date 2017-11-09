@@ -11,7 +11,7 @@
 
 .App-header {
   background-color: #222;
-  height: 200px;
+  height: 125px;
   padding: 10px;
   color: white;
   position: relative;
@@ -85,6 +85,15 @@
 
 /* DUMMY COMPONENTS */
 .Item {
+  border: 1px solid black;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 10px;
+  background-color: magenta;
+}
+
+.Item span {
+  
 
 }
 

@@ -27,21 +27,18 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+    console.log(props);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.loadConditions();
     this.props.loadCategories();
     this.props.loadItems();
   }
 
-  handleLogout(event){
-    event.preventDefault();
-    this.props.logoutUser();
-  }
-
   render() {
-    console.log(this.props);
+    console.log(this.props.items);
+
     return (
       <div className="App">
         
