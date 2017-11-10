@@ -66,9 +66,10 @@ export const addItem = (item) => {
 export const deleteItem = (item) => {
   return function(dispatch) {
     return itemDelete(item).then(response => {
+      console.log('RESPONSE', response);
       dispatch({
         type: DELETE_ITEM,
-        item: response.data
+        item: response
       });
     });
   }

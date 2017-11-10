@@ -16,7 +16,7 @@ class MyItems extends Component {
   render(){
     console.log(this.props)
     return(
-      <div>
+      <div className="myItems">
         <FilterMap list={this.props.items}
                    cat_id={1}
                    title={'Vehicles'}

@@ -25,7 +25,7 @@ router.get('/:id/items', isAuthenticated, (req, res) => {
     {model: Status, as: 'Status'}
     ],
     where: {
-      user_id: 1
+      user_id: req.user.id
     }
   })
   .then((items) => {

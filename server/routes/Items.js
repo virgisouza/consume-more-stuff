@@ -10,7 +10,7 @@ const User = db.User;
 
 router.post('/new', isAuthenticated, (req, res) => {
   let data = req.body;
-  console.log(data);
+  //console.log(data);
   return Items.create({
     name: data.name,
     image: data.image,
@@ -44,44 +44,13 @@ router.get('/', (req, res) => {
     },
     order: [['updatedAt', 'DESC']]})
   .then((items) => {
-    console.log('=====GET ALL ITEMS====', items);
+    //console.log('=====GET ALL ITEMS====', items);
     return res.json(items);
   })
   .catch((error) => {
     console.log(error);
   });
 });
-
-// router.get('/:num', (req, res) => {
-//   const limit = req.query.num;
-//   return Items.findAndCountAll({
-//     where : { status_id : 1 },
-//     limit : limit,
-//     offset : 0
-//   }).then(items => {
-//     return res.json(items);
-//   });
-// });
-
-//should probably be in category route
-// router.get('/:category_id', (req, res) => {
-//   return Items.findAll({include:[
-//     {model:Category, as: 'Category'},
-//     {model: Condition, as: 'Condition'},
-//     {model: User, as: 'User'},
-//     {model: Status, as: 'Status'}
-//     ],
-//     where: {
-//       category_id: req.params.category_id
-//     }
-//   })
-//   .then((items) => {
-//     return res.json(items)
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
-// });
 
 router.get('/:id', (req, res) => {
   return Items.findOne({include:[
@@ -164,8 +133,20 @@ router.delete('/:id', isAuthenticated, (req, res) => {
         id: req.params.id
       }
       })
-      .then((soldItem) => {
-        res.json(soldItem);
+      .then((response) => {
+        return Items.findOne({include:[
+          {model: Category, as: 'Category'},
+          {model: Condition, as: 'Condition'},
+          {model: User, as: 'User'},
+          {model: Status, as: 'Status'}
+          ],
+          where: {
+            id: req.params.id
+          }
+        })
+        .then((soldItem) => {
+          return res.json(soldItem);
+        });
       });
     }
   })

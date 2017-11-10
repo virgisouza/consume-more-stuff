@@ -99,14 +99,15 @@ class AuthUserEditItem extends Component {
   render(){
     return (
       <div className='EditItem'>
-      <Item image={this.props.item.image}
+      <Item name={this.props.item.name}
+            image={this.props.item.image}
             body={this.props.item.body}
             price={this.props.item.price}
             condition={this.props.item.Condition.type}
             category={this.props.item.Category.name}
             updatedAt={this.props.item.updatedAt} />
 
-        {this.props.item.user_id === Number(localStorage.getItem('user_id')) ?
+        {this.props.item.user_id === Number(localStorage.getItem('user_id')) && this.props.item.status_id === 1 ?
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input
             type='text'
