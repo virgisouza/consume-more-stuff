@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Item from '../../components/item';
 import { connect } from 'react-redux';
+
 import { loadItem } from '../../actions/items';
 import { loadConditions } from '../../actions/conditions';
 import { loadCategories } from '../../actions/categories';
 import { editItem, deleteItem } from '../../actions/items';
+
 import Select from '../../components/select';
 
 class AuthUserEditItem extends Component {

@@ -5,23 +5,23 @@ module.exports = {
 
       return queryInterface.bulkInsert('users', [
       {
-        username: 'kevin',
-        password: 'kevin',
-        email: 'kevin@devleague.com',
+        username: 'jesse',
+        password: 'teacher',
+        email: 'jesse@devleague.com',
         createdAt: new Date (),
         updatedAt: new Date ()
       },
       {
-        username: 'chris',
-        password: 'chris',
-        email: 'chris@devleague.com',
+        username: 'baseem',
+        password: 'student',
+        email: 'baseem@devleague.com',
         createdAt: new Date (),
-        updatedAt: new Date ()
+        updatedAt: new Date (),
       },
       {
-        username: 'virgi',
-        password: 'virgi',
-        email: 'virgi@devleague.com',
+        username: 'russell',
+        password: 'manager',
+        email: 'russell@devleague.com',
         createdAt: new Date (),
         updatedAt: new Date ()
       }], {});

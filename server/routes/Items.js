@@ -23,6 +23,7 @@ router.post('/new', isAuthenticated, (req, res) => {
     status_id: 1
   })
   .then((item) => {
+    console.log('=====POSTED NEW ITEM=======', item);
     return res.json(item);
   })
   .catch((error) => {
@@ -43,7 +44,8 @@ router.get('/', (req, res) => {
     },
     order: [['updatedAt', 'DESC']]})
   .then((items) => {
-    return res.json(items)
+    console.log('=====GET ALL ITEMS====', items);
+    return res.json(items);
   })
   .catch((error) => {
     console.log(error);

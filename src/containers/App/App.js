@@ -11,7 +11,7 @@ import './App.css';
 import { loadItems } from '../../actions/items';
 import { loadCategories } from '../../actions/categories';
 import { loadConditions } from '../../actions/conditions';
-import  LoginUser from '../Login';
+import LoginUser from '../Login';
 import NewUser from '../Register';
 import Logout from '../../components/Logout';
 import logo from './logo.svg';
@@ -29,27 +29,36 @@ class App extends Component {
     console.log(props);
   }
 
-  handleLogout(event) {
+
+  componentWillMount(){
+    console.log('will mount');
+    this.props.loadConditions();
+    this.props.loadItems();
 
   }
 
   componentDidMount() {
+    console.log('did mount');
     this.props.loadConditions();
     this.props.loadItems();
   }
 
+
+  handleLogout(event) {
+
+  }
+
   render() {
-    console.log('THIS', this.props);
+    console.log('App component rendered.');
     return (
       <div className="App">
-
-
+        <Header />
 
         <div className="home_list">
-          <FilterMap title={'Vehicles'} list={this.props.items} cat_id={1} />
-          <FilterMap title={'Appliances'} list={this.props.items} cat_id={2} />
-          <FilterMap title={'Computers'} list={this.props.items} cat_id={3} />
-          <FilterMap title={'Furniture'} list={this.props.items} cat_id={4} />
+            <FilterMap title={'Vehicles'} list={this.props.items} cat_id={1} />
+            <FilterMap title={'Appliances'} list={this.props.items} cat_id={2} />
+            <FilterMap title={'Computers'} list={this.props.items} cat_id={3} />
+            <FilterMap title={'Furniture'} list={this.props.items} cat_id={4} />
         </div>
 
       </div>

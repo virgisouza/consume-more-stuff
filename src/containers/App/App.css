@@ -128,8 +128,49 @@
 
 /* APPLICATION VIEWS */
 .NewItemForm {
-
+  border: 1px solid black;
+  margin: 5px;
+  display: inline-block;
 }
+  .NewItemFormLabel {
+    /* border: 1px solid blue; */
+    font-size: 11px;
+    margin-left: 5px;
+  }
+  .NewItemForm form {
+    /* border: 1px solid red; */
+    margin: 5px;
+  }
+  .NewItemForm input {
+    display: inline-block;
+    /* border: 1px solid cyan; */
+    margin: 5px;
+    padding: 2px;
+  }
+  .NewItemForm textarea {
+    display: inline-block;
+    /* border: 1px solid cyan; */
+    margin: 5px;
+    padding: 2px;
+  }
+  .NewItemForm button {
+    background-color: yellow;
+    border: none;
+    border-radius: 5px;
+    margin: 5px; 
+  }
+  .NewItemForm button:hover {
+    background-color: #997500;
+    color: yellow;
+    cursor: pointer;
+  }
+  .Select {
+    /* border: 1px solid green; */
+    margin: 5px;
+  }
+
+
+
 
 .EditItemForm {
 

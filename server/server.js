@@ -27,7 +27,7 @@ app.use(passport.session());
 
 
 passport.serializeUser((user, done) => {
-  console.log('USER', user);
+  //console.log('USER', user);
   console.log('serializing');
   return done(null, {
     id: user.id,
@@ -48,6 +48,7 @@ passport.deserializeUser((user, done) => {
 });
 
 passport.use(new LocalStrategy(function (username, password, done) {
+  console.log(username, password);
   db.User.findOne({where: {username: username}})
     .then((user) => {
       if(user === null){
@@ -55,7 +56,7 @@ passport.use(new LocalStrategy(function (username, password, done) {
       }else{
         bcrypt.compare(password, user.password)
         .then((res) => {
-          console.log(res, 'TRUTHY');
+          //console.log(res, 'TRUTHY');
           if(res){
             var foundUser = user.get();
             delete foundUser.password;
@@ -92,6 +93,7 @@ app.post('/register', (req, res) => {
   console.log(req.body);
   bcrypt.genSalt(saltRounds, function(err, salt){
     bcrypt.hash(req.body.password, salt, function(err, hash){
+      console.log(hash);
       db.User.create({
         username: req.body.username,
         password: hash,
