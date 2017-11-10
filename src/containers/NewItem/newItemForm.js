@@ -1,7 +1,6 @@
 /*THE NEW ITEM FORM CONTAINER*/
 /*THE NEW ITEM FORM CONTAINER*/
 /*THE NEW ITEM FORM CONTAINER*/
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router';
@@ -14,6 +13,7 @@ import Select from '../../components/select';
 import { addItem } from '../../actions/items';
 import { loadCategories } from '../../actions/categories';
 import { loadConditions } from '../../actions/conditions';
+import App from '../App/App.js';
 
 
 class NewItemForm extends Component {
@@ -26,7 +26,8 @@ class NewItemForm extends Component {
       body : '',
       price : '',
       condition_id: '',
-      category_id: ''
+      category_id: '',
+      redirect: false
 
     };
   }
@@ -98,6 +99,7 @@ class NewItemForm extends Component {
   }
 
   render() {
+
     const { redirect } = this.state;
     console.log(redirect);
     if (redirect) {
@@ -112,7 +114,7 @@ class NewItemForm extends Component {
           <input
             type='text'
             placeholder='Name'
-            onFocus={(e) => e.target.placeholder=""} 
+            onFocus={(e) => e.target.placeholder=""}
             onBlur={(e) => e.target.placeholder="Name"}
             value={this.state.name}
             onChange={this.handleChangeName.bind(this)}
@@ -122,7 +124,7 @@ class NewItemForm extends Component {
           <input
             type='text'
             placeholder='Image Url'
-            onFocus={(e) => e.target.placeholder=""} 
+            onFocus={(e) => e.target.placeholder=""}
             onBlur={(e) => e.target.placeholder="Image URL"}
             value={this.state.image}
             onChange={this.handleChangeImage.bind(this)}
@@ -133,7 +135,7 @@ class NewItemForm extends Component {
             type='text'
             rows='25'
             placeholder='Body'
-            onFocus={(e) => e.target.placeholder=""} 
+            onFocus={(e) => e.target.placeholder=""}
             onBlur={(e) => e.target.placeholder="Body"}
             value={this.state.body}
             onChange={this.handleChangeBody.bind(this)}
@@ -144,7 +146,7 @@ class NewItemForm extends Component {
             type='text'
             style={{width : 50}}
             placeholder='Price'
-            onFocus={(e) => e.target.placeholder=""} 
+            onFocus={(e) => e.target.placeholder=""}
             onBlur={(e) => e.target.placeholder="Price"}
             value={this.state.price}
             onChange={this.handleChangePrice.bind(this)}
@@ -164,7 +166,7 @@ class NewItemForm extends Component {
             handler={this.handleChangeCondition.bind(this)}
           />
           <button type='submit'>Submit</button>
-          
+
         </form>
 
       </div>
