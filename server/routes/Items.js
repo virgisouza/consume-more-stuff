@@ -8,9 +8,11 @@ const Condition = db.Condition;
 const Status = db.Status;
 const User = db.User;
 
-router.post('/new', isAuthenticated, (req, res) => {
+router.post('/new', isAuthenticated, (req, res) => { //change path 
   let data = req.body;
+  console.log('==============DATA====================');
   console.log(data);
+  console.log('================END DATA==================');
   return Items.create({
     name: data.name,
     image: data.image,
@@ -23,7 +25,8 @@ router.post('/new', isAuthenticated, (req, res) => {
     status_id: 1
   })
   .then((item) => {
-    console.log('=====POSTED NEW ITEM=======', item);
+    console.log('==================================');
+    console.log(item);
     return res.json(item);
   })
   .catch((error) => {
@@ -32,7 +35,6 @@ router.post('/new', isAuthenticated, (req, res) => {
 });
 
 router.get('/', (req, res) => {
-  console.log('something');
   return Items.findAll({include:[
     {model:Category, as: 'Category'},
     {model: Condition, as: 'Condition'},
@@ -44,7 +46,6 @@ router.get('/', (req, res) => {
     },
     order: [['updatedAt', 'DESC']]})
   .then((items) => {
-    console.log('=====GET ALL ITEMS====', items);
     return res.json(items);
   })
   .catch((error) => {
@@ -52,16 +53,23 @@ router.get('/', (req, res) => {
   });
 });
 
-// router.get('/:num', (req, res) => {
-//   const limit = req.query.num;
-//   return Items.findAndCountAll({
-//     where : { status_id : 1 },
-//     limit : limit,
-//     offset : 0
-//   }).then(items => {
-//     return res.json(items);
-//   });
-// });
+
+/*Initial Page Load 5 Items*/
+/*router.get('/:num', (req, res) => { //code change 
+  const limit = req.query.num;
+  return Items.findAndCountAll({
+    include : [
+    { model : Category, as: 'Category'},
+    { model : Condition, as: 'Condition'},
+    { model : User, as: 'User'},
+    { model : Status, as: 'Status'}
+    ],
+    limit : limit,
+    offset : 0
+  }).then(items => {
+    return res.json(items);
+  });
+});*/
 
 //should probably be in category route
 // router.get('/:category_id', (req, res) => {
@@ -111,7 +119,6 @@ router.put('/:id', isAuthenticated, (req, res) => {
     }
   })
   .then((item) => {
-    console.log(item);
     let data = req.body;
     if(req.user.id === item.user_id){
       return Items.update({
@@ -175,11 +182,11 @@ router.delete('/:id', isAuthenticated, (req, res) => {
 });
 
 function isAuthenticated(req, res, next){
-  if(req.isAuthenticated()){
-    console.log('isAuthenticated')
+  if (req.isAuthenticated()) {
+    console.log('isAuthenticated');
     next();
-  }else{
-    console.log('not isAuthenticated')
+  } else {
+    console.log('not isAuthenticated');
     //not sure exactly what I should do here
     res.redirect('/')
   }

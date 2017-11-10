@@ -1,8 +1,13 @@
 /*ACTIONS FOR ITEMS*/
 /*ACTIONS FOR ITEMS*/
 /*ACTIONS FOR ITEMS*/
-
-import { getItems, getItemById, getItemsByUser } from '../lib/GETrequests';
+                
+import { 
+  getItems,  
+  /*getInitialItems,*/ //code change 
+  getItemById, 
+  getItemsByUser 
+} from '../lib/GETrequests';
 
 import { addNewItem } from '../lib/POSTrequests';
 import { itemDelete } from '../lib/DELETErequests';
@@ -10,6 +15,7 @@ import { itemEdit } from '../lib/PUTrequests';
 //const axios = require('axios');
 
 export const LOAD_ITEMS = 'LOAD_ITEMS';
+/*export const LOAD_INITIAL_ITEMS = 'LOAD_INITIAL_ITEMS';*/ //code change 
 export const LOAD_ITEM = 'LOAD_ITEM';
 export const ADD_ITEM = 'ADD_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
@@ -26,6 +32,18 @@ export const loadItems = () => {
     });
   }
 }
+
+/*Initial Page Load First 5 Items*/
+/*export const loadInitialItems = () => {   //code change
+  return function(dispatch) {
+    return getInitialItems().then(initialItems => {
+      dispatch({
+        type: LOAD_INITIAL_ITEMS,
+        initialItems: initialItems
+      });
+    });
+  }
+}*/
 
 
 export const loadUserItems = (user_id) => {

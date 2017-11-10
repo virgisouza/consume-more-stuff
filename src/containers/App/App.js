@@ -9,8 +9,10 @@ import { connect } from 'react-redux';
 import './App.css';
 
 import { loadItems } from '../../actions/items';
+/*import { loadInitialItems } from '../../actions/items';*/ //code change
 import { loadCategories } from '../../actions/categories';
 import { loadConditions } from '../../actions/conditions';
+
 import LoginUser from '../Login';
 import NewUser from '../Register';
 import Logout from '../../components/Logout';
@@ -66,6 +68,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     items: state.itemList,
+    initialItems: state.initialItems, //code change
     user: state.user
   };
 }
@@ -75,6 +78,9 @@ const mapDispatchToProps = (dispatch) => {
     loadItems: () => {
       dispatch(loadItems());
     },
+    // loadInitialItems: () => { //code change
+    //   dispatch(loadInitialItems());
+    // },
     loadConditions: () => {
       dispatch(loadConditions());
     }

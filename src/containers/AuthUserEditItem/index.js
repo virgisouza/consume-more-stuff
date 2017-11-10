@@ -97,6 +97,7 @@ class AuthUserEditItem extends Component {
   }
 
   render(){
+    console.log(this.props.item);
     return (
       <div className='EditItem'>
       <Item image={this.props.item.image}
