@@ -56,6 +56,7 @@ class AuthUserEditItem extends Component {
   handleChangeDelete(event){
     event.preventDefault();
     this.props.deleteItem(this.props.match.params.id);
+
   }
 
   handleChangeName(event){

@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 import logo from '../App/logo.svg';
 import '../App/App.css';
-
 import { loginUser, logoutUser } from '../../actions/users';
 
 import LoginUser from '../Login';
@@ -16,8 +15,10 @@ import Logout from '../../components/Logout';
 
 class Header extends Component {
 
+
   constructor(props) {
     super(props);
+
     this.state = {
       showLogin : false,
       showRegister : false
@@ -63,8 +64,6 @@ class Header extends Component {
   }
 
   render() {
-    console.log('header props', this.props);
-
 
     return (
       <div className="App-header">
@@ -80,15 +79,12 @@ class Header extends Component {
             <NewUser />
             : null}
 
-
             <li><a href="#" onClick={this.showLogin.bind(this)}>Login</a></li>
             {this.state.showLogin === true ?
             <LoginUser />
             : null}
             </div>
             : null}
-
-
 
 
             {this.props.user.logged_in === true || localStorage.getItem('logged_in') === 'true' ?
@@ -107,7 +103,7 @@ class Header extends Component {
   }
 
 }
-//end class
+
 
 const mapStateToProps = (state) => {
   return {
@@ -122,6 +118,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     logoutUser: () => {
       dispatch(logoutUser());
+    },
+    loginUser: () => {
+      dispatch(loginUser());
     }
   };
 }
