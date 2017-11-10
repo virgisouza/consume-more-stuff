@@ -49,34 +49,13 @@ class LoginUser extends Component {
   render() {
     console.log('Login Form rendered');
     return (
-<<<<<<< HEAD
 
-      <div className='Login-form'>
-      {!(this.props.user.logged_in === true || localStorage.getItem('logged_in') === 'true') ?
-      <form onSubmit={this.handleSubmit.bind(this)}>
-        <input
-          type='text'
-          placeholder='username'
-          value={this.state.username}
-          onChange={this.handleChangeUsername.bind(this)}
-        />
-         <input
-          type='text'
-          placeholder='password'
-          value={this.state.password}
-          onChange={this.handleChangePassword.bind(this)}
-        />
-        <button type='submit'>Login</button>
-      </form>
-      : null}
-
-=======
       <div className="Login-form">
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input
             type='text'
             placeholder='Username'
-            onFocus={(e) => e.target.placeholder=""} 
+            onFocus={(e) => e.target.placeholder=""}
             onBlur={(e) => e.target.placeholder="Username"}
             value={this.state.username}
             onChange={this.handleChangeUsername.bind(this)}
@@ -84,14 +63,14 @@ class LoginUser extends Component {
            <input
             type='text'
             placeholder='Password'
-            onFocus={(e) => e.target.placeholder=""} 
+            onFocus={(e) => e.target.placeholder=""}
             onBlur={(e) => e.target.placeholder="Password"}
             value={this.state.password}
             onChange={this.handleChangePassword.bind(this)}
           />
           <button type='submit'>Login</button>
         </form>
->>>>>>> dev
+
       </div>
     );
   }
