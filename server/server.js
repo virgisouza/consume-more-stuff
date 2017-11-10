@@ -27,7 +27,7 @@ app.use(passport.session());
 
 
 passport.serializeUser((user, done) => {
-  console.log('USER', user);
+  //console.log('USER', user);
   console.log('serializing');
   return done(null, {
     id: user.id,
@@ -54,10 +54,9 @@ passport.use(new LocalStrategy(function (username, password, done) {
       if(user === null){
         return done(null, false, {message: 'bad username or password'});
       }else{
-        console.log(user);
         bcrypt.compare(password, user.password)
         .then((res) => {
-          console.log(res, 'TRUTHY');
+          //console.log(res, 'TRUTHY');
           if(res){
             var foundUser = user.get();
             delete foundUser.password;

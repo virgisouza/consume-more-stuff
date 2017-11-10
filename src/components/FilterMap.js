@@ -8,7 +8,7 @@ const FilterMap = ({ list, cat_id, number, title }) => {
       {
         list.filter((listItem) => {
           return listItem.category_id === Number(cat_id)
-        }).map((item) => {
+          }).map((item) => {
           return (
             <Item
               name={item.name}
