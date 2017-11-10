@@ -64,7 +64,8 @@ class NewUser extends Component {
           onChange={this.handleChangePassword.bind(this)} required /><br></br>
           <input type='text' placeholder= 'Email' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Email"} value={this.state.email} onChange={this.handleChangeEmail.bind(this)} required /><br></br>
           <button type='submit'>Submit</button>
-        </form> : null}
+        </form>
+        : null}
       </div>
     );
   }
@@ -90,9 +91,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const ConnectedUserList = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NewUser)
-
-export default ConnectedUserList;
+)(NewUser);

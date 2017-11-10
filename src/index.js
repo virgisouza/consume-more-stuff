@@ -20,7 +20,7 @@ import reducers from './reducers/reducer_index';
 import NewItemForm from './containers/NewItem/newItemForm';
 import App from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
-
+import LoginUser from './containers/Login';
 import AuthUserEditItem from './containers/AuthUserEditItem';
 import MyItems from './components/MyItems';
 
@@ -39,6 +39,7 @@ ReactDOM.render(
         <Route path='/items/:id' component={AuthUserEditItem}/>
         <Route path='/new' component={NewItemForm}/>
         <Route path='/users/:id/items' component={MyItems}/>
+        <Route path='/login' component={LoginUser} />
       </div>
     </Router>
   </Provider>,

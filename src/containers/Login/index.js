@@ -49,7 +49,7 @@ class LoginUser extends Component {
     console.log('Login Form rendered');
     return (
 
-      <div>
+      <div className='Login-form'>
       {!(this.props.user.logged_in === true || localStorage.getItem('logged_in') === 'true') ?
       <form onSubmit={this.handleSubmit.bind(this)}>
         <input
