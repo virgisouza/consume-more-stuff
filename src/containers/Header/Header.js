@@ -15,9 +15,9 @@ import NewUser from '../Register';
 import Logout from '../../components/Logout';
 
 class Header extends Component {
-  
-  constructor() {
-    super();
+
+  constructor(props) {
+    super(props);
     this.state = {
       showLogin : false,
       showRegister : false
@@ -30,17 +30,29 @@ class Header extends Component {
   }
 
   showLogin() {
-    this.setState({
+    if(this.state.showLogin === true){
+      this.setState({
+        showLogin: false
+      })
+    }else{
+      this.setState({
       showRegister : false,
       showLogin : true
-    });
+      });
+    }
   }
 
   showRegister() {
-    this.setState({
-      showLogin : false,
-      showRegister : true
-    });
+    if(this.state.showRegister === true){
+      this.setState({
+        showRegister: false
+      })
+    }else{
+      this.setState({
+        showLogin : false,
+        showRegister : true
+      });
+    }
   }
 
   handleXClick(event) {
@@ -48,23 +60,41 @@ class Header extends Component {
   }
 
   render() {
-    console.log('Header Component rendered');
-    const loginForm = (<LoginUser />);
-    const registerForm = (<NewUser />);
-    
+    console.log('header props', this.props);
+
+
     return (
       <div className="App-header">
         <div className="Login-reg">
           <ul>
             <li className="Login-reg-first"><a href="#">FAQ</a></li>
             <li><a href="#">Blog</a></li>
-            <li><a href="#" onClick={this.showRegister.bind(this)}>Register</a></li> 
+
+            {this.props.user.logged_in === false || localStorage.getItem('logged_in') === 'false' ?
+            <div>
+            <li><a href="#" onClick={this.showRegister.bind(this)}>Register</a></li>
+            {this.state.showRegister === true ?
+            <NewUser />
+            : null}
+
+
             <li><a href="#" onClick={this.showLogin.bind(this)}>Login</a></li>
+            {this.state.showLogin === true ?
+            <LoginUser />
+            : null}
+            </div>
+            : null}
+
+
+
+
+            {this.props.user.logged_in === true || localStorage.getItem('logged_in') === 'true' ?
+            <li><Logout handler={this.handleLogout.bind(this)}/> </li>
+            : null }
+
           </ul>
         </div>
-        
-        {this.state.showLogin ? loginForm : null}
-        {this.state.showRegister ? registerForm : null}
+
 
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="App-title">Consume More Stuff</h1>

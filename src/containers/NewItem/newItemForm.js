@@ -1,8 +1,8 @@
 /*THE NEW ITEM FORM CONTAINER*/
 /*THE NEW ITEM FORM CONTAINER*/
 /*THE NEW ITEM FORM CONTAINER*/
-
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import '../App/App.css';
 import Item from '../../components/item';
@@ -10,6 +10,7 @@ import Select from '../../components/select';
 import { addItem } from '../../actions/items';
 import { loadCategories } from '../../actions/categories';
 import { loadConditions } from '../../actions/conditions';
+import App from '../App/App.js';
 
 
 class NewItemForm extends Component {
@@ -22,7 +23,8 @@ class NewItemForm extends Component {
       body : '',
       price : '',
       condition_id: '',
-      category_id: ''
+      category_id: '',
+      redirect: false
 
     };
   }
@@ -41,14 +43,15 @@ class NewItemForm extends Component {
 
     this.props.addItem(newItem);
 
-    this.setState = {
+    this.setState({
       name: '',
       image: '',
       body : '',
       price : '',
       condition_id: '',
-      category_id: ''
-    };
+      category_id: '',
+      redirect: true
+    });
 
   }
 
@@ -88,6 +91,13 @@ class NewItemForm extends Component {
   }
 
   render() {
+
+    const redirect = this.state.redirect;
+    if(redirect){
+       return <Redirect to='/'/>
+
+    }
+
     return (
       <div className="NewItemForm">
 
@@ -133,7 +143,7 @@ class NewItemForm extends Component {
             type='type'
             handler={this.handleChangeCondition.bind(this)}
           />
-          <button type='submit'>Submit</button>
+          <input type='submit'/>
           </form>
 
       </div>
