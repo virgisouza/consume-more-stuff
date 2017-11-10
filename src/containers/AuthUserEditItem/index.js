@@ -98,6 +98,7 @@ class AuthUserEditItem extends Component {
   }
 
   render(){
+    console.log('editform', this.props);
     return (
       <div className='EditItem'>
       <Item name={this.props.item.name}

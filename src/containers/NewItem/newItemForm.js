@@ -35,7 +35,6 @@ class NewItemForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-
     let formData = new FormData();
     console.log(formData, 'FORM DATA')
 
@@ -63,6 +62,7 @@ class NewItemForm extends Component {
     // };
 
     // this.props.addItem(newItem);
+
 
     this.setState({
       name: '',
@@ -130,7 +130,6 @@ class NewItemForm extends Component {
   }
 
   render() {
-
     return (
       <div className="NewItemForm">
 

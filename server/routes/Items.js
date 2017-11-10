@@ -27,12 +27,19 @@ router.post('/new', upload.single('file'), (req, res) => {
     price: data.price,
     category_id: data.category_id,
     condition_id: data.condition_id,
-    //remember you changed this
     user_id: req.user.id,
     status_id: 1
   })
   .then((item) => {
-    return res.json(item);
+    return item.reload({include:[
+      {model:Category, as: 'Category'},
+      {model: Condition, as: 'Condition'},
+      {model: User, as: 'User'},
+      {model: Status, as: 'Status'}
+    ]})
+    .then((newItem) => {
+      return res.json(newItem);
+    })
   })
   .catch((error) => {
     console.log(error);

@@ -24,7 +24,6 @@ const itemList = (state = intitialState, action) => {
 
     case EDIT_ITEM:
       let items = state.filter((item) => {
-
         return item.id !== Number(action.item.id)
       });
       return [...items, action.item];

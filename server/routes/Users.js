@@ -26,7 +26,8 @@ router.get('/:id/items', isAuthenticated, (req, res) => {
     ],
     where: {
       user_id: req.user.id
-    }
+    },
+    order: [['updatedAt', 'DESC']]
   })
   .then((items) => {
     if(Number(req.user.id) === Number(req.params.id)){
