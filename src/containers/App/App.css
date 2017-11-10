@@ -5,17 +5,42 @@
   flex-flow: column;
 }
 
+
 .home_list {
   display: flex;
   flex: row;
   justify-content: space-around;
 }
 
-.filter {
+.Filter {
   display: flex;
   flex-flow: column;
-  width: 25%
+  width: 25%;
 }
+  .Filter-title {
+    font-size: 4em;
+    border: 1px solid black;
+  }
+
+.Item {
+  border: 1px solid black;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 10px;
+  background-color: magenta;
+}
+
+  .Item span {
+    margin: 10px;
+
+  }
+
+
+
+
+
+
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -177,18 +202,7 @@
 }
 
 /* DUMMY COMPONENTS */
-.Item {
-  border: 1px solid black;
-  border-radius: 15px;
-  display: inline-block;
-  margin: 10px;
-  background-color: magenta;
-}
 
-.Item span {
-  margin: 10px;
-
-}
 
 .Select {
 
