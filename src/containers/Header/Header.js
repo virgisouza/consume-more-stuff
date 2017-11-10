@@ -27,6 +27,9 @@ class Header extends Component {
   handleLogout(event) {
     event.preventDefault();
     this.props.logoutUser();
+    this.setState({
+      showLogin: false
+    })
   }
 
   showLogin() {
