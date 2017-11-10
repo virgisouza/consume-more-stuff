@@ -43,7 +43,7 @@ class NewItemForm extends Component {
       condition_id: this.state.condition_id || 1,
       category_id: this.state.category_id || 1
     };
-
+    console.log(newItem);
     this.props.addItem(newItem);
 
     this.setState({
@@ -90,21 +90,23 @@ class NewItemForm extends Component {
 
   handleChangeCondition(event) {
     event.preventDefault();
-    this.setState({condition : parseInt(event.target.value)});
+    console.log('Condition', event.target.value)
+    this.setState({condition_id : parseInt(event.target.value)});
   }
 
   handleChangeCategory(event) {
     event.preventDefault();
-    this.setState({category : parseInt(event.target.value)});
+    console.log('Category', event.target.value)
+    this.setState({category_id : parseInt(event.target.value)});
   }
 
   render() {
 
-    const { redirect } = this.state;
-    console.log(redirect);
-    if (redirect) {
-      return <Redirect to='/' />
-    }
+    // const { redirect } = this.state;
+    // console.log(redirect);
+    // if (redirect) {
+    //   return <Redirect to='/' />
+    // }
 
     return (
       <div className="NewItemForm">

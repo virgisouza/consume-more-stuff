@@ -57,7 +57,7 @@ export const addItem = (item) => {
     return addNewItem(item).then(newItem => {
       dispatch({
         type: ADD_ITEM,
-        item: newItem.data
+        item: newItem
       });
     });
   }

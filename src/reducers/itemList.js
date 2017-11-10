@@ -13,6 +13,7 @@ const itemList = (state = intitialState, action) => {
       return [...action.items];
 
     case ADD_ITEM:
+      console.log('new Item', action.item);
       return [...state, action.item];
 
     case DELETE_ITEM:
