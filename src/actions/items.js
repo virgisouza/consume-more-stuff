@@ -63,7 +63,7 @@ export const deleteItem = (item) => {
     return itemDelete(item).then(response => {
       dispatch({
         type: DELETE_ITEM,
-        item: response.data
+        item: response
       });
     });
   }
