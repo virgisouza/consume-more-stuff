@@ -76,6 +76,12 @@ class Header extends Component {
 }
 //end class
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  };
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     loginUser: () => {
@@ -88,7 +94,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Header);
 
