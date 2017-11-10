@@ -1,6 +1,6 @@
-/*ENTRY POINT*/
-/*ENTRY POINT*/
-/*ENTRY POINT*/
+/*REACT ENTRY POINT*/
+/*REACT ENTRY POINT*/
+/*REACT ENTRY POINT*/
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -20,6 +20,7 @@ import reducers from './reducers/reducer_index';
 import NewItemForm from './containers/NewItem/newItemForm';
 import App from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
+
 import AuthUserEditItem from './containers/AuthUserEditItem';
 import MyItems from './components/MyItems';
 

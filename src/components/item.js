@@ -1,5 +1,6 @@
 // Unauthorized users item view
 import React from 'react';
+import '../containers/App/App.css';
 import { Link } from 'react-router-dom';
 
 const Item = ({name, image, body, price, condition, category, updatedAt, id, show}) => {

@@ -5,50 +5,35 @@
   flex-flow: column;
 }
 
-.home_list{
+.home_list {
   display: flex;
   flex: row;
   justify-content: space-around;
 }
 
-.filter{
+.filter {
   display: flex;
   flex-flow: column;
   width: 25%
 }
 
 .App-logo {
-  /* animation: App-logo-spin infinite 20s linear; */
+  animation: App-logo-spin infinite 20s linear;
   height: 80px;
-  border: 1px solid white;
+  
 }
 
 .App-header {
   background-color: #222;
-  height: 200px;
+  height: 175px;
   padding: 10px;
   color: white;
   position: relative;
 }
 
-.Login-reg {
- /* border: 1px solid white;*/
-  width: 33%;
-  position: absolute;
-  right: 0;
-}
-
-.Login-reg li {
-  list-style-type: none;
-  display: inline;
-  padding: 5px;
-  margin: 2px;
-  /*border: 1px solid white;*/
-}
-
 .App-title {
   font-size: 1.5em;
-  border: 1px solid white;
+  display: inline-block;
 }
 
 .App-intro {
@@ -60,24 +45,88 @@
   to { transform: rotate(360deg); }
 }
 
-.navbar {
-  border: 1px solid black;
-  width: 20%;
-
+.Login-reg {
+  border: 1px solid green;
+  width: 25%;
+  position: absolute;
+  right: 0;
 }
 
-.navbar ul {
-  border: 1px solid red;
+  .Login-reg ul {
+    margin: 0 auto;
+  }
+
+  .Login-reg-first {
+    border-left: 1px solid white;
+  }
+
+  .Login-reg li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 5px;
+    border-right: 1px solid white;
+  }
+
+  .Login-reg li a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .Login-reg li a:hover {
+    text-decoration: underline;
+    color: cyan;
+  }
+
+/* LOGIN AND REGISTER FORMS */
+.Login-form {
+  position: absolute;
+  right: 0;
+  top: 50px;
 }
 
-.navbar li {
-  list-style-type: none;
-  border: 1px solid blue;
-  padding: 10px;
-  margin: 5px;
-  text-align: left;
+  .Login-form form {
+    
+  }
+  .Login-form input {
+    margin: 3px;
+    border-radius: 5px;
+  }
+  .Login-form button {
+    margin: 3px;
+    background-color: yellow;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .Login-form button:hover {
+    background-color: #997500;
+  }
+
+.NewUserForm {
+  position: absolute;
+  right: 0;
+  top: 50px;
 }
 
+  .NewUserForm form {
+    
+  }
+  .NewUserForm input {
+    margin: 3px;
+    border-radius: 5px;
+  }
+  .NewUserForm button {
+    margin: 3px;
+    background-color: yellow;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .NewUserForm button:hover {
+    background-color: #997500;
+  }
+
+/* APPLICATION VIEWS */
 .NewItemForm {
 
 }
@@ -86,11 +135,17 @@
 
 }
 
-.ItemContainer {
-
+/* DUMMY COMPONENTS */
+.Item {
+  border: 1px solid black;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 10px;
+  background-color: magenta;
 }
 
-.Item {
+.Item span {
+  margin: 10px;
 
 }
 

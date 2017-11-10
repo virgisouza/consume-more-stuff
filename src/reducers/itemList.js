@@ -8,7 +8,7 @@ import { LOAD_ITEMS,
 const intitialState = [];
 
 const itemList = (state = intitialState, action) => {
-  switch (action.type){
+  switch (action.type) {
     case LOAD_ITEMS:
       return [...action.items];
 
