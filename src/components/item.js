@@ -6,13 +6,20 @@ import { Link } from 'react-router-dom';
 const Item = ({name, image, body, price, condition, category, updatedAt, id, show}) => {
   return  (
     <div className='Item'>
-      <div>Name: {name}</div>
-      <div>Image : {image}</div>
-      <div>Description : {body}</div>
-      <div>Price : {price}</div>
-      <div>Condition : {condition}</div>
-      <div>Category : {category}</div>
-      <div>Posted: {updatedAt}</div>
+      <div className='Item-label'>Name</div>
+      <div className='Item-field'>{name}</div>
+      <div className='Item-label'>Image</div>
+      <div className='Item-field'>{image}</div>
+      <div className='Item-label'>Description</div>
+      <div className='Item-field'>{body}</div>
+      <div className='Item-label'>Price</div>
+      <div className='Item-field'>{price}</div>
+      <div className='Item-label'>Condition</div>
+      <div className='Item-field'>{condition}</div>
+      <div className='Item-label'>Category</div>
+      <div className='Item-field'>{category}</div>
+      <div className='Item-label'>Posted</div>
+      <div className='Item-field'>{updatedAt}</div>
       {show === 'yes' ?
       <Link to={`/items/${id}`}>Detail</Link>
       :null}
