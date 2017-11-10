@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { loadUsers, addNewUser } from '../../actions/users';
 import { connect } from 'react-redux';
-
+import '../App/App.css';
 
 class NewUser extends Component {
 
@@ -12,7 +12,7 @@ class NewUser extends Component {
       username: '',
       password: '',
       email: ''
-    }
+    };
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
@@ -20,7 +20,7 @@ class NewUser extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(event){
+  handleSubmit(event) {
     event.preventDefault();
 
     let newUser = {
@@ -35,7 +35,7 @@ class NewUser extends Component {
       username: '',
       password: '',
       email: ''
-    })
+    });
   }
 
   handleChangeUsername(event){
@@ -54,39 +54,24 @@ class NewUser extends Component {
   }
 
   render() {
-    console.log(this.props, 'REGISTER')
     return (
+
       <div className='NewUserForm'>
       {!(this.props.user.logged_in === true || localStorage.getItem('logged_in') === 'true') ?
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <input
-          type='text'
-          placeholder= 'Username'
-          value={this.state.username}
-          onChange={this.handleChangeUsername.bind(this)}
-          />
-          <input
-          type='text'
-          placeholder= 'Password'
-          value={this.state.password}
-          onChange={this.handleChangePassword.bind(this)}
-          />
-          <input
-          type='text'
-          placeholder= 'Email'
-          value={this.state.email}
-          onChange={this.handleChangeEmail.bind(this)}
-          />
+          <input type='text' placeholder= 'Username' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Username"} value={this.state.username} onChange={this.handleChangeUsername.bind(this)} required /><br></br>
+          <input type='text' placeholder= 'Password' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Password"} value={this.state.password}
+          onChange={this.handleChangePassword.bind(this)} required /><br></br>
+          <input type='text' placeholder= 'Email' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Email"} value={this.state.email} onChange={this.handleChangeEmail.bind(this)} required /><br></br>
           <button type='submit'>Submit</button>
-        </form>
-      : null}
+        </form> : null}
       </div>
-
-
-      )
+    );
   }
 
+
 }
+//end class
 
 const mapStateToProps = (state) => {
   return {
@@ -108,6 +93,6 @@ const mapDispatchToProps = (dispatch) => {
 const ConnectedUserList = connect(
   mapStateToProps,
   mapDispatchToProps
-  )(NewUser)
+)(NewUser)
 
-  export default ConnectedUserList;
+export default ConnectedUserList;

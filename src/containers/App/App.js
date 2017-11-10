@@ -1,39 +1,49 @@
+/*MAIN COMPONENT*/
+/*MAIN COMPONENT*/
+/*MAIN COMPONENT*/
+
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import logo from './logo.svg';
 import './App.css';
 
 import { loadItems } from '../../actions/items';
 import { loadCategories } from '../../actions/categories';
 import { loadConditions } from '../../actions/conditions';
+
+/*CHILD COMPONENTS*/
+import Header from '../Header/Header';
+
 import { logoutUser } from '../../actions/users';
 import FilterMap from '../../components/FilterMap';
-import LoginUser from '../Login';
-import NewUser from '../Register';
-import Logout from '../../components/Logout';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
-
-
-
+    console.log(props);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.loadConditions();
-    this.props.loadCategories();
     this.props.loadItems();
   }
 
-  handleLogout(event){
-    event.preventDefault();
-    this.props.logoutUser();
-  }
-
   render() {
+<<<<<<< HEAD
+    console.log('App Component Rendered');
+
+    return (
+      <div className="App">
+        
+        <Header />
+        
+        <FilterMap list={this.props.items} cat_id={1} />
+        <FilterMap list={this.props.items} cat_id={2} />
+        <FilterMap list={this.props.items} cat_id={3} />
+        <FilterMap list={this.props.items} cat_id={4} />
+=======
     console.log('THIS', this.props);
     return (
       <div className="App">
@@ -59,19 +69,20 @@ class App extends Component {
           <FilterMap title={'Computers'} list={this.props.items} cat_id={3} />
           <FilterMap title={'Furniture'} list={this.props.items} cat_id={4} />
         </div>
+>>>>>>> dev
 
       </div>
     );
   }
 
-
 }
+//end class
 
 const mapStateToProps = (state) => {
   return {
     items: state.itemList,
     user: state.user
-  }
+  };
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -79,21 +90,13 @@ const mapDispatchToProps = (dispatch) => {
     loadItems: () => {
       dispatch(loadItems());
     },
-    loadCategories: () => {
-      dispatch(loadCategories());
-    },
     loadConditions: () => {
       dispatch(loadConditions());
-    },
-    logoutUser: () => {
-      dispatch(logoutUser());
-    }
-  }
+    } 
+  };
 }
 
-const ConnectedApp = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(App);
-
-export default ConnectedApp;
