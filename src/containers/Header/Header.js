@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import logo from '../App/logo.svg';
 import '../App/App.css';
 
-import { logoutUser } from '../../actions/users';
+import { loginUser, logoutUser } from '../../actions/users';
 
 import LoginUser from '../Login';
 import NewUser from '../Register';
@@ -78,6 +78,9 @@ class Header extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    loginUser: () => {
+      dispatch(loginUser());
+    },
     logoutUser: () => {
       dispatch(logoutUser());
     }
