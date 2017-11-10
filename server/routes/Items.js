@@ -2,18 +2,27 @@ const express = require('express');
 const router = express.Router();
 const items = require('./Items');
 const db = require('../../models');
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: './uploads/items',
+  filename(req, file, cb){
+    cb(null, `${file.originalname}`);
+  }
+})
+const upload = multer({ storage });
 const Items = db.Item;
 const Category = db.Category;
 const Condition = db.Condition;
 const Status = db.Status;
 const User = db.User;
 
-router.post('/new', isAuthenticated, (req, res) => {
+router.post('/new', upload.single('file'), (req, res) => {
+  //now we have access to req.file
+  console.log(req.file, 'REQ FILE');
   let data = req.body;
-  //console.log(data);
   return Items.create({
     name: data.name,
-    image: data.image,
+    image: req.file.path, //set to image file path (where's it located on YOUR comp now that it's saved)
     body: data.body,
     price: data.price,
     category_id: data.category_id,
@@ -23,7 +32,6 @@ router.post('/new', isAuthenticated, (req, res) => {
     status_id: 1
   })
   .then((item) => {
-    console.log('=====POSTED NEW ITEM=======', item);
     return res.json(item);
   })
   .catch((error) => {
@@ -32,7 +40,6 @@ router.post('/new', isAuthenticated, (req, res) => {
 });
 
 router.get('/', (req, res) => {
-  console.log('something');
   return Items.findAll({include:[
     {model:Category, as: 'Category'},
     {model: Condition, as: 'Condition'},
@@ -44,7 +51,6 @@ router.get('/', (req, res) => {
     },
     order: [['updatedAt', 'DESC']]})
   .then((items) => {
-    //console.log('=====GET ALL ITEMS====', items);
     return res.json(items);
   })
   .catch((error) => {
