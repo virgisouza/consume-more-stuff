@@ -2,11 +2,14 @@
 /*THE NEW ITEM FORM CONTAINER*/
 /*THE NEW ITEM FORM CONTAINER*/
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Route, Redirect } from 'react-router';
+
 import '../App/App.css';
+
 import Item from '../../components/item';
 import Select from '../../components/select';
+
 import { addItem } from '../../actions/items';
 import { loadCategories } from '../../actions/categories';
 import { loadConditions } from '../../actions/conditions';
@@ -55,96 +58,116 @@ class NewItemForm extends Component {
 
   }
 
-  handleChangeBody(event){
-    event.preventDefault();
-    this.setState({body : event.target.value});
+  componentWillReceiveProps() {
+
   }
 
-  handleChangePrice(event){
-    event.preventDefault();
-    this.setState({price : parseInt(event.target.value)});
-  }
-
-  handleChangeName(event){
-    event.preventDefault();
-    this.setState({name : event.target.value});
-  }
-
-  handleChangeImage(event){
-    event.preventDefault();
-    this.setState({image : event.target.value});
-  }
-
-  handleChangeCondition(event){
-    event.preventDefault();
-    this.setState({condition : parseInt(event.target.value)});
-  }
-
-  handleChangeCategory(event){
-    event.preventDefault();
-    this.setState({category : parseInt(event.target.value)});
-  }
-
-  componentDidMount(){
+  componentDidMount() {
     this.props.loadCategories();
     this.props.loadConditions();
   }
 
+  /*HANDLERS*/
+  handleChangeBody(event) {
+    event.preventDefault();
+    this.setState({body : event.target.value});
+  }
+
+  handleChangePrice(event) {
+    event.preventDefault();
+    this.setState({price : parseInt(event.target.value)});
+  }
+
+  handleChangeName(event) {
+    event.preventDefault();
+    this.setState({name : event.target.value});
+  }
+
+  handleChangeImage(event) {
+    event.preventDefault();
+    this.setState({image : event.target.value});
+  }
+
+  handleChangeCondition(event) {
+    event.preventDefault();
+    this.setState({condition : parseInt(event.target.value)});
+  }
+
+  handleChangeCategory(event) {
+    event.preventDefault();
+    this.setState({category : parseInt(event.target.value)});
+  }
+
   render() {
 
-    const redirect = this.state.redirect;
-    if(redirect){
-       return <Redirect to='/'/>
-
+    const { redirect } = this.state;
+    console.log(redirect);
+    if (redirect) {
+      return <Redirect to='/' />
     }
 
     return (
       <div className="NewItemForm">
 
         <form onSubmit={this.handleSubmit.bind(this)}>
+          <div className="NewItemFormLabel">Item Name</div>
           <input
             type='text'
             placeholder='Name'
+            onFocus={(e) => e.target.placeholder=""}
+            onBlur={(e) => e.target.placeholder="Name"}
             value={this.state.name}
             onChange={this.handleChangeName.bind(this)}
           />
 
+          <div className="NewItemFormLabel">URL</div>
           <input
             type='text'
             placeholder='Image Url'
+            onFocus={(e) => e.target.placeholder=""}
+            onBlur={(e) => e.target.placeholder="Image URL"}
             value={this.state.image}
             onChange={this.handleChangeImage.bind(this)}
           />
 
-          <input
+          <div className="NewItemFormLabel">Description</div>
+          <textarea
             type='text'
+            rows='25'
             placeholder='Body'
+            onFocus={(e) => e.target.placeholder=""}
+            onBlur={(e) => e.target.placeholder="Body"}
             value={this.state.body}
             onChange={this.handleChangeBody.bind(this)}
           />
 
+          <div className="NewItemFormLabel">Price</div>
           <input
             type='text'
+            style={{width : 50}}
             placeholder='Price'
+            onFocus={(e) => e.target.placeholder=""}
+            onBlur={(e) => e.target.placeholder="Price"}
             value={this.state.price}
             onChange={this.handleChangePrice.bind(this)}
           />
 
+          <div className="NewItemFormLabel">Category</div>
           <Select
             list={this.props.categories}
-            label='Category: '
             type='name'
             handler={this.handleChangeCategory.bind(this)}
           />
 
+          <div className="NewItemFormLabel">Condition</div>
           <Select
             list={this.props.conditions}
-            label='Condition : '
             type='type'
             handler={this.handleChangeCondition.bind(this)}
           />
-          <input type='submit'/>
-          </form>
+          <button type='submit'>Submit</button>
+
+        </form>
 
       </div>
     );
@@ -156,7 +179,7 @@ const mapStateToProps = (state) => {
     item: state.itemList,
     conditions: state.conditionList,
     categories: state.categoryList
-  }
+  };
 }
 
 const mapDispatchToProps = (dispatch) => {
