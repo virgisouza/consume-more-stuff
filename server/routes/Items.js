@@ -10,7 +10,6 @@ const User = db.User;
 
 router.post('/new', isAuthenticated, (req, res) => {
   let data = req.body;
-  //console.log(data);
   return Items.create({
     name: data.name,
     image: data.image,
@@ -50,7 +49,6 @@ router.get('/', (req, res) => {
     },
     order: [['updatedAt', 'DESC']]})
   .then((items) => {
-    //console.log('=====GET ALL ITEMS====', items);
     return res.json(items);
   })
   .catch((error) => {

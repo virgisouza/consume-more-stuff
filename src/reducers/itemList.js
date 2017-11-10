@@ -13,7 +13,6 @@ const itemList = (state = intitialState, action) => {
       return [...action.items];
 
     case ADD_ITEM:
-      console.log('new Item', action.item);
       return [...state, action.item];
 
     case DELETE_ITEM:
@@ -23,7 +22,6 @@ const itemList = (state = intitialState, action) => {
 
     case EDIT_ITEM:
       let items = state.filter((item) => {
-
         return item.id !== Number(action.item.id)
       });
       return [...items, action.item];
