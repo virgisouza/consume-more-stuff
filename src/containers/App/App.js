@@ -31,25 +31,18 @@ class App extends Component {
 
 
   componentWillMount(){
-    console.log('will mount');
     this.props.loadConditions();
     this.props.loadItems();
 
   }
 
   componentDidMount() {
-    console.log('did mount');
     this.props.loadConditions();
     this.props.loadItems();
   }
 
 
-  handleLogout(event) {
-
-  }
-
   render() {
-    console.log('App component rendered.');
     return (
       <div className="App">
         <Header />
