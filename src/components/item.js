@@ -2,22 +2,32 @@
 import React from 'react';
 import '../containers/App/App.css';
 import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 const Item = ({name, image, body, price, condition, category, updatedAt, id, show}) => {
+  
   return  (
-    <ul className='item'>
-      <div>Name: {name}</div>
-      <div>Image : {image}</div>
-      <div>Description : {body}</div>
-      <div>Price : {price}</div>
-      <div>Condition : {condition}</div>
-      <div>Category : {category}</div>
-      <div>When Item was posted: {updatedAt}</div>
+    <div className='Item'>
+      
+      <div className='Item-price'>${price}</div>
+      <div className='Item-image'><img src='/favicon.ico' height='80' width='80' /></div>
+
+      <div className='Item-name'>{name}</div>
+
+      <div className='Item-category'>category : {category}</div>
+      <div className='Item-condition'>condition : <span>{condition}</span></div>
+      
+      <div className='Item-date'><Moment format="MM/DD">{updatedAt}</Moment></div>
+
+      {/*<div>Description</div>
+      <div className='Item-field'>{body}</div>*/}
 
       {show === 'yes' ?
-      <Link to={`/items/${id}`}>Detail</Link>
+      <div className='Item-label'><Link className='Link' to={`/items/${id}`}>Detail</Link></div>
       :null}
-    </ul>
+
+    </div>
   );
 
 }

@@ -2,9 +2,10 @@ import React from 'react';
 import Item from './item';
 
 const FilterMap = ({ list, cat_id, number, title }) => {
+  console.log('FilterMap component rendered');
   return (
-    <div className="filter">
-      <h2>{title}</h2>
+    <div className="Filter">
+      <div className="Filter-title">{title}</div>
       {
         list.filter((listItem) => {
           return listItem.category_id === Number(cat_id)

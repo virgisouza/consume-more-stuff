@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  border: 2px solid magenta;
   display: flex;
   flex-flow: column;
 }
@@ -11,11 +10,84 @@
   justify-content: space-around;
 }
 
-.filter {
+.Filter {
   display: flex;
   flex-flow: column;
-  width: 25%
+  width: 25%;
 }
+  .Filter-title {
+    font-size: 2em;
+    border: 1px solid black;
+  }
+
+.Item {
+  border: 1px solid black;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 15px;
+  background-color: #ffbcf9;
+  position: relative;
+}
+.Item div {
+  margin: 2px;
+}
+
+  .Item-price {
+    font-size: 11px;
+    border: 1px solid #474747;
+    border-radius: 5px;
+    padding: 3px;
+    color: green;
+    display: inline;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+  }
+  .Item-price:hover {
+    font-size: 13px;
+    cursor: pointer;
+    color: yellow;
+  }
+  
+  .Item-name {
+
+  }
+  .Item-condition {
+    background-color: #ded1ff;
+    font-size: 13px;
+    padding: 1px;
+    border: 1px solid #b2b2b2;
+    border-radius: 3px;
+    display: inline-block;
+  }
+    .Item-condition span {
+      color: blue;
+      font-weight: bold;
+    }
+  .Item-category {
+    background-color: #ded1ff;
+    font-size: 14px;
+    padding: 1px;
+    border: 1px solid #b2b2b2;
+    border-radius: 3px;
+    display: inline-block;    
+  }
+  .Item-date {
+    font-size: 10px;
+    color: #474747;
+    display: inline-block;
+  }
+  .Link  {
+    font-size: 13px;
+    color: green;
+    text-decoration: none;
+  }
+  .Link:hover {
+    color: yellow;
+    text-decoration: underline;
+  }
+
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -177,18 +249,7 @@
 }
 
 /* DUMMY COMPONENTS */
-.Item {
-  border: 1px solid black;
-  border-radius: 15px;
-  display: inline-block;
-  margin: 10px;
-  background-color: magenta;
-}
 
-.Item span {
-  margin: 10px;
-
-}
 
 .Select {
 

@@ -1,4 +1,5 @@
 import { LOAD_ITEMS,
+  /*LOAD_INITIAL_ITEMS,*/ //code change 
   ADD_ITEM,
   DELETE_ITEM,
   EDIT_ITEM,
@@ -11,6 +12,9 @@ const itemList = (state = intitialState, action) => {
   switch (action.type) {
     case LOAD_ITEMS:
       return [...action.items];
+
+    /*case LOAD_INITIAL_ITEMS: //code change 
+      return [...action.items]; //need to change this return*/
 
     case ADD_ITEM:
       return [...state, action.item];

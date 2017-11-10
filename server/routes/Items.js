@@ -93,7 +93,6 @@ router.put('/:id', isAuthenticated, (req, res) => {
     }
   })
   .then((item) => {
-    console.log(item);
     let data = req.body;
     if(req.user.id === item.user_id){
       return Items.update({
@@ -169,11 +168,11 @@ router.delete('/:id', isAuthenticated, (req, res) => {
 });
 
 function isAuthenticated(req, res, next){
-  if(req.isAuthenticated()){
-    console.log('isAuthenticated')
+  if (req.isAuthenticated()) {
+    console.log('isAuthenticated');
     next();
-  }else{
-    console.log('not isAuthenticated')
+  } else {
+    console.log('not isAuthenticated');
     //not sure exactly what I should do here
     res.redirect('/')
   }

@@ -111,7 +111,7 @@ app.post('/register', (req, res) => {
   });
 });
 
-function isAuthenticated(req, res, next){
+function isAuthenticated(req, res, next) {
   if(req.isAuthenticated()){
     next();
   }else{
