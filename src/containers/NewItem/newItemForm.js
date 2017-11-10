@@ -22,12 +22,12 @@ class NewItemForm extends Component {
     super(props);
     this.state = {
       name: '',
-      image: '',
+      file: '',
       body : '',
       price : '',
       condition_id: '',
-      category_id: '',
-      redirect: false
+      category_id: ''
+      // redirect: false
 
     };
   }
@@ -35,32 +35,47 @@ class NewItemForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    let newItem = {
-      name: this.state.name,
-      image: this.state.image,
-      body : this.state.body,
-      price : this.state.price,
-      condition_id: this.state.condition_id || 1,
-      category_id: this.state.category_id || 1
-    };
+    let formData = new FormData();
+    console.log(formData, 'FORM DATA')
 
-    this.props.addItem(newItem);
+    formData.append('file', this.state.file);
+    formData.append('name', this.state.name);
+    formData.append('body', this.state.body);
+    formData.append('price', this.state.price);
+    // formData.append('manufacturer', this.state.manufacturer);
+    // formData.append('model', this.state.model);
+    // formData.append('dimensions', this.state.dimensions);
+    // formData.append('notes', this.state.notes);
+    formData.append('category_id', this.state.category_id || 1);
+    formData.append('condition_id', this.state.condition_id || 1);
+
+
+    this.props.addItem(formData);
+
+    // let newItem = {
+    //   name: this.state.name,
+    //   imageUrl: this.state.image,
+    //   body : this.state.body,
+    //   price : this.state.price,
+    //   condition_id: this.state.condition_id || 1,
+    //   category_id: this.state.category_id || 1
+    // };
+
+    // this.props.addItem(newItem);
+
 
     this.setState({
       name: '',
-      image: '',
+      file: '',
       body : '',
       price : '',
       condition_id: '',
-      category_id: '',
-      redirect: true
+      category_id: ''
+      // redirect: true
     });
 
   }
 
-  componentWillReceiveProps() {
-
-  }
 
   componentDidMount() {
     this.props.loadCategories();
@@ -68,6 +83,27 @@ class NewItemForm extends Component {
   }
 
   /*HANDLERS*/
+  handleChangeImage(event){
+    event.preventDefault();
+    let reader = new FileReader();
+
+    let file = event.target.files[0];
+
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imageUrl: reader.result
+      })
+    }
+
+    reader.readAsDataURL(file);
+  }
+
+  // handleChangeImage(event) {
+  //   event.preventDefault();
+  //   this.setState({image : event.target.value});
+  // }
+
   handleChangeBody(event) {
     event.preventDefault();
     this.setState({body : event.target.value});
@@ -83,29 +119,17 @@ class NewItemForm extends Component {
     this.setState({name : event.target.value});
   }
 
-  handleChangeImage(event) {
-    event.preventDefault();
-    this.setState({image : event.target.value});
-  }
-
   handleChangeCondition(event) {
     event.preventDefault();
-    this.setState({condition : parseInt(event.target.value)});
+    this.setState({condition_id : parseInt(event.target.value)});
   }
 
   handleChangeCategory(event) {
     event.preventDefault();
-    this.setState({category : parseInt(event.target.value)});
+    this.setState({category_id: parseInt(event.target.value)});
   }
 
   render() {
-
-    const { redirect } = this.state;
-    console.log(redirect);
-    if (redirect) {
-      return <Redirect to='/' />
-    }
-
     return (
       <div className="NewItemForm">
 
@@ -122,13 +146,12 @@ class NewItemForm extends Component {
 
           <div className="NewItemFormLabel">URL</div>
           <input
-            type='text'
-            placeholder='Image Url'
+            type='file'
+            //placeholder='Image Url'
             onFocus={(e) => e.target.placeholder=""}
-            onBlur={(e) => e.target.placeholder="Image URL"}
-            value={this.state.image}
-            onChange={this.handleChangeImage.bind(this)}
-          />
+            onBlur={(e) => e.target.placeholder="Image path"}
+            //value={this.state.image}
+            onChange={this.handleChangeImage.bind(this)}/>
 
           <div className="NewItemFormLabel">Description</div>
           <textarea

@@ -1,41 +1,90 @@
 import React, { Component } from 'react';
 import { loadUserItems } from '../actions/items';
 import { connect } from 'react-redux';
-import FilterMap from './FilterMap';
+import FilterStatus from './FilterStatus';
+import Header from '../containers/Header/Header';
+import NewItemForm from '../containers/NewItem/newItemForm';
 
 class MyItems extends Component {
   constructor(props) {
     super(props)
   }
 
+  componentWillMount(){
+    let userID = parseInt(this.props.match.params.id, 10)
+    this.props.loadUserItems(userID);
+  }
+
   componentDidMount(){
-    let userID = parseInt(this.props.match.params.id)
+    let userID = parseInt(this.props.match.params.id, 10)
     this.props.loadUserItems(userID);
   }
 
   render(){
-    console.log(this.props)
+    console.log('useritems', this.props)
     return(
-      <div>
-        <FilterMap list={this.props.items}
-                   cat_id={1}
-                   title={'Vehicles'}
-        />
+      <div className="myItems">
+      <Header />
+      <NewItemForm />
+        <div className="publishedDiv">
+          <h2>Published</h2>
+          <div className="myPublishedItems">
+            <FilterStatus
+              title='Vehicles'
+              list={this.props.items}
+              stat_id={1}
+              cat_id={1}
+            />
+            <FilterStatus
+              title='Appliances'
+              list={this.props.items}
+              stat_id={1}
+              cat_id={2}
+            />
+            <FilterStatus
+              title='Computers'
+              list={this.props.items}
+              stat_id={1}
+              cat_id={3}
+            />
+            <FilterStatus
+              title='Furniture'
+              list={this.props.items}
+              stat_id={1}
+              cat_id={4}
+            />
+          </div>
+        </div>
 
-        <FilterMap list={this.props.items}
-                   cat_id={2}
-                   title={'Appliances'}
-        />
-
-        <FilterMap list={this.props.items}
-                   cat_id={3}
-                   title={'Computers'}
-        />
-
-        <FilterMap list={this.props.items}
-                   cat_id={4}
-                   title={'Furniture'}
-        />
+        <div className="soldDiv">
+          <h2>Sold</h2>
+          <div className="mySoldItems">
+            <FilterStatus
+              title='Vehicles'
+              list={this.props.items}
+              stat_id={2}
+              cat_id={1}
+            />
+            <FilterStatus
+              title='Appliances'
+              list={this.props.items}
+              stat_id={2}
+              cat_id={2}
+            />
+            <FilterStatus
+              title='Computers'
+              list={this.props.items}
+              stat_id={2}
+              cat_id={3}
+            />
+            <FilterStatus
+              title='Furniture'
+              list={this.props.items}
+              stat_id={2}
+              cat_id={4}
+            />
+          </div>
+        </div>
       </div>
     )
   }

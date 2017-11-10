@@ -2,32 +2,44 @@ const express = require('express');
 const router = express.Router();
 const items = require('./Items');
 const db = require('../../models');
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: './uploads/items',
+  filename(req, file, cb){
+    cb(null, `${file.originalname}`);
+  }
+})
+const upload = multer({ storage });
 const Items = db.Item;
 const Category = db.Category;
 const Condition = db.Condition;
 const Status = db.Status;
 const User = db.User;
 
-router.post('/new', isAuthenticated, (req, res) => { //change path 
+router.post('/new', upload.single('file'), (req, res) => {
+  //now we have access to req.file
+  console.log(req.file, 'REQ FILE');
   let data = req.body;
-  console.log('==============DATA====================');
-  console.log(data);
-  console.log('================END DATA==================');
   return Items.create({
     name: data.name,
-    image: data.image,
+    image: req.file.path, //set to image file path (where's it located on YOUR comp now that it's saved)
     body: data.body,
     price: data.price,
     category_id: data.category_id,
     condition_id: data.condition_id,
-    //remember you changed this
     user_id: req.user.id,
     status_id: 1
   })
   .then((item) => {
-    console.log('==================================');
-    console.log(item);
-    return res.json(item);
+    return item.reload({include:[
+      {model:Category, as: 'Category'},
+      {model: Condition, as: 'Condition'},
+      {model: User, as: 'User'},
+      {model: Status, as: 'Status'}
+    ]})
+    .then((newItem) => {
+      return res.json(newItem);
+    })
   })
   .catch((error) => {
     console.log(error);
@@ -52,44 +64,6 @@ router.get('/', (req, res) => {
     console.log(error);
   });
 });
-
-
-/*Initial Page Load 5 Items*/
-/*router.get('/:num', (req, res) => { //code change 
-  const limit = req.query.num;
-  return Items.findAndCountAll({
-    include : [
-    { model : Category, as: 'Category'},
-    { model : Condition, as: 'Condition'},
-    { model : User, as: 'User'},
-    { model : Status, as: 'Status'}
-    ],
-    limit : limit,
-    offset : 0
-  }).then(items => {
-    return res.json(items);
-  });
-});*/
-
-//should probably be in category route
-// router.get('/:category_id', (req, res) => {
-//   return Items.findAll({include:[
-//     {model:Category, as: 'Category'},
-//     {model: Condition, as: 'Condition'},
-//     {model: User, as: 'User'},
-//     {model: Status, as: 'Status'}
-//     ],
-//     where: {
-//       category_id: req.params.category_id
-//     }
-//   })
-//   .then((items) => {
-//     return res.json(items)
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
-// });
 
 router.get('/:id', (req, res) => {
   return Items.findOne({include:[
@@ -171,8 +145,20 @@ router.delete('/:id', isAuthenticated, (req, res) => {
         id: req.params.id
       }
       })
-      .then((soldItem) => {
-        res.json(soldItem);
+      .then((response) => {
+        return Items.findOne({include:[
+          {model: Category, as: 'Category'},
+          {model: Condition, as: 'Condition'},
+          {model: User, as: 'User'},
+          {model: Status, as: 'Status'}
+          ],
+          where: {
+            id: req.params.id
+          }
+        })
+        .then((soldItem) => {
+          return res.json(soldItem);
+        });
       });
     }
   })

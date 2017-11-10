@@ -10,6 +10,7 @@ const user = (state = initialState, action) => {
     case LOGIN_USER:
       localStorage.setItem('user_id', action.user.id);
       localStorage.setItem('logged_in', true);
+      localStorage.setItem('username', action.user.username);
       let test = localStorage.getItem('logged_in');
       console.log(test);
 
@@ -19,6 +20,7 @@ const user = (state = initialState, action) => {
     case LOGOUT_USER:
       localStorage.setItem('user_id', 0);
       localStorage.setItem('logged_in', false);
+      localStorage.setItem('username', 'Guest');
       return Object.assign({}, state, {user_id: null, logged_in: false})
 
     case REGISTER_USER:

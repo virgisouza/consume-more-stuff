@@ -29,6 +29,7 @@ export const login = (user) => new Promise((resolve, reject) => {
 });
 
 export const addNewItem = (item) => new Promise((resolve, reject) => {
+  console.log(item, 'XHR POST')
   let data = JSON.stringify(item);
   var oReq = new XMLHttpRequest();
   oReq.onreadystatechange = function (){

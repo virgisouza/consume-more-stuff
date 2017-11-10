@@ -31,39 +31,36 @@ class App extends Component {
     console.log(props);
   }
 
+
   componentWillMount(){
-    console.log('will mount');
     this.props.loadConditions();
     this.props.loadItems();
+
   }
 
   componentDidMount() {
-    console.log('did mount');
     this.props.loadConditions();
     this.props.loadItems();
   }
 
-  handleLogout(event) {
-
-  }
 
   render() {
-    console.log('App component rendered.');
     return (
       <div className="App">
         <Header />
+
         <div className="home_list">
             <FilterMap title={'Vehicles'} list={this.props.items} cat_id={1} />
             <FilterMap title={'Appliances'} list={this.props.items} cat_id={2} />
             <FilterMap title={'Computers'} list={this.props.items} cat_id={3} />
             <FilterMap title={'Furniture'} list={this.props.items} cat_id={4} />
         </div>
+
       </div>
     );
   }
 
 }
-//end class
 
 const mapStateToProps = (state) => {
   return {
