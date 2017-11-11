@@ -3,10 +3,11 @@ const router = express.Router();
 const items = require('./Items');
 const db = require('../../models');
 const multer = require('multer');
+const path = require('path');
 const storage = multer.diskStorage({
-  destination: './uploads/items',
+  destination: path.join(__dirname, '..', '..', 'public', 'uploads', 'items'),
   filename(req, file, cb){
-    cb(null, `${file.originalname}`);
+    cb(null, `${file.originalname.split(' ').join('')}`);
   }
 })
 const upload = multer({ storage });
@@ -19,10 +20,11 @@ const User = db.User;
 router.post('/new', upload.single('file'), (req, res) => {
   //now we have access to req.file
   console.log(req.file, 'REQ FILE');
+  console.log('REQBODY', req.body);
   let data = req.body;
   return Items.create({
     name: data.name,
-    image: req.file.path, //set to image file path (where's it located on YOUR comp now that it's saved)
+    file: req.file.path, //set to image file path (where's it located on YOUR comp now that it's saved)
     body: data.body,
     price: data.price,
     category_id: data.category_id,
@@ -97,7 +99,7 @@ router.put('/:id', isAuthenticated, (req, res) => {
     if(req.user.id === item.user_id){
       return Items.update({
         name: data.name || item.name,
-        image: data.image || item.image,
+        file: data.file || item.file,
         body: data.body || item.body,
         price: data.price || item.price,
         category_id: data.category_id || item.category_id,

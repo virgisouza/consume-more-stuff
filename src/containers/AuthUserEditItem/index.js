@@ -18,7 +18,7 @@ class AuthUserEditItem extends Component {
 
     this.state = {
       name: '',
-      image: '',
+      file: '',
       body: '',
       price: '',
       category_id: '',
@@ -33,7 +33,7 @@ class AuthUserEditItem extends Component {
 
     let editItem = {
       name: this.state.name,
-      image: this.state.image,
+      file: this.state.file,
       body: this.state.body,
       price: this.state.price,
       category_id: this.state.category_id || 1,
@@ -45,7 +45,7 @@ class AuthUserEditItem extends Component {
 
     this.setState({
       name: '',
-      image: '',
+      file: '',
       body: '',
       price: '',
       category_id: '',
@@ -65,7 +65,7 @@ class AuthUserEditItem extends Component {
 
   handleChangeImage(event) {
     event.preventDefault();
-    this.setState({image: event.target.value});
+    this.setState({file: event.target.value});
   }
 
   handleChangeBody(event) {
@@ -99,6 +99,7 @@ class AuthUserEditItem extends Component {
   render(){
     
     return (
+
       <div>
         <SingleItem name={this.props.item.name}
               image={this.props.item.image}
@@ -165,11 +166,71 @@ class AuthUserEditItem extends Component {
             <button onClick={this.handleChangeDelete.bind(this)}>Mark as SOLD</button>
           </form>
         </div>
-        : null}
-      </div>
+
+      //FOR MERGE CONFLICT, COMMENTING OUT
     )
   }
 }
+
+      {/*<div className='EditItem'>
+      <Item name={this.props.item.name}
+            image={this.props.item.file}
+            body={this.props.item.body}
+            price={this.props.item.price}
+            condition={this.props.item.Condition.type}
+            category={this.props.item.Category.name}
+            updatedAt={this.props.item.updatedAt} />
+
+        {this.props.item.user_id === Number(localStorage.getItem('user_id')) && this.props.item.status_id === 1 ?
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <input
+            type='text'
+            placeholder='Name'
+            value={this.state.name}
+            onChange={this.handleChangeName.bind(this)}
+          />
+
+          <input
+            type='text'
+            placeholder='file Url'
+            value={this.state.file}
+            onChange={this.handleChangeImage.bind(this)}
+          />
+
+          <input
+            type='text'
+            placeholder='Body'
+            value={this.state.body}
+            onChange={this.handleChangeBody.bind(this)}
+          />
+
+          <input
+            type='text'
+            placeholder='Price'
+            value={this.state.price}
+            onChange={this.handleChangePrice.bind(this)}
+          />
+
+          <Select
+            list={this.props.categories}
+            label='Category: '
+            type='name'
+            handler={this.handleChangeCategory.bind(this)}
+          />
+
+          <Select
+            list={this.props.conditions}
+            label='Condition : '
+            type='type'
+            handler={this.handleChangeCondition.bind(this)}
+          />
+          <button type='submit'>Submit</button>
+          <button onClick={this.handleChangeDelete.bind(this)}>Mark as SOLD</button>
+        </form>
+>>>>>>> dev
+        : null}
+      </div>*/
+
 
 const mapStateToProps = (state) => {
   return {

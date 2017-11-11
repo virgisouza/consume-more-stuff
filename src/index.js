@@ -22,7 +22,7 @@ import App from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
 import LoginUser from './containers/Login';
 import AuthUserEditItem from './containers/AuthUserEditItem';
-import MyItems from './components/MyItems';
+import MyItems from './containers/MyItems';
 
 const store = createStore(
   reducers,

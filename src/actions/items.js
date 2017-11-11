@@ -1,19 +1,21 @@
 /*ACTIONS FOR ITEMS*/
 /*ACTIONS FOR ITEMS*/
 /*ACTIONS FOR ITEMS*/
-                
-import { 
-  getItems,  
-  getItemById, 
-  getItemsByUser 
+
+import {
+  getItems,
+  /*getInitialItems,*/ //code change
+  getItemById,
+  getItemsByUser
 } from '../lib/GETrequests';
 
 import { addNewItem } from '../lib/POSTrequests';
 import { itemDelete } from '../lib/DELETErequests';
 import { itemEdit } from '../lib/PUTrequests';
-//const axios = require('axios');
+const axios = require('axios');
 
 export const LOAD_ITEMS = 'LOAD_ITEMS';
+/*export const LOAD_INITIAL_ITEMS = 'LOAD_INITIAL_ITEMS';*/ //code change
 export const LOAD_ITEM = 'LOAD_ITEM';
 export const ADD_ITEM = 'ADD_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
@@ -55,14 +57,26 @@ export const loadItem = (item) => {
 
 export const addItem = (item) => {
   return function(dispatch) {
-    return addNewItem(item).then(newItem => {
+    return axios.post('/api/items/new', item).then((newItem) => {
+      console.log('ACTION', newItem);
       dispatch({
         type: ADD_ITEM,
-        item: newItem
+        item: newItem.data
       });
     });
   }
 }
+
+// export const addItem = (item) => {
+//   return function(dispatch) {
+//     return addNewItem(item).then(newItem => {
+//       dispatch({
+//         type: ADD_ITEM,
+//         item: newItem
+//       });
+//     });
+//   }
+// }
 
 export const deleteItem = (item) => {
   return function(dispatch) {

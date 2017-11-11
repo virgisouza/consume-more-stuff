@@ -41,14 +41,11 @@ class NewItemForm extends Component {
     formData.append('name', this.state.name);
     formData.append('body', this.state.body);
     formData.append('price', this.state.price);
-    // formData.append('manufacturer', this.state.manufacturer);
-    // formData.append('model', this.state.model);
-    // formData.append('dimensions', this.state.dimensions);
-    // formData.append('notes', this.state.notes);
     formData.append('category_id', this.state.category_id || 1);
     formData.append('condition_id', this.state.condition_id || 1);
-
-
+    for(var key of formData.keys()){
+      console.log(key, formData.get(key));
+    }
     this.props.addItem(formData);
 
     // let newItem = {
@@ -93,6 +90,7 @@ class NewItemForm extends Component {
         file: file,
         imageUrl: reader.result
       })
+      console.log(this.state);
     }
 
     reader.readAsDataURL(file);
@@ -148,6 +146,7 @@ class NewItemForm extends Component {
           <div className="NewItemFormLabel">Upload Image</div>
           <input
             type='file'
+            name='file'
             //placeholder='Image Url'
             onFocus={(e) => e.target.placeholder=""}
             onBlur={(e) => e.target.placeholder="Image path"}

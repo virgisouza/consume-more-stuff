@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import logo from '../App/logo.svg';
 import '../App/App.css';
 import { loginUser, logoutUser } from '../../actions/users';
-
+import { Link } from 'react-router-dom';
 import LoginUser from '../Login';
 import NewUser from '../Register';
 import Logout from '../../components/Logout';
@@ -70,9 +70,12 @@ class Header extends Component {
         <div className="Login-reg">
           <ul>
             <li className="Login-reg-first"><a href="#">FAQ</a></li>
-            <li><a href="#">Blog</a></li>
 
-            {this.props.user.logged_in === false || localStorage.getItem('logged_in') === 'false' ?
+            <Link to={'/'}><li>All Items</li></Link>
+
+            <li>{localStorage.getItem('username')}</li>
+
+            {this.props.user.logged_in === false && localStorage.getItem('logged_in') === 'false' ?
             <div>
             <li><a href="#" onClick={this.showRegister.bind(this)}>Register</a></li>
             {this.state.showRegister === true ?
@@ -88,7 +91,10 @@ class Header extends Component {
 
 
             {this.props.user.logged_in === true || localStorage.getItem('logged_in') === 'true' ?
-            <li><Logout handler={this.handleLogout.bind(this)}/> </li>
+            <div>
+              <Link to={`/users/${localStorage.getItem('user_id')}/items`}><li>My Items</li></Link>
+              <li><Logout handler={this.handleLogout.bind(this)}/> </li>
+            </div>
             : null }
 
           </ul>
