@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const items = require('./Items');
 const db = require('../../models');
+
 const multer = require('multer');
 const storage = multer.diskStorage({
   destination: './uploads/items',
@@ -10,13 +11,14 @@ const storage = multer.diskStorage({
   }
 })
 const upload = multer({ storage });
+
 const Items = db.Item;
 const Category = db.Category;
 const Condition = db.Condition;
 const Status = db.Status;
 const User = db.User;
 
-router.post('/new', upload.single('file'), (req, res) => {
+router.post('/new', isAuthenticated, upload.single('file'), (req, res) => {
   //now we have access to req.file
   console.log(req.file, 'REQ FILE');
   let data = req.body;

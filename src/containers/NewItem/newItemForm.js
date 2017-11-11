@@ -36,9 +36,11 @@ class NewItemForm extends Component {
     event.preventDefault();
 
     let formData = new FormData();
-    console.log(formData, 'FORM DATA')
 
+    console.log(this.state.file, 'FILE STATE')
     formData.append('file', this.state.file);
+
+    console.log(formData.entries(), 'FORM DATA AFTER FILE')
     formData.append('name', this.state.name);
     formData.append('body', this.state.body);
     formData.append('price', this.state.price);
@@ -49,7 +51,7 @@ class NewItemForm extends Component {
     formData.append('category_id', this.state.category_id || 1);
     formData.append('condition_id', this.state.condition_id || 1);
 
-
+     console.log(formData.entries(), 'FORM DATA')
     this.props.addItem(formData);
 
     // let newItem = {
@@ -90,6 +92,8 @@ class NewItemForm extends Component {
     let file = event.target.files[0];
 
     reader.onloadend = () => {
+      console.log(file, 'FILE');
+      console.log(reader.result, 'reader result')
       this.setState({
         file: file,
         imageUrl: reader.result
@@ -147,6 +151,7 @@ class NewItemForm extends Component {
           <div className="NewItemFormLabel">URL</div>
           <input
             type='file'
+            // name="fileList" webkitdirectory multiple
             //placeholder='Image Url'
             onFocus={(e) => e.target.placeholder=""}
             onBlur={(e) => e.target.placeholder="Image path"}

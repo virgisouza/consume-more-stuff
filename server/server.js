@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const path = require('path');
 const db = require('../models');
 const routes = require('./routes');
 const redis = require('connect-redis')(session);
@@ -14,7 +15,7 @@ var upload = multer({ destination: 'uploads/' })
 const PORT = process.env.PORT || 8080;
 const app = express();
 
-
+// app.use(express.static(path.join(__dirname 'public')))
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));

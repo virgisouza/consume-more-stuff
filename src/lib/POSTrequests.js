@@ -34,17 +34,25 @@ export const addNewItem = (item) => new Promise((resolve, reject) => {
   var oReq = new XMLHttpRequest();
   oReq.onreadystatechange = function (){
     if(oReq.readyState === XMLHttpRequest.DONE && oReq.status === 200){
-      console.log('============================');
-      console.log(this);
-      console.log('============================');
-      console.log(this.response);
-      console.log('============================');
-      
+      // console.log('============================');
+      // console.log(this);
+      // console.log('============================');
+      // console.log(this.response);
+      // console.log('============================');
+
       var response = JSON.parse(this.response);
       resolve(response);
     }
   }
   oReq.open("POST", "/api/items/new");
-  oReq.setRequestHeader('content-type', 'application/json');
-  oReq.send(data);
+  var boundary = '---------------------------';
+  boundary += Math.floor(Math.random()*32768);
+  boundary += Math.floor(Math.random()*32768);
+  boundary += Math.floor(Math.random()*32768);
+  oReq.setRequestHeader("Content-Type", 'multipart/form-data; boundary=' + boundary);
+
+
+  // oReq.setRequestHeader('content-type', 'multipart/form-data');
+  // oReq.setRequestHeader('boundary', 'boundary');
+   oReq.send(data);
 });
