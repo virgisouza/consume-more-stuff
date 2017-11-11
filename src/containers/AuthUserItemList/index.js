@@ -10,7 +10,7 @@ class AuthUserItemList extends Components {
     super(props);
 
     this.state = {
-      
+
     }
   }
 
@@ -27,7 +27,7 @@ class AuthUserItemList extends Components {
 
             return (
               <Item
-                image={props.image}
+                image={props.file}
                 body={props.body}
                 price={props.price}
                 condition={props.condition}

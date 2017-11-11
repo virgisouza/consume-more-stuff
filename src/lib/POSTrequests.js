@@ -39,12 +39,12 @@ export const addNewItem = (item) => new Promise((resolve, reject) => {
       console.log('============================');
       console.log(this.response);
       console.log('============================');
-      
+
       var response = JSON.parse(this.response);
       resolve(response);
     }
   }
   oReq.open("POST", "/api/items/new");
-  oReq.setRequestHeader('content-type', 'application/json');
+  //oReq.setRequestHeader('content-type', 'multipart/form-data');
   oReq.send(data);
 });

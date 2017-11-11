@@ -18,17 +18,18 @@ const User = db.User;
 
 router.post('/new', upload.single('file'), (req, res) => {
   //now we have access to req.file
-  console.log(req.file, 'REQ FILE');
+  console.log(req, 'REQ FILE');
+  console.log('REQBODY', req.body);
   let data = req.body;
   return Items.create({
     name: data.name,
-    image: req.file.path, //set to image file path (where's it located on YOUR comp now that it's saved)
+    file: req.file.path, //set to image file path (where's it located on YOUR comp now that it's saved)
     body: data.body,
     price: data.price,
     category_id: data.category_id,
     condition_id: data.condition_id,
-    user_id: req.user.id,
-    status_id: 1
+    user_id: data.user_id,
+    status_id: data.status_id
   })
   .then((item) => {
     return item.reload({include:[
@@ -97,7 +98,7 @@ router.put('/:id', isAuthenticated, (req, res) => {
     if(req.user.id === item.user_id){
       return Items.update({
         name: data.name || item.name,
-        image: data.image || item.image,
+        file: data.file || item.file,
         body: data.body || item.body,
         price: data.price || item.price,
         category_id: data.category_id || item.category_id,

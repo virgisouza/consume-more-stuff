@@ -42,14 +42,16 @@ class NewItemForm extends Component {
     formData.append('name', this.state.name);
     formData.append('body', this.state.body);
     formData.append('price', this.state.price);
-    // formData.append('manufacturer', this.state.manufacturer);
-    // formData.append('model', this.state.model);
-    // formData.append('dimensions', this.state.dimensions);
-    // formData.append('notes', this.state.notes);
     formData.append('category_id', this.state.category_id || 1);
     formData.append('condition_id', this.state.condition_id || 1);
-
-
+    formData.append('user_id', 1);
+    formData.append('status_id', 1);
+    console.log(formData.get('file'));
+    console.log(formData.get('body'))
+    console.log(formData.get('name'))
+    console.log(formData.get('price'))
+    console.log(formData.get('category_id'))
+    console.log(formData.get('condition_id'))
     this.props.addItem(formData);
 
     // let newItem = {
@@ -94,6 +96,7 @@ class NewItemForm extends Component {
         file: file,
         imageUrl: reader.result
       })
+      console.log(this.state);
     }
 
     reader.readAsDataURL(file);
