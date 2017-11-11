@@ -8,8 +8,8 @@ const passport = require('passport');
 const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
 const saltRounds = 12;
-var multer  = require('multer')
-var upload = multer({ destination: 'uploads/' })
+// var multer  = require('multer')
+// var upload = multer({ destination: 'uploads/' })
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -121,6 +121,6 @@ function isAuthenticated(req, res, next) {
 }
 
 app.listen(PORT, () => {
-  db.sequelize.sync({ force: true });
+  db.sequelize.sync({ force: false });
   console.log(`Listening on port: ${PORT}`);
 });
