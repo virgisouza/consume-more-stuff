@@ -165,71 +165,16 @@ class AuthUserEditItem extends Component {
             <button type='submit'>Submit</button>
             <button onClick={this.handleChangeDelete.bind(this)}>Mark as SOLD</button>
           </form>
-        </div>
-
-      //FOR MERGE CONFLICT, COMMENTING OUT
-    )
-  }
-}
-
-      {/*<div className='EditItem'>
-      <Item name={this.props.item.name}
-            image={this.props.item.file}
-            body={this.props.item.body}
-            price={this.props.item.price}
-            condition={this.props.item.Condition.type}
-            category={this.props.item.Category.name}
-            updatedAt={this.props.item.updatedAt} />
-
-        {this.props.item.user_id === Number(localStorage.getItem('user_id')) && this.props.item.status_id === 1 ?
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <input
-            type='text'
-            placeholder='Name'
-            value={this.state.name}
-            onChange={this.handleChangeName.bind(this)}
-          />
-
-          <input
-            type='text'
-            placeholder='file Url'
-            value={this.state.file}
-            onChange={this.handleChangeImage.bind(this)}
-          />
-
-          <input
-            type='text'
-            placeholder='Body'
-            value={this.state.body}
-            onChange={this.handleChangeBody.bind(this)}
-          />
-
-          <input
-            type='text'
-            placeholder='Price'
-            value={this.state.price}
-            onChange={this.handleChangePrice.bind(this)}
-          />
-
-          <Select
-            list={this.props.categories}
-            label='Category: '
-            type='name'
-            handler={this.handleChangeCategory.bind(this)}
-          />
-
-          <Select
-            list={this.props.conditions}
-            label='Condition : '
-            type='type'
-            handler={this.handleChangeCondition.bind(this)}
-          />
-          <button type='submit'>Submit</button>
-          <button onClick={this.handleChangeDelete.bind(this)}>Mark as SOLD</button>
-        </form>
->>>>>>> dev
+          </div>
         : null}
-      </div>*/
+      </div>
+      
+    );
+  }
+
+}
+//end class
+
 
 
 const mapStateToProps = (state) => {
