@@ -11,7 +11,6 @@ const FilterStatus = ({ list, stat_id, cat_id, title }) => {
         }).filter((filterListItem) => {
           return filterListItem.category_id === Number(cat_id)
         }).map((item) => {
-          //let test = (item.file).split(' ').join('')
           return (
             <Item
               name={item.name}

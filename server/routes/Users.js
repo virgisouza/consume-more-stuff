@@ -7,15 +7,6 @@ const Category = db.Category;
 const Condition = db.Condition;
 const Status = db.Status;
 const User = db.User;
-const multer = require('multer');
-const path = require('path');
-const storage = multer.diskStorage({
-  destination: path.join(__dirname, '..', '..', 'public', 'uploads', 'items'),
-  filename(req, file, cb){
-    cb(null, `${file.originalname.split(' ').join('')}`);
-  }
-})
-const upload = multer({ storage });
 
 router.get('/', (req, res) => {
   User.findAll()
