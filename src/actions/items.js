@@ -33,19 +33,6 @@ export const loadItems = () => {
   }
 }
 
-/*Initial Page Load First 5 Items*/
-/*export const loadInitialItems = () => {   //code change
-  return function(dispatch) {
-    return getInitialItems().then(initialItems => {
-      dispatch({
-        type: LOAD_INITIAL_ITEMS,
-        initialItems: initialItems
-      });
-    });
-  }
-}*/
-
-
 export const loadUserItems = (user_id) => {
   return function(dispatch) {
     return getItemsByUser(user_id).then((items) => {
@@ -73,6 +60,7 @@ export const loadItem = (item) => {
 export const addItem = (item) => {
   return function(dispatch) {
     return axios.post('/api/items/new', item).then((newItem) => {
+      console.log('ACTION', newItem);
       dispatch({
         type: ADD_ITEM,
         item: newItem.data

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { loadUserItems } from '../actions/items';
+import { loadUserItems } from '../../actions/items';
 import { connect } from 'react-redux';
-import FilterStatus from './FilterStatus';
-import Header from '../containers/Header/Header';
-import NewItemForm from '../containers/NewItem/newItemForm';
+import FilterStatus from '../../components/FilterStatus';
+import Header from '../Header/Header';
+import NewItemForm from '../NewItem/newItemForm';
 
 class MyItems extends Component {
   constructor(props) {

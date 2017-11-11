@@ -3,10 +3,11 @@ const router = express.Router();
 const items = require('./Items');
 const db = require('../../models');
 const multer = require('multer');
+const path = require('path');
 const storage = multer.diskStorage({
-  destination: './uploads/items',
+  destination: path.join(__dirname, '..', '..', 'public', 'uploads', 'items'),
   filename(req, file, cb){
-    cb(null, `${file.originalname}`);
+    cb(null, `${file.originalname.split(' ').join('')}`);
   }
 })
 const upload = multer({ storage });
@@ -18,7 +19,7 @@ const User = db.User;
 
 router.post('/new', upload.single('file'), (req, res) => {
   //now we have access to req.file
-  console.log(req, 'REQ FILE');
+  console.log(req.file, 'REQ FILE');
   console.log('REQBODY', req.body);
   let data = req.body;
   return Items.create({
@@ -28,8 +29,8 @@ router.post('/new', upload.single('file'), (req, res) => {
     price: data.price,
     category_id: data.category_id,
     condition_id: data.condition_id,
-    user_id: data.user_id,
-    status_id: data.status_id
+    user_id: req.user.id,
+    status_id: 1
   })
   .then((item) => {
     return item.reload({include:[

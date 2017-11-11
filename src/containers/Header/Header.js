@@ -75,7 +75,7 @@ class Header extends Component {
 
             <li>{localStorage.getItem('username')}</li>
 
-            {this.props.user.logged_in !== true || localStorage.getItem('logged_in') !== 'true' ?
+            {this.props.user.logged_in === false && localStorage.getItem('logged_in') === 'false' ?
             <div>
             <li><a href="#" onClick={this.showRegister.bind(this)}>Register</a></li>
             {this.state.showRegister === true ?
