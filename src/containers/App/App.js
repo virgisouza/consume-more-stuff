@@ -28,14 +28,6 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    console.log(props);
-  }
-
-
-  componentWillMount(){
-    this.props.loadConditions();
-    this.props.loadItems();
-
   }
 
   componentDidMount() {
@@ -43,8 +35,8 @@ class App extends Component {
     this.props.loadItems();
   }
 
-
   render() {
+    console.log('App component rendered');
     return (
       <div className="App">
         <Header />

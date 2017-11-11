@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Item from '../../components/item';
+import SingleItem from '../../components/item_single';
 import { connect } from 'react-redux';
+
+import '../App/App.css';
 
 import { loadItem } from '../../actions/items';
 import { loadConditions } from '../../actions/conditions';
@@ -12,9 +14,7 @@ import Select from '../../components/select';
 class AuthUserEditItem extends Component {
 
   constructor(props) {
-    console.log('AUTH USER EDIT ITEM');
     super(props);
-    console.log(this.props.items);
 
     this.state = {
       name: '',
@@ -53,38 +53,37 @@ class AuthUserEditItem extends Component {
     })
   }
 
-  handleChangeDelete(event){
+  handleChangeDelete(event) {
     event.preventDefault();
     this.props.deleteItem(this.props.match.params.id);
-
   }
 
-  handleChangeName(event){
+  handleChangeName(event) {
     event.preventDefault();
     this.setState({name: event.target.value});
   }
 
-  handleChangeImage(event){
+  handleChangeImage(event) {
     event.preventDefault();
     this.setState({image: event.target.value});
   }
 
-  handleChangeBody(event){
+  handleChangeBody(event) {
     event.preventDefault();
     this.setState({body: event.target.value});
   }
 
-  handleChangePrice(event){
+  handleChangePrice(event) {
     event.preventDefault();
     this.setState({price: event.target.value});
   }
 
-  handleChangeCategory(event){
+  handleChangeCategory(event) {
     event.preventDefault();
     this.setState({category_id: event.target.value});
   }
 
-  handleChangeCondition(event){
+  handleChangeCondition(event) {
     event.preventDefault();
     this.setState({condition_id: event.target.value});
   }
@@ -92,69 +91,80 @@ class AuthUserEditItem extends Component {
 
   componentDidMount(){
     let itemID = parseInt(this.props.match.params.id);
-    console.log(this.props.loadItem(itemID));
+    this.props.loadItem(itemID);
     this.props.loadConditions();
     this.props.loadCategories();
   }
 
   render(){
-
+    
     return (
-      <div className='EditItem'>
-      <Item name={this.props.item.name}
-            image={this.props.item.image}
-            body={this.props.item.body}
-            price={this.props.item.price}
-            condition={this.props.item.Condition.type}
-            category={this.props.item.Category.name}
-            updatedAt={this.props.item.updatedAt} />
+      <div>
+        <SingleItem name={this.props.item.name}
+              image={this.props.item.image}
+              body={this.props.item.body}
+              price={this.props.item.price}
+              condition={this.props.item.Condition.type}
+              category={this.props.item.Category.name}
+              updatedAt={this.props.item.updatedAt} />
 
         {this.props.item.user_id === Number(localStorage.getItem('user_id')) && this.props.item.status_id === 1 ?
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <input
-            type='text'
-            placeholder='Name'
-            value={this.state.name}
-            onChange={this.handleChangeName.bind(this)}
-          />
+        <div className="EditItemForm">
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <input
+              type='text'
+              placeholder='Name'
+              onFocus={(e) => e.target.placeholder=""}
+              onBlur={(e) => e.target.placeholder="Name"}
+              value={this.state.name}
+              onChange={this.handleChangeName.bind(this)}
+            />
 
-          <input
-            type='text'
-            placeholder='Image Url'
-            value={this.state.image}
-            onChange={this.handleChangeImage.bind(this)}
-          />
+            <input
+              type='text'
+              placeholder='Image Url'
+              onFocus={(e) => e.target.placeholder=""}
+              onBlur={(e) => e.target.placeholder="Image URL"}
+              value={this.state.image}
+              onChange={this.handleChangeImage.bind(this)}
+            />
 
-          <input
-            type='text'
-            placeholder='Body'
-            value={this.state.body}
-            onChange={this.handleChangeBody.bind(this)}
-          />
+            <textarea
+              type='text'
+              placeholder='Body'
+              rows='25'
+              onFocus={(e) => e.target.placeholder=""}
+              onBlur={(e) => e.target.placeholder="Body"}
+              value={this.state.body}
+              onChange={this.handleChangeBody.bind(this)}
+            />
 
-          <input
-            type='text'
-            placeholder='Price'
-            value={this.state.price}
-            onChange={this.handleChangePrice.bind(this)}
-          />
-
-          <Select
-            list={this.props.categories}
-            label='Category: '
-            type='name'
-            handler={this.handleChangeCategory.bind(this)}
-          />
-
-          <Select
-            list={this.props.conditions}
-            label='Condition : '
-            type='type'
-            handler={this.handleChangeCondition.bind(this)}
-          />
-          <button type='submit'>Submit</button>
-          <button onClick={this.handleChangeDelete.bind(this)}>Mark as SOLD</button>
-        </form>
+            <input
+              type='text'
+              placeholder='Price'
+              onFocus={(e) => e.target.placeholder=""}
+              onBlur={(e) => e.target.placeholder="Price"}
+              value={this.state.price}
+              onChange={this.handleChangePrice.bind(this)}
+            />
+            <div className='EditItemForm-selectLabel'>Category</div>
+            <Select
+              className='EditItemForm-select'
+              list={this.props.categories}
+              type='name'
+              handler={this.handleChangeCategory.bind(this)}
+            />
+            <div className='EditItemForm-selectLabel'>Condition</div>
+            <Select
+              className='EditItemForm-select'
+              list={this.props.conditions}
+              type='type'
+              handler={this.handleChangeCondition.bind(this)}
+            />
+            <button type='submit'>Submit</button>
+            <button onClick={this.handleChangeDelete.bind(this)}>Mark as SOLD</button>
+          </form>
+        </div>
         : null}
       </div>
     )

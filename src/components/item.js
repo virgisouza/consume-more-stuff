@@ -1,4 +1,5 @@
-// Unauthorized users item view
+// Item component for UnAuth home view
+
 import React from 'react';
 import '../containers/App/App.css';
 import { Link } from 'react-router-dom';
@@ -11,7 +12,7 @@ const Item = ({name, image, body, price, condition, category, updatedAt, id, sho
     <div className='Item'>
       
       <div className='Item-price'>${price}</div>
-      <div className='Item-image'><img src='/favicon.ico' height='80' width='80' /></div>
+      <div className='Item-image'><img src={image} height='80' width='80' /></div>
 
       <div className='Item-name'>{name}</div>
 
@@ -23,7 +24,7 @@ const Item = ({name, image, body, price, condition, category, updatedAt, id, sho
       {/*<div>Description</div>
       <div className='Item-field'>{body}</div>*/}
 
-      {show === 'yes' ?
+      {show === 'yes' ? 
       <div className='Item-label'><Link className='Link' to={`/items/${id}`}>Detail</Link></div>
       :null}
 

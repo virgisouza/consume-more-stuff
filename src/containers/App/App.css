@@ -168,6 +168,7 @@
     background-color: yellow;
     border: none;
     border-radius: 5px;
+    font-weight: bold;
     cursor: pointer;
   }
   .Login-form button:hover {
@@ -192,36 +193,33 @@
     background-color: yellow;
     border: none;
     border-radius: 5px;
+    font-weight: bold;
     cursor: pointer;
   }
   .NewUserForm button:hover {
     background-color: #997500;
   }
 
-/* APPLICATION VIEWS */
+/* NewItemForm Component */
 .NewItemForm {
   border: 1px solid black;
   margin: 5px;
   display: inline-block;
 }
   .NewItemFormLabel {
-    /* border: 1px solid blue; */
     font-size: 11px;
     margin-left: 5px;
   }
   .NewItemForm form {
-    /* border: 1px solid red; */
     margin: 5px;
   }
   .NewItemForm input {
     display: inline-block;
-    /* border: 1px solid cyan; */
     margin: 5px;
     padding: 2px;
   }
   .NewItemForm textarea {
     display: inline-block;
-    /* border: 1px solid cyan; */
     margin: 5px;
     padding: 2px;
   }
@@ -229,6 +227,7 @@
     background-color: yellow;
     border: none;
     border-radius: 5px;
+    font-weight: bold;
     margin: 5px; 
   }
   .NewItemForm button:hover {
@@ -237,20 +236,47 @@
     cursor: pointer;
   }
   .Select {
-    /* border: 1px solid green; */
     margin: 5px;
   }
 
 
-
-
 .EditItemForm {
-
+  border: 1px solid black;
+  margin: 5px;
+  display: inline;
 }
+  .EditItemForm-title {
 
-/* DUMMY COMPONENTS */
+  }
+  .EditItemForm input {
+    margin: 2px;
+    padding: 1px;
+    display: block;
+  }
+  .EditItemForm textarea {
+    margin: 2px;
+    padding: 1px;
+    display: inline-block;
+  }
+  .EditItemForm-selectLabel {
+    margin: 5px;
+    font-size: 13px;
+  }
+  .EditItemForm-select {
+    margin: 5px;
+  }
+  .EditItemForm button {
+    background-color: yellow;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 2px;
+    margin: 5px; 
+  }
+  .EditItemForm button:hover {
+    background-color: #997500;
+    color: yellow;
+    cursor: pointer;
+  }
 
 
-.Select {
-
-}

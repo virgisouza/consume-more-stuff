@@ -28,7 +28,6 @@ class NewItemForm extends Component {
       condition_id: '',
       category_id: ''
       // redirect: false
-
     };
   }
 
@@ -130,6 +129,8 @@ class NewItemForm extends Component {
   }
 
   render() {
+    console.log('NewItemForm has rendered.');
+    console.log(this.props.itemList);
     return (
       <div className="NewItemForm">
 
@@ -144,7 +145,7 @@ class NewItemForm extends Component {
             onChange={this.handleChangeName.bind(this)}
           />
 
-          <div className="NewItemFormLabel">URL</div>
+          <div className="NewItemFormLabel">Upload Image</div>
           <input
             type='file'
             //placeholder='Image Url'

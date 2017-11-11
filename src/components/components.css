@@ -1,0 +1,58 @@
+.SingleItem {
+  border: 1px solid black;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 15px;
+  background-color: #ffbcf9;
+  position: relative;
+}
+  .SingleItem div {
+    margin: 2px;
+  }
+  .SingleItem-price {
+    font-size: 11px;
+    border: 1px solid #474747;
+    border-radius: 5px;
+    padding: 3px;
+    color: green;
+    display: inline;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+  }
+  .SingleItem-price:hover {
+    font-size: 13px;
+    cursor: pointer;
+    color: yellow;
+  }
+  .SingleItem-image {
+    
+  }
+  .SingleItem-condition {
+    background-color: #ded1ff;
+    font-size: 13px;
+    padding: 1px;
+    border: 1px solid #b2b2b2;
+    border-radius: 3px;
+    display: inline-block;
+  }
+    .SingleItem-condition span {
+      color: blue;
+      font-weight: bold;
+    }
+  .SingleItem-category {
+    background-color: #ded1ff;
+    font-size: 14px;
+    padding: 1px;
+    border: 1px solid #b2b2b2;
+    border-radius: 3px;
+    display: inline-block;    
+  }
+  .SingleItem-date {
+    font-size: 10px;
+    color: #474747;
+    display: inline-block;
+  }
+  .SingleItem-body {
+    
+  }

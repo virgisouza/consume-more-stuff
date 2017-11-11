@@ -118,7 +118,7 @@ router.put('/:id', isAuthenticated, (req, res) => {
             id: req.params.id
           }
         })
-        .then((updatedItem) => {
+        .then((updatedItem) => {     
           return res.json(updatedItem);
         });
       });
