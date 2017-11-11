@@ -18,7 +18,7 @@ class AuthUserEditItem extends Component {
 
     this.state = {
       name: '',
-      image: '',
+      file: '',
       body: '',
       price: '',
       category_id: '',
@@ -33,7 +33,7 @@ class AuthUserEditItem extends Component {
 
     let editItem = {
       name: this.state.name,
-      image: this.state.image,
+      file: this.state.file,
       body: this.state.body,
       price: this.state.price,
       category_id: this.state.category_id || 1,
@@ -45,7 +45,7 @@ class AuthUserEditItem extends Component {
 
     this.setState({
       name: '',
-      image: '',
+      file: '',
       body: '',
       price: '',
       category_id: '',
@@ -66,7 +66,7 @@ class AuthUserEditItem extends Component {
 
   handleChangeImage(event){
     event.preventDefault();
-    this.setState({image: event.target.value});
+    this.setState({file: event.target.value});
   }
 
   handleChangeBody(event){
@@ -102,7 +102,7 @@ class AuthUserEditItem extends Component {
     return (
       <div className='EditItem'>
       <Item name={this.props.item.name}
-            image={this.props.item.image}
+            image={this.props.item.file}
             body={this.props.item.body}
             price={this.props.item.price}
             condition={this.props.item.Condition.type}
@@ -120,8 +120,8 @@ class AuthUserEditItem extends Component {
 
           <input
             type='text'
-            placeholder='Image Url'
-            value={this.state.image}
+            placeholder='file Url'
+            value={this.state.file}
             onChange={this.handleChangeImage.bind(this)}
           />
 

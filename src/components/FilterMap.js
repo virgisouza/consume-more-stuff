@@ -13,7 +13,7 @@ const FilterMap = ({ list, cat_id, number, title }) => {
           return (
             <Item
               name={item.name}
-              image={item.image}
+              image={item.file}
               body={item.body}
               price={item.price}
               condition={item.Condition.type}

@@ -18,6 +18,7 @@ const app = express();
 // app.use(express.static(path.join(__dirname 'public')))
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
+app.use(upload.array());
 app.use(express.static('public'));
 app.use(session({
   store: new redis(),
