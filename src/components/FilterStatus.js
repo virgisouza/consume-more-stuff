@@ -14,7 +14,7 @@ const FilterStatus = ({ list, stat_id, cat_id, title }) => {
           return (
             <Item
               name={item.name}
-              image={item.file}
+              image={'/' + item.file}
               body={item.body}
               price={item.price}
               condition={(item.Condition && item.Condition.type) ? item.Condition.type : ''}

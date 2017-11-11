@@ -6,18 +6,18 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 
 const Item = ({name, image, body, price, condition, category, updatedAt, id, show}) => {
-  
+
   return  (
     <div className='Item'>
-      
+
       <div className='Item-price'>${price}</div>
-      <div className='Item-image'><img src='/favicon.ico' height='80' width='80' /></div>
+      <div className='Item-image'><img src={image} height='80' width='80' /></div>
 
       <div className='Item-name'>{name}</div>
 
       <div className='Item-category'>category : {category}</div>
       <div className='Item-condition'>condition : <span>{condition}</span></div>
-      
+
       <div className='Item-date'><Moment format="MM/DD">{updatedAt}</Moment></div>
 
       {/*<div>Description</div>

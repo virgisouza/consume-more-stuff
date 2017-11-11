@@ -17,7 +17,6 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
-app.use(upload.array());
 app.use(express.static('public'));
 app.use(session({
   store: new redis(),
@@ -122,6 +121,6 @@ function isAuthenticated(req, res, next) {
 }
 
 app.listen(PORT, () => {
-  db.sequelize.sync({ force: false });
+  db.sequelize.sync({ force: true });
   console.log(`Listening on port: ${PORT}`);
 });

@@ -2,7 +2,7 @@ import { LOGIN_USER,
          LOGOUT_USER,
          REGISTER_USER } from '../actions/users';
 
-const initialState = {};
+const initialState = {logged_in: false};
 
 const user = (state = initialState, action) => {
   switch (action.type){

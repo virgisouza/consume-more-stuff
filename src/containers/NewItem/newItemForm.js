@@ -44,14 +44,9 @@ class NewItemForm extends Component {
     formData.append('price', this.state.price);
     formData.append('category_id', this.state.category_id || 1);
     formData.append('condition_id', this.state.condition_id || 1);
-    formData.append('user_id', 1);
-    formData.append('status_id', 1);
-    console.log(formData.get('file'));
-    console.log(formData.get('body'))
-    console.log(formData.get('name'))
-    console.log(formData.get('price'))
-    console.log(formData.get('category_id'))
-    console.log(formData.get('condition_id'))
+    for(var key of formData.keys()){
+      console.log(key, formData.get(key));
+    }
     this.props.addItem(formData);
 
     // let newItem = {
@@ -150,6 +145,7 @@ class NewItemForm extends Component {
           <div className="NewItemFormLabel">URL</div>
           <input
             type='file'
+            name='file'
             //placeholder='Image Url'
             onFocus={(e) => e.target.placeholder=""}
             onBlur={(e) => e.target.placeholder="Image path"}
