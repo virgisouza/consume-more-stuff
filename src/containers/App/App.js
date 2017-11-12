@@ -27,6 +27,7 @@ class App extends Component {
 
   render() {
     console.log('App component has rendered');
+    console.log(this.props.initialItems);
     return (
       <div className="App">
         <Header />

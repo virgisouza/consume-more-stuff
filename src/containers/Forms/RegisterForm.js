@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { addNewUser } from '../../actions/users';
 import { connect } from 'react-redux';
 
-import '../App/App.css';
+import './Forms.css';
 
 class RegisterForm extends Component {
 

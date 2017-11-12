@@ -1,0 +1,41 @@
+.NewItemForm {
+  border: 1px solid red;
+  margin: 5px;
+  display: inline-block;
+}
+.NewItemFormLabel {
+  /* border: 1px solid blue; */
+  font-size: 11px;
+  margin: 2px;
+  padding: 1px;
+  display: inline-block;
+}
+.NewItemForm input {
+  margin: 5px;
+  padding: 2px;
+  display: block;
+}
+.NewItemForm textarea {
+  /* border: 1px solid cyan; */
+  margin: 5px;
+  padding: 2px;
+  display: block;
+}
+.NewItemForm button {
+  font-weight: bold;
+  background-color: yellow;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 5px; 
+}
+.NewItemForm button:hover {
+  background-color: #997500;
+  color: yellow;
+  cursor: pointer;
+  display: inline-block;
+}
+.Select {
+  /* border: 1px solid green; */
+  margin: 5px;
+  display: inline-block;
+}

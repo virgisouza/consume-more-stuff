@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserItem = ({username, password, email}) => {
+const UserItem = ({ username, password, email }) => {
 
   return (
     <div className="new-user">

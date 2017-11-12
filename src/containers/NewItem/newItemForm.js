@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router';
 
-import '../App/App.css';
+import './NewItemForm.css';
 
 import App from '../App/App.js';
 import Item from '../../components/item';

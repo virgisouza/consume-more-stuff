@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
-import '../containers/App/App.css';
+import './styles/Item.css';
 
 const Item = ({name, image, body, price, condition, category, postedDate, id, show}) => {
 

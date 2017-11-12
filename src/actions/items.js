@@ -2,17 +2,6 @@
 /*ACTIONS FOR ITEMS*/
 /*ACTIONS FOR ITEMS*/
 
-import {
-  getItems,
-  getInitialItems,
-  getItemById,
-  getItemsByUser
-} from '../lib/GETrequests';
-
-import { addNewItem } from '../lib/POSTrequests';
-import { itemDelete } from '../lib/DELETErequests';
-import { itemEdit } from '../lib/PUTrequests';
-
 const axios = require('axios');
 
 export const LOAD_ITEMS = 'LOAD_ITEMS';
@@ -25,83 +14,105 @@ export const LOAD_USER_ITEMS = 'LOAD_USER_ITEMS'
 
 export const loadItems = () => {
   return function(dispatch) {
-    return getItems().then(items => {
-      dispatch({
-        type : LOAD_ITEMS,
-        items : items
+    return axios.get('/api/items')
+      .then(items => {
+        dispatch({
+          type : LOAD_ITEMS,
+          items : items
+        });
+      })
+      .catch(error => {
+        console.log(error);
       });
-    });
   }
 }
 
 export const loadInitialItems = () => {
   return function(dispatch) {
-    return getInitialItems().then(initialItems => {
-      dispatch({
-        type : LOAD_INITIAL_ITEMS,
-        initialItems : initialItems
+    return axios.get('/api/items/initial')
+      .then(initialItems => {
+        dispatch({
+          type : LOAD_INITIAL_ITEMS,
+          initialItems : initialItems
+        });
+      })
+      .catch(error => {
+        console.log(error);
       });
-    });
-  }
+  });
 }
 
 export const loadUserItems = (user_id) => {
-  console.log('loadUserItems action fired');
   return function(dispatch) {
-    return getItemsByUser(user_id).then((items) => {
-      console.log('getItemsByUser XHR request returned successfully!', items);
-      dispatch({
-        type: LOAD_USER_ITEMS,
-        items: items
+    return axios.get('/api/users/' + user_id + '/items')
+      .then((items) => {
+        dispatch({
+          type: LOAD_USER_ITEMS,
+          items: items
+        });
+      })
+      .catch(error => {
+        console.log(error);
       });
-    });
   }
 }
 
 export const loadItem = (item) => {
-  console.log('first item', item)
   return function(dispatch) {
-    return getItemById(item).then(item => {
-      console.log('second item', item);
-      dispatch({
-        type : LOAD_ITEM,
-        item : item
+    return axios.get('/api/items/' + item_id)
+      .then(item => {
+        dispatch({
+          type : LOAD_ITEM,
+          item : item
+        });
+      })
+      .catch(error => {
+        console.log(error);
       });
-    });
   }
 }
 
 export const addItem = (item) => {
   return function(dispatch) {
-    return axios.post('/api/items/new', item).then((newItem) => {
-      console.log('ACTION', newItem);
-      dispatch({
-        type: ADD_ITEM,
-        item: newItem.data
+    return axios.post('/api/items/new', item)
+      .then((newItem) => {
+        dispatch({
+          type: ADD_ITEM,
+          item: newItem.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
       });
-    });
   }
 }
 
 export const deleteItem = (item) => {
   return function(dispatch) {
-    return itemDelete(item).then(response => {
-      console.log('RESPONSE', response);
-      dispatch({
-        type: DELETE_ITEM,
-        item: response
+    return axios.delete('/api/items/' + item_id)
+      .then(response => {
+        dispatch({
+          type: DELETE_ITEM,
+          item: response
+        });
+      })
+      .catch(error => {
+        console.log(error);
       });
-    });
   }
 }
 
 export const editItem = (item) => {
   return function(dispatch) {
-    return itemEdit(item).then(editedItem => {
-      dispatch({
-        type: EDIT_ITEM,
-        item: editedItem
+    return axios.put('/api/items/' + item.id)
+      .then(editedItem => {
+        dispatch({
+          type: EDIT_ITEM,
+          item: editedItem
+        });
+      })
+      .catch(error => {
+        console.log(error);
       });
-    });
   }
 }

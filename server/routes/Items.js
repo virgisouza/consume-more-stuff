@@ -15,12 +15,12 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage });
 
-router.post('/new', upload.single('file'), (req, res) => { //can change path no need new
+router.post('/', upload.single('file'), (req, res) => { //can change path no need new
 
   let data = req.body;
   return Items.create({
     name: data.name,
-    file: req.file.path, //set to image file path (where's it located on YOUR comp now that it's saved)
+    file: req.file.path, //where image is on user's comp
     body: data.body,
     price: data.price,
     category_id: data.category_id,
@@ -68,6 +68,7 @@ router.get('/initial', (req, res) => {
     limit : 3
   })
   .then(initialItems => {
+    console.log('=============================')
     return res.json(initialItems);
   })
   .catch(error => {

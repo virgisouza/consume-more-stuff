@@ -14,7 +14,6 @@ var upload = multer({ destination: 'uploads/' })
 const PORT = process.env.PORT || 8080;
 const app = express();
 
-
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
@@ -74,7 +73,7 @@ passport.use(new LocalStrategy(function (username, password, done) {
 
 app.post('/login', passport.authenticate('local'), function(req, res){
   const user = req.user;
-  res.json(req.user);
+  return res.json(req.user);
 });
 
 app.use('/api', routes);
@@ -82,12 +81,12 @@ app.use('/api', routes);
 app.get('/logout', (req, res) => {
   req.logout();
   console.log('user logged out');
-  res.sendStatus(200);
+  return res.sendStatus(200);
 });
 
 app.post('/register', (req, res) => {
-  bcrypt.genSalt(saltRounds, function(err, salt){
-    bcrypt.hash(req.body.password, salt, function(err, hash){
+  bcrypt.genSalt(saltRounds, function(err, salt) {
+    bcrypt.hash(req.body.password, salt, function(err, hash) {
       db.User.create({
         username: req.body.username,
         password: hash,
@@ -97,7 +96,7 @@ app.post('/register', (req, res) => {
         res.json(user);
       })
       .catch((error) => {
-        return res.send('Stupid username');
+        return res.send('Bad Username');
       });
     });
   });
@@ -108,7 +107,7 @@ function isAuthenticated(req, res, next) {
     next();
   }else{
     //not sure exactly what I should do here
-    res.redirect('/')
+    return res.redirect('/')
   }
 }
 

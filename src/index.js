@@ -41,11 +41,13 @@ ReactDOM.render(
     <Router>
       <div>
         <Route exact path='/' component={App}/>
+        
+        <Route path='/login' component={LoginForm} />
+        <Route path='/register' component={RegisterForm} />
+
         <Route path='/items/:id' component={AuthUserEditItem}/>
         <Route path='/new' component={NewItemForm}/>
         <Route path='/users/:id/items' component={MyItems}/>
-        <Route path='/login' component={LoginForm} />
-        <Route path='/register' component={RegisterForm} />
       </div>
     </Router>
   </Provider>,

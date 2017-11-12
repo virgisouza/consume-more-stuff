@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import logo from '../App/logo.svg';
-import '../App/App.css';
+import './Header.css';
 
 import { loginUser, logoutUser } from '../../actions/users';
 import { Link } from 'react-router-dom';
@@ -69,7 +69,7 @@ class Header extends Component {
     console.log('Header Component has rendered');
     console.log(this.props);
     return (
-      <div className="App-header">
+      <div className="Header">
         <div className="Login-reg">
           <ul>
             <li className="Login-reg-first"><a href="#">FAQ</a></li>
@@ -104,8 +104,8 @@ class Header extends Component {
         </div>
 
 
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Consume More Stuff</h1>
+        <img src={logo} className="Header-logo" alt="logo" />
+        <h1 className="Header-title">Consume More Stuff</h1>
       </div>
     );
 
