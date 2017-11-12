@@ -19,12 +19,13 @@ const User = db.User;
 
 router.post('/new', isAuthenticated, upload.single('file'), (req, res) => {
   //now we have access to req.file
-  console.log(req.file, 'REQ FILE');
+  console.log(req.file.path, 'REQ FILE');
   console.log('REQBODY', req.body);
   let data = req.body;
+  let image = (req.file.path).split('/').splice(7).join('/');
   return Items.create({
     name: data.name,
-    file: req.file.path, //set to image file path (where's it located on YOUR comp now that it's saved)
+    file: image, //set to image file path (where's it located on YOUR comp now that it's saved)
     body: data.body,
     price: data.price,
     category_id: data.category_id,

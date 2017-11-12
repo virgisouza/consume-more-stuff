@@ -9,7 +9,6 @@ const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
 const saltRounds = 12;
 
-
 const PORT = process.env.PORT || 8080;
 const app = express();
 

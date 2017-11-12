@@ -28,7 +28,7 @@ const FilterStatus = ({ list, stat_id, cat_id, title }) => {
               updatedAt={item.updatedAt}
               key={item.id}
               id={item.id}
-              show='yes'
+              user_id={item.user_id}
             />
           )
         })

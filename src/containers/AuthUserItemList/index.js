@@ -5,7 +5,7 @@ import { loadItems } from '../../actions/items';
 //load all items from specific user
 //divide those items by status : 2 rows {published and sold}
 
-class AuthUserItemList extends Components {
+class AuthUserItemList extends Component {
   constructor(props){
     super(props);
 
