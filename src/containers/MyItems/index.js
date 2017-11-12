@@ -92,7 +92,8 @@ class MyItems extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    items: state.itemList
+    items: state.itemList,
+    user: state.user
   }
 }
 

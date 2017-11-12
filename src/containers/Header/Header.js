@@ -4,7 +4,6 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import logo from '../App/logo.svg';
 import '../App/App.css';
 import { loginUser, logoutUser } from '../../actions/users';
@@ -64,7 +63,6 @@ class Header extends Component {
   }
 
   render() {
-    console.log(this.props.user.logged_in);
     return (
       <div className="App-header">
         <div className="Login-reg">

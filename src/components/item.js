@@ -1,52 +1,92 @@
 // Unauthorized users item view
-import React from 'react';
+import React, { Component } from 'react';
 import '../containers/App/App.css';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import 'moment-timezone';
+import AuthUserEditItem from '../containers/AuthUserEditItem';
 
-const Item = ({name, image, body, price, condition, category, updatedAt, id, show}) => {
+class Item extends Component {
+  constructor(props){
+    super(props);
 
-  return  (
-    <div className='Item'>
+    this.state = {
+      show: false
+    }
+  }
 
-      <div className='Item-price'>${price}</div>
-      <div className='Item-image'><img src={image} height='80' width='80' /></div>
+  edit(event){
+    event.preventDefault();
+    if(this.state.show === false){
+      this.setState({
+        show:true
+      })
+    }else{
+      this.setState({
+        show:false
+      })
+    }
+  }
 
-      <div className='Item-name'>{name}</div>
+  componentDidMount(){
 
-      <div className='Item-category'>category : {category}</div>
-      <div className='Item-condition'>condition : <span>{condition}</span></div>
+  }
 
-      <div className='Item-date'><Moment format="MM/DD">{updatedAt}</Moment></div>
+  render(){
+    return  (
+      <div className='Item'>
 
-      {/*<div>Description</div>
-      <div className='Item-field'>{body}</div>*/}
+        <div className='Item-price'>${this.props.price}</div>
+        <div className='Item-image'><img src={this.props.image} height='80' width='80' /></div>
 
-      {show === 'yes' ?
-      <div className='Item-label'><Link className='Link' to={`/items/${id}`}>Detail</Link></div>
-      :null}
+        <div className='Item-name'>{this.props.name}</div>
 
-    </div>
-  );
+        <div className='Item-category'>category : {this.props.category}</div>
+        <div className='Item-condition'>condition : <span>{this.props.condition}</span></div>
+
+        <div className='Item-date'><Moment format="MM/DD">{this.props.updatedAt}</Moment></div>
+
+        {Number(this.props.user_id) === Number(localStorage.getItem('user_id')) ?
+        <button onClick={this.edit.bind(this)}>Edit</button>
+        :null}
+
+        {this.state.show === true ?
+        <div className='Item-label'><AuthUserEditItem id={this.props.id}/></div>
+        : null }
+      </div>
+    );
+
+  }
 
 }
 
 export default Item;
 
-// Create an attractive Detail view that fits with the rest of the site that presents the following information to the user:
+// const Item = ({name, image, body, price, condition, category, updatedAt, id, user_id}) => {
 
-// - description
-// - image
-// - price, if listed
-// - condition
-// - category
-// - manufacturer
-// - model
-// - dimensions
-// - notes
-// - when the item was posted
-// - when the item was last updated
+//   return  (
+//     <div className='Item'>
 
+//       <div className='Item-price'>${price}</div>
+//       <div className='Item-image'><img src={image} height='80' width='80' /></div>
 
-// Unauthorized users will only be able to see "published" items.
+//       <div className='Item-name'>{name}</div>
+
+//       <div className='Item-category'>category : {category}</div>
+//       <div className='Item-condition'>condition : <span>{condition}</span></div>
+
+//       <div className='Item-date'><Moment format="MM/DD">{updatedAt}</Moment></div>
+
+//       {/*<div>Description</div>
+//       <div className='Item-field'>{body}</div>*/}
+
+//       {Number(user_id) === Number(localStorage.getItem('user_id')) ?
+//       <div className='Item-label'><AuthUserEditItem id={id}/></div>
+//       :null}
+
+//     </div>
+//   );
+
+// }
+
+// export default Item;

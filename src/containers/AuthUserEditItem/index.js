@@ -22,7 +22,8 @@ class AuthUserEditItem extends Component {
       body: '',
       price: '',
       category_id: '',
-      condition_id: ''
+      condition_id: '',
+      show: true
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,7 +39,7 @@ class AuthUserEditItem extends Component {
       price: this.state.price,
       category_id: this.state.category_id || 1,
       condition_id: this.state.condition_id || 1,
-      id: parseInt(this.props.match.params.id)
+      id: parseInt(this.props.id)
     }
 
     this.props.editItem(editItem);
@@ -49,13 +50,14 @@ class AuthUserEditItem extends Component {
       body: '',
       price: '',
       category_id: '',
-      condition_id: ''
+      condition_id: '',
+      show: false
     })
   }
 
   handleChangeDelete(event){
     event.preventDefault();
-    this.props.deleteItem(this.props.match.params.id);
+    this.props.deleteItem(this.props.id);
 
   }
 
@@ -89,27 +91,23 @@ class AuthUserEditItem extends Component {
     this.setState({condition_id: event.target.value});
   }
 
-
   componentDidMount(){
-    let itemID = parseInt(this.props.match.params.id);
+    let itemID = parseInt(this.props.id);
     console.log(this.props.loadItem(itemID));
     this.props.loadConditions();
     this.props.loadCategories();
+    this.setState({
+      show: true
+    })
   }
 
   render(){
     console.log(this.props)
     return (
       <div className='EditItem'>
-      <Item name={this.props.item.name}
-            image={'/' + this.props.item.file}
-            body={this.props.item.body}
-            price={this.props.item.price}
-            condition={this.props.item.Condition.type}
-            category={this.props.item.Category.name}
-            updatedAt={this.props.item.updatedAt} />
 
-        {this.props.item.user_id === Number(localStorage.getItem('user_id')) && this.props.item.status_id === 1 ?
+
+        {this.state.show === true && this.props.item.user_id === Number(localStorage.getItem('user_id')) && this.props.item.status_id === 1 ?
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input
             type='text'

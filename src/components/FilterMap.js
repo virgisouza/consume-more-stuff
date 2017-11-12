@@ -22,7 +22,7 @@ const FilterMap = ({ list, cat_id, number, title }) => {
               updatedAt={item.updatedAt}
               key={item.id}
               id={item.id}
-              show='yes'
+              user_id={item.user_id}
             />
           )
         })
