@@ -2,32 +2,6 @@
 /*XHR GET REQUESTS*/
 /*XHR GET REQUESTS*/
 
-export const getCategories = () => new Promise((resolve, reject) => {
-  var oReq = new XMLHttpRequest();
-  oReq.onreadystatechange = function (){
-    if(oReq.readyState === XMLHttpRequest.DONE && oReq.status === 200) {
-      var response = JSON.parse(this.response);
-      resolve(response);
-    }
-  };
-  oReq.open("GET", "/api/categories");
-  oReq.setRequestHeader('content-type', 'application/json');
-  oReq.send();
-})
-
-export const getConditions = () => new Promise((resolve, reject) => {
-  var oReq = new XMLHttpRequest();
-  oReq.onreadystatechange = function (){
-    if(oReq.readyState === XMLHttpRequest.DONE && oReq.status === 200) {
-      var response = JSON.parse(this.response);
-      resolve(response);
-    }
-  };
-  oReq.open("GET", "/api/conditions");
-  oReq.setRequestHeader('content-type', 'application/json');
-  oReq.send();
-})
-
 export const getItems = () => new Promise((resolve, reject) => {
   var oReq = new XMLHttpRequest();
   oReq.onreadystatechange = function (){
@@ -41,32 +15,23 @@ export const getItems = () => new Promise((resolve, reject) => {
   oReq.send();
 })
 
-/*Initial Page Load First 5 Items*/
-/*export const getInitialItems = () => new Promise((resolve, reject) => { //code change 
+export const getInitialItems = () => new Promise((resolve, reject) => {
   var oReq = new XMLHttpRequest();
   oReq.onreadystatechange = function() {
-    if (oReq.readyState === XMLHttpRequest.DONE && oReq.status ==== 200) {
+    if (oReq.readyState === XMLHttpRequest.DONE && oReq.status === 200) {
       var response = JSON.parse(this.response);
       resolve(response);
     }
   };
-  oReq.open("GET", "/api/items/5"); //may need to change.. this is /items/:num
-  oReq.setRequestHeader('content-type', 'application/json');
-  oReq.send();
-})*/
-
-export const getStatuses = () => new Promise((resolve, reject) => {
-  var oReq = new XMLHttpRequest();
-  oReq.onreadystatechange = function (){
-    if(oReq.readyState === XMLHttpRequest.DONE && oReq.status === 200) {
-      var response = JSON.parse(this.response);
-      resolve(response);
-    }
-  };
-  oReq.open("GET", "/api/statuses");
+  oReq.open("GET", "/api/items/initial");
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send();
 })
+
+
+
+
+
 
 export const getUsers = () => new Promise((resolve, reject) => {
   var oReq = new XMLHttpRequest();

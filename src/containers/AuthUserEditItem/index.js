@@ -3,8 +3,6 @@ import Item from '../../components/item';
 import { connect } from 'react-redux';
 
 import { loadItem } from '../../actions/items';
-import { loadConditions } from '../../actions/conditions';
-import { loadCategories } from '../../actions/categories';
 import { editItem, deleteItem } from '../../actions/items';
 
 import Select from '../../components/select';
@@ -12,9 +10,7 @@ import Select from '../../components/select';
 class AuthUserEditItem extends Component {
 
   constructor(props) {
-    console.log('AUTH USER EDIT ITEM');
     super(props);
-    console.log(this.props.items);
 
     this.state = {
       name: '',
@@ -159,24 +155,19 @@ class AuthUserEditItem extends Component {
       </div>
     )
   }
+
+
 }
+//end class
 
 const mapStateToProps = (state) => {
   return {
-    item : state.singleItem,
-    categories: state.categoryList,
-    conditions: state.conditionList
+    item : state.singleItem
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadCategories: () => {
-      dispatch(loadCategories());
-    },
-    loadConditions: () => {
-      dispatch(loadConditions());
-    },
     loadItem: (id) => {
       dispatch(loadItem(id));
     },
@@ -188,10 +179,9 @@ const mapDispatchToProps = (dispatch) => {
     }
   }
 }
-const ConnectedEditItem = connect(
+
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(AuthUserEditItem);
-
-export default ConnectedEditItem;
 

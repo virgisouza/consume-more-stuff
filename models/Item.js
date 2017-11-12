@@ -4,24 +4,18 @@ module.exports = function (sequelize, DataTypes){
     name: {type: DataTypes.STRING, allowNull: false},
     file: {type: DataTypes.STRING, allowNull: false},
     body: {type: DataTypes.STRING, allowNull: false},
-    price: {type: DataTypes.INTEGER, allowNull: false}
+    price: {type: DataTypes.INTEGER, allowNull: false},
+    status: {type: DataTypes.STRING, allowNull: false},
+    category: {type: DataTypes.STRING, allowNull: false},
+    condition: {type: DataTypes.STRING, allowNull: false}
   },
     {tableName: 'items'}
   );
 
   Item.associate = function (models) {
-    Item.belongsTo(models.Category, {
-      foreignKey: 'category_id',
-      as: 'Category'});
-    Item.belongsTo(models.Condition, {
-      foreignKey: 'condition_id',
-      as: 'Condition'});
     Item.belongsTo(models.User, {
-      foreignKey: 'user_id',
-      as: 'User'});
-    Item.belongsTo(models.Status, {
-      foreignKey: 'status_id',
-      as: 'Status'});
+      foreignKey: 'posted_by'
+    });
   }
 
   return Item;

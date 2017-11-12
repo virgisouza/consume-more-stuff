@@ -4,7 +4,7 @@
 
 import {
   getItems,
-  /*getInitialItems,*/ //code change
+  getInitialItems,
   getItemById,
   getItemsByUser
 } from '../lib/GETrequests';
@@ -12,10 +12,11 @@ import {
 import { addNewItem } from '../lib/POSTrequests';
 import { itemDelete } from '../lib/DELETErequests';
 import { itemEdit } from '../lib/PUTrequests';
+
 const axios = require('axios');
 
 export const LOAD_ITEMS = 'LOAD_ITEMS';
-/*export const LOAD_INITIAL_ITEMS = 'LOAD_INITIAL_ITEMS';*/ //code change
+export const LOAD_INITIAL_ITEMS = 'LOAD_INITIAL_ITEMS';
 export const LOAD_ITEM = 'LOAD_ITEM';
 export const ADD_ITEM = 'ADD_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
@@ -33,9 +34,22 @@ export const loadItems = () => {
   }
 }
 
+export const loadInitialItems = () => {
+  return function(dispatch) {
+    return getInitialItems().then(initialItems => {
+      dispatch({
+        type : LOAD_INITIAL_ITEMS,
+        initialItems : initialItems
+      });
+    });
+  }
+}
+
 export const loadUserItems = (user_id) => {
+  console.log('loadUserItems action fired');
   return function(dispatch) {
     return getItemsByUser(user_id).then((items) => {
+      console.log('getItemsByUser XHR request returned successfully!', items);
       dispatch({
         type: LOAD_USER_ITEMS,
         items: items
@@ -68,17 +82,6 @@ export const addItem = (item) => {
     });
   }
 }
-
-// export const addItem = (item) => {
-//   return function(dispatch) {
-//     return addNewItem(item).then(newItem => {
-//       dispatch({
-//         type: ADD_ITEM,
-//         item: newItem
-//       });
-//     });
-//   }
-// }
 
 export const deleteItem = (item) => {
   return function(dispatch) {

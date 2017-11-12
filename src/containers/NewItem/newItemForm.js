@@ -1,19 +1,18 @@
 /*THE NEW ITEM FORM CONTAINER*/
 /*THE NEW ITEM FORM CONTAINER*/
 /*THE NEW ITEM FORM CONTAINER*/
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router';
 
 import '../App/App.css';
 
+import App from '../App/App.js';
 import Item from '../../components/item';
 import Select from '../../components/select';
 
 import { addItem } from '../../actions/items';
-import { loadCategories } from '../../actions/categories';
-import { loadConditions } from '../../actions/conditions';
-import App from '../App/App.js';
 
 
 class NewItemForm extends Component {
@@ -49,18 +48,6 @@ class NewItemForm extends Component {
     }
     this.props.addItem(formData);
 
-    // let newItem = {
-    //   name: this.state.name,
-    //   imageUrl: this.state.image,
-    //   body : this.state.body,
-    //   price : this.state.price,
-    //   condition_id: this.state.condition_id || 1,
-    //   category_id: this.state.category_id || 1
-    // };
-
-    // this.props.addItem(newItem);
-
-
     this.setState({
       name: '',
       file: '',
@@ -71,12 +58,6 @@ class NewItemForm extends Component {
       // redirect: true
     });
 
-  }
-
-
-  componentDidMount() {
-    this.props.loadCategories();
-    this.props.loadConditions();
   }
 
   /*HANDLERS*/
@@ -91,16 +72,10 @@ class NewItemForm extends Component {
         file: file,
         imageUrl: reader.result
       })
-      console.log(this.state);
     }
 
     reader.readAsDataURL(file);
   }
-
-  // handleChangeImage(event) {
-  //   event.preventDefault();
-  //   this.setState({image : event.target.value});
-  // }
 
   handleChangeBody(event) {
     event.preventDefault();
@@ -129,10 +104,8 @@ class NewItemForm extends Component {
 
   render() {
     return (
-      <div className="NewItemForm">
-
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <div className="NewItemFormLabel">Item Name</div>
+        <form className="NewItemForm" onSubmit={this.handleSubmit.bind(this)}>
+          <span className="NewItemFormLabel">Item Name</span>
           <input
             type='text'
             placeholder='Name'
@@ -142,20 +115,20 @@ class NewItemForm extends Component {
             onChange={this.handleChangeName.bind(this)}
           />
 
-          <div className="NewItemFormLabel">URL</div>
+          <span className="NewItemFormLabel">Upload Image</span>
           <input
             type='file'
             name='file'
-            //placeholder='Image Url'
             onFocus={(e) => e.target.placeholder=""}
             onBlur={(e) => e.target.placeholder="Image path"}
             //value={this.state.image}
             onChange={this.handleChangeImage.bind(this)}/>
 
-          <div className="NewItemFormLabel">Description</div>
+          <span className="NewItemFormLabel">Description</span>
           <textarea
             type='text'
-            rows='25'
+            rows='15'
+            cols='48'
             placeholder='Body'
             onFocus={(e) => e.target.placeholder=""}
             onBlur={(e) => e.target.placeholder="Body"}
@@ -163,7 +136,7 @@ class NewItemForm extends Component {
             onChange={this.handleChangeBody.bind(this)}
           />
 
-          <div className="NewItemFormLabel">Price</div>
+          <span className="NewItemFormLabel">Price</span>
           <input
             type='text'
             style={{width : 50}}
@@ -174,33 +147,28 @@ class NewItemForm extends Component {
             onChange={this.handleChangePrice.bind(this)}
           />
 
-          <div className="NewItemFormLabel">Category</div>
+          <span className="NewItemFormLabel">Category</span>
           <Select
             list={this.props.categories}
             type='name'
             handler={this.handleChangeCategory.bind(this)}
           />
 
-          <div className="NewItemFormLabel">Condition</div>
+          <span className="NewItemFormLabel">Condition</span>
           <Select
             list={this.props.conditions}
             type='type'
             handler={this.handleChangeCondition.bind(this)}
           />
           <button type='submit'>Submit</button>
-
         </form>
-
-      </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    item: state.itemList,
-    conditions: state.conditionList,
-    categories: state.categoryList
+    item: state.itemList
   };
 }
 
@@ -208,19 +176,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addItem : (newItem) => {
       dispatch(addItem(newItem));
-    },
-    loadConditions : () => {
-      dispatch(loadConditions());
-    },
-    loadCategories : () => {
-      dispatch(loadCategories());
     }
   };
 }
 
-const ConnectedNewItemForm = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(NewItemForm);
-
-export default ConnectedNewItemForm;

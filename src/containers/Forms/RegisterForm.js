@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { loadUsers, addNewUser } from '../../actions/users';
+
+import { addNewUser } from '../../actions/users';
 import { connect } from 'react-redux';
+
 import '../App/App.css';
 
-class NewUser extends Component {
+class RegisterForm extends Component {
 
   constructor(props) {
     super(props);
@@ -79,16 +81,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadUsers: () => {
-      dispatch(loadUsers())
-    },
     addNewUser: (user) => {
       dispatch(addNewUser(user))
     }
-  }
+  };
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NewUser);
+)(RegisterForm);

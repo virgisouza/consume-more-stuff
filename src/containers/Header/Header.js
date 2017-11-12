@@ -7,10 +7,12 @@ import { connect } from 'react-redux';
 
 import logo from '../App/logo.svg';
 import '../App/App.css';
+
 import { loginUser, logoutUser } from '../../actions/users';
 import { Link } from 'react-router-dom';
-import LoginUser from '../Login';
-import NewUser from '../Register';
+
+import LoginForm from '../Forms/LoginForm';
+import RegisterForm from '../Forms/RegisterForm';
 import Logout from '../../components/Logout';
 
 class Header extends Component {
@@ -64,14 +66,15 @@ class Header extends Component {
   }
 
   render() {
-
+    console.log('Header Component has rendered');
+    console.log(this.props);
     return (
       <div className="App-header">
         <div className="Login-reg">
           <ul>
             <li className="Login-reg-first"><a href="#">FAQ</a></li>
 
-            <Link to={'/'}><li>All Items</li></Link>
+            <li><Link to={'/'}>All Items</Link></li>
 
             <li>{localStorage.getItem('username')}</li>
 
@@ -79,12 +82,12 @@ class Header extends Component {
             <div>
             <li><a href="#" onClick={this.showRegister.bind(this)}>Register</a></li>
             {this.state.showRegister === true ?
-            <NewUser />
+            <RegisterForm />
             : null}
 
             <li><a href="#" onClick={this.showLogin.bind(this)}>Login</a></li>
             {this.state.showLogin === true ?
-            <LoginUser />
+            <LoginForm />
             : null}
             </div>
             : null}
@@ -92,7 +95,7 @@ class Header extends Component {
 
             {this.props.user.logged_in === true || localStorage.getItem('logged_in') === 'true' ?
             <div>
-              <Link to={`/users/${localStorage.getItem('user_id')}/items`}><li>My Items</li></Link>
+              <li><Link to={`/users/${localStorage.getItem('user_id')}/items`}>My Items</Link></li>
               <li><Logout handler={this.handleLogout.bind(this)}/> </li>
             </div>
             : null }
@@ -124,9 +127,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     logoutUser: () => {
       dispatch(logoutUser());
-    },
-    loginUser: () => {
-      dispatch(loginUser());
     }
   };
 }

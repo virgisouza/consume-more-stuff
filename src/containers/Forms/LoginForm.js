@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { loginUser } from '../../actions/users';
+
 import '../App/App.css';
 
-class LoginUser extends Component {
+class LoginForm extends Component {
 
   constructor(props){
     super(props);
@@ -17,14 +19,12 @@ class LoginUser extends Component {
   }
 
   handleSubmit(event){
-    console.log('HandleSubmit for Login invoked');
     event.preventDefault();
     let user = {
       username: this.state.username,
       password: this.state.password
     }
     this.props.loginUser(user);
-    //checking username and password against db
 
     this.setState({
       username: '',
@@ -49,7 +49,6 @@ class LoginUser extends Component {
   render() {
     console.log('Login Form rendered');
     return (
-
       <div className="Login-form">
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input
@@ -74,7 +73,10 @@ class LoginUser extends Component {
       </div>
     );
   }
-};
+
+
+}
+//end class
 
 const mapStateToProps = (state) => {
   return {
@@ -93,4 +95,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(LoginUser);
+)(LoginForm);

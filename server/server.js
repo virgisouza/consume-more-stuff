@@ -29,7 +29,6 @@ app.use(passport.session());
 
 
 passport.serializeUser((user, done) => {
-  //console.log('USER', user);
   console.log('serializing');
   return done(null, {
     id: user.id,
@@ -38,7 +37,6 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((user, done) => {
-  console.log(user, 'DESERIAL USER');
   console.log('deserializing');
   db.User.findOne({where: { id: user.id }})
   .then((user) => {
@@ -50,7 +48,6 @@ passport.deserializeUser((user, done) => {
 });
 
 passport.use(new LocalStrategy(function (username, password, done) {
-  console.log(username, password);
   db.User.findOne({where: {username: username}})
     .then((user) => {
       if(user === null){
@@ -80,10 +77,7 @@ app.post('/login', passport.authenticate('local'), function(req, res){
   res.json(req.user);
 });
 
-
 app.use('/api', routes);
-
-
 
 app.get('/logout', (req, res) => {
   req.logout();
@@ -92,10 +86,8 @@ app.get('/logout', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-  console.log(req.body);
   bcrypt.genSalt(saltRounds, function(err, salt){
     bcrypt.hash(req.body.password, salt, function(err, hash){
-      console.log(hash);
       db.User.create({
         username: req.body.username,
         password: hash,

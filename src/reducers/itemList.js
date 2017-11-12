@@ -34,6 +34,8 @@ const itemList = (state = intitialState, action) => {
       return [...items, action.item];
 
     case LOAD_USER_ITEMS:
+      console.log('itemList reducer received LOAD_USER_ITEMS action');
+      console.log([...action.items]);
       return [...action.items];
 
     default:
