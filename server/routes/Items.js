@@ -17,7 +17,7 @@ const Condition = db.Condition;
 const Status = db.Status;
 const User = db.User;
 
-router.post('/new', upload.single('file'), (req, res) => {
+router.post('/new', isAuthenticated, upload.single('file'), (req, res) => {
   //now we have access to req.file
   console.log(req.file.path, 'REQ FILE');
   console.log('REQBODY', req.body);
@@ -87,12 +87,12 @@ router.get('/:id', (req, res) => {
   });
 });
 
-router.put('/:id', isAuthenticated, (req, res) => {
-  console.log('reqbody', req.body);
-  console.log('reqUser', req.user);
+router.put('/:id', isAuthenticated, upload.single('file'), (req, res) => {
+  console.log('reqfile', req.file.path);
+  let image = (req.file.path).split('/').splice(7).join('/');
   return Items.findOne({
     where: {
-      id: req.params.id
+      id: req.body.id
     }
   })
   .then((item) => {
@@ -100,17 +100,18 @@ router.put('/:id', isAuthenticated, (req, res) => {
     if(req.user.id === item.user_id){
       return Items.update({
         name: data.name || item.name,
-        file: data.file || item.file,
+        file: image || item.file,
         body: data.body || item.body,
         price: data.price || item.price,
         category_id: data.category_id || item.category_id,
         condition_id: data.condition_id || item.condition_id
       },
       {where:{
-        id: req.params.id
+        id: req.body.id
       }
       })
       .then((response) => {
+        console.log(response, 'PROMISE ROUTE RESPONSE')
         return Items.findOne({include:[
           {model: Category, as: 'Category'},
           {model: Condition, as: 'Condition'},
@@ -118,10 +119,11 @@ router.put('/:id', isAuthenticated, (req, res) => {
           {model: Status, as: 'Status'}
           ],
           where: {
-            id: req.params.id
+            id: req.body.id
           }
         })
         .then((updatedItem) => {
+          console.log(updatedItem, 'WHYYYYY')
           return res.json(updatedItem);
         });
       });

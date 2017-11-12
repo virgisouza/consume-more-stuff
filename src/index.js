@@ -4,8 +4,10 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ScrollArea from 'react-scrollbar';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+
 
 import {
   BrowserRouter as Router,
@@ -30,9 +32,11 @@ const store = createStore(
   applyMiddleware(thunk)
 );
 
+
 ReactDOM.render(
 
   <Provider store={store}>
+  <ScrollArea/>
     <Router>
       <div>
         <Route exact path='/' component={App}/>
