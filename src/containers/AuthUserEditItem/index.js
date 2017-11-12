@@ -31,17 +31,35 @@ class AuthUserEditItem extends Component {
   handleSubmit(event){
     event.preventDefault();
 
-    let editItem = {
-      name: this.state.name,
-      file: this.state.file,
-      body: this.state.body,
-      price: this.state.price,
-      category_id: this.state.category_id || 1,
-      condition_id: this.state.condition_id || 1,
-      id: parseInt(this.props.match.params.id)
+    let formData = new FormData();
+    console.log(formData, 'FORM DATA')
+
+
+    formData.append('file', this.state.file);
+    formData.append('name', this.state.name);
+    formData.append('body', this.state.body);
+    formData.append('price', this.state.price);
+    formData.append('category_id', this.state.category_id || 1);
+    formData.append('condition_id', this.state.condition_id || 1);
+    formData.append('id', parseInt(this.props.match.params.id));
+
+    for(var key of formData.keys()){
+      console.log(key, formData.get(key));
     }
 
-    this.props.editItem(editItem);
+    // let editItem = {
+    //   name: this.state.name,
+    //   file: this.state.file,
+    //   body: this.state.body,
+    //   price: this.state.price,
+    //   category_id: this.state.category_id || 1,
+    //   condition_id: this.state.condition_id || 1,
+    //   id: parseInt(this.props.match.params.id)
+    // }
+
+    console.log(formData, 'formData')
+
+    this.props.editItem(formData);
 
     this.setState({
       name: '',
@@ -49,7 +67,8 @@ class AuthUserEditItem extends Component {
       body: '',
       price: '',
       category_id: '',
-      condition_id: ''
+      condition_id: '',
+      id: ''
     })
   }
 
@@ -66,7 +85,19 @@ class AuthUserEditItem extends Component {
 
   handleChangeImage(event){
     event.preventDefault();
-    this.setState({file: event.target.value});
+    let reader = new FileReader();
+
+    let file = event.target.files[0];
+
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imageUrl: reader.result
+      })
+      console.log(this.state);
+    }
+
+    reader.readAsDataURL(file);
   }
 
   handleChangeBody(event){
@@ -92,7 +123,8 @@ class AuthUserEditItem extends Component {
 
   componentDidMount(){
     let itemID = parseInt(this.props.match.params.id);
-    console.log(this.props.loadItem(itemID));
+    console.log(itemID, 'ITEM ID')
+    console.log(this.props.loadItem(itemID), 'this.props.loadItem(itemID)');
     this.props.loadConditions();
     this.props.loadCategories();
   }
@@ -102,7 +134,7 @@ class AuthUserEditItem extends Component {
     return (
       <div className='EditItem'>
       <Item name={this.props.item.name}
-            image={this.props.item.file}
+            image={'/' + this.props.item.file}
             body={this.props.item.body}
             price={this.props.item.price}
             condition={this.props.item.Condition.type}
@@ -119,9 +151,8 @@ class AuthUserEditItem extends Component {
           />
 
           <input
-            type='text'
-            placeholder='file Url'
-            value={this.state.file}
+            type='file'
+            name='file'
             onChange={this.handleChangeImage.bind(this)}
           />
 

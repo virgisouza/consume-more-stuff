@@ -69,16 +69,7 @@ export const addItem = (item) => {
   }
 }
 
-// export const addItem = (item) => {
-//   return function(dispatch) {
-//     return addNewItem(item).then(newItem => {
-//       dispatch({
-//         type: ADD_ITEM,
-//         item: newItem
-//       });
-//     });
-//   }
-// }
+
 
 export const deleteItem = (item) => {
   return function(dispatch) {
@@ -93,11 +84,13 @@ export const deleteItem = (item) => {
 }
 
 export const editItem = (item) => {
+  console.log(item, 'ACTION')
   return function(dispatch) {
-    return itemEdit(item).then(editedItem => {
+    return axios.put('/api/items/' + item.id, item).then(editedItem => {
+      console.log(editedItem, 'editItem')
       dispatch({
         type: EDIT_ITEM,
-        item: editedItem
+        item: editedItem.data
       });
     });
   }

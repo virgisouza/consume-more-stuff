@@ -10,11 +10,16 @@ const FilterMap = ({ list, cat_id, number, title }) => {
         list.filter((listItem) => {
           return listItem.category_id === Number(cat_id)
           }).map((item) => {
-          console.log(item.file)
+            let image = ''
+          if(item.file[0] === 'h'){
+          image = item.file
+          }else{
+          image = '/' + item.file.split('/').splice(7).join('/');
+          }
           return (
             <Item
               name={item.name}
-              image={item.file}
+              image={image}
               body={item.body}
               price={item.price}
               condition={item.Condition.type}

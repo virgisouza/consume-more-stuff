@@ -27,7 +27,6 @@ class NewItemForm extends Component {
       price : '',
       condition_id: '',
       category_id: ''
-      // redirect: false
 
     };
   }
@@ -146,10 +145,8 @@ class NewItemForm extends Component {
           <input
             type='file'
             name='file'
-            //placeholder='Image Url'
             onFocus={(e) => e.target.placeholder=""}
             onBlur={(e) => e.target.placeholder="Image path"}
-            //value={this.state.image}
             onChange={this.handleChangeImage.bind(this)}/>
 
           <div className="NewItemFormLabel">Description</div>

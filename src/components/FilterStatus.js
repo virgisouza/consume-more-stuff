@@ -11,10 +11,16 @@ const FilterStatus = ({ list, stat_id, cat_id, title }) => {
         }).filter((filterListItem) => {
           return filterListItem.category_id === Number(cat_id)
         }).map((item) => {
+          let image = ''
+          if(item.file[0] === 'h'){
+            image = item.file
+          }else{
+            image = '/' + item.file.split('/').splice(7).join('/');
+          }
           return (
             <Item
               name={item.name}
-              image={'/' + item.file}
+              image={image}
               body={item.body}
               price={item.price}
               condition={(item.Condition && item.Condition.type) ? item.Condition.type : ''}
@@ -32,3 +38,5 @@ const FilterStatus = ({ list, stat_id, cat_id, title }) => {
 }
 
 export default FilterStatus;
+
+//{'/' + item.file}
