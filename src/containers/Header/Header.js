@@ -4,7 +4,6 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import logo from '../App/logo.svg';
 import '../App/App.css';
 import { loginUser, logoutUser } from '../../actions/users';
@@ -64,7 +63,6 @@ class Header extends Component {
   }
 
   render() {
-
     return (
       <div className="App-header">
         <div className="Login-reg">
@@ -75,7 +73,7 @@ class Header extends Component {
 
             <li>{localStorage.getItem('username')}</li>
 
-            {this.props.user.logged_in === false && localStorage.getItem('logged_in') === 'false' ?
+            {!(this.props.user.logged_in) && localStorage.getItem('logged_in') !== 'true' ?
             <div>
             <li><a href="#" onClick={this.showRegister.bind(this)}>Register</a></li>
             {this.state.showRegister === true ?

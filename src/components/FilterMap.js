@@ -10,7 +10,7 @@ const FilterMap = ({ list, cat_id, number, title }) => {
         list.filter((listItem) => {
           return listItem.category_id === Number(cat_id)
           }).map((item) => {
-          console.log(item.file)
+          //console.log(item.file)
           return (
             <Item
               name={item.name}
@@ -22,7 +22,7 @@ const FilterMap = ({ list, cat_id, number, title }) => {
               updatedAt={item.updatedAt}
               key={item.id}
               id={item.id}
-              show='yes'
+              user_id={item.user_id}
             />
           )
         })
