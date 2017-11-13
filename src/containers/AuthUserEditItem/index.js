@@ -211,6 +211,7 @@ class AuthUserEditItem extends Component {
               label='Condition : '
               type='type'
               handler={this.handleChangeCondition.bind(this)}
+              defaultVal={this.props.item.condition_id}
             />
             <button type='submit'>Submit</button>
 
