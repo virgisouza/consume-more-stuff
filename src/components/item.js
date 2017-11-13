@@ -33,7 +33,10 @@ class Item extends Component {
   }
 
   render(){
+    console.log(this.props.image, 'IMAGE PROPS')
     return  (
+
+
       <div className='Item'>
 
         <div className='Item-price'>${this.props.price}</div>

@@ -1,10 +1,12 @@
 module.exports = function (sequelize, DataTypes){
 
   const Item = sequelize.define('Item', {
-    name: {type: DataTypes.STRING, allowNull: false},
-    file: {type: DataTypes.STRING, allowNull: false},
+    name: {type: DataTypes.STRING},
+    file: {type: DataTypes.STRING},
     body: {type: DataTypes.STRING, allowNull: false},
-    price: {type: DataTypes.INTEGER, allowNull: false}
+    price: {type: DataTypes.STRING},
+    category_id: {type: DataTypes.INTEGER, allowNull: false},
+    condition_id: {type: DataTypes.INTEGER, allowNull: false}
   },
     {tableName: 'items'}
   );

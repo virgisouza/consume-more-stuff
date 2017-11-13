@@ -26,7 +26,7 @@ class NewUser extends Component {
     let newUser = {
       username: this.state.username,
       password: this.state.password,
-      email: this.state.email
+      email: (this.state.email).toLowerCase()
     };
 
     this.props.addNewUser(newUser);
@@ -57,10 +57,14 @@ class NewUser extends Component {
     return (
       <div className='NewUserForm'>
         <form onSubmit={this.handleSubmit.bind(this)}>
+
           <input type='text' placeholder= 'Username' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Username"} value={this.state.username} onChange={this.handleChangeUsername.bind(this)} required />
+
           <input type='text' placeholder= 'Password' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Password"} value={this.state.password}
           onChange={this.handleChangePassword.bind(this)} required /><br></br>
+
           <input type='text' placeholder= 'Email' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Email"} value={this.state.email} onChange={this.handleChangeEmail.bind(this)} required />
+
           <button type='submit'>Submit</button>
         </form>
       </div>

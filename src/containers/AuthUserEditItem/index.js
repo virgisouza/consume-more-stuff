@@ -42,21 +42,11 @@ class AuthUserEditItem extends Component {
     formData.append('price', this.state.price);
     formData.append('category_id', this.state.category_id || 1);
     formData.append('condition_id', this.state.condition_id || 1);
-    formData.append('id', parseInt(this.props.match.params.id));
+    formData.append('id', parseInt(this.props.id));
 
     for(var key of formData.keys()){
       console.log(key, formData.get(key));
     }
-
-    // let editItem = {
-    //   name: this.state.name,
-    //   file: this.state.file,
-    //   body: this.state.body,
-    //   price: this.state.price,
-    //   category_id: this.state.category_id || 1,
-    //   condition_id: this.state.condition_id || 1,
-    //   id: parseInt(this.props.match.params.id)
-    // }
 
     console.log(formData, 'formData')
 

@@ -84,13 +84,14 @@ class NewItemForm extends Component {
     let reader = new FileReader();
 
     let file = event.target.files[0];
+    console.log(file, "EMPTY FILE")
 
     reader.onloadend = () => {
       this.setState({
         file: file,
         imageUrl: reader.result
       })
-      console.log(this.state);
+      console.log('IMAGE STATE',this.state);
     }
 
     reader.readAsDataURL(file);
@@ -108,7 +109,7 @@ class NewItemForm extends Component {
 
   handleChangePrice(event) {
     event.preventDefault();
-    this.setState({price : parseInt(event.target.value)});
+    this.setState({price : event.target.value});
   }
 
   handleChangeName(event) {
@@ -129,6 +130,7 @@ class NewItemForm extends Component {
   render() {
     return (
       <div className="NewItemForm">
+          <h4> * Required</h4>
 
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div className="NewItemFormLabel">Item Name</div>
@@ -141,7 +143,7 @@ class NewItemForm extends Component {
             onChange={this.handleChangeName.bind(this)}
           />
 
-          <div className="NewItemFormLabel">URL</div>
+          <div className="NewItemFormLabel">Upload Image</div>
           <input
             type='file'
             name='file'
@@ -149,7 +151,7 @@ class NewItemForm extends Component {
             onBlur={(e) => e.target.placeholder="Image path"}
             onChange={this.handleChangeImage.bind(this)}/>
 
-          <div className="NewItemFormLabel">Description</div>
+          <div className="NewItemFormLabel"> * Description</div>
           <textarea
             type='text'
             rows='25'
@@ -171,14 +173,14 @@ class NewItemForm extends Component {
             onChange={this.handleChangePrice.bind(this)}
           />
 
-          <div className="NewItemFormLabel">Category</div>
+          <div className="NewItemFormLabel">* Category</div>
           <Select
             list={this.props.categories}
             type='name'
             handler={this.handleChangeCategory.bind(this)}
           />
 
-          <div className="NewItemFormLabel">Condition</div>
+          <div className="NewItemFormLabel">* Condition</div>
           <Select
             list={this.props.conditions}
             type='type'
