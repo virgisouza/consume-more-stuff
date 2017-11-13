@@ -36,6 +36,7 @@ const store = createStore(
 ReactDOM.render(
 
   <Provider store={store}>
+  <div>
   <ScrollArea/>
     <Router>
       <div>
@@ -46,6 +47,7 @@ ReactDOM.render(
         <Route path='/login' component={LoginUser} />
       </div>
     </Router>
+  </div>
   </Provider>,
   document.getElementById('root')
 );
