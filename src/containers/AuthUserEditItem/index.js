@@ -14,7 +14,6 @@ class AuthUserEditItem extends Component {
   constructor(props) {
     console.log('AUTH USER EDIT ITEM');
     super(props);
-    console.log(this.props.items);
 
     this.state = {
       name: '',
@@ -23,7 +22,7 @@ class AuthUserEditItem extends Component {
       price: '',
       category_id: '',
       condition_id: '',
-      show: true
+      show: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,7 +41,7 @@ class AuthUserEditItem extends Component {
     formData.append('price', this.state.price);
     formData.append('category_id', this.state.category_id || 1);
     formData.append('condition_id', this.state.condition_id || 1);
-    formData.append('id', parseInt(this.props.id));
+    formData.append('id', parseInt(this.props.match.params.id));
 
     for(var key of formData.keys()){
       console.log(key, formData.get(key));
@@ -76,8 +75,7 @@ class AuthUserEditItem extends Component {
 
   handleChangeDelete(event){
     event.preventDefault();
-    this.props.deleteItem(this.props.id);
-
+    this.props.deleteItem(this.props.item.id);
   }
 
   handleChangeName(event){
@@ -122,6 +120,19 @@ class AuthUserEditItem extends Component {
     this.setState({condition_id: event.target.value});
   }
 
+  toggleEdit(event){
+    event.preventDefault();
+    if(this.state.show === false){
+      this.setState({
+        show:true
+      })
+    }else{
+      this.setState({
+        show:false
+      })
+    }
+  }
+
   componentDidMount(){
 
     let itemID = parseInt(this.props.match.params.id);
@@ -129,13 +140,11 @@ class AuthUserEditItem extends Component {
     console.log('thishere', this.props.loadItem(itemID));
     this.props.loadConditions();
     this.props.loadCategories();
-    this.setState({
-      show: true
-    })
   }
 
   render(){
     console.log('PROPS', this.props)
+    console.log('STATE', this.state)
     return (
       <div>
         <Item
@@ -149,7 +158,16 @@ class AuthUserEditItem extends Component {
           id={this.props.item.id}
           user_id={this.props.item.user_id}
           detailView='yes'
+          status={this.props.item.Status.type}
         />
+
+        {this.props.item.user_id === Number(localStorage.getItem('user_id')) && this.props.item.status_id === 1 ?
+        <div>
+          <button onClick={this.toggleEdit.bind(this)}>Edit</button>
+          <button onClick={this.handleChangeDelete.bind(this)}>Mark as SOLD</button>
+        </div>
+        : null }
+
         <div className='EditItem'>
           {this.state.show === true && this.props.item.user_id === Number(localStorage.getItem('user_id')) && this.props.item.status_id === 1 ?
           <form onSubmit={this.handleSubmit.bind(this)}>
@@ -195,7 +213,7 @@ class AuthUserEditItem extends Component {
               handler={this.handleChangeCondition.bind(this)}
             />
             <button type='submit'>Submit</button>
-            <button onClick={this.handleChangeDelete.bind(this)}>Mark as SOLD</button>
+
           </form>
           : null}
         </div>

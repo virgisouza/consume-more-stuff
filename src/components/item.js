@@ -6,7 +6,7 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 
 
-const Item = ({name, image, body, price, condition, category, updatedAt, id, user_id, detailView}) => {
+const Item = ({name, image, body, price, condition, category, status, updatedAt, id, user_id, detailView}) => {
 
   return  (
     <div className='Item'>
@@ -22,6 +22,10 @@ const Item = ({name, image, body, price, condition, category, updatedAt, id, use
 
       {detailView === 'yes' ?
       <div className='Item-body'>{body}</div>
+      : null}
+
+      {detailView === 'yes' ?
+      <div className='Item-status'>{status}</div>
       : null}
 
       {detailView === 'yes' ?
