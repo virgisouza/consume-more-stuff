@@ -4,27 +4,3 @@ body {
   font-family: sans-serif;
 }
 
-.myItems{
-  display: flex;
-  flex-direction: column;
-}
-
-.publishedDiv{
-  display: flex;
-  flex-direction: column;
-}
-
-.soldDive{
-  display: flex;
-  flex-direction: column;
-}
-
-.myPublishedItems{
-  display: flex;
-  flex-direction: row;
-}
-
-.mySoldItems{
-  display: flex;
-  flex-direction: row;
-}

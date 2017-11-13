@@ -39,7 +39,7 @@ export const loadInitialItems = () => {
       .catch(error => {
         console.log(error);
       });
-  });
+  }
 }
 
 export const loadUserItems = (user_id) => {
@@ -57,9 +57,9 @@ export const loadUserItems = (user_id) => {
   }
 }
 
-export const loadItem = (item) => {
+export const loadItem = (itemId) => {
   return function(dispatch) {
-    return axios.get('/api/items/' + item_id)
+    return axios.get('/api/items/' + itemId)
       .then(item => {
         dispatch({
           type : LOAD_ITEM,
@@ -87,9 +87,9 @@ export const addItem = (item) => {
   }
 }
 
-export const deleteItem = (item) => {
+export const deleteItem = (itemId) => {
   return function(dispatch) {
-    return axios.delete('/api/items/' + item_id)
+    return axios.delete('/api/items/' + itemId)
       .then(response => {
         dispatch({
           type: DELETE_ITEM,

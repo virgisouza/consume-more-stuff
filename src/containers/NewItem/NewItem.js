@@ -8,9 +8,7 @@ import { Route, Redirect } from 'react-router';
 
 import './NewItemForm.css';
 
-import App from '../App/App.js';
-import Item from '../../components/item';
-import Select from '../../components/select';
+import Item from '../../components/Item';
 
 import { addItem } from '../../actions/items';
 
@@ -24,10 +22,8 @@ class NewItemForm extends Component {
       file: '',
       body : '',
       price : '',
-      condition_id: '',
-      category_id: ''
-      // redirect: false
-
+      condition: '',
+      category: ''
     };
   }
 
@@ -35,7 +31,6 @@ class NewItemForm extends Component {
     event.preventDefault();
 
     let formData = new FormData();
-    console.log(formData, 'FORM DATA')
 
     formData.append('file', this.state.file);
     formData.append('name', this.state.name);
@@ -53,9 +48,8 @@ class NewItemForm extends Component {
       file: '',
       body : '',
       price : '',
-      condition_id: '',
-      category_id: ''
-      // redirect: true
+      condition: '',
+      category: ''
     });
 
   }
@@ -121,7 +115,6 @@ class NewItemForm extends Component {
             name='file'
             onFocus={(e) => e.target.placeholder=""}
             onBlur={(e) => e.target.placeholder="Image path"}
-            //value={this.state.image}
             onChange={this.handleChangeImage.bind(this)}/>
 
           <span className="NewItemFormLabel">Description</span>
@@ -148,18 +141,21 @@ class NewItemForm extends Component {
           />
 
           <span className="NewItemFormLabel">Category</span>
-          <Select
-            list={this.props.categories}
-            type='name'
-            handler={this.handleChangeCategory.bind(this)}
-          />
+          <select>
+            <option value="Vehicles"></option>
+            <option value="Appliances"></option>
+            <option value="Computers"></option>
+            <option value="Furniture"></option>
+          </select>
 
           <span className="NewItemFormLabel">Condition</span>
-          <Select
-            list={this.props.conditions}
-            type='type'
-            handler={this.handleChangeCondition.bind(this)}
-          />
+          <select>
+            <option value="New"></option>
+            <option value="Good"></option>
+            <option value="Fair"></option>
+            <option value="Worn"></option>
+          </select>
+
           <button type='submit'>Submit</button>
         </form>
     );

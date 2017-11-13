@@ -4,115 +4,48 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import logo from '../App/logo.svg';
-import './Header.css';
+import { Link } from 'react-router-dom';
 
 import { loginUser, logoutUser } from '../../actions/users';
-import { Link } from 'react-router-dom';
+
+import CurrentUser from './CurrentUser';
 
 import LoginForm from '../Forms/LoginForm';
 import RegisterForm from '../Forms/RegisterForm';
-import Logout from '../../components/Logout';
+
+import './Header.css';
 
 class Header extends Component {
 
-
   constructor(props) {
     super(props);
-
-    this.state = {
-      showLogin : false,
-      showRegister : false
-    };
   }
 
   handleLogout(event) {
     event.preventDefault();
     this.props.logoutUser();
-    this.setState({
-      showLogin: false
-    })
-  }
-
-  showLogin() {
-    if(this.state.showLogin === true){
-      this.setState({
-        showLogin: false
-      })
-    }else{
-      this.setState({
-      showRegister : false,
-      showLogin : true
-      });
-    }
-  }
-
-  showRegister() {
-    if(this.state.showRegister === true){
-      this.setState({
-        showRegister: false
-      })
-    }else{
-      this.setState({
-        showLogin : false,
-        showRegister : true
-      });
-    }
-  }
-
-  handleXClick(event) {
-
   }
 
   render() {
     console.log('Header Component has rendered');
-    console.log(this.props);
+    
     return (
       <div className="Header">
         <div className="Login-reg">
           <ul>
-            <li className="Login-reg-first"><a href="#">FAQ</a></li>
-
-            <li><Link to={'/'}>All Items</Link></li>
-
-            <li>{localStorage.getItem('username')}</li>
-
-            {this.props.user.logged_in === false && localStorage.getItem('logged_in') === 'false' ?
-            <div>
-            <li><a href="#" onClick={this.showRegister.bind(this)}>Register</a></li>
-            {this.state.showRegister === true ?
-            <RegisterForm />
-            : null}
-
-            <li><a href="#" onClick={this.showLogin.bind(this)}>Login</a></li>
-            {this.state.showLogin === true ?
-            <LoginForm />
-            : null}
-            </div>
-            : null}
-
-
-            {this.props.user.logged_in === true || localStorage.getItem('logged_in') === 'true' ?
-            <div>
-              <li><Link to={`/users/${localStorage.getItem('user_id')}/items`}>My Items</Link></li>
-              <li><Logout handler={this.handleLogout.bind(this)}/> </li>
-            </div>
-            : null }
-
+            <li><Link to="/faq">FAQ</Link></li>
+            <li><Link to="/register">Register</Link></li>
+            <li><Link to="/login">Login</Link></li>
           </ul>
         </div>
-
-
-        <img src={logo} className="Header-logo" alt="logo" />
-        <h1 className="Header-title">Consume More Stuff</h1>
+        <div className='Header-logo'><img src='http://bit.ly/2i7HDJx' /></div>
       </div>
     );
 
   }
 
 }
-
+//end class
 
 const mapStateToProps = (state) => {
   return {

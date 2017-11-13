@@ -80,13 +80,13 @@ class LoginForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user : state.user
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loginUser: (user) => {
+    loginUser : (user) => {
       dispatch(loginUser(user))
     }
   };

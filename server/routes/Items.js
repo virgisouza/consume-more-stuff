@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage });
 
-router.post('/', upload.single('file'), (req, res) => { //can change path no need new
+router.post('/', upload.single('file'), (req, res) => {
 
   let data = req.body;
   return Items.create({

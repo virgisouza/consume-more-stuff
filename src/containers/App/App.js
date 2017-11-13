@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './App.css';
-import logo from './logo.svg';
 
 import { loadInitialItems } from '../../actions/items';
 
@@ -27,11 +26,9 @@ class App extends Component {
 
   render() {
     console.log('App component has rendered');
-    console.log(this.props.initialItems);
     return (
       <div className="App">
         <Header />
-        <Item />
       </div>
     );
   }
