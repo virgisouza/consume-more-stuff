@@ -79,7 +79,7 @@ router.get('/initial', (req, res) => {
       status_id: 1
     },
     offset: 0,
-    limit: 2,
+    limit: 20,
     order: [['createdAt', 'DESC']]})
   .then(initialItems => {
     return res.json(initialItems.rows); //do not include COUNT

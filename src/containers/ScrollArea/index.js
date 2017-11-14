@@ -8,8 +8,6 @@ class ScrollArea extends Component {
     super(props);
   }
 
-
-
   render() {
     return(
       <ScrollArea

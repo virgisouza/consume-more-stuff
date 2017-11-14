@@ -36,7 +36,6 @@ export const loadItems = () => {
 export const loadInitialItems = () => {
   return function(dispatch) {
     return axios.get('api/items/initial').then(initialItems => {
-      console.log('AXIOS GET ============ ', initialItems);
       dispatch({
         type : LOAD_INITIAL_ITEMS,
         initialItems : initialItems

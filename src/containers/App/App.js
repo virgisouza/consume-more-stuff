@@ -8,18 +8,10 @@ import { connect } from 'react-redux';
 
 import './App.css';
 
-import { loadItems } from '../../actions/items';
-import { loadInitialItems } from '../../actions/items';
-import { loadCategories } from '../../actions/categories';
-import { loadConditions } from '../../actions/conditions';
-
-import logo from './logo.svg';
-
 /*CHILD COMPONENTS*/
 import Header from '../Header/Header';
-import Item from '../../components/item';
-
-import FilterMap from '../../components/FilterMap';
+import Board from '../Board/Board';
+import Searchbar from '../Searchbar/Searchbar';
 
 class App extends Component {
 
@@ -27,48 +19,17 @@ class App extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.loadConditions();
-    this.props.loadInitialItems();
-  }
-
   render() {
-    let initialItems = this.props.initialItems;
     return (
       <div className="App">
         <Header />
-        {
-          initialItems.map(i => {
-            return (
-              <Item />
-            );
-          })
-        }
-
+        <Searchbar />
+        <Board />
       </div>
     );
   }
 
 }
+//end class
 
-const mapStateToProps = (state) => {
-  return {
-    initialItems: state.itemList
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loadInitialItems: () => {
-      dispatch(loadInitialItems());
-    },
-    loadConditions: () => {
-      dispatch(loadConditions());
-    }
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;

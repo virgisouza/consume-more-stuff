@@ -16,8 +16,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id/items', isAuthenticated, (req, res) => {
-  console.log('REQPARAMS', req.params.id);
-  console.log('REQUSER', req.user);
   return Items.findAll({include:[
     {model: Category, as: 'Category'},
     {model: Condition, as: 'Condition'},

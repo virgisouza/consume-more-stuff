@@ -1,29 +1,49 @@
-.main {
+.header {
   height: 105px;
   color: white;
   position: relative;
+  border: 3px solid cyan;
 }
 
-.login-bar {
-  border: 1px solid green;
+.options {
   width: 25%;
   position: absolute;
   right: 0;
 }
 
-  .login-bar li {
+  .options li {
     list-style-type: none;
     display: inline-block;
-    padding: 5px;
-    border: 1px solid white;
+    padding: 3px;
+    margin: 1px;
   }
 
-  .login-bar li a {
+  .new, .account {
+    font-size: 0.75em;
+    color: blue;
     text-decoration: none;
-    color: white;
+    cursor: pointer;
+  }
+  .new:hover, .account:hover {
+    text-decoration: underline;
   }
 
-  .login-bar li a:hover {
+.user {
+  border: 1px solid green;
+  width: 25%;
+  position: absolute;
+  left: 0;
+}
+  
+  .user li {
+    list-style-type: none;
+    border: 1px solid yellow;
+  }
+  .user li a {
+    border: 1px solid blue;
+    text-decoration: none;
+  }
+  .user li a:hover {
     text-decoration: underline;
-    color: cyan;
+    cursor: pointer;
   }

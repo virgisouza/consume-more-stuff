@@ -2,18 +2,7 @@
   text-align: center;
   display: flex;
   flex-flow: column;
-}
-
-.home_list {
-  display: flex;
-  flex: row;
-  justify-content: space-around;
-}
-
-.Filter {
-  display: flex;
-  flex-flow: column;
-  width: 25%;
+  background-color: gray;
 }
 
 .Item {
@@ -81,68 +70,6 @@
   .Link:hover {
     color: yellow;
     text-decoration: underline;
-  }
-
-
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-  
-}
-
-.App-header {
-  background-color: #222;
-  height: 175px;
-  padding: 10px;
-  color: white;
-  position: relative;
-}
-
-.App-title {
-  font-size: 1.5em;
-  display: inline-block;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.Login-reg {
-  border: 1px solid green;
-  width: 25%;
-  position: absolute;
-  right: 0;
-}
-
-  .Login-reg ul {
-    margin: 0 auto;
-  }
-
-  .Login-reg-first {
-    border-left: 1px solid white;
-  }
-
-  .Login-reg li {
-    list-style-type: none;
-    display: inline-block;
-    padding: 5px;
-    border-right: 1px solid white;
-  }
-
-  .Login-reg li a {
-    text-decoration: none;
-    color: white;
-  }
-
-  .Login-reg li a:hover {
-    text-decoration: underline;
-    color: cyan;
   }
 
 /* LOGIN AND REGISTER FORMS */
@@ -236,17 +163,3 @@
     /* border: 1px solid green; */
     margin: 5px;
   }
-
-
-
-
-.EditItemForm {
-
-}
-
-/* DUMMY COMPONENTS */
-
-
-.Select {
-
-}

@@ -14,17 +14,13 @@ const itemList = (state = intitialState, action) => {
       return [...action.items];
 
     case LOAD_INITIAL_ITEMS:
-      console.log(action.initialItems.data); 
       return [...action.initialItems.data];
 
     case ADD_ITEM:
-      console.log('REDUCER', action.item)
       return [...state, action.item];
 
     case DELETE_ITEM:
       return state.filter((item) => {
-        console.log(item, 'REDUCERR')
-        console.log(action.item, "222")
         return item.id !== Number(action.item.id)
       });
 
