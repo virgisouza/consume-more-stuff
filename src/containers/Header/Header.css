@@ -1,0 +1,29 @@
+.main {
+  height: 105px;
+  color: white;
+  position: relative;
+}
+
+.login-bar {
+  border: 1px solid green;
+  width: 25%;
+  position: absolute;
+  right: 0;
+}
+
+  .login-bar li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid white;
+  }
+
+  .login-bar li a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .login-bar li a:hover {
+    text-decoration: underline;
+    color: cyan;
+  }

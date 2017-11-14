@@ -4,10 +4,14 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import logo from '../App/logo.svg';
-import '../App/App.css';
-import { loginUser, logoutUser } from '../../actions/users';
 import { Link } from 'react-router-dom';
+
+import './Header.css';
+
+/*ACTIONS*/
+import { loginUser, logoutUser } from '../../actions/users';
+
+/*CHILD COMPONENTS*/
 import LoginUser from '../Login';
 import NewUser from '../Register';
 import Logout from '../../components/Logout';
@@ -58,23 +62,16 @@ class Header extends Component {
     }
   }
 
-  handleXClick(event) {
-
-  }
-
   render() {
     return (
-      <div className="App-header">
-        <div className="Login-reg">
+      <div className="main">
+        
+        <div className="login-bar">
           <ul>
-            <li className="Login-reg-first"><a href="#">FAQ</a></li>
-
-            <Link to={'/'}><li>All Items</li></Link>
-
+            <li><Link to={'/'}>All Items</Link></li>
             <li>{localStorage.getItem('username')}</li>
 
-
-            {!(this.props.user.logged_in) && localStorage.getItem('logged_in') !== 'true' ?
+            {localStorage.getItem('logged_in') !== 'true' ?
             <div>
             <li><a href="#" onClick={this.showRegister.bind(this)}>Register</a></li>
             {this.state.showRegister === true ?
@@ -88,8 +85,7 @@ class Header extends Component {
             </div>
             : null}
 
-
-            {this.props.user.logged_in === true || localStorage.getItem('logged_in') === 'true' ?
+            {localStorage.getItem('logged_in') === 'true' ?
             <div>
               <Link to={`/users/${localStorage.getItem('user_id')}/items`}><li>My Items</li></Link>
               <li><Logout handler={this.handleLogout.bind(this)}/> </li>
@@ -99,9 +95,7 @@ class Header extends Component {
           </ul>
         </div>
 
-
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Consume More Stuff</h1>
+        <img src='logo.png' className="logo" alt="" width="350" height="105" />
       </div>
     );
 
