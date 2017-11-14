@@ -69,14 +69,13 @@ class NewItemForm extends Component {
     let reader = new FileReader();
 
     let file = event.target.files[0];
-    console.log(file, "EMPTY FILE")
+
 
     reader.onloadend = () => {
       this.setState({
         file: file,
         imageUrl: reader.result
       })
-      console.log('IMAGE STATE',this.state);
     }
 
     reader.readAsDataURL(file);
