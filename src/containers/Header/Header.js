@@ -67,9 +67,9 @@ class Header extends Component {
       <div className="App-header">
         <div className="Login-reg">
           <ul>
-            <li className="Login-reg-first"><a href="#">FAQ</a></li>
 
-            <Link to={'/'}><li>All Items</li></Link>
+            <li><Link to={'/'}>Home</Link></li>
+            <li><Link to={'/all'}>All Items</Link></li>
 
             <li>{localStorage.getItem('username')}</li>
 
