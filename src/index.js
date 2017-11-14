@@ -23,7 +23,8 @@ import NewItemForm from './containers/NewItem/newItemForm';
 import App from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
 import LoginUser from './containers/Login';
-import AuthUserEditItem from './containers/AuthUserEditItem';
+// import AuthUserEditItem from './containers/AuthUserEditItem';
+import ItemDetail from './containers/ItemDetail'
 import MyItems from './containers/MyItems';
 import UserSettings from './containers/UserSettings';
 import CategoryView from './containers/CategoryView';
@@ -44,7 +45,7 @@ ReactDOM.render(
       <div>
         <Route exact path='/' component={App}/>
         <Route path='/all' component={AllItems} />
-        <Route path='/items/:id' component={AuthUserEditItem}/>
+        <Route path='/items/:id' component={ItemDetail}/>
         <Route path='/new' component={NewItemForm}/>
         <Route path='/users/:id/items' component={MyItems}/>
         <Route path='/login' component={LoginUser} />

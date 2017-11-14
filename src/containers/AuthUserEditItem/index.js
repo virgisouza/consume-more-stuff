@@ -12,7 +12,6 @@ import Select from '../../components/select';
 class AuthUserEditItem extends Component {
 
   constructor(props) {
-    console.log('AUTH USER EDIT ITEM');
     super(props);
 
     this.state = {
@@ -123,32 +122,18 @@ class AuthUserEditItem extends Component {
 
   componentDidMount(){
 
-    let itemID = parseInt(this.props.match.params.id);
-    console.log('itemId', itemID);
-    console.log('thishere', this.props.loadItem(itemID));
+    // let itemID = parseInt(this.props.match.params.id);
+    // console.log('itemId', itemID);
+    // console.log('thishere', this.props.loadItem(itemID));
     this.props.loadConditions();
     this.props.loadCategories();
   }
 
   render(){
-    console.log('PROPS', this.props)
-    console.log('STATE', this.state)
+    // console.log('PROPS', this.props)
+    // console.log('STATE', this.state)
     return (
       <div>
-        <Header />
-        <Item
-          name={this.props.item.name}
-          image={'/' + this.props.item.file}
-          body={this.props.item.body}
-          price={this.props.item.price}
-          condition={this.props.item.Condition.type}
-          category={this.props.item.Category.name}
-          updatedAt={this.props.item.updatedAt}
-          id={this.props.item.id}
-          user_id={this.props.item.user_id}
-          detailView='yes'
-          status={this.props.item.Status.type}
-        />
 
         {this.props.item.user_id === Number(localStorage.getItem('user_id')) && this.props.item.status_id === 1 ?
         <div>
