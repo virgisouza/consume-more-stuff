@@ -1,4 +1,6 @@
 'use strict';
+const moment = require('moment');
+const momentRandom = require('moment-random');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -13,7 +15,7 @@ module.exports = {
         condition_id: 2,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date (),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date ()
       },
       {
@@ -25,7 +27,7 @@ module.exports = {
         condition_id: 2,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date (),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date ()
       },
       {
@@ -37,7 +39,7 @@ module.exports = {
         condition_id: 3,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date (),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date ()
       },
       {
@@ -49,7 +51,7 @@ module.exports = {
         condition_id: 1,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt:moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -61,7 +63,7 @@ module.exports = {
         condition_id: 4,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -73,7 +75,7 @@ module.exports = {
         condition_id: 1,
         user_id: 3,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -85,7 +87,7 @@ module.exports = {
         condition_id: 1,
         user_id: 3,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -97,7 +99,7 @@ module.exports = {
         condition_id: 2,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -109,7 +111,7 @@ module.exports = {
         condition_id: 1,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -121,7 +123,7 @@ module.exports = {
         condition_id: 2,
         user_id: 3,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -133,7 +135,7 @@ module.exports = {
         condition_id: 2,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -145,7 +147,7 @@ module.exports = {
         condition_id: 4,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -157,7 +159,7 @@ module.exports = {
         condition_id: 1,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -169,7 +171,7 @@ module.exports = {
         condition_id: 1,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -181,7 +183,7 @@ module.exports = {
         condition_id: 1,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -193,7 +195,7 @@ module.exports = {
         condition_id: 1,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -205,7 +207,7 @@ module.exports = {
         condition_id: 1,
         user_id: 2,
         status_id: 2,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -217,7 +219,7 @@ module.exports = {
         condition_id: 3,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -229,7 +231,7 @@ module.exports = {
         condition_id: 2,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -241,7 +243,7 @@ module.exports = {
         condition_id: 3,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -253,7 +255,7 @@ module.exports = {
         condition_id: 2,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -265,7 +267,7 @@ module.exports = {
         condition_id: 1,
         user_id: 3,
         status_id: 2,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -277,7 +279,7 @@ module.exports = {
         condition_id: 2,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -289,7 +291,7 @@ module.exports = {
         condition_id: 1,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -301,7 +303,7 @@ module.exports = {
         condition_id: 2,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -313,7 +315,7 @@ module.exports = {
         condition_id: 2,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -325,7 +327,7 @@ module.exports = {
         condition_id: 1,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -337,7 +339,7 @@ module.exports = {
         condition_id: 1,
         user_id: 3,
         status_id: 2,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -349,7 +351,7 @@ module.exports = {
         condition_id: 3,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -361,7 +363,7 @@ module.exports = {
         condition_id: 1,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -373,7 +375,7 @@ module.exports = {
         condition_id: 2,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -385,7 +387,7 @@ module.exports = {
         condition_id: 1,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -397,7 +399,7 @@ module.exports = {
         condition_id: 3,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -409,7 +411,7 @@ module.exports = {
         condition_id: 1,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -421,7 +423,7 @@ module.exports = {
         condition_id: 2,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -433,7 +435,7 @@ module.exports = {
         condition_id: 1,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -445,7 +447,7 @@ module.exports = {
         condition_id: 2,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -457,7 +459,7 @@ module.exports = {
         condition_id: 3,
         user_id: 2,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -469,7 +471,7 @@ module.exports = {
         condition_id: 1,
         user_id: 1,
         status_id: 1,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       },
       {
@@ -481,7 +483,7 @@ module.exports = {
         condition_id: 2,
         user_id: 2,
         status_id: 2,
-        createdAt: new Date(),
+        createdAt: moment(momentRandom()).format('MMM DD, YYYY'),
         updatedAt: new Date()
       }], {});
 

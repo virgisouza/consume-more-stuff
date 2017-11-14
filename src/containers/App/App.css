@@ -15,10 +15,6 @@
   flex-flow: column;
   width: 25%;
 }
-  .Filter-title {
-    font-size: 2em;
-    border: 1px solid black;
-  }
 
 .Item {
   border: 1px solid black;

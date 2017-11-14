@@ -2,7 +2,7 @@ import React from 'react';
 import Item from './item';
 
 const FilterMap = ({ list, cat_id, number, title }) => {
-  console.log('FilterMap component rendered');
+  /*console.log('FilterMap component rendered');*/
   return (
     <div className="Filter">
       <div className="Filter-title">{title}</div>

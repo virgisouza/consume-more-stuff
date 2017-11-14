@@ -36,7 +36,7 @@ const store = createStore(
 ReactDOM.render(
 
   <Provider store={store}>
-  <ScrollArea/>
+ 
     <Router>
       <div>
         <Route exact path='/' component={App}/>

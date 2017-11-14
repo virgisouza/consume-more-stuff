@@ -13,13 +13,11 @@ import { loadItems } from '../../actions/items';
 import { loadCategories } from '../../actions/categories';
 import { loadConditions } from '../../actions/conditions';
 
-import LoginUser from '../Login';
-import NewUser from '../Register';
-import Logout from '../../components/Logout';
 import logo from './logo.svg';
 
 /*CHILD COMPONENTS*/
 import Header from '../Header/Header';
+import Item from '../../components/item';
 
 import { logoutUser } from '../../actions/users';
 import FilterMap from '../../components/FilterMap';
@@ -45,16 +43,37 @@ class App extends Component {
 
 
   render() {
+    let items = this.props.items;
+    let callback = function(a, b) {
+      return a.createdAt - b.createdAt;
+    }
+
+    console.log(items);
+
     return (
       <div className="App">
         <Header />
 
-        <div className="home_list">
-            <FilterMap title={'Vehicles'} list={this.props.items} cat_id={1} />
-            <FilterMap title={'Appliances'} list={this.props.items} cat_id={2} />
-            <FilterMap title={'Computers'} list={this.props.items} cat_id={3} />
-            <FilterMap title={'Furniture'} list={this.props.items} cat_id={4} />
-        </div>
+        {
+          items.sort(callback)
+          .map(item => {
+            console.log(item);
+            return (
+              <Item 
+                name={item.name} 
+                image={item.file}
+                body={item.body}
+                price={item.price}
+                condition={item.Condition.type}
+                category={item.Category.name}
+                updatedAt={item.updatedAt}
+                key={item.id}
+                id={item.id}
+                user_id={item.user_id}
+              />
+            );
+          })
+        }
 
       </div>
     );
