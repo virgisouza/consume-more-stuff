@@ -1,6 +1,7 @@
 import { LOGIN_USER,
          LOGOUT_USER,
-         REGISTER_USER } from '../actions/users';
+         REGISTER_USER,
+         EDIT_USER } from '../actions/users';
 
 const initialState = {};
 
@@ -24,8 +25,12 @@ const user = (state = initialState, action) => {
       return Object.assign({}, state, {user_id: null, logged_in: false, username: 'Guest'})
 
     case REGISTER_USER:
-      console.log('reducer', action.user);
       return [...state, action.user];
+
+    case EDIT_USER:
+      console.log(action, 'action')
+      localStorage.setItem('username', action.user.username);
+      return Object.assign({}, state, {username: action.user.username, email: action.user.email})
 
     default:
       return state;

@@ -78,6 +78,43 @@ app.post('/login', passport.authenticate('local'), function(req, res){
   res.json(req.user);
 });
 
+app.put('/users/:id/edit', (req,res) => {
+  console.log(req.body, 'edit username route');
+  bcrypt.genSalt(saltRounds, function(err, salt){
+    bcrypt.hash(req.body.password, salt, function(err, hash){
+      console.log(hash);
+      return db.User.findOne({
+        where: {
+          id: req.user.id
+          }
+        })
+        .then(user => {
+          return db.User.update({
+            username: req.body.username,
+            password: hash,
+            email: req.body.email
+          },
+          {where: {
+            id: req.user.id
+            }
+          })
+          .then(response => {
+            return db.User.findOne({
+              where : {
+                id: req.user.id
+              }
+            })
+            .then(updatedUser => {
+            console.log(updatedUser, 'UPDATED UPDATED');
+            return res.json(updatedUser);
+          });
+        });
+      });
+    });
+  });
+});
+
+
 
 app.use('/api', routes);
 
@@ -108,6 +145,8 @@ app.post('/register', (req, res) => {
     });
   });
 });
+
+
 
 function isAuthenticated(req, res, next) {
   if(req.isAuthenticated()){

@@ -13,11 +13,6 @@ import { loadItems } from '../../actions/items';
 import { loadCategories } from '../../actions/categories';
 import { loadConditions } from '../../actions/conditions';
 
-import LoginUser from '../Login';
-import NewUser from '../Register';
-import Logout from '../../components/Logout';
-import logo from './logo.svg';
-
 /*CHILD COMPONENTS*/
 import Header from '../Header/Header';
 

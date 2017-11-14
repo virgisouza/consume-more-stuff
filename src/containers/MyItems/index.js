@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import FilterStatus from '../../components/FilterStatus';
 import Header from '../Header/Header';
 import NewItemForm from '../NewItem/newItemForm';
+import UserSettings from '../UserSettings';
 
 class MyItems extends Component {
   constructor(props) {
@@ -25,6 +26,8 @@ class MyItems extends Component {
     return(
       <div className="myItems">
       <Header />
+      <h4>Update Your Info :</h4>
+      <UserSettings />
       <NewItemForm />
         <div className="publishedDiv">
           <h2>Published</h2>

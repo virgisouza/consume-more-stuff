@@ -122,7 +122,6 @@ router.put('/:id', isAuthenticated, upload.single('file'), (req, res) => {
       }
       })
       .then((response) => {
-        console.log(response, 'PROMISE ROUTE RESPONSE')
         return Items.findOne({include:[
           {model: Category, as: 'Category'},
           {model: Condition, as: 'Condition'},
@@ -134,7 +133,6 @@ router.put('/:id', isAuthenticated, upload.single('file'), (req, res) => {
           }
         })
         .then((updatedItem) => {
-          console.log(updatedItem, 'WHYYYYY')
           return res.json(updatedItem);
         });
       });

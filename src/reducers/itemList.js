@@ -22,8 +22,6 @@ const itemList = (state = intitialState, action) => {
 
     case DELETE_ITEM:
       return state.filter((item) => {
-        console.log(item, 'REDUCERR')
-        console.log(action.item, "222")
         return item.id !== Number(action.item.id)
       });
 

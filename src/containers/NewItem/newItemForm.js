@@ -3,8 +3,6 @@
 /*THE NEW ITEM FORM CONTAINER*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router';
-
 import '../App/App.css';
 
 import Item from '../../components/item';
@@ -55,7 +53,6 @@ class NewItemForm extends Component {
       price : '',
       condition_id: '',
       category_id: ''
-      // redirect: true
     });
 
   }
@@ -84,11 +81,6 @@ class NewItemForm extends Component {
 
     reader.readAsDataURL(file);
   }
-
-  // handleChangeImage(event) {
-  //   event.preventDefault();
-  //   this.setState({image : event.target.value});
-  // }
 
   handleChangeBody(event) {
     event.preventDefault();

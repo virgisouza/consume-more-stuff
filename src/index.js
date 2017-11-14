@@ -25,6 +25,7 @@ import registerServiceWorker from './registerServiceWorker';
 import LoginUser from './containers/Login';
 import AuthUserEditItem from './containers/AuthUserEditItem';
 import MyItems from './containers/MyItems';
+import UserSettings from './containers/UserSettings';
 
 const store = createStore(
   reducers,
@@ -44,6 +45,7 @@ ReactDOM.render(
         <Route path='/new' component={NewItemForm}/>
         <Route path='/users/:id/items' component={MyItems}/>
         <Route path='/login' component={LoginUser} />
+        <Route path='/users/:id/edit' component={UserSettings}/>
       </div>
     </Router>
   </Provider>,

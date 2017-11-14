@@ -11,3 +11,17 @@ export const itemEdit = (item) => new Promise((resolve, reject) => {
   oReq.setRequestHeader('content-type', 'application/json');
   oReq.send(data);
 })
+
+export const userEdit = (user) => new Promise((resolve, reject) => {
+  let data = JSON.stringify(user);
+  var oReq = new XMLHttpRequest();
+  oReq.onreadystatechange = function (){
+    if(oReq.readyState === XMLHttpRequest.DONE && oReq.status === 200) {
+      var response = JSON.parse(this.response);
+      resolve(response);
+    }
+  };
+  oReq.open("PUT", '/api/users/' + user.id);
+  oReq.setRequestHeader('content-type', 'application/json');
+  oReq.send(data);
+})
