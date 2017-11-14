@@ -67,11 +67,11 @@ class Header extends Component {
       <div className="App-header">
         <div className="Login-reg">
           <ul>
-            <li className="Login-reg-first"><a href="#">FAQ</a></li>
 
-            <Link to={'/'}><li>All Items</li></Link>
+            <li><Link to={'/'}>Home</Link></li>
+            <li><Link to={'/all'}>All Items</Link></li>
 
-            <li>{localStorage.getItem('username')}</li>
+            <li><Link to={`/users/${localStorage.getItem('user_id')}`}>{localStorage.getItem('username')}</Link></li>
 
 
             {!(this.props.user.logged_in) && localStorage.getItem('logged_in') !== 'true' ?
@@ -91,7 +91,7 @@ class Header extends Component {
 
             {this.props.user.logged_in === true || localStorage.getItem('logged_in') === 'true' ?
             <div>
-              <Link to={`/users/${localStorage.getItem('user_id')}/items`}><li>My Items</li></Link>
+              <li><Link to={`/users/${localStorage.getItem('user_id')}/items`}>My Items</Link></li>
               <li><Logout handler={this.handleLogout.bind(this)}/> </li>
             </div>
             : null }

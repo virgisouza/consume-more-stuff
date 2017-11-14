@@ -26,6 +26,8 @@ import LoginUser from './containers/Login';
 import AuthUserEditItem from './containers/AuthUserEditItem';
 import MyItems from './containers/MyItems';
 import UserSettings from './containers/UserSettings';
+import CategoryView from './containers/CategoryView';
+import AllItems from './containers/AllItems';
 
 const store = createStore(
   reducers,
@@ -37,15 +39,16 @@ const store = createStore(
 ReactDOM.render(
 
   <Provider store={store}>
-
     <Router>
       <div>
         <Route exact path='/' component={App}/>
+        <Route path='/all' component={AllItems} />
         <Route path='/items/:id' component={AuthUserEditItem}/>
         <Route path='/new' component={NewItemForm}/>
         <Route path='/users/:id/items' component={MyItems}/>
         <Route path='/login' component={LoginUser} />
         <Route path='/users/:id/edit' component={UserSettings}/>
+        <Route path='/categories/:id/items' component={CategoryView} />
       </div>
     </Router>
   </Provider>,

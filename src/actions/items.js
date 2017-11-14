@@ -79,7 +79,7 @@ export const deleteItem = (item) => {
 
 export const editItem = (item) => {
   return function(dispatch) {
-    return axios.put('/api/items/' + item.id, item).then(editedItem => {
+    return axios.put(`/api/items/${item.id}`, item).then(editedItem => {
       console.log(editedItem, 'editItem')
       dispatch({
         type: EDIT_ITEM,
