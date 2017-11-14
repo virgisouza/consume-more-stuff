@@ -61,7 +61,7 @@ class LoginUser extends Component {
             onChange={this.handleChangeUsername.bind(this)}
           />
            <input
-            type='text'
+            type='password'
             placeholder='Password'
             onFocus={(e) => e.target.placeholder=""}
             onBlur={(e) => e.target.placeholder="Password"}

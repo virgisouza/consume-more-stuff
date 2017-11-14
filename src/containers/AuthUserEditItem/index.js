@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Item from '../../components/item';
 import { connect } from 'react-redux';
-
+import Header from '../Header/Header';
 import { loadItem } from '../../actions/items';
 import { loadConditions } from '../../actions/conditions';
 import { loadCategories } from '../../actions/categories';
@@ -41,7 +41,7 @@ class AuthUserEditItem extends Component {
     formData.append('price', this.state.price);
     formData.append('category_id', this.state.category_id || 1);
     formData.append('condition_id', this.state.condition_id || 1);
-    formData.append('id', parseInt(this.props.id));
+    formData.append('id', parseInt(this.props.match.params.id));
 
     for(var key of formData.keys()){
       console.log(key, formData.get(key));
@@ -135,6 +135,7 @@ class AuthUserEditItem extends Component {
     console.log('STATE', this.state)
     return (
       <div>
+        <Header />
         <Item
           name={this.props.item.name}
           image={'/' + this.props.item.file}
