@@ -24,10 +24,12 @@ export const LOAD_USER_ITEMS = 'LOAD_USER_ITEMS'
 
 export const loadItems = () => {
   return function(dispatch) {
-    return getItems().then(items => {
+    return axios.get('api/items').then(items => {
+      console.log('AXIOS GET====');
+      console.log(items);
       dispatch({
         type : LOAD_ITEMS,
-        items : items
+        items : items.data
       });
     });
   }

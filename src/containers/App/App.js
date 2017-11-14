@@ -8,6 +8,9 @@ import { connect } from 'react-redux';
 
 import './App.css';
 
+/*ACTIONS*/
+import { loadItems } from '../../actions/items';
+
 /*CHILD COMPONENTS*/
 import Header from '../Header/Header';
 import Board from '../Board/Board';
@@ -19,12 +22,19 @@ class App extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.loadItems();
+    console.log(this.props.items);
+  }
+
   render() {
+    console.log('App Render');
+    const items = this.props.items;
     return (
       <div className="App">
         <Header />
         <Searchbar />
-        <Board />
+        <Board list={items} filter='category' />
       </div>
     );
   }
@@ -32,4 +42,21 @@ class App extends Component {
 }
 //end class
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    items: state.itemList
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadItems: () => {
+      dispatch(loadItems());
+    }
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

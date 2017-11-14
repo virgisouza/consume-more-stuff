@@ -1,9 +1,16 @@
-// Unauthorized users item view
+/*This a single item component.*/
+/*It will show a link to AuthUserEditItem if the user is logged in.*/
+/*It will show a small trash can icon to delete if the user is logged in*/
+/*It will show a detail link to a SingleItem view in all cases.*/
+
 import React, { Component } from 'react';
-import '../containers/App/App.css';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import 'moment-timezone';
+
+import './components.css';
+
+/*CHILD COMPONENTS*/
 import AuthUserEditItem from '../containers/AuthUserEditItem';
 
 class Item extends Component {
@@ -26,10 +33,6 @@ class Item extends Component {
         show:false
       })
     }
-  }
-
-  componentDidMount(){
-
   }
 
   render(){

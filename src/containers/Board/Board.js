@@ -1,6 +1,9 @@
-/* This is our board component, it starts off with the 20 most recent items */
-/* It will render ITEM component */
-/* It will also render a SEARCHBAR.. */
+/* This is our board component, it will render multiple ITEM components */
+
+/* APP is what passes the list of items into it. It will then call a FilterX component based on
+the filter prop passed into it. */
+
+/* It will start off with "most recently submitted" as its filter. */
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
@@ -9,10 +12,8 @@ import { connect } from 'react-redux';
 import './Board.css';
 
 /*ACTIONS*/
-import { loadInitialItems } from '../../actions/items';
 
 /*CHILD COMPONENTS*/
-import Searchbar from '../Searchbar/Searchbar';
 import Item from '../../components/item';
 
 class Board extends Component {
@@ -21,54 +22,39 @@ class Board extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.loadInitialItems();
-  }
-
   render() {
-    let initialItems = this.props.initialItems;
-    
+    console.log('Board render');
+
+    let items = this.props.items;
+    let filter = this.props.filter;
     return (
       <div className="board">
-        {
-          initialItems.map(item => {
-            return (
-              <Item 
-                name={item.name}
-                image={item.file}
-                body={item.body}
-                price={item.price}
-                condition={item.Condition.type}
-                category={item.Category.name}
-                updatedAt={item.updatedAt}
-                key={item.id}
-                id={item.id}
-                user_id={item.user_id}
-              />
-            );
-          })
+
+        { 
+          filter == 'category' ? console.log('FilterCategory') : null 
         }
+
+        {
+          filter == 'price' ? console.log('FilterPrice') : null
+        }
+
+        {
+          filter == 'condition' ? console.log('FilterCondition') : null
+        }
+
+        {
+          filter == 'status' ? console.log('FilterStatus') : null
+        }
+
       </div>
     );
   }
 
 }
+//end class
 
-const mapStateToProps = (state) => {
-  return {
-    initialItems: state.itemList
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loadInitialItems: () => {
-      dispatch(loadInitialItems());
-    }
-  };
-}
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  null,
+  null
 )(Board);
