@@ -68,6 +68,27 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/initial', (req, res) => {
+  return Items.findAndCountAll({include:[
+    {model:Category, as: 'Category'},
+    {model: Condition, as: 'Condition'},
+    {model: User, as: 'User'},
+    {model: Status, as: 'Status'}
+    ],
+    where: {
+      status_id: 1
+    },
+    offset: 0,
+    limit: 2,
+    order: [['createdAt', 'DESC']]})
+  .then(initialItems => {
+    return res.json(initialItems.rows); //do not include COUNT
+  })
+  .catch(error => {
+    console.log(error);
+  });
+});
+
 router.get('/:id', (req, res) => {
   return Items.findOne({include:[
     {model:Category, as: 'Category'},

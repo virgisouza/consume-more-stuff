@@ -1,5 +1,5 @@
 import { LOAD_ITEMS,
-  /*LOAD_INITIAL_ITEMS,*/ //code change
+  LOAD_INITIAL_ITEMS,
   ADD_ITEM,
   DELETE_ITEM,
   EDIT_ITEM,
@@ -13,8 +13,9 @@ const itemList = (state = intitialState, action) => {
     case LOAD_ITEMS:
       return [...action.items];
 
-    /*case LOAD_INITIAL_ITEMS: //code change
-      return [...action.items]; //need to change this return*/
+    case LOAD_INITIAL_ITEMS:
+      console.log(action.initialItems.data); 
+      return [...action.initialItems.data];
 
     case ADD_ITEM:
       console.log('REDUCER', action.item)
