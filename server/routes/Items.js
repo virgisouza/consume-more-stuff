@@ -88,8 +88,10 @@ router.get('/:id', (req, res) => {
 });
 
 router.put('/:id', isAuthenticated, upload.single('file'), (req, res) => {
-  console.log('reqfile', req.file.path);
-  let image = (req.file.path).split('/').splice(7).join('/');
+  let image = '';
+  if(req.file){
+    image = (req.file.path).split('/').splice(7).join('/');
+  }
   return Items.findOne({
     where: {
       id: req.body.id

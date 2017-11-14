@@ -1,15 +1,12 @@
 import React from 'react';
 import Item from './item';
 
-const FilterStatus = ({ list, stat_id, cat_id, title }) => {
+const FilterStatus = ({ list, stat_id }) => {
   return (
     <div className='status-filter'>
-      <h3>{title}</h3>
       {
         list.filter((listItem) => {
           return listItem.status_id === Number(stat_id)
-        }).filter((filterListItem) => {
-          return filterListItem.category_id === Number(cat_id)
         }).map((item) => {
           return (
             <Item

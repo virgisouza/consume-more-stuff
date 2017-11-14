@@ -1,11 +1,12 @@
 import React from 'react';
 import Item from './item';
+import { Link } from 'react-router-dom';
 
 const FilterMap = ({ list, cat_id, number, title }) => {
   console.log('FilterMap component rendered');
   return (
     <div className="Filter">
-      <div className="Filter-title">{title}</div>
+      <Link to={`/categories/${cat_id}/items`}><div className="Filter-title">{title}</div></Link>
       {
         list.filter((listItem) => {
           return listItem.category_id === Number(cat_id)

@@ -14,7 +14,6 @@ class AuthUserEditItem extends Component {
   constructor(props) {
     console.log('AUTH USER EDIT ITEM');
     super(props);
-    console.log(this.props.items);
 
     this.state = {
       name: '',
@@ -23,7 +22,7 @@ class AuthUserEditItem extends Component {
       price: '',
       category_id: '',
       condition_id: '',
-      show: true
+      show: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -48,18 +47,6 @@ class AuthUserEditItem extends Component {
       console.log(key, formData.get(key));
     }
 
-    // let editItem = {
-    //   name: this.state.name,
-    //   file: this.state.file,
-    //   body: this.state.body,
-    //   price: this.state.price,
-    //   category_id: this.state.category_id || 1,
-    //   condition_id: this.state.condition_id || 1,
-    //   id: parseInt(this.props.match.params.id)
-    // }
-
-    console.log(formData, 'formData')
-
     this.props.editItem(formData);
 
     this.setState({
@@ -76,8 +63,7 @@ class AuthUserEditItem extends Component {
 
   handleChangeDelete(event){
     event.preventDefault();
-    this.props.deleteItem(this.props.id);
-
+    this.props.deleteItem(this.props.item.id);
   }
 
   handleChangeName(event){
@@ -122,69 +108,104 @@ class AuthUserEditItem extends Component {
     this.setState({condition_id: event.target.value});
   }
 
+  toggleEdit(event){
+    event.preventDefault();
+    if(this.state.show === false){
+      this.setState({
+        show:true
+      })
+    }else{
+      this.setState({
+        show:false
+      })
+    }
+  }
+
   componentDidMount(){
 
-    let itemID = parseInt(this.props.id);
-    console.log(this.props.loadItem(itemID));
+    let itemID = parseInt(this.props.match.params.id);
+    console.log('itemId', itemID);
+    console.log('thishere', this.props.loadItem(itemID));
     this.props.loadConditions();
     this.props.loadCategories();
-    this.setState({
-      show: true
-    })
   }
 
   render(){
-    console.log(this.props)
+    console.log('PROPS', this.props)
+    console.log('STATE', this.state)
     return (
-      <div className='EditItem'>
+      <div>
+        <Item
+          name={this.props.item.name}
+          image={'/' + this.props.item.file}
+          body={this.props.item.body}
+          price={this.props.item.price}
+          condition={this.props.item.Condition.type}
+          category={this.props.item.Category.name}
+          updatedAt={this.props.item.updatedAt}
+          id={this.props.item.id}
+          user_id={this.props.item.user_id}
+          detailView='yes'
+          status={this.props.item.Status.type}
+        />
 
-
-        {this.state.show === true && this.props.item.user_id === Number(localStorage.getItem('user_id')) && this.props.item.status_id === 1 ?
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <input
-            type='text'
-            placeholder='Name'
-            value={this.state.name}
-            onChange={this.handleChangeName.bind(this)}
-          />
-
-          <input
-            type='file'
-            name='file'
-            onChange={this.handleChangeImage.bind(this)}
-          />
-
-          <input
-            type='text'
-            placeholder='Body'
-            value={this.state.body}
-            onChange={this.handleChangeBody.bind(this)}
-          />
-
-          <input
-            type='text'
-            placeholder='Price'
-            value={this.state.price}
-            onChange={this.handleChangePrice.bind(this)}
-          />
-
-          <Select
-            list={this.props.categories}
-            label='Category: '
-            type='name'
-            handler={this.handleChangeCategory.bind(this)}
-          />
-
-          <Select
-            list={this.props.conditions}
-            label='Condition : '
-            type='type'
-            handler={this.handleChangeCondition.bind(this)}
-          />
-          <button type='submit'>Submit</button>
+        {this.props.item.user_id === Number(localStorage.getItem('user_id')) && this.props.item.status_id === 1 ?
+        <div>
+          <button onClick={this.toggleEdit.bind(this)}>Edit</button>
           <button onClick={this.handleChangeDelete.bind(this)}>Mark as SOLD</button>
-        </form>
-        : null}
+        </div>
+        : null }
+
+        <div className='EditItem'>
+          {this.state.show === true && this.props.item.user_id === Number(localStorage.getItem('user_id')) && this.props.item.status_id === 1 ?
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <input
+              type='text'
+              placeholder='Name'
+              value={this.state.name}
+              onChange={this.handleChangeName.bind(this)}
+            />
+
+            <input
+              type='file'
+              name='file'
+              onChange={this.handleChangeImage.bind(this)}
+            />
+
+            <input
+              type='text'
+              placeholder='Body'
+              value={this.state.body}
+              onChange={this.handleChangeBody.bind(this)}
+            />
+
+            <input
+              type='text'
+              placeholder='Price'
+              value={this.state.price}
+              onChange={this.handleChangePrice.bind(this)}
+            />
+
+            <Select
+              list={this.props.categories}
+              label='Category: '
+              type='name'
+              handler={this.handleChangeCategory.bind(this)}
+              defaultVal={this.props.item.category_id}
+            />
+
+            <Select
+              list={this.props.conditions}
+              label='Condition : '
+              type='type'
+              handler={this.handleChangeCondition.bind(this)}
+              defaultVal={this.props.item.condition_id}
+            />
+            <button type='submit'>Submit</button>
+
+          </form>
+          : null}
+        </div>
       </div>
     )
   }

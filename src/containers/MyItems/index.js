@@ -30,28 +30,8 @@ class MyItems extends Component {
           <h2>Published</h2>
           <div className="myPublishedItems">
             <FilterStatus
-              title='Vehicles'
               list={this.props.items}
               stat_id={1}
-              cat_id={1}
-            />
-            <FilterStatus
-              title='Appliances'
-              list={this.props.items}
-              stat_id={1}
-              cat_id={2}
-            />
-            <FilterStatus
-              title='Computers'
-              list={this.props.items}
-              stat_id={1}
-              cat_id={3}
-            />
-            <FilterStatus
-              title='Furniture'
-              list={this.props.items}
-              stat_id={1}
-              cat_id={4}
             />
           </div>
         </div>
@@ -60,28 +40,8 @@ class MyItems extends Component {
           <h2>Sold</h2>
           <div className="mySoldItems">
             <FilterStatus
-              title='Vehicles'
               list={this.props.items}
               stat_id={2}
-              cat_id={1}
-            />
-            <FilterStatus
-              title='Appliances'
-              list={this.props.items}
-              stat_id={2}
-              cat_id={2}
-            />
-            <FilterStatus
-              title='Computers'
-              list={this.props.items}
-              stat_id={2}
-              cat_id={3}
-            />
-            <FilterStatus
-              title='Furniture'
-              list={this.props.items}
-              stat_id={2}
-              cat_id={4}
             />
           </div>
         </div>
