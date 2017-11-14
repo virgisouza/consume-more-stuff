@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import LoginUser from '../Login';
 import NewUser from '../Register';
 import Logout from '../../components/Logout';
+import { Redirect } from 'react-router-dom';
 
 class Header extends Component {
 
@@ -20,7 +21,8 @@ class Header extends Component {
 
     this.state = {
       showLogin : false,
-      showRegister : false
+      showRegister : false,
+      redirect: false
     };
   }
 
@@ -28,7 +30,8 @@ class Header extends Component {
     event.preventDefault();
     this.props.logoutUser();
     this.setState({
-      showLogin: false
+      showLogin: false,
+      redirect: true
     })
   }
 
@@ -63,15 +66,17 @@ class Header extends Component {
   }
 
   render() {
+    if(this.state.redirect) {
+     return <Redirect to="/logout"/>
+    }
     return (
       <div className="App-header">
         <div className="Login-reg">
           <ul>
-
             <li><Link to={'/'}>Home</Link></li>
             <li><Link to={'/all'}>All Items</Link></li>
 
-            <li><Link to={`/users/${localStorage.getItem('user_id')}`}>{localStorage.getItem('username')}</Link></li>
+            <li><Link to={`/users/${localStorage.getItem('user_id')}`}>Welcome, {localStorage.getItem('username')}</Link></li>
 
 
             {!(this.props.user.logged_in) && localStorage.getItem('logged_in') !== 'true' ?

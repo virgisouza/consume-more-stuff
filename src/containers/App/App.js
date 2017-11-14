@@ -42,7 +42,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+      <Header />
 
         <div className="home_list">
             <FilterMap title={'Vehicles'} list={this.props.items} cat_id={1} />
