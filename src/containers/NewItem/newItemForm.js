@@ -3,8 +3,6 @@
 /*THE NEW ITEM FORM CONTAINER*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router';
-
 import '../App/App.css';
 
 import Item from '../../components/item';
@@ -48,18 +46,6 @@ class NewItemForm extends Component {
     }
     this.props.addItem(formData);
 
-    // let newItem = {
-    //   name: this.state.name,
-    //   imageUrl: this.state.image,
-    //   body : this.state.body,
-    //   price : this.state.price,
-    //   condition_id: this.state.condition_id || 1,
-    //   category_id: this.state.category_id || 1
-    // };
-
-    // this.props.addItem(newItem);
-
-
     this.setState({
       name: '',
       file: '',
@@ -67,7 +53,6 @@ class NewItemForm extends Component {
       price : '',
       condition_id: '',
       category_id: ''
-      // redirect: true
     });
 
   }
@@ -85,21 +70,16 @@ class NewItemForm extends Component {
 
     let file = event.target.files[0];
 
+
     reader.onloadend = () => {
       this.setState({
         file: file,
         imageUrl: reader.result
       })
-      console.log(this.state);
     }
 
     reader.readAsDataURL(file);
   }
-
-  // handleChangeImage(event) {
-  //   event.preventDefault();
-  //   this.setState({image : event.target.value});
-  // }
 
   handleChangeBody(event) {
     event.preventDefault();
@@ -108,7 +88,7 @@ class NewItemForm extends Component {
 
   handleChangePrice(event) {
     event.preventDefault();
-    this.setState({price : parseInt(event.target.value)});
+    this.setState({price : event.target.value});
   }
 
   handleChangeName(event) {
@@ -129,6 +109,7 @@ class NewItemForm extends Component {
   render() {
     return (
       <div className="NewItemForm">
+          <h4> * Required</h4>
 
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div className="NewItemFormLabel">Item Name</div>
@@ -141,7 +122,7 @@ class NewItemForm extends Component {
             onChange={this.handleChangeName.bind(this)}
           />
 
-          <div className="NewItemFormLabel">URL</div>
+          <div className="NewItemFormLabel">Upload Image</div>
           <input
             type='file'
             name='file'
@@ -149,7 +130,7 @@ class NewItemForm extends Component {
             onBlur={(e) => e.target.placeholder="Image path"}
             onChange={this.handleChangeImage.bind(this)}/>
 
-          <div className="NewItemFormLabel">Description</div>
+          <div className="NewItemFormLabel"> * Description</div>
           <textarea
             type='text'
             rows='25'
@@ -171,14 +152,14 @@ class NewItemForm extends Component {
             onChange={this.handleChangePrice.bind(this)}
           />
 
-          <div className="NewItemFormLabel">Category</div>
+          <div className="NewItemFormLabel">* Category</div>
           <Select
             list={this.props.categories}
             type='name'
             handler={this.handleChangeCategory.bind(this)}
           />
 
-          <div className="NewItemFormLabel">Condition</div>
+          <div className="NewItemFormLabel">* Condition</div>
           <Select
             list={this.props.conditions}
             type='type'

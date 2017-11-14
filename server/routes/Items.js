@@ -17,12 +17,17 @@ const Condition = db.Condition;
 const Status = db.Status;
 const User = db.User;
 
-router.post('/new', isAuthenticated, upload.single('file'), (req, res) => {
-  //now we have access to req.file
-  console.log(req.file.path, 'REQ FILE');
-  console.log('REQBODY', req.body);
+router.post('/new',  isAuthenticated, upload.single('file'), (req, res) => {
   let data = req.body;
-  let image = (req.file.path).split('/').splice(7).join('/');
+  let image = '';
+
+  //here image will default to generic stock photo if no image is uploaded
+  if(req.file === ''){
+    image = 'uploads/items/Thumbnail.png'
+  }else{
+    image = (req.file.path).split('/').splice(7).join('/');
+  }
+
   return Items.create({
     name: data.name,
     file: image, //set to image file path (where's it located on YOUR comp now that it's saved)
@@ -34,6 +39,7 @@ router.post('/new', isAuthenticated, upload.single('file'), (req, res) => {
     status_id: 1
   })
   .then((item) => {
+    console.log(item, 'item promise')
     return item.reload({include:[
       {model:Category, as: 'Category'},
       {model: Condition, as: 'Condition'},
@@ -41,6 +47,7 @@ router.post('/new', isAuthenticated, upload.single('file'), (req, res) => {
       {model: Status, as: 'Status'}
     ]})
     .then((newItem) => {
+      console.log(newItem, 'new item')
       return res.json(newItem);
     })
   })
@@ -113,7 +120,6 @@ router.put('/:id', isAuthenticated, upload.single('file'), (req, res) => {
       }
       })
       .then((response) => {
-        console.log(response, 'PROMISE ROUTE RESPONSE')
         return Items.findOne({include:[
           {model: Category, as: 'Category'},
           {model: Condition, as: 'Condition'},
@@ -125,7 +131,6 @@ router.put('/:id', isAuthenticated, upload.single('file'), (req, res) => {
           }
         })
         .then((updatedItem) => {
-          console.log(updatedItem, 'WHYYYYY')
           return res.json(updatedItem);
         });
       });
@@ -180,7 +185,6 @@ function isAuthenticated(req, res, next){
     next();
   } else {
     console.log('not isAuthenticated');
-    //not sure exactly what I should do here
     res.redirect('/')
   }
 }
