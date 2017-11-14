@@ -17,12 +17,12 @@ const Condition = db.Condition;
 const Status = db.Status;
 const User = db.User;
 
-router.post('/new', isAuthenticated, upload.single('file'), (req, res) => {
+router.post('/new',  isAuthenticated, upload.single('file'), (req, res) => {
   let data = req.body;
   let image = '';
 
   //here image will default to generic stock photo if no image is uploaded
-  if(req.body.file === ''){
+  if(req.file === ''){
     image = 'uploads/items/Thumbnail.png'
   }else{
     image = (req.file.path).split('/').splice(7).join('/');
@@ -96,11 +96,8 @@ router.get('/:id', (req, res) => {
 
 router.put('/:id', isAuthenticated, upload.single('file'), (req, res) => {
   let image = '';
-
   //here image will default to generic stock photo if no image is uploaded
-  if(req.body.file === ''){
-    image = 'uploads/items/Thumbnail.png'
-  }else{
+  if(req.file){
     image = (req.file.path).split('/').splice(7).join('/');
   }
 

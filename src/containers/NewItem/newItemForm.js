@@ -48,18 +48,6 @@ class NewItemForm extends Component {
     }
     this.props.addItem(formData);
 
-    // let newItem = {
-    //   name: this.state.name,
-    //   imageUrl: this.state.image,
-    //   body : this.state.body,
-    //   price : this.state.price,
-    //   condition_id: this.state.condition_id || 1,
-    //   category_id: this.state.category_id || 1
-    // };
-
-    // this.props.addItem(newItem);
-
-
     this.setState({
       name: '',
       file: '',
