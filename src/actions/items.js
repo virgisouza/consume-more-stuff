@@ -34,6 +34,7 @@ export const loadItems = () => {
 export const loadUserItems = (user_id) => {
   return function(dispatch) {
     return getItemsByUser(user_id).then((items) => {
+      console.log('INACTION', items)
       dispatch({
         type: LOAD_USER_ITEMS,
         items: items
