@@ -40,14 +40,6 @@ const Item = ({name, image, body, price, condition, category, status, updatedAt,
       <Link to={`/items/${id}`}>Detail</Link>
       : null}
 
-      {detailView === 'yes' ?
-      <Link to={'/'}>To All Items</Link>
-      : null}
-
-      {localStorage.getItem('logged_in') === 'true' && detailView === 'yes' ?
-      <Link to={`/users/${localStorage.getItem('user_id')}/items`}>To My Items</Link>
-      : null}
-
     </div>
   );
 

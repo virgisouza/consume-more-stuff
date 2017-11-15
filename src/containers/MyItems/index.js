@@ -26,26 +26,29 @@ class MyItems extends Component {
     return(
       <div className="myItems">
       <Header />
-      <h4>Update Your Info :</h4>
-      <UserSettings />
-      <NewItemForm />
-        <div className="publishedDiv">
-          <h2>Published</h2>
-          <div className="myPublishedItems">
-            <FilterStatus
-              list={this.props.items}
-              stat_id={1}
-            />
-          </div>
-        </div>
+      <div className="myItemsDiv">
 
-        <div className="soldDiv">
-          <h2>Sold</h2>
-          <div className="mySoldItems">
-            <FilterStatus
-              list={this.props.items}
-              stat_id={2}
-            />
+        <NewItemForm />
+          <div className="publishedSold">
+            <div className="publishedDiv">
+              <h2>Published</h2>
+              <div className="myPublishedItems">
+                <FilterStatus
+                  list={this.props.items}
+                  stat_id={1}
+                />
+              </div>
+            </div>
+
+            <div className="soldDiv">
+              <h2>Sold</h2>
+              <div className="mySoldItems">
+                <FilterStatus
+                  list={this.props.items}
+                  stat_id={2}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

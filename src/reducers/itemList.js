@@ -17,14 +17,13 @@ const itemList = (state = intitialState, action) => {
       return [...action.items]; //need to change this return*/
 
     case ADD_ITEM:
-      console.log('REDUCER', action.item)
       return [...state, action.item];
 
     case DELETE_ITEM:
-      return state.filter((item) => {
+      let the_items = state.filter((item) => {
         return item.id !== Number(action.item.id)
       });
-
+      return [...the_items, action.item];
     case EDIT_ITEM:
       let items = state.filter((item) => {
         return item.id !== Number(action.item.id)
@@ -32,8 +31,7 @@ const itemList = (state = intitialState, action) => {
       return [...items, action.item];
 
     case LOAD_USER_ITEMS:
-      return [...action.items];
-
+      return [...action.items]
     default:
       return state;
   }

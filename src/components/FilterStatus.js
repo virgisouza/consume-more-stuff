@@ -1,5 +1,6 @@
 import React from 'react';
 import Item from './item';
+import MarkAsSold from '../containers/MarkAsSold';
 
 const FilterStatus = ({ list, stat_id }) => {
   return (
@@ -9,6 +10,7 @@ const FilterStatus = ({ list, stat_id }) => {
           return listItem.status_id === Number(stat_id)
         }).map((item) => {
           return (
+            <div className="userItem">
             <Item
               name={item.name}
               image={'/' + item.file}
@@ -21,6 +23,10 @@ const FilterStatus = ({ list, stat_id }) => {
               id={item.id}
               user_id={item.user_id}
             />
+            {Number(localStorage.getItem('user_id')) === item.user_id && item.status_id === 1 ?
+              <MarkAsSold the_item={item} />
+            : null}
+            </div>
           )
         })
       }
