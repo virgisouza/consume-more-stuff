@@ -14,7 +14,6 @@ class UserSettings extends Component {
       username: '',
       password: '',
       email: ''
-
     }
   }
 
