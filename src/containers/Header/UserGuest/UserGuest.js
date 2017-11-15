@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 import './UserGuest.css';
 
 /*ACTIONS*/
-import { loginUser, logoutUser } from '../../../actions/users';
+import { logoutUser } from '../../../actions/users';
 
 /*CHILD COMPONENTS*/
 import LoginForm from '../../Forms/LoginForm';

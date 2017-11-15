@@ -1,30 +1,27 @@
+/* This is a login form that resembles Craigslist. It will ask for a username and password, and will validate input fields. */
+
+/* It will not only show up when the user clicks 'Login' at the top-left corner, but also when the user accesses a locked route such as 'Post New Item'. */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/users';
-import '../App/App.css';
+
+import './LoginForm.css';
 
 class LoginForm extends Component {
 
   constructor(props){
     super(props);
-
-    this.state = {
-      username: '',
-      password: ''
-    }
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event){
-    console.log('HandleSubmit for Login invoked');
     event.preventDefault();
     let user = {
       username: this.state.username,
       password: this.state.password
     }
     this.props.loginUser(user);
-    //checking username and password against db
 
     this.setState({
       username: '',
@@ -51,27 +48,47 @@ class LoginForm extends Component {
     return (
 
       <div className="Login-form">
+
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <input
-            type='text'
-            placeholder='Username'
-            onFocus={(e) => e.target.placeholder=""}
-            onBlur={(e) => e.target.placeholder="Username"}
-            value={this.state.username}
-            onChange={this.handleChangeUsername.bind(this)}
-          />
-           <input
-            type='text'
-            placeholder='Password'
-            onFocus={(e) => e.target.placeholder=""}
-            onBlur={(e) => e.target.placeholder="Password"}
-            value={this.state.password}
-            onChange={this.handleChangePassword.bind(this)}
-          />
-          <button type='submit'>Login</button>
+          <div className="Login-box">
+            <span>Log In</span>
+          </div>
+          <div className="Login-handle">
+            <span>Email/Handle</span>
+          </div>
+            
+           <div>
+            <input
+              type='text'
+              placeholder=''
+              onFocus={(e) => e.target.placeholder=""}
+              onBlur={(e) => e.target.placeholder=""}
+              onChange={this.handleChangeUsername.bind(this)}
+            />
+           </div>
+
+          <div className="Login-pw">
+            <span>Password</span>
+          </div>
+
+            <div>
+              <input
+                type='text'
+                placeholder=''
+                onFocus={(e) => e.target.placeholder=""}
+                onBlur={(e) => e.target.placeholder=""}
+                onChange={this.handleChangePassword.bind(this)}
+              />
+            </div>
+            
+            <div className="Login-bottom">
+              <button type='submit'>Log In</button>
+              <a>Forgot Password?</a>
+            </div>
         </form>
 
       </div>
+
     );
   }
 };

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { loadUsers, addNewUser } from '../../actions/users';
 import { connect } from 'react-redux';
-import '../App/App.css';
+
+import './RegisterForm.css';
 
 class RegisterForm extends Component {
 
@@ -55,7 +56,9 @@ class RegisterForm extends Component {
 
   render() {
     return (
-      <div className='NewUserForm'>
+      <div className='Register-form'>
+
+
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input type='text' placeholder= 'Username' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Username"} value={this.state.username} onChange={this.handleChangeUsername.bind(this)} required />
           <input type='text' placeholder= 'Password' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Password"} value={this.state.password}
@@ -63,6 +66,8 @@ class RegisterForm extends Component {
           <input type='text' placeholder= 'Email' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Email"} value={this.state.email} onChange={this.handleChangeEmail.bind(this)} required />
           <button type='submit'>Submit</button>
         </form>
+
+
       </div>
     );
   }

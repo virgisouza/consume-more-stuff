@@ -14,8 +14,10 @@ import './Board.css';
 /*ACTIONS*/
 
 /*CHILD COMPONENTS*/
-import Item from '../../components/item';
 import FilterCategory from './Filters/FilterCategory';
+import FilterPrice from './Filters/FilterPrice';
+import FilterCondition from './Filters/FilterCondition';
+import FilterStatus from './Filters/FilterStatus';
 
 class Board extends Component {
 
@@ -25,11 +27,10 @@ class Board extends Component {
 
   render() {
     console.log('Board render');
-    let items = this.props.list;
+    let items = this.props.items;
     let filter = this.props.filter;
     return (
       <div className="board">
-        <Item />
         {filter == 'category' ? <FilterCategory list={items} cat="appliances" /> : null}
         {filter == 'price' ? console.log('FilterPrice') : null}
         {filter == 'condition' ? console.log('FilterCondition') : null}

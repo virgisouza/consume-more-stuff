@@ -32,7 +32,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Searchbar />
-        <Board list={items} filter='category' />
+        <Board items={items} filter='category' />
       </div>
     );
   }

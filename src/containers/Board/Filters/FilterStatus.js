@@ -18,7 +18,18 @@ const FilterStatus = ({ list, stat }) => {
           }
         }).map(item => {
           return (
-            <Item />
+            <Item 
+              name={item.name}
+              image={item.file}
+              body={item.body}
+              price={item.price}
+              condition={item.Condition.type}
+              category={item.Category.name}
+              updatedAt={item.updatedAt}
+              key={item.id}
+              id={item.id}
+              user_id={item.user_id}
+            />
           );
         })
       }

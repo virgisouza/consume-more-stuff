@@ -8,29 +8,7 @@
 
 
 /* LOGIN AND REGISTER FORMS */
-.Login-form {
-  position: absolute;
-  right: 0;
-  top: 50px;
-}
 
-  .Login-form form {
-    
-  }
-  .Login-form input {
-    margin: 3px;
-    border-radius: 5px;
-  }
-  .Login-form button {
-    margin: 3px;
-    background-color: yellow;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .Login-form button:hover {
-    background-color: #997500;
-  }
 
 .NewUserForm {
   position: absolute;
