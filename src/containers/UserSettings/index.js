@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import UserItem from '../../components/UserItem';
 import { connect } from 'react-redux';
 import { editUser } from '../../actions/users';
+import Header from '../Header/Header';
 
 
 class UserSettings extends Component {
@@ -59,29 +60,32 @@ class UserSettings extends Component {
   render(){
     console.log(this.props, 'EDIT USER PROPS')
     return(
-      <div className='editUser'>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <input
-            type='text'
-            placeholder='Username'
-            value={this.state.username}
-            onChange={this.handleChangeUsername.bind(this)}
-          />
-          <input
-            type='text'
-            placeholder='Password'
-            value={this.state.password}
-            onChange={this.handleChangePassword.bind(this)}
-          />
-          <input
-            type='text'
-            placeholder='Email'
-            value={this.state.email}
-            onChange={this.handleChangeEmail.bind(this)}
-          />
-          <button type='submit'>Submit</button>
-        </form>
+      <div>
+        <Header />
+        <div className='editUser'>
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <input
+              type='text'
+              placeholder='Username'
+              value={this.state.username}
+              onChange={this.handleChangeUsername.bind(this)}
+            />
+            <input
+              type='text'
+              placeholder='Password'
+              value={this.state.password}
+              onChange={this.handleChangePassword.bind(this)}
+            />
+            <input
+              type='text'
+              placeholder='Email'
+              value={this.state.email}
+              onChange={this.handleChangeEmail.bind(this)}
+            />
+            <button type='submit'>Submit</button>
+          </form>
 
+        </div>
       </div>
       )
   }

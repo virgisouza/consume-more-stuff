@@ -17,7 +17,6 @@ const itemList = (state = intitialState, action) => {
       return [...action.items]; //need to change this return*/
 
     case ADD_ITEM:
-      console.log('REDUCER', action.item)
       return [...state, action.item];
 
     case DELETE_ITEM:
@@ -32,7 +31,6 @@ const itemList = (state = intitialState, action) => {
       return [...items, action.item];
 
     case LOAD_USER_ITEMS:
-      console.log('REDUCE', action.items)
       return [...action.items]
     default:
       return state;

@@ -10,7 +10,7 @@ const FilterStatus = ({ list, stat_id }) => {
           return listItem.status_id === Number(stat_id)
         }).map((item) => {
           return (
-            <div>
+            <div className="userItem">
             <Item
               name={item.name}
               image={'/' + item.file}

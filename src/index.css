@@ -14,7 +14,7 @@ body {
   flex-direction: column;
 }
 
-.soldDive{
+.soldDiv{
   display: flex;
   flex-direction: column;
 }
@@ -26,5 +26,19 @@ body {
 
 .mySoldItems{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+
+.status-filter{
+  display: flex;
+}
+
+.myItemsDiv{
+  display: flex;
+  justify-content: space-around;
+}
+
+.userItem{
+  display: flex;
+  flex-direction: column;
 }

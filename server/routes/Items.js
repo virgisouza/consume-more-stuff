@@ -22,7 +22,7 @@ router.post('/new',  isAuthenticated, upload.single('file'), (req, res) => {
   let image = '';
 
   //here image will default to generic stock photo if no image is uploaded
-  if(req.file === ''){
+  if(!req.file){
     image = 'uploads/items/Thumbnail.png'
   }else{
     image = (req.file.path).split('/').splice(7).join('/');
