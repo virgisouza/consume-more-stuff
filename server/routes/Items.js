@@ -56,9 +56,6 @@ router.get('/', (req, res) => {
     {model: User, as: 'User'},
     {model: Status, as: 'Status'}
     ],
-    where: {
-      status_id: 1
-    },
     order: [['updatedAt', 'DESC']]})
   .then((items) => {
     return res.json(items);

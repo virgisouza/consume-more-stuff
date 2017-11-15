@@ -14,7 +14,7 @@ import './Board.css';
 /*ACTIONS*/
 
 /*CHILD COMPONENTS*/
-import Item from '../../components/item';
+import FilterCategory from './Filters/FilterCategory';
 
 class Board extends Component {
 
@@ -24,28 +24,16 @@ class Board extends Component {
 
   render() {
     console.log('Board render');
-
-    let items = this.props.items;
+    let items = this.props.list;
     let filter = this.props.filter;
     return (
       <div className="board">
-
-        { 
-          filter == 'category' ? console.log('FilterCategory') : null 
-        }
-
-        {
-          filter == 'price' ? console.log('FilterPrice') : null
-        }
-
-        {
-          filter == 'condition' ? console.log('FilterCondition') : null
-        }
-
-        {
-          filter == 'status' ? console.log('FilterStatus') : null
-        }
-
+        
+        {filter == 'recent' ? console.log('FilterRecent') : null}
+        {filter == 'category' ? <FilterCategory list={items} category={filter} /> : null}
+        {filter == 'price' ? console.log('FilterPrice') : null}
+        {filter == 'condition' ? console.log('FilterCondition') : null}
+        {filter == 'status' ? console.log('FilterStatus') : null}
       </div>
     );
   }

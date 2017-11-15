@@ -1,6 +1,5 @@
-/*MAIN COMPONENT*/
-/*MAIN COMPONENT*/
-/*MAIN COMPONENT*/
+/* This is our main component that contains Header, Board, and Bar. */
+/* It will load the list of items from Redux store upon mounting, and feed this data to other components. */
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
@@ -22,9 +21,8 @@ class App extends Component {
     super(props);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.loadItems();
-    console.log(this.props.items);
   }
 
   render() {
