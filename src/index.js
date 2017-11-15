@@ -21,7 +21,9 @@ import reducers from './reducers/reducer_index';
 import NewItemForm from './containers/NewItem/newItemForm';
 import App from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
+
 import LoginForm from './containers/Forms/LoginForm';
+import RegisterForm from './containers/Forms/RegisterForm';
 import AuthUserEditItem from './containers/AuthUserEditItem';
 import MyItems from './containers/MyItems';
 
@@ -42,6 +44,7 @@ ReactDOM.render(
         <Route path='/new' component={NewItemForm}/>
         <Route path='/users/:id/items' component={MyItems}/>
         <Route path='/login' component={LoginForm} />
+        <Route path='/register' component={RegisterForm} />
       </div>
     </Router>
   </Provider>,

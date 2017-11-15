@@ -8,9 +8,9 @@ const user = (state = initialState, action) => {
   switch (action.type){
 
     case LOGIN_USER:
-      localStorage.setItem('user_id', action.user.id);
+      console.log(action.user.data); //make sure to use .data
       localStorage.setItem('logged_in', true);
-      localStorage.setItem('username', action.user.username);
+      localStorage.setItem('username', action.user.data.username);
 
       return Object.assign({}, state, {user_id: action.user.id, logged_in: true, username: action.user.username})
 
@@ -21,7 +21,7 @@ const user = (state = initialState, action) => {
       return Object.assign({}, state, {user_id: null, logged_in: false, username: 'Guest'})
 
     case REGISTER_USER:
-      console.log('reducer', action.user);
+      console.log('reducer ====', action.user);
       return [...state, action.user];
 
     default:

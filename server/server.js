@@ -73,15 +73,13 @@ passport.use(new LocalStrategy(function (username, password, done) {
 }));
 
 
-app.post('/login', passport.authenticate('local'), function(req, res){
+app.post('/login', passport.authenticate('local'), function(req, res) {
   const user = req.user;
-  res.json(req.user);
+  return res.json(user);
 });
 
 
 app.use('/api', routes);
-
-
 
 app.get('/logout', (req, res) => {
   req.logout();

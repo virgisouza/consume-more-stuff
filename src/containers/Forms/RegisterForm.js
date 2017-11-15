@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { loadUsers, addNewUser } from '../../actions/users';
 import { connect } from 'react-redux';
+import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
-import './RegisterForm.css';
+/*ACTIONS*/
+import { addNewUser } from '../../actions/users';
+
+import './LoginForm.css';
 
 class RegisterForm extends Component {
 
@@ -15,10 +18,8 @@ class RegisterForm extends Component {
       email: ''
     };
 
-    this.handleChangeUsername = this.handleChangeUsername.bind(this);
-    this.handleChangePassword = this.handleChangePassword.bind(this);
-    this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleSubmit(event) {
@@ -31,7 +32,7 @@ class RegisterForm extends Component {
     };
 
     this.props.addNewUser(newUser);
-    console.log(newUser);
+
     this.setState({
       username: '',
       password: '',
@@ -39,36 +40,60 @@ class RegisterForm extends Component {
     });
   }
 
-  handleChangeUsername(event){
-    event.preventDefault();
-    this.setState({username: event.target.value});
+  validateForm() {
+    return this.state.username.length > 0 && this.state.password.length > 0 && this.state.email.length > 0;
   }
 
-  handleChangePassword(event){
-    event.preventDefault();
-    this.setState({password: event.target.value});
-  }
-
-  handleChangeEmail(event){
-    event.preventDefault();
-    this.setState({email: event.target.value});
+  handleChange(event) {
+    this.setState({
+      [event.target.id] : event.target.value
+    });
   }
 
   render() {
+    console.log('Register Form render');
     return (
-      <div className='Register-form'>
-
-
+      <div className="Login-form">
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <input type='text' placeholder= 'Username' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Username"} value={this.state.username} onChange={this.handleChangeUsername.bind(this)} required />
-          <input type='text' placeholder= 'Password' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Password"} value={this.state.password}
-          onChange={this.handleChangePassword.bind(this)} required /><br></br>
-          <input type='text' placeholder= 'Email' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Email"} value={this.state.email} onChange={this.handleChangeEmail.bind(this)} required />
-          <button type='submit'>Submit</button>
+          <ControlLabel className='Login-box'>Create Account</ControlLabel>
+          <FormGroup controlId="username" bsSize="large">
+            <ControlLabel>User Name</ControlLabel>
+            <FormControl
+              autoFocus
+              type="email"
+              value={this.state.username}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup controlId="password" bsSize="large">
+            <ControlLabel>Password</ControlLabel>
+            <FormControl
+              autoFocus
+              type="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup controlId="email" bsSize="large">
+            <ControlLabel>E-Mail</ControlLabel>
+            <FormControl
+              autoFocus
+              type="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <Button
+            block
+            bsSize="large"
+            /*disabled={this.validateForm()}*/
+            type="submit"
+          >
+            Register
+          </Button>
         </form>
-
-
       </div>
+
     );
   }
 
@@ -84,13 +109,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadUsers: () => {
-      dispatch(loadUsers())
-    },
     addNewUser: (user) => {
       dispatch(addNewUser(user))
     }
-  }
+  };
 }
 
 export default connect(

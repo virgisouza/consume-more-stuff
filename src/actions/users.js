@@ -6,9 +6,11 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const GET_USERS = 'GET_USERS';
 export const LOGOUT_USER = 'LOGOUT_USER';
 
+const axios = require('axios');
+
 export const loadUsers = () => {
   return function(dispatch) {
-    return getUsers().then(users => {
+    return axios.get('/api/users').then(users => {
       dispatch({
         type : GET_USERS,
         users : users
@@ -17,11 +19,9 @@ export const loadUsers = () => {
   }
 }
 
-export const addNewUser = (user) => {
-  console.log('action', user);
+export const addNewUser = (user) => {  
   return function(dispatch) {
-    return addUser(user).then(newUser => {
-      console.log(newUser);
+    return axios.post('/register', user).then(newUser => {
       dispatch({
         type : REGISTER_USER,
         user : newUser
@@ -32,8 +32,9 @@ export const addNewUser = (user) => {
 
 export const loginUser = (user) => {
   return function(dispatch) {
-    return login(user).then(theUser => {
-      console.log(theUser)
+    console.log(user);
+    return axios.post('/login', user).then(theUser => {
+      console.log('AXIOS POST === ', theUser);
       dispatch({
         type: LOGIN_USER,
         user: theUser
@@ -44,8 +45,7 @@ export const loginUser = (user) => {
 
 export const logoutUser = () => {
   return function(dispatch) {
-    return logout().then(response => {
-      console.log(response, ' ACTION')
+    return axios.get('/logout').then(response => {
       dispatch({
         type: LOGOUT_USER,
         data: response
