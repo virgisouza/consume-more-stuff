@@ -10,7 +10,7 @@ import './LoginForm.css';
 
 class LoginForm extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       username : '',
