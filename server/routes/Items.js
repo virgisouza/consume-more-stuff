@@ -96,9 +96,11 @@ router.get('/:id', (req, res) => {
 
 router.put('/:id', isAuthenticated, upload.single('file'), (req, res) => {
   let image = '';
+  //here image will default to generic stock photo if no image is uploaded
   if(req.file){
     image = (req.file.path).split('/').splice(7).join('/');
   }
+
   return Items.findOne({
     where: {
       id: req.body.id
