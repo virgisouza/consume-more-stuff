@@ -47,9 +47,14 @@ class UserGuest extends Component {
   }
 
 
-
-
 }
 //end class
 
-export default UserGuest;
+const mapStateToProps = (state) => {
+  user: state.user
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(UserGuest);

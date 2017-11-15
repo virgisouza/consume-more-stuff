@@ -5,7 +5,7 @@ import { LOGIN_USER,
 const initialState = {};
 
 const user = (state = initialState, action) => {
-  switch (action.type){
+  switch (action.type) {
 
     case LOGIN_USER:
       console.log(action.user.data); //make sure to use .data
@@ -18,6 +18,7 @@ const user = (state = initialState, action) => {
       localStorage.setItem('user_id', 0);
       localStorage.setItem('logged_in', false);
       localStorage.setItem('username', 'Guest');
+      
       return Object.assign({}, state, {user_id: null, logged_in: false, username: 'Guest'})
 
     case REGISTER_USER:

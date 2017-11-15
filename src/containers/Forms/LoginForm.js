@@ -52,7 +52,7 @@ class LoginForm extends Component {
 
   render() {
     if (this.state.loggedIn === true) {
-      return (<Redirect to='/' />);
+      return (<Redirect to='/loggedIn' />);
     } else {
       return (
         <div className="Login-form">

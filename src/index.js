@@ -23,6 +23,7 @@ import App from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
 import LoginForm from './containers/Forms/LoginForm';
+import ConfirmLogin from './containers/Forms/ConfirmLogin';
 import RegisterForm from './containers/Forms/RegisterForm';
 import AuthUserEditItem from './containers/AuthUserEditItem';
 import MyItems from './containers/MyItems';
@@ -41,8 +42,9 @@ ReactDOM.render(
       <div>
         <Route exact path='/' component={App}/>
         <Route path='/login' component={LoginForm} />
+        <Route path='/loggedIn' component={ConfirmLogin} />
         <Route path='/register' component={RegisterForm} />
-        
+
         <Route path='/items/:id' component={AuthUserEditItem}/>
         <Route path='/new' component={NewItemForm}/>
         <Route path='/users/:id/items' component={MyItems}/>
