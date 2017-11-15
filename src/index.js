@@ -28,6 +28,7 @@ import MyItems from './containers/MyItems';
 import UserSettings from './containers/UserSettings';
 import CategoryView from './containers/CategoryView';
 import AllItems from './containers/AllItems';
+import Goodbye from './components/Goodbye';
 
 const store = createStore(
   reducers,
@@ -48,6 +49,7 @@ ReactDOM.render(
         <Route path='/login' component={LoginUser} />
         <Route path='/users/:id/edit' component={UserSettings}/>
         <Route path='/categories/:id/items' component={CategoryView} />
+        <Route path='/logout' component={Goodbye} />
       </div>
     </Router>
   </Provider>,
