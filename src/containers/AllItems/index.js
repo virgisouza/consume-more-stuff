@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import FilterMap from '../../components/FilterMap';
 import { loadItems } from '../../actions/items';
 import Item from '../../components/item';
+import ScrollArea from 'react-scrollbar';
 
 class AllItems extends Component {
   constructor(props){
@@ -19,26 +20,32 @@ class AllItems extends Component {
     return(
       <div>
         <Header />
+
         <div className="Filter-title">All Items</div>
-        {
-          this.props.items.map((item) => {
-            return(
-              <Item
-              name={item.name}
-              image={item.file}
-              body={item.body}
-              price={item.price}
-              condition={item.Condition.type}
-              category={item.Category.name}
-              updatedAt={item.updatedAt}
-              key={item.id}
-              id={item.id}
-              user_id={item.user_id}
-            />
-            )
-          })
-        }
+
+          {
+            this.props.items.map((item) => {
+              return(
+
+                <Item
+                name={item.name}
+                image={item.file}
+                body={item.body}
+                price={item.price}
+                condition={item.Condition.type}
+                category={item.Category.name}
+                updatedAt={item.updatedAt}
+                key={item.id}
+                id={item.id}
+                user_id={item.user_id}
+              />
+              )
+            })
+          }
+
+
       </div>
+
     )
   }
 }

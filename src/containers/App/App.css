@@ -12,13 +12,13 @@
 
 .Filter {
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
   width: 25%;
 }
-  .Filter-title {
-    font-size: 2em;
-    border: 1px solid black;
-  }
+.Filter-title {
+  font-size: 2em;
+  border: 1px solid black;
+}
 
 .Item {
   border: 1px solid black;
@@ -48,7 +48,7 @@
     cursor: pointer;
     color: yellow;
   }
-  
+
   .Item-name {
 
   }
@@ -70,7 +70,7 @@
     padding: 1px;
     border: 1px solid #b2b2b2;
     border-radius: 3px;
-    display: inline-block;    
+    display: inline-block;
   }
   .Item-date {
     font-size: 10px;
@@ -92,7 +92,7 @@
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-  
+
 }
 
 .App-header {
@@ -157,7 +157,7 @@
 }
 
   .Login-form form {
-    
+
   }
   .Login-form input {
     margin: 3px;
@@ -181,7 +181,7 @@
 }
 
   .NewUserForm form {
-    
+
   }
   .NewUserForm input {
     margin: 3px;
@@ -229,7 +229,7 @@
     background-color: yellow;
     border: none;
     border-radius: 5px;
-    margin: 5px; 
+    margin: 5px;
   }
   .NewItemForm button:hover {
     background-color: #997500;

@@ -6,6 +6,7 @@ import Header from '../Header/Header';
 import NewItemForm from '../NewItem/newItemForm';
 import UserSettings from '../UserSettings';
 
+
 class MyItems extends Component {
   constructor(props) {
     super(props)

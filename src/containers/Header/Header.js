@@ -71,6 +71,7 @@ class Header extends Component {
             <li><Link to={'/'}>Home</Link></li>
             <li><Link to={'/all'}>All Items</Link></li>
 
+
             <li><Link to={`/users/${localStorage.getItem('user_id')}`}>{localStorage.getItem('username')}</Link></li>
 
 
@@ -91,6 +92,7 @@ class Header extends Component {
 
             {this.props.user.logged_in === true || localStorage.getItem('logged_in') === 'true' ?
             <div>
+              <li><Link to={`/users/${localStorage.getItem('user_id')}/edit`}>Settings</Link></li>
               <li><Link to={`/users/${localStorage.getItem('user_id')}/items`}>My Items</Link></li>
               <li><Logout handler={this.handleLogout.bind(this)}/> </li>
             </div>
