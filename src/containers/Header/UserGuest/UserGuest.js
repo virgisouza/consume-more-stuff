@@ -16,8 +16,8 @@ import './UserGuest.css';
 import { loginUser, logoutUser } from '../../../actions/users';
 
 /*CHILD COMPONENTS*/
-import LoginUser from '../../Login';
-import NewUser from '../../Register';
+import LoginForm from '../../Forms/LoginForm';
+import RegisterForm from '../../Forms/RegisterForm';
 
 class UserGuest extends Component {
 
@@ -32,14 +32,13 @@ class UserGuest extends Component {
           {
             localStorage.getItem('logged_in') ? 
             <ul>
-                <li><a className='hello-user'>Hello , {localStorage.getItem('username')}</a></li>
+                <li><span className='hello-user'>Hello , {localStorage.getItem('username')}</span></li>
                 <li><Link className='logout' to='/logout'>Logout</Link></li>
             </ul>
             :
             <ul>
-                <li><a className='hello-guest'>Hello, Guest</a></li>
-                <li><Link className='login' to='/login'>Login</Link></li>
-                <li><Link className='register' to='/register'>Register</Link></li>
+                <li><span className='hello-guest'>Hello, Guest</span></li>
+                <li><Link className='login' to='/login'>Login</Link><Link className='register' to='/register'>Register</Link></li>
             </ul> 
           }
         

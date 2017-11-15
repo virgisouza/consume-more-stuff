@@ -3,7 +3,7 @@ import { loadUsers, addNewUser } from '../../actions/users';
 import { connect } from 'react-redux';
 import '../App/App.css';
 
-class NewUser extends Component {
+class RegisterForm extends Component {
 
   constructor(props) {
     super(props);
@@ -91,4 +91,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NewUser);
+)(RegisterForm);

@@ -27,23 +27,3 @@
   .new:hover, .account:hover {
     text-decoration: underline;
   }
-
-.user {
-  border: 1px solid green;
-  width: 25%;
-  position: absolute;
-  left: 0;
-}
-  
-  .user li {
-    list-style-type: none;
-    border: 1px solid yellow;
-  }
-  .user li a {
-    border: 1px solid blue;
-    text-decoration: none;
-  }
-  .user li a:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }

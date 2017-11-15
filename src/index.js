@@ -8,7 +8,6 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
-
 import {
   BrowserRouter as Router,
   Route,
@@ -22,7 +21,7 @@ import reducers from './reducers/reducer_index';
 import NewItemForm from './containers/NewItem/newItemForm';
 import App from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
-import LoginUser from './containers/Login';
+import LoginForm from './containers/Forms/LoginForm';
 import AuthUserEditItem from './containers/AuthUserEditItem';
 import MyItems from './containers/MyItems';
 
@@ -43,7 +42,7 @@ ReactDOM.render(
         <Route path='/items/:id' component={AuthUserEditItem}/>
         <Route path='/new' component={NewItemForm}/>
         <Route path='/users/:id/items' component={MyItems}/>
-        <Route path='/login' component={LoginUser} />
+        <Route path='/login' component={LoginForm} />
       </div>
     </Router>
   </Provider>,

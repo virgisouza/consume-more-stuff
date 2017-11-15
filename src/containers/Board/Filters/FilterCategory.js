@@ -1,41 +1,26 @@
 /* This is a filter component rendered on the BOARD. */
-/* It takes in a part of the state.itemlist */
+/* It takes in a part of state.itemlist */
 
 /* It will filter by a single category : if 'vehicles' is selected, board will only show items under that category and not the others. */
-
-/* Potential problems with the fact that the list parameter looks this way:
-
-[ {..}, {..}, {.. category : {id : __, name : __} ] */
 
 import React from 'react';
 import Item from '../../../components/item';
 import { Link } from 'react-router-dom';
 
-const FilterCategory = ({ list, category }) => {
-  console.log(list); 
+const FilterCategory = ({ list, cat }) => {
+
   return (
     <div>
       {
         list.filter(i => {
-          if (i.category) {
-            return i.category.name === category
+          if (i.Category) {
+            return i.Category.name === cat;
           }
         })
         .map(item => {
-            return (
-              <Item 
-                name={item.name}
-                image={'/' + item.file}
-                body={item.body}
-                price={item.price}
-                condition={(item.Condition && item.Condition.type) ? item.Condition.type : ''}
-                category={(item.Category && item.Category.name) ? item.Category.name : ''}
-                updatedAt={item.updatedAt}
-                key={item.id}
-                id={item.id}
-                user_id={item.user_id}
-              />
-            );
+          return (
+            <Item />
+          );
         })
       }
     </div>
