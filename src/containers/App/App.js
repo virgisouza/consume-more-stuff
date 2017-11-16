@@ -11,7 +11,6 @@ import { loadItems } from '../../actions/items';
 
 /*CHILD COMPONENTS*/
 import Header from '../Header/Header';
-import Searchbar from '../Searchbar/Searchbar';
 import Board from '../Board/Board';
 
 class App extends Component {
@@ -20,13 +19,16 @@ class App extends Component {
     super(props);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return false;
+  }
+
   render() {
     console.log('App render');
 
     return (
       <div className="App">
         <Header />
-        <Searchbar />
         <Board />
       </div>
     );
@@ -35,6 +37,12 @@ class App extends Component {
 
 }
 //end class
+
+const mapStateToProps = (state) => {
+  return {
+    items : state.itemList,
+  };
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -45,6 +53,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(App);

@@ -1,6 +1,5 @@
-/* This is a mock search bar component just after the header, and before the items.
-It allows filtering of the items below on the board. */
-
+/* A somewhat smart component. It will have a local state that will filter things from the
+Redux-aware BOARD component. It will then output things in a CONTENT dummy component. */
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
@@ -25,24 +24,30 @@ class Searchbar extends Component {
   }
 
   handleChangePrice(event) {
-    console.log(event.target.value);
-    this.props.changeFilter(event.target.value);
+    event.target.value === 'Low to High' ? this.props.changeFilter(1) : this.props.changeFilter(2);
   }
 
   handleChangeCondition(event) {
-    console.log(event.target.value);
-    this.props.changeFilter(event.target.value);
+    event.target.value === 'Best to Worst' ? this.props.changeFilter(3) : this.props.changeFilter(4);
   }
 
   handleChangeCategory(event) {
-    console.log(event.target.value);
-    this.props.changeFilter(event.target.value);
+    switch (event.target.value) {
+      case 'vehicles': 
+        return this.props.changeFilter(5);
+      case 'appliances':
+        return this.props.changeFilter(6);
+      case 'computers':
+        return this.props.changeFilter(7);
+      case 'furniture':
+        return this.props.changeFilter(8);
+      default:
+        return null;
+    }
   }
 
   render() {
     console.log('Searchbar render');
-    console.log(this.props);
-
     return (
       <div className='Searchbar'>
         <input 
@@ -54,17 +59,17 @@ class Searchbar extends Component {
         />
         <button>Search</button>
         <select onChange={this.handleChangePrice}>
-          <option value="" selected>Price</option>
+          <option value="">Price</option>
           <option>Low to High</option>
           <option>High to Low</option>
         </select>
         <select onChange={this.handleChangeCondition}>
-          <option value="" selected>Condition</option>
+          <option value="">Condition</option>
           <option>Best to Worst</option>
           <option>Worst to Best</option>
         </select>
         <select onChange={this.handleChangeCategory}>
-          <option value="" selected>Category</option>
+          <option value="">Category</option>
           <option>vehicles</option>
           <option>appliances</option>
           <option>computers</option>

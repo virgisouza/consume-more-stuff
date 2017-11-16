@@ -25,7 +25,7 @@ export const loadItems = () => {
     return axios.get('api/items').then(items => {
       dispatch({
         type : LOAD_ITEMS,
-        items : items
+        items : items.data
       });
     });
   }

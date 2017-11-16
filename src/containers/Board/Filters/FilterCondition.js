@@ -7,7 +7,7 @@ import React from 'react';
 import Item from '../../../components/item';
 import { Link } from 'react-router-dom';
 
-const FilterCondition = ({ list, cond }) => {
+const FilterCondition = ({ list, sort }) => {
   
   return (
     <div>
@@ -35,6 +35,8 @@ const FilterCondition = ({ list, cond }) => {
       }
     </div>
   );
-}
+
+
+} //end component
 
 export default FilterCondition;

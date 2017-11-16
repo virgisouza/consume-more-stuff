@@ -8,13 +8,39 @@ import React from 'react';
 import Item from '../../../components/item';
 import { Link } from 'react-router-dom';
 
-const FilterPrice = ({ list, order }) => { 
+const FilterPrice = ({ list, sort }) => { 
+  console.log('FilterPrice render');
+  console.log(sort);
+
 
   return (
     <div>
       { 
-        list.sort(function(a, b) { // put an if statement here..according to order
+        sort == 1 ?  //parse could err if NaN .. do check that items are numbers ..
+        list.sort(function(a, b) { //do a non number comparison
           return parseInt(a.price) - parseInt(b.price);
+        })
+        .map(item => {
+          return (
+            <Item 
+              name={item.name}
+              image={item.file}
+              body={item.body}
+              price={item.price}
+              condition={item.Condition.type}
+              category={item.Category.name}
+              updatedAt={item.updatedAt}
+              key={item.id}
+              id={item.id}
+              user_id={item.user_id}
+            />
+          );
+        })
+
+        :
+
+        list.sort(function(a, b) {
+          return parseInt(b.price) - parseInt(a.price);
         })
         .map(item => {
           return (
@@ -35,6 +61,8 @@ const FilterPrice = ({ list, order }) => {
       }
     </div>
   );
-}
+
+
+}//end component
 
 export default FilterPrice;

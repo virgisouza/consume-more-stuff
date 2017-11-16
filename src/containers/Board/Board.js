@@ -1,9 +1,5 @@
-/* This is our board component, it will render multiple ITEM components */
+/*This is the redux-aware component.*/
 
-/* APP is what passes the list of items into it. It will then call a FilterX component based on
-the filter prop passed into it. */
-
-/* It will start off with "most recently submitted" as its filter. */
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
@@ -12,16 +8,22 @@ import { connect } from 'react-redux';
 import './Board.css';
 
 /*ACTIONS*/
+import { loadItems } from '../../actions/items'; 
 
 /*CHILD COMPONENTS*/
-import FilterCategory from './Filters/FilterCategory';
+import Searchbar from '../Searchbar/Searchbar';
 import FilterPrice from './Filters/FilterPrice';
 import FilterCondition from './Filters/FilterCondition';
+import FilterCategory from './Filters/FilterCategory';
 
 class Board extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.loadItems();
   }
 
   render() {
@@ -30,9 +32,15 @@ class Board extends Component {
     let items = this.props.items;
     let filter = this.props.filter;
 
+    console.log(items);
+    console.log('Current Filter : ', filter);
+
     return (
       <div className="board">
-        Board
+        <Searchbar />
+        {filter == 1 || 2 ? <FilterPrice list={items} sort={filter} /> : null}
+        {filter == 3 || 4 ? <FilterCondition list={items} sort={filter} /> : null}
+        {filter == 5 || 6 || 7 || 8 ? <FilterCategory list={items} sort={filter} /> : null}
       </div>
     );
   }
@@ -47,7 +55,15 @@ const mapStateToProps = (state) => {
   };
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadItems : () => {
+      dispatch(loadItems())
+    }
+  };
+}
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Board);
