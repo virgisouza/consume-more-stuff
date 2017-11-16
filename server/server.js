@@ -90,9 +90,9 @@ app.put('/users/:id/edit', (req,res) => {
         })
         .then(user => {
           return db.User.update({
-            username: req.body.username,
-            password: hash,
-            email: req.body.email
+            username: req.body.username || user.username,
+            password: hash || user.password,
+            email: req.body.email || user.email
           },
           {where: {
             id: req.user.id
