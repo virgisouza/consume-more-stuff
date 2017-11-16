@@ -2,7 +2,7 @@
 
 #development
 config/config.json
-public/uploads
+
 
 # dependencies
 /node_modules
