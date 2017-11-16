@@ -11,6 +11,7 @@ const FilterCategory = ({ list, cat }) => {
 
   return (
     <div>
+    
       {
         list.filter(i => {
           if (i.Category) {
@@ -39,8 +40,10 @@ const FilterCategory = ({ list, cat }) => {
           );
         })
       }
+
     </div>
   );
+
 }
 
 export default FilterCategory;

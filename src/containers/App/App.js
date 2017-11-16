@@ -23,6 +23,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+
   }
 
   componentDidMount() {
@@ -30,9 +31,16 @@ class App extends Component {
     this.props.loadItems();
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return true;
+  }
+
   render() {
+    console.log('App render');
+    
     let items = this.props.items;
-    console.log(items);
+    let filter = this.props.filter;
+   
     return (
       <div className="App">
         <Header />
@@ -41,7 +49,7 @@ class App extends Component {
             <FilterMap list={items} cat='vehicles' />
             <FilterMap list={items} cat='appliances' />
             <FilterMap list={items} cat='computers' />
-            <FilterMap list={items} cat='furniture' />
+            <FilterMap list={items} cat={filter} />
         </div>
       </div>
     );
@@ -55,8 +63,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    items: state.itemList,
-    user: state.user
+    items : state.itemList,
+    filter : state.filter
   };
 }
 

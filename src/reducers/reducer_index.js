@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import categoryList from './categoryList';
 import conditionList from './conditionList';
+import filter from './filter';
 import user from './user';
 import itemList from './itemList';
 import statusList from './statusList';
@@ -12,7 +13,8 @@ const reducers = combineReducers({
   user,
   itemList,
   statusList,
-  singleItem
+  singleItem,
+  filter
 });
 
 export default reducers;
