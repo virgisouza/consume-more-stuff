@@ -58,7 +58,12 @@ router.post('/new',  isAuthenticated, upload.single('file'), (req, res) => {
           }
         })
         .then((response) => {
-          return Items.findOne({
+          return Items.findOne({include:[
+          {model: Category, as: 'Category'},
+          {model: Condition, as: 'Condition'},
+          {model: User, as: 'User'},
+          {model: Status, as: 'Status'}
+          ],
             where: {
               id: newItem.id
             }
@@ -77,7 +82,12 @@ router.post('/new',  isAuthenticated, upload.single('file'), (req, res) => {
         }
       })
       .then((response) => {
-        return Items.findOne({
+        return Items.findOne({include:[
+          {model: Category, as: 'Category'},
+          {model: Condition, as: 'Condition'},
+          {model: User, as: 'User'},
+          {model: Status, as: 'Status'}
+          ],
           where: {
             id: newItem.id
           }
@@ -169,7 +179,12 @@ router.put('/:id', isAuthenticated, upload.single('file'), (req, res) => {
           }
         })
         .then((response) => {
-          return Items.findOne({
+          return Items.findOne({include:[
+          {model: Category, as: 'Category'},
+          {model: Condition, as: 'Condition'},
+          {model: User, as: 'User'},
+          {model: Status, as: 'Status'}
+          ],
             where: {
               id: item.id
             }
@@ -192,7 +207,12 @@ router.put('/:id', isAuthenticated, upload.single('file'), (req, res) => {
         }
       })
       .then((response) => {
-        return Items.findOne({
+        return Items.findOne({include:[
+          {model: Category, as: 'Category'},
+          {model: Condition, as: 'Condition'},
+          {model: User, as: 'User'},
+          {model: Status, as: 'Status'}
+          ],
           where: {
             id: item.id
           }
