@@ -6,7 +6,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import logo from '../App/logo.svg';
 import '../App/App.css';
-import { loginUser, logoutUser } from '../../actions/users';
 import { Link } from 'react-router-dom';
 import LoginUser from '../Login';
 import NewUser from '../Register';
@@ -24,15 +23,6 @@ class Header extends Component {
       showRegister : false,
       redirect: false
     };
-  }
-
-  handleLogout(event) {
-    event.preventDefault();
-    this.props.logoutUser();
-    this.setState({
-      showLogin: false,
-      redirect: true
-    })
   }
 
   showLogin() {
@@ -59,10 +49,6 @@ class Header extends Component {
         showRegister : true
       });
     }
-  }
-
-  handleXClick(event) {
-
   }
 
   render() {
@@ -96,7 +82,7 @@ class Header extends Component {
             <div>
               <li><Link to={`/users/${localStorage.getItem('user_id')}/edit`}>Settings</Link></li>
               <li><Link to={`/users/${localStorage.getItem('user_id')}/items`}>My Items</Link></li>
-              <li><Logout handler={this.handleLogout.bind(this)}/> </li>
+              <li><Logout /> </li>
             </div>
             : null }
 
@@ -120,23 +106,8 @@ const mapStateToProps = (state) => {
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loginUser: () => {
-      dispatch(loginUser());
-    },
-    logoutUser: () => {
-      dispatch(logoutUser());
-    },
-    loginUser: () => {
-      dispatch(loginUser());
-    }
-  };
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(Header);
 
 
