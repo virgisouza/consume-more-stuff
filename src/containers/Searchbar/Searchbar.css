@@ -1,0 +1,17 @@
+.Searchbar {
+  border: 1px solid magenta;
+  position: relative;
+}
+  .Searchbar input {
+    width: 50%;
+    padding: 4px;
+    margin: 2px;
+    border-radius: 2px;
+  }
+  .Searchbar input:focus {
+    border: 2px solid #8cb8ff;
+  }
+  .Searchbar input::placeholder {
+    padding: 1px;
+    font-size: 15px;
+  }

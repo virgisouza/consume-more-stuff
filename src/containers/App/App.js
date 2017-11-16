@@ -9,28 +9,20 @@ import { connect } from 'react-redux';
 import './App.css';
 
 import { loadItems } from '../../actions/items';
-/*import { loadInitialItems } from '../../actions/items';*/ //code change
 import { loadCategories } from '../../actions/categories';
 import { loadConditions } from '../../actions/conditions';
+import { logoutUser } from '../../actions/users';
 
 /*CHILD COMPONENTS*/
 import Header from '../Header/Header';
-
-import { logoutUser } from '../../actions/users';
+import Searchbar from '../Searchbar/Searchbar';
+import FilterCategory from '../../components/FilterMap';
 import FilterMap from '../../components/FilterMap';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
-    console.log(props);
-  }
-
-
-  componentWillMount(){
-    this.props.loadConditions();
-    this.props.loadItems();
-
   }
 
   componentDidMount() {
@@ -38,29 +30,32 @@ class App extends Component {
     this.props.loadItems();
   }
 
-
   render() {
+    let items = this.props.items;
+    console.log(items);
     return (
       <div className="App">
-      <Header />
-
+        <Header />
+        <Searchbar />
         <div className="home_list">
-            <FilterMap title={'Vehicles'} list={this.props.items} cat_id={1} />
-            <FilterMap title={'Appliances'} list={this.props.items} cat_id={2} />
-            <FilterMap title={'Computers'} list={this.props.items} cat_id={3} />
-            <FilterMap title={'Furniture'} list={this.props.items} cat_id={4} />
+            <FilterMap list={items} cat='vehicles' />
+            <FilterMap list={items} cat='appliances' />
+            <FilterMap list={items} cat='computers' />
+            <FilterMap list={items} cat='furniture' />
         </div>
-
       </div>
     );
   }
 
+
+
+
 }
+//end class
 
 const mapStateToProps = (state) => {
   return {
     items: state.itemList,
-    initialItems: state.initialItems, //code change
     user: state.user
   };
 }
@@ -70,9 +65,6 @@ const mapDispatchToProps = (dispatch) => {
     loadItems: () => {
       dispatch(loadItems());
     },
-    // loadInitialItems: () => { //code change
-    //   dispatch(loadInitialItems());
-    // },
     loadConditions: () => {
       dispatch(loadConditions());
     }

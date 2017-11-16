@@ -1,23 +1,26 @@
+/* This is a filter component rendered on the BOARD. */
+/* It takes in a part of state.itemlist */
+
+/* It will filter by a single category : if 'vehicles' is selected, board will only show items under that category and not the others. */
+
 import React from 'react';
+import Item from '../../../components/item';
 import { Link } from 'react-router-dom';
 
-import Item from './item';
-import MarkAsSold from '../containers/MarkAsSold';
+const FilterCategory = ({ list, cat }) => {
 
-const FilterMap = ({ list, cat }) => {
-  console.log('FilterMap component rendered');
   return (
-    <div className="Filter">
+    <div>
       {
         list.filter(i => {
-            if (i.Category) {
-              return i.Category.name === cat;
-            }
-          }) 
-          .map(item => {
+          if (i.Category) {
+            return i.Category.name === cat;
+          }
+        })
+        .map(item => {
           return (
             <div>
-              <Item
+              <Item 
                 name={item.name}
                 image={item.file}
                 body={item.body}
@@ -30,16 +33,14 @@ const FilterMap = ({ list, cat }) => {
                 user_id={item.user_id}
               />
               {Number(localStorage.getItem('user_id')) === item.user_id ?
-                <MarkAsSold the_item={item} />
+                  <MarkAsSold the_item={item} />
               : null}
             </div>
-          )
+          );
         })
       }
     </div>
-  )
+  );
 }
 
-export default FilterMap;
-
-/*<Link to={`/categories/${cat_id}/items`}><div className="Filter-title">{title}</div></Link>*/
+export default FilterCategory;
