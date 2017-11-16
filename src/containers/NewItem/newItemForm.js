@@ -44,7 +44,13 @@ class NewItemForm extends Component {
     for(var key of formData.keys()){
       console.log(key, formData.get(key));
     }
-    this.props.addItem(formData);
+
+    if(this.state.body === ''){
+      alert('Remember to add a description!')
+    }else{
+      this.props.addItem(formData);
+    }
+
 
     this.setState({
       name: '',
@@ -135,7 +141,7 @@ class NewItemForm extends Component {
           <textarea
             type='text'
             rows='25'
-            placeholder='Body'
+            placeholder='Description of your item...'
             onFocus={(e) => e.target.placeholder=""}
             onBlur={(e) => e.target.placeholder="Body"}
             value={this.state.body}

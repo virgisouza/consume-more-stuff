@@ -17,14 +17,16 @@ class LoginUser extends Component {
   }
 
   handleSubmit(event){
-    console.log('HandleSubmit for Login invoked');
     event.preventDefault();
     let user = {
       username: this.state.username,
       password: this.state.password
     }
-    this.props.loginUser(user);
-    //checking username and password against db
+
+      this.props.loginUser(user);
+      console.log(this.props, 'give props')
+
+
 
     this.setState({
       username: '',

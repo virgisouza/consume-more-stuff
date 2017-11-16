@@ -222,38 +222,6 @@ router.put('/:id', isAuthenticated, upload.single('file'), (req, res) => {
         });
       })
     }
-    // return moveImageUpload(itemID, fileName, tempPath, IMAGES_STUB)
-    // .then((imagePath) => {
-    //   if(req.user.id === item.user_id){
-    //     return Items.update({
-    //       name: data.name || item.name,
-    //       file: imagePath || item.file,
-    //       body: data.body || item.body,
-    //       price: data.price || item.price,
-    //       category_id: data.category_id || item.category_id,
-    //       condition_id: data.condition_id || item.condition_id
-    //       },
-    //       {where:{
-    //         id: req.body.id
-    //       }
-    //       })
-    //     }
-    //   })
-    //   .then((response) => {
-    //     return Items.findOne({include:[
-    //       {model: Category, as: 'Category'},
-    //       {model: Condition, as: 'Condition'},
-    //       {model: User, as: 'User'},
-    //       {model: Status, as: 'Status'}
-    //       ],
-    //       where: {
-    //         id: req.body.id
-    //       }
-    //     })
-    //     .then((updatedItem) => {
-    //       return res.json(updatedItem);
-    //     });
-    //   });
   })
   .catch((error) => {
     console.log(error);
