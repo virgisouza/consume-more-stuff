@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/users';
 import '../App/App.css';
+import { Redirect } from 'react-router-dom';
 
 class LoginUser extends Component {
 
@@ -10,7 +11,8 @@ class LoginUser extends Component {
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      redirect: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,11 +28,12 @@ class LoginUser extends Component {
       this.props.loginUser(user);
       console.log(this.props, 'give props')
 
-
+    console.log(localStorage.getItem('logged_in'))
 
     this.setState({
       username: '',
-      password: ''
+      password: '',
+      redirect: true
     })
   }
 
@@ -49,7 +52,9 @@ class LoginUser extends Component {
   }
 
   render() {
-    console.log('STATE', this.state);
+    if(this.state.redirect) {
+     return <Redirect to={"/"}/>
+    }
     return (
 
       <div className="Login-form">

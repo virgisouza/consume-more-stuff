@@ -67,7 +67,7 @@ class Header extends Component {
 
   render() {
     if(this.state.redirect) {
-     return <Redirect to="/logout"/>
+      <Redirect to="/"/>
     }
     return (
       <div className="App-header">
