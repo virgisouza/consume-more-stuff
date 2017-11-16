@@ -39,7 +39,6 @@ router.post('/new',  isAuthenticated, upload.single('file'), (req, res) => {
     status_id: 1
   })
   .then((item) => {
-    console.log(item, 'item promise')
     return item.reload({include:[
       {model:Category, as: 'Category'},
       {model: Condition, as: 'Condition'},
@@ -47,7 +46,6 @@ router.post('/new',  isAuthenticated, upload.single('file'), (req, res) => {
       {model: Status, as: 'Status'}
     ]})
     .then((newItem) => {
-      console.log(newItem, 'new item')
       return res.json(newItem);
     })
   })

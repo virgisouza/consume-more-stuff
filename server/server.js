@@ -48,7 +48,7 @@ passport.deserializeUser((user, done) => {
 });
 
 passport.use(new LocalStrategy(function (username, password, done) {
-  console.log(username, password);
+  console.log('passport use ==>', username, password);
   db.User.findOne({where: {username: username}})
     .then((user) => {
       if(user === null){
@@ -56,7 +56,6 @@ passport.use(new LocalStrategy(function (username, password, done) {
       }else{
         bcrypt.compare(password, user.password)
         .then((res) => {
-          //console.log(res, 'TRUTHY');
           if(res){
             var foundUser = user.get();
             delete foundUser.password;
@@ -75,6 +74,7 @@ passport.use(new LocalStrategy(function (username, password, done) {
 
 app.post('/login', passport.authenticate('local'), function(req, res){
   const user = req.user;
+  console.log(user, 'SERVER ERROR')
   res.json(req.user);
 });
 
