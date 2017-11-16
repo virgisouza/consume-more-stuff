@@ -33,9 +33,6 @@ const FilterCategory = ({ list, cat }) => {
                 id={item.id}
                 user_id={item.user_id}
               />
-              {Number(localStorage.getItem('user_id')) === item.user_id ?
-                  <MarkAsSold the_item={item} />
-              : null}
             </div>
           );
         })

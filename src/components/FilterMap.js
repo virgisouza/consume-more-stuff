@@ -5,7 +5,9 @@ import Item from './item';
 import MarkAsSold from '../containers/MarkAsSold';
 
 const FilterMap = ({ list, cat }) => {
-  console.log('FilterMap component rendered');
+
+  console.log('FilterMap render');
+
   return (
     <div className="Filter">
       {

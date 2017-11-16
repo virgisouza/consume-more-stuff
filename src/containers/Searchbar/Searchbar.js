@@ -19,10 +19,22 @@ class Searchbar extends Component {
   constructor(props) {
     super(props);
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChangePrice = this.handleChangePrice.bind(this);
+    this.handleChangeCondition = this.handleChangeCondition.bind(this);
+    this.handleChangeCategory = this.handleChangeCategory.bind(this);
   }
 
-  handleChange(event) {
+  handleChangePrice(event) {
+    console.log(event.target.value);
+    this.props.changeFilter(event.target.value);
+  }
+
+  handleChangeCondition(event) {
+    console.log(event.target.value);
+    this.props.changeFilter(event.target.value);
+  }
+
+  handleChangeCategory(event) {
     console.log(event.target.value);
     this.props.changeFilter(event.target.value);
   }
@@ -41,17 +53,17 @@ class Searchbar extends Component {
           onBlur={(e) => e.target.placeholder="Search Items.."} 
         />
         <button>Search</button>
-        <select onChange={this.handleChange}>
+        <select onChange={this.handleChangePrice}>
           <option value="" selected>Price</option>
           <option>Low to High</option>
           <option>High to Low</option>
         </select>
-        <select onChange={this.handleChange}>
+        <select onChange={this.handleChangeCondition}>
           <option value="" selected>Condition</option>
           <option>Best to Worst</option>
           <option>Worst to Best</option>
         </select>
-        <select onChange={this.handleChange}>
+        <select onChange={this.handleChangeCategory}>
           <option value="" selected>Category</option>
           <option>vehicles</option>
           <option>appliances</option>

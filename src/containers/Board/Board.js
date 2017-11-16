@@ -1,0 +1,53 @@
+/* This is our board component, it will render multiple ITEM components */
+
+/* APP is what passes the list of items into it. It will then call a FilterX component based on
+the filter prop passed into it. */
+
+/* It will start off with "most recently submitted" as its filter. */
+
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import './Board.css';
+
+/*ACTIONS*/
+
+/*CHILD COMPONENTS*/
+import FilterCategory from './Filters/FilterCategory';
+import FilterPrice from './Filters/FilterPrice';
+import FilterCondition from './Filters/FilterCondition';
+
+class Board extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    console.log('Board render');
+
+    let items = this.props.items;
+    let filter = this.props.filter;
+
+    return (
+      <div className="board">
+        Board
+      </div>
+    );
+  }
+
+}
+//end class
+
+const mapStateToProps = (state) => {
+  return {
+    items : state.itemList,
+    filter : state.filter
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(Board);
