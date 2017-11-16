@@ -27,15 +27,11 @@ class Board extends Component {
     console.log('Board render');
 
     let items = this.props.items;
-    let filter = this.props.filter;
-
-    console.log(items);
-    console.log('Current Filter : ', filter);
 
     return (
       <div className="board">
         <Searchbar />
-        <Grid list={items} sort={filter} />
+        <Grid list={items} date={this.props.dateFilter} price={this.props.priceFilter} category={this.props.categoryFilter} condition={this.props.conditionFilter}  />
       </div>
     );
   }
@@ -46,8 +42,10 @@ class Board extends Component {
 const mapStateToProps = (state) => {
   return {
     items : state.itemList,
-    filter : state.filter,
-    category : state.category
+    dateFilter : state.dateFilter,
+    priceFilter : state.priceFilter,
+    categoryFilter : state.categoryFilter,
+    conditionFilter : state.conditionFilter
   };
 }
 

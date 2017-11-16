@@ -14,26 +14,43 @@ class Searchbar extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      new : false,
+      good : false,
+      fair : false,
+      worn : false
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangePrice = this.handleChangePrice.bind(this);
     this.handleChangeCondition = this.handleChangeCondition.bind(this);
     this.handleChangeCategory = this.handleChangeCategory.bind(this);
   }
 
+  handleSubmit(event) {
+    let e = event.target.value;
+    console.log('SEARCH BUTTON PRESSED');
+  }
+
   handleChangePrice(event) {
-    
+    let e = event.target.value;
+    console.log('PRICE FILTER CHANGED', e);
+    e === 'Low to High' ? this.props.filterPrice(1) : this.props.filterPrice(2);
   }
 
   handleChangeCondition(event) {
+    let e = event.target.id;
+    console.log('CONDITION FILTER CHANGED', e);
     
   }
 
   handleChangeCategory(event) {
     
-    
   }
 
   render() {
     console.log('Searchbar render');
+    console.log(this.state);
     return (
       <div className='Searchbar'>
 
@@ -60,17 +77,17 @@ class Searchbar extends Component {
           <div className="Condition-label"><span>Condition</span></div>
           <div>
             <label for='new'>New</label>
-            <input type='checkbox' id='new' onChange={this.handleChangeCondition} />
+            <input type='checkbox' id='new' onChange={(e) => this.setState({new : !this.state.new})} />
           </div>
           <div>
             <label for='Good'>Good</label>
-            <input type='checkbox' id='Good' onChange={this.handleChangeCondition} />
+            <input type='checkbox' id='good' onChange={(e) => this.setState({new : !this.state.good})} />
           </div>
             <label for='Fair'>Fair</label>
-            <input type='checkbox' id='Fair' onChange={this.handleChangeCondition} />
+            <input type='checkbox' id='fair' onChange={(e) => this.setState({new : !this.state.fair})} />
           <div>
             <label for='Worn'>Worn</label>
-            <input type='checkbox' id='Worn' onChange={this.handleChangeCondition} />
+            <input type='checkbox' id='worn' onChange={(e) => this.setState({new : !this.state.worn})} />
           </div>
         </div>
 

@@ -1,21 +1,31 @@
 import { FILTER_DATE, FILTER_PRICE, FILTER_CONDITION, FILTER_CATEGORY } from '../actions/filter'; 
 
-const initialState = [];
+const initialState = {
+  dateFilter : 0,
+  priceFilter : 0,
+  conditionFilter : 0,
+  categoryFilter : 0
+};
 
 const filter = (state = initialState, action) => {
 
   switch (action.type) {
+
     case FILTER_DATE :
-      return action.dateFilter;
+      console.log(action);
+      return Object.assign({}, state, action.dateFilter);
 
     case FILTER_PRICE :
-      return action.priceFilter;
+      console.log(action);
+      return Object.assign({}, state, action.priceFilter); 
 
     case FILTER_CONDITION :
-      return action.conditionFilter;
+      console.log(action);
+      return Object.assign({}, state, action.conditionFilter); 
 
     case FILTER_CATEGORY :
-      return action.categoryFilter;
+      console.log(action);
+      return Object.assign({}, state, action.categoryFilter); 
 
     default:
       return state;

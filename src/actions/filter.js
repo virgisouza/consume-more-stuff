@@ -13,7 +13,9 @@ export const filterDate = (filter) => { //1 = old to new (asc) .. 2 = new to old
   }
 }
 
-export const filterPrice = (filter) => { //1 = low to high (asc) .. 2 = high to low (desc)
+//1 = low to high (asc) .. 2 = high to low (desc)
+export const filterPrice = (filter) => {
+  console.log('ACTION FIRE', filter);
   return function(dispatch) {
     dispatch({
       type : FILTER_PRICE,
