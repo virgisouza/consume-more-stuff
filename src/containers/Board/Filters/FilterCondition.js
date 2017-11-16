@@ -8,15 +8,19 @@ import Item from '../../../components/item';
 import { Link } from 'react-router-dom';
 
 const FilterCondition = ({ list, sort }) => {
-  
+
+  console.log('FilterCondition render');
+  console.log(sort);
+
   return (
-    <div>
+    
+    <div> 
       {
-        list.filter(i => {
-          if (i.Condition) {
-            return i.Condition.type === cond;
-          }
-        }).map(item => {
+        sort == 3 ? // best to worst
+        list.sort(function(a, b) {
+          return a.condition_id - b.condition_id
+        })
+        .map(item => {
           return (
             <Item 
               name={item.name}
@@ -32,7 +36,31 @@ const FilterCondition = ({ list, sort }) => {
             />
           );
         })
+
+        :
+
+        list.sort(function(a, b) { //worst to best
+          return b.condition_id - a.condition_id
+        })
+        .map(item => {
+          return (
+            <Item 
+              name={item.name}
+              image={item.file}
+              body={item.body}
+              price={item.price}
+              condition={item.Condition.type}
+              category={item.Category.name}
+              updatedAt={item.updatedAt}
+              key={item.id}
+              id={item.id}
+              user_id={item.user_id}
+            />
+          );
+        })
+
       }
+
     </div>
   );
 

@@ -1,6 +1,5 @@
 /*This is the redux-aware component.*/
 
-
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -12,9 +11,7 @@ import { loadItems } from '../../actions/items';
 
 /*CHILD COMPONENTS*/
 import Searchbar from '../Searchbar/Searchbar';
-import FilterPrice from './Filters/FilterPrice';
-import FilterCondition from './Filters/FilterCondition';
-import FilterCategory from './Filters/FilterCategory';
+import Grid from '../../components/Grid';
 
 class Board extends Component {
 
@@ -38,9 +35,7 @@ class Board extends Component {
     return (
       <div className="board">
         <Searchbar />
-        {filter == 1 || 2 ? <FilterPrice list={items} sort={filter} /> : null}
-        {filter == 3 || 4 ? <FilterCondition list={items} sort={filter} /> : null}
-        {filter == 5 || 6 || 7 || 8 ? <FilterCategory list={items} sort={filter} /> : null}
+        <Grid list={items} sort={filter} />
       </div>
     );
   }
@@ -51,7 +46,8 @@ class Board extends Component {
 const mapStateToProps = (state) => {
   return {
     items : state.itemList,
-    filter : state.filter
+    filter : state.filter,
+    category : state.category
   };
 }
 

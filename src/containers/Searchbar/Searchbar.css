@@ -1,17 +1,70 @@
 .Searchbar {
-  border: 1px solid magenta;
-  position: relative;
+  background-color: green;
+  position: absolute;
+  width: 15%;
 }
-  .Searchbar input {
-    width: 50%;
-    padding: 4px;
-    margin: 2px;
-    border-radius: 2px;
+  .Searchbar div {
+    color: black;
   }
-  .Searchbar input:focus {
-    border: 2px solid #8cb8ff;
+  .Searchbar label {
+    font-size: 12px;
   }
-  .Searchbar input::placeholder {
-    padding: 1px;
-    font-size: 15px;
+
+
+.Price {
+  border: 1px solid black;
+  width: 90%;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+  .Price-label span {
+    color: blue;
+    font-size: 14px;
+  }
+  .Price select {
+    margin-bottom: 8px;
+    margin-top: 4px;
+  }
+
+.Category {
+   border: 1px solid black;
+   width: 90%;
+   margin-bottom: 8px;
+   margin-top: 8px;
+}
+  .Category-label span {
+    color: blue;
+    font-size: 14px;
+  }
+  .Category select {
+    margin-bottom: 8px;
+    margin-top: 4px;
+  }
+
+.Condition {
+  border: 1px solid black;
+  width: 90%;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+  .Condition-label span {
+    color: blue;
+    font-size: 14px;
+  }
+  .Condition select {
+    margin-bottom: 8px;
+    margin-top: 4px;
+  }
+
+.Search-button {
+
+}
+  .Search-button button {
+    font-weight: bold;
+    background-color: yellow;
+    border-radius: 5px;
+  }
+  .Search-button button:hover {
+    cursor: pointer;
+    text-decoration: underline;
   }

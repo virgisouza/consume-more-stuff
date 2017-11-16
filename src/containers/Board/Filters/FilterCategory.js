@@ -7,7 +7,7 @@ import React from 'react';
 import Item from '../../../components/item';
 import { Link } from 'react-router-dom';
 
-const FilterCategory = ({ list, cat }) => {
+const FilterCategory = ({ list, sort }) => {
 
   return (
     <div>
@@ -15,7 +15,7 @@ const FilterCategory = ({ list, cat }) => {
       {
         list.filter(i => {
           if (i.Category) {
-            return i.Category.name === cat;
+            return i.Category.name === sort;
           }
         })
         .map(item => {
@@ -39,8 +39,12 @@ const FilterCategory = ({ list, cat }) => {
       }
 
     </div>
+    
   );
 
-}
+
+
+
+}//end component
 
 export default FilterCategory;
