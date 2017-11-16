@@ -11,7 +11,8 @@ class NewUser extends Component {
     this.state = {
       username: '',
       password: '',
-      email: ''
+      email: '',
+      show: true
     };
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -33,18 +34,22 @@ class NewUser extends Component {
       (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$/.test(this.state.password) === false) ||
       (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(this.state.email) === false){
         alert(
-          '* Username must be at least 6 characters long * Password must be at least 4 characters long and include: one number and one uppercase letter * Email must be a valid email address'
+          '* Username must be at least 6 characters long \n* Password must be at least 4 characters long and include: one number and one uppercase letter \n* Email must be a valid email address'
         )
     }else{
         this.props.addNewUser(newUser);
+        alert(
+          'Registration Successful'
+        )
+        this.setState({
+          username: '',
+          password: '',
+          email: '',
+          show: false
+        });
       }
 
     console.log(newUser);
-    this.setState({
-      username: '',
-      password: '',
-      email: ''
-    });
   }
 
   handleChangeUsername(event){
@@ -65,6 +70,7 @@ class NewUser extends Component {
   render() {
     return (
       <div className='NewUserForm'>
+      {this.state.show ?
         <form onSubmit={this.handleSubmit.bind(this)}>
 
           <input type='text' placeholder= 'Username' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Username"} value={this.state.username} onChange={this.handleChangeUsername.bind(this)} required />
@@ -85,6 +91,7 @@ class NewUser extends Component {
 
           <button type='submit'>Submit</button>
         </form>
+      : null }
       </div>
     );
   }
