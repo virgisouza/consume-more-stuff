@@ -29,9 +29,9 @@ class NewUser extends Component {
       email: (this.state.email).toLowerCase()
     };
 
-    if(!(this.state.username < 6) ||
-      !(this.state.password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$/)) ||
-      !(this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/))){
+    if((this.state.username < 6) ||
+      (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$/.test(this.state.password) === false) ||
+      (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(this.state.email) === false){
         alert(
           '* Username must be at least 6 characters long * Password must be at least 4 characters long and include: one number and one uppercase letter * Email must be a valid email address'
         )
@@ -68,7 +68,7 @@ class NewUser extends Component {
         <form onSubmit={this.handleSubmit.bind(this)}>
 
           <input type='text' placeholder= 'Username' onFocus={(e) => e.target.placeholder=""} onBlur={(e) => e.target.placeholder="Username"} value={this.state.username} onChange={this.handleChangeUsername.bind(this)} required />
-           {this.state.username.length > 6  ?
+           {this.state.username.length >= 6  ?
             <img src='/assets/bright-green-check-mark-hi.png' height='20' width='20'/>
             : null}
 

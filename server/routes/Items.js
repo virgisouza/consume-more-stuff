@@ -75,7 +75,7 @@ router.post('/new',  isAuthenticated, upload.single('file'), (req, res) => {
       })
     }else{
       return Items.update({
-        file: 'public/favicon.ico'
+        file: '/uploads/items/Thumbnail.png'
       }, {
         where: {
           id: newItem.id

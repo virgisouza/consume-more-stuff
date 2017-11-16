@@ -14,7 +14,8 @@ class UserSettings extends Component {
       username: '',
       password: '',
       email: '',
-      show: false
+      show: false,
+      count: 0
     }
   }
 
@@ -34,15 +35,15 @@ class UserSettings extends Component {
     this.setState({
       username: '',
       password: '',
-      email: ''
+      email: '',
+      count: this.state.count++
     })
   }
 
   handleChangeUsername(event){
     event.preventDefault();
     this.setState({
-      username: event.target.value,
-      show: true
+      username: event.target.value
     });
 
   }
@@ -155,9 +156,9 @@ class UserSettings extends Component {
                   value={this.state.username}
                   onChange={this.handleChangeUsername.bind(this)}
                 />
-              {this.state.username.length > 6  ?
-              <img src='/assets/bright-green-check-mark-hi.png' height='20' width='20'/>
-              : null}
+                {this.state.username.length > 6  ?
+                  <img src='/assets/bright-green-check-mark-hi.png' height='20' width='20'/>
+                : null}
                 <button type='submit'>Submit</button>
               </div>
               : null}
