@@ -83,8 +83,9 @@ class NewItemForm extends Component {
         imageUrl: reader.result
       })
     }
-
-    reader.readAsDataURL(file);
+    if(file){
+      reader.readAsDataURL(file);
+    }
   }
 
   handleChangeBody(event) {

@@ -76,7 +76,7 @@ class Header extends Component {
             <li><Link to={'/'}>Home</Link></li>
             <li><Link to={'/all'}>All Items</Link></li>
 
-            <li><Link to={`/users/${localStorage.getItem('user_id')}`}>Welcome, {localStorage.getItem('username')}</Link></li>
+            <li>Welcome {localStorage.getItem('username')}</li>
             {!(this.props.user.logged_in) && localStorage.getItem('logged_in') !== 'true' ?
             <div>
             <li><a href="#" onClick={this.showRegister.bind(this)}>Register</a></li>

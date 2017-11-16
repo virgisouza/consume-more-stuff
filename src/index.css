@@ -12,6 +12,7 @@ body {
 .publishedDiv{
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .soldDiv{
@@ -41,4 +42,31 @@ body {
 .userItem{
   display: flex;
   flex-direction: column;
+}
+
+.editUser{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.userSettings{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.settingsHeader{
+  display: flex;
+  justify-content: space-around;
+}
+
+.settingsButton{
+  display: flex;
+  justify-content: space-around;
+}
+
+.status-filter{
+  display: flex;
+  flex-flow: row wrap;
 }

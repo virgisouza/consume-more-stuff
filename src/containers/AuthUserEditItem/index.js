@@ -138,7 +138,7 @@ class AuthUserEditItem extends Component {
         <Header />
         <Item
           name={this.props.item.name}
-          image={'/' + this.props.item.file}
+          image={this.props.item.file}
           body={this.props.item.body}
           price={this.props.item.price}
           condition={this.props.item.Condition.type}
