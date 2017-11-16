@@ -21,6 +21,8 @@ export const login = (user) => new Promise((resolve, reject) => {
     if(oReq.readyState === XMLHttpRequest.DONE && oReq.status === 200){
       var response = JSON.parse(this.response);
       resolve(response);
+    }else if(oReq.readyState === XMLHttpRequest.DONE && oReq.status === 401){
+      alert('Invalid Username or Password');
     }
   }
   oReq.open("POST", "/login");

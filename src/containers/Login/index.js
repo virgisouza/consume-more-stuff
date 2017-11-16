@@ -49,7 +49,7 @@ class LoginUser extends Component {
   }
 
   render() {
-    console.log('Login Form rendered');
+    console.log('STATE', this.state);
     return (
 
       <div className="Login-form">
@@ -72,7 +72,6 @@ class LoginUser extends Component {
           />
           <button type='submit'>Login</button>
         </form>
-
       </div>
     );
   }

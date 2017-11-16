@@ -86,7 +86,7 @@ class Header extends Component {
 
             <li><a href="#" onClick={this.showLogin.bind(this)}>Login</a></li>
             {this.state.showLogin === true ?
-            <LoginUser />
+            <li><LoginUser /></li>
             : null}
             </div>
             : null}
