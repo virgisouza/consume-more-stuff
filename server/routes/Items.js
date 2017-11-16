@@ -26,11 +26,15 @@ app.use(express.static(path.join( __dirname, '../../public')));
 
 router.post('/new',  isAuthenticated, upload.single('file'), (req, res) => {
   let data = req.body;
-  console.log(req.file)
+  let originalname = '';
+  let tempPath = '';
+  let fileName = '';
 
-  const { originalname, path: tempPath } = req.file;
-  fileName = originalname.replace(/\s+/g, '_');
-
+  if(req.file){
+    originalname = req.file.originalname;
+    tempPath = req.file.path;
+    fileName = originalname.replace(/\s+/g, '_');
+  }
 
   return Items.create({
     name: data.name,
@@ -43,27 +47,46 @@ router.post('/new',  isAuthenticated, upload.single('file'), (req, res) => {
   })
   .then((newItem) => {
     const itemID = newItem.id.toString();
-    return moveImageUpload(itemID, fileName, tempPath, IMAGES_STUB)
-    .then((imagePath) => {
-      console.log(imagePath);
+    if(req.file){
+      return moveImageUpload(itemID, fileName, tempPath, IMAGES_STUB)
+      .then((imagePath) => {
+        return Items.update({
+          file: '/' + imagePath
+        }, {
+          where: {
+            id: newItem.id
+          }
+        })
+        .then((response) => {
+          return Items.findOne({
+            where: {
+              id: newItem.id
+            }
+          })
+          .then((item) => {
+            return res.json(item)
+          })
+        })
+      })
+    }else{
       return Items.update({
-        file: '/' + imagePath
+        file: 'public/favicon.ico'
       }, {
         where: {
           id: newItem.id
         }
       })
-      .then((updatedItem) => {
+      .then((response) => {
         return Items.findOne({
           where: {
             id: newItem.id
           }
         })
         .then((item) => {
-          return res.json(item)
+          return res.json(item);
         })
       })
-    });
+    }
   })
   .catch((error) => {
     console.log(error);
@@ -111,9 +134,16 @@ router.get('/:id', (req, res) => {
 router.put('/:id', isAuthenticated, upload.single('file'), (req, res) => {
   //here image will default to generic stock photo if no image is uploaded
 
-    const { originalname, path: tempPath } = req.file;
-    fileName = originalname.replace(/\s+/g, '_');
+  let data = req.body;
+  let originalname = '';
+  let tempPath = '';
+  let fileName = '';
 
+  if(req.file){
+    originalname = req.file.originalname;
+    tempPath = req.file.path;
+    fileName = originalname.replace(/\s+/g, '_');
+  }
 
   return Items.findOne({
     where: {
@@ -123,38 +153,87 @@ router.put('/:id', isAuthenticated, upload.single('file'), (req, res) => {
   .then((item) => {
     const itemID = item.id.toString();
     let data = req.body;
-    return moveImageUpload(itemID, fileName, tempPath, IMAGES_STUB)
-    .then((imagePath) => {
-      if(req.user.id === item.user_id){
+    if((req.file) && (req.user.id === item.user_id)){
+      return moveImageUpload(itemID, fileName, tempPath, IMAGES_STUB)
+      .then((imagePath) => {
         return Items.update({
           name: data.name || item.name,
-          file: imagePath || item.file,
+          file: '/' + imagePath,
           body: data.body || item.body,
           price: data.price || item.price,
           category_id: data.category_id || item.category_id,
           condition_id: data.condition_id || item.condition_id
-          },
-          {where:{
-            id: req.body.id
+        }, {
+          where: {
+            id: item.id
           }
+        })
+        .then((response) => {
+          return Items.findOne({
+            where: {
+              id: item.id
+            }
           })
+          .then((updatedItem) => {
+            return res.json(updatedItem)
+          })
+        })
+      })
+    }else if(req.user.id === item.user_id){
+      return Items.update({
+        name: data.name || item.name,
+        body: data.body || item.body,
+        price: data.price || item.price,
+        category_id: data.category_id || item.category_id,
+        condition_id: data.condition_id || item.condition_id
+      }, {
+        where: {
+          id: item.id
         }
       })
       .then((response) => {
-        return Items.findOne({include:[
-          {model: Category, as: 'Category'},
-          {model: Condition, as: 'Condition'},
-          {model: User, as: 'User'},
-          {model: Status, as: 'Status'}
-          ],
+        return Items.findOne({
           where: {
-            id: req.body.id
+            id: item.id
           }
         })
         .then((updatedItem) => {
           return res.json(updatedItem);
         });
-      });
+      })
+    }
+    // return moveImageUpload(itemID, fileName, tempPath, IMAGES_STUB)
+    // .then((imagePath) => {
+    //   if(req.user.id === item.user_id){
+    //     return Items.update({
+    //       name: data.name || item.name,
+    //       file: imagePath || item.file,
+    //       body: data.body || item.body,
+    //       price: data.price || item.price,
+    //       category_id: data.category_id || item.category_id,
+    //       condition_id: data.condition_id || item.condition_id
+    //       },
+    //       {where:{
+    //         id: req.body.id
+    //       }
+    //       })
+    //     }
+    //   })
+    //   .then((response) => {
+    //     return Items.findOne({include:[
+    //       {model: Category, as: 'Category'},
+    //       {model: Condition, as: 'Condition'},
+    //       {model: User, as: 'User'},
+    //       {model: Status, as: 'Status'}
+    //       ],
+    //       where: {
+    //         id: req.body.id
+    //       }
+    //     })
+    //     .then((updatedItem) => {
+    //       return res.json(updatedItem);
+    //     });
+    //   });
   })
   .catch((error) => {
     console.log(error);
