@@ -13,7 +13,7 @@ const FilterStatus = ({ list, stat_id }) => {
             <div className="userItem">
             <Item
               name={item.name}
-              image={'/' + item.file}
+              image={item.file}
               body={item.body}
               price={item.price}
               condition={(item.Condition && item.Condition.type) ? item.Condition.type : ''}

@@ -3,6 +3,7 @@
 #development
 config/config.json
 public/uploads
+temp/uploads/images
 
 # dependencies
 /node_modules
