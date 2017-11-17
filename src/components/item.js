@@ -14,7 +14,7 @@ const Item = ({name, image, body, price, condition, category, status, updatedAt,
       <div className='Item-price'>${price}</div>
       : null }
 
-      <div className='Item-image'><img src={image} height='120' width='120' /></div>
+      <div className='Item-image'><img src={image} height='80' width='80' /></div>
 
       {name ?
       <div className='Item-name'>{name}</div>

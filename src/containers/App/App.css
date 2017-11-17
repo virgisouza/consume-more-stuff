@@ -47,16 +47,6 @@
   margin: 2px;
 }
 
-  .Item-image {
-    border: 2px solid black;
-    background-color: yellow;
-    padding: 5px;
-  }
-  .Item-image img {
-    position: relative;
-    left: 60px;
-  }
-
   .Item-price {
     font-size: 11px;
     border: 1px solid #474747;
@@ -75,11 +65,8 @@
   }
 
   .Item-name {
-    padding: 3px;
-    font-size: 18px;
-    font-weight: bold;
+
   }
-  
   .Item-condition {
     background-color: #ded1ff;
     font-size: 13px;
@@ -92,21 +79,9 @@
       color: blue;
       font-weight: bold;
     }
-  .Item-body {
-    font-size: 14px;
-    padding: 2px;
-  }
-    .Item-body div {
-
-    }
-    .Item-body span {
-      font-size: 12px;
-      text-decoration: underline;
-    }
   .Item-status {
     font-weight: bold;
     color: magenta;
-    padding: 2px;
   }
   .Item-category {
     background-color: #ded1ff;
