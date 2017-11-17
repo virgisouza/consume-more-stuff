@@ -1,39 +1,51 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
-import FilterMap from '../../components/FilterMap';
+import FilterCategory from '../../components/FilterCategory';
 import { loadCategoryItems } from '../../actions/categories';
+
+import './CategoryView.css';
 
 class CategoryView extends Component {
   constructor(props){
-    super(props)
+    super(props);
   }
 
   componentDidMount(){
     this.props.loadCategoryItems(this.props.match.params.id);
   }
 
-  render(){
-    console.log(this.props);
+  render() {
+    
     return(
-      <div>
+      <div className="Category-view">
         <Header/>
         {Number(this.props.match.params.id) === 1 ?
-          <div className="Filter-title">Vehicles</div>
+          <div className="Vehicles">
+            <div className="Vehicles-label">View by Category : Vehicles</div>
+            <FilterCategory list={this.props.items} cat_id={this.props.match.params.id}/>
+          </div>
         : null}
         {Number(this.props.match.params.id) === 2 ?
-          <div className="Filter-title">Appliances</div>
+          <div className="Appliances">
+            <div className="Appliances-label">View by Category : Appliances</div>
+            <FilterCategory list={this.props.items} cat_id={this.props.match.params.id}/>
+          </div>
         : null}
         {Number(this.props.match.params.id) === 3 ?
-          <div className="Filter-title">Computers</div>
+          <div className="Computers">
+            <div className="Computers-label">Computers</div>
+            <FilterCategory list={this.props.items} cat_id={this.props.match.params.id}/>
+          </div>
         : null}
         {Number(this.props.match.params.id) === 4 ?
-          <div className="Filter-title">Furniture</div>
+          <div className="Furniture">
+            <div className="Furniture-label">View by Category : Furniture</div>
+            <FilterCategory list={this.props.items} cat_id={this.props.match.params.id}/>
+          </div>
         : null}
-        <FilterMap
-          list={this.props.items}
-          cat_id={this.props.match.params.id}
-        />
+        <Link to='/'>Back to Home</Link>
       </div>
     )
   }

@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 import './App.css';
 
 import { loadItems } from '../../actions/items';
-/*import { loadInitialItems } from '../../actions/items';*/ //code change
 import { loadCategories } from '../../actions/categories';
 import { loadConditions } from '../../actions/conditions';
 

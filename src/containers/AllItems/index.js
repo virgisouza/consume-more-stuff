@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import FilterMap from '../../components/FilterMap';
 import { loadItems } from '../../actions/items';
 import Item from '../../components/item';
-import ScrollArea from 'react-scrollbar';
+/*import ScrollArea from 'react-scrollbar';*/
 
 class AllItems extends Component {
   constructor(props){
@@ -16,7 +16,7 @@ class AllItems extends Component {
   }
 
   render(){
-    console.log(this.props);
+    
     return(
       <div>
         <Header />

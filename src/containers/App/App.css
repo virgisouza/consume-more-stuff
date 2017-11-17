@@ -4,6 +4,13 @@
   flex-flow: column;
 }
 
+.App-header {
+  background-color: #222;
+  height: 150px;
+  color: white;
+  position: relative;
+}
+
 .home_list {
   display: flex;
   flex: row;
@@ -15,9 +22,17 @@
   flex-direction: column;
   width: 25%;
 }
+  .FilterCategory {
+    border: 3px solid cyan;
+    display: flex;
+    flex: row;
+    justify-content: space-around;
+  }
+
+
 .Filter-title {
-  font-size: 2em;
-  border: 1px solid black;
+  font-size: 1.25em;
+  text-decoration: none;
 }
 
 .Item {
@@ -31,6 +46,16 @@
 .Item div {
   margin: 2px;
 }
+
+  .Item-image {
+    border: 2px solid black;
+    background-color: yellow;
+    padding: 5px;
+  }
+  .Item-image img {
+    position: relative;
+    left: 60px;
+  }
 
   .Item-price {
     font-size: 11px;
@@ -50,8 +75,11 @@
   }
 
   .Item-name {
-
+    padding: 3px;
+    font-size: 18px;
+    font-weight: bold;
   }
+  
   .Item-condition {
     background-color: #ded1ff;
     font-size: 13px;
@@ -64,6 +92,22 @@
       color: blue;
       font-weight: bold;
     }
+  .Item-body {
+    font-size: 14px;
+    padding: 2px;
+  }
+    .Item-body div {
+
+    }
+    .Item-body span {
+      font-size: 12px;
+      text-decoration: underline;
+    }
+  .Item-status {
+    font-weight: bold;
+    color: magenta;
+    padding: 2px;
+  }
   .Item-category {
     background-color: #ded1ff;
     font-size: 14px;
@@ -88,34 +132,6 @@
   }
 
 
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-
-}
-
-.App-header {
-  background-color: #222;
-  height: 175px;
-  padding: 10px;
-  color: white;
-  position: relative;
-}
-
-.App-title {
-  font-size: 1.5em;
-  display: inline-block;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
 
 .Login-reg {
   border: 1px solid green;

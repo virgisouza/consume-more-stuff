@@ -66,9 +66,7 @@ class Header extends Component {
   }
 
   render() {
-    if(this.state.redirect) {
-     return <Redirect to="/logout"/>
-    }
+    
     return (
       <div className="App-header">
         <div className="Login-reg">
@@ -104,8 +102,8 @@ class Header extends Component {
         </div>
 
 
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Consume More Stuff</h1>
+        <img src='/banner.jpg' className="App-logo" alt="" />
+        
       </div>
     );
 

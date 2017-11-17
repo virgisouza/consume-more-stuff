@@ -12,7 +12,6 @@ import Select from '../../components/select';
 class AuthUserEditItem extends Component {
 
   constructor(props) {
-    console.log('AUTH USER EDIT ITEM');
     super(props);
 
     this.state = {
@@ -32,7 +31,6 @@ class AuthUserEditItem extends Component {
     event.preventDefault();
 
     let formData = new FormData();
-    console.log(formData, 'FORM DATA')
 
 
     formData.append('file', this.state.file);
@@ -143,11 +141,11 @@ class AuthUserEditItem extends Component {
           price={this.props.item.price}
           condition={this.props.item.Condition.type}
           category={this.props.item.Category.name}
+          status={this.props.item.Status.type}
           updatedAt={this.props.item.updatedAt}
           id={this.props.item.id}
           user_id={this.props.item.user_id}
           detailView='yes'
-          status={this.props.item.Status.type}
         />
 
         {this.props.item.user_id === Number(localStorage.getItem('user_id')) && this.props.item.status_id === 1 ?
