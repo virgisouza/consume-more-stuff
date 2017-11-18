@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const db = require('../models');
+const path = require('path');
 const routes = require('./routes');
 const redis = require('connect-redis')(session);
 const passport = require('passport');
@@ -15,7 +16,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(session({
   store: new redis(),
   secret: 'aTeam',
